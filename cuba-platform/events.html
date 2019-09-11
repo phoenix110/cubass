@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>Events - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/common_components/infrastructure_interfaces/events.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/common_components/infrastructure_interfaces/events.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/common_components/infrastructure_interfaces/events.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="data_model.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/data_model.html">数据模型</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="metadata_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/metadata_framework.html">元数据框架</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">视图</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="managed_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/managed_beans.html">托管 Bean</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="jmx_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_beans.html">JMX Beans</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="infrastructure_interfaces.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/infrastructure_interfaces.html">基础设施接口</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="configuration.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/configuration.html">Configuration</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dataManager.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dataManager.html">DataManager</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="entityStates.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityStates.html">EntityStates</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="events.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/events.html" class='toc-highlighted'>Events</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="messages.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/messages.html">Messages</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="metadata.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/metadata.html">Metadata</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="resources.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/resources.html">Resources</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="scripting.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scripting.html">Scripting</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="security.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security.html">Security</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="timeSource.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/timeSource.html">TimeSource</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="userSessionSource.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/userSessionSource.html">UserSessionSource</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="uuidSource.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/uuidSource.html">UuidSource</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="appContext.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/appContext.html">应用程序上下文(AppContext)</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_lifecycle_events.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_lifecycle_events.html">应用程序生命周期事件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties.html">应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="localization.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/localization.html">消息本地化</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="authentication.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/authentication.html">用户认证</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="exception_handling.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/exception_handling.html">异常处理</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="bean_validation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/bean_validation.html">Bean 验证</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_attribute_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_attribute_access.html">实体属性访问控制</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="data_model.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/data_model.html">数据模型</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="metadata_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/metadata_framework.html">元数据框架</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">视图</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="managed_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/managed_beans.html">托管 Bean</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="jmx_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_beans.html">JMX Beans</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="infrastructure_interfaces.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/infrastructure_interfaces.html">基础设施接口</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="configuration.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/configuration.html">Configuration</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dataManager.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dataManager.html">DataManager</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="entityStates.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityStates.html">EntityStates</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="events.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/events.html" class='toc-highlighted'>Events</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="messages.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/messages.html">Messages</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="metadata.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/metadata.html">Metadata</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="resources.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/resources.html">Resources</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="scripting.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scripting.html">Scripting</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="security.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security.html">Security</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="timeSource.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/timeSource.html">TimeSource</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="userSessionSource.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/userSessionSource.html">UserSessionSource</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="uuidSource.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/uuidSource.html">UuidSource</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="appContext.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/appContext.html">应用程序上下文(AppContext)</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_lifecycle_events.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_lifecycle_events.html">应用程序生命周期事件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties.html">应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="localization.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/localization.html">消息本地化</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="authentication.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/authentication.html">用户认证</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="exception_handling.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/exception_handling.html">异常处理</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="bean_validation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/bean_validation.html">Bean 验证</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_attribute_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_attribute_access.html">实体属性访问控制</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect4"> 
+ <h5 id="events">3.2.6.4. Events</h5> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/global/Events.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/global/Events.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/global/Events.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>Events</code> bean 封装了应用程序范围内的事件发布功能。应用程序事件可用于在松耦合的组件之间交换信息。<code>Events</code> bean 是 Spring Framework 的 <code>ApplicationEventPublisher</code> 的简单外观设计模式实现。</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">interface</span> <span class="class">Events</span> {
+    <span class="predefined-type">String</span> NAME = <span class="string"><span class="delimiter">"</span><span class="content">cuba_Events</span><span class="delimiter">"</span></span>;
+
+    <span class="type">void</span> publish(ApplicationEvent event);
+}</code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>此接口只有接收一个事件对象作为参数的 <code>publish()</code> 方法。<code>Events.publish()</code> 会通知所有应用程序内注册的匹配的监听器。可以使用 <code>PayloadApplicationEvent</code> 将任何对象发布为事件。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>另请参阅 <a href="javascript:if(confirm('https://spring.io/blog/2015/02/11/better-application-events-in-spring-framework-4-2  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://spring.io/blog/2015/02/11/better-application-events-in-spring-framework-4-2'" tppabs="https://spring.io/blog/2015/02/11/better-application-events-in-spring-framework-4-2" target="_blank">Spring 框架入门</a></p> 
+ </div> 
+ <div id="bean_events" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     bean 中的事件处理 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>首先，创建一个新的事件类，继承 <code>ApplicationEvent</code> 类。事件类可以包含任何其它数据。例如：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.sales.core</span>;
+
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.security.entity.User</span>;
+<span class="keyword">import</span> <span class="include">org.springframework.context.ApplicationEvent</span>;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">DemoEvent</span> <span class="directive">extends</span> ApplicationEvent {
+
+    <span class="directive">private</span> User user;
+
+    <span class="directive">public</span> DemoEvent(<span class="predefined-type">Object</span> source, User user) {
+        <span class="local-variable">super</span>(source);
+        <span class="local-variable">this</span>.user = user;
+    }
+
+    <span class="directive">public</span> User getUser() {
+        <span class="keyword">return</span> user;
+    }
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>Bean 对象可以使用 <code>Events</code> bean 发布事件：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.sales.core</span>;
+
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.global.Events</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.global.UserSessionSource</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.security.global.UserSession</span>;
+<span class="keyword">import</span> <span class="include">org.springframework.stereotype.Component</span>;
+<span class="keyword">import</span> <span class="include">javax.inject.Inject</span>;
+
+<span class="annotation">@Component</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">DemoBean</span> {
+
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> Events events;
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> UserSessionSource userSessionSource;
+
+    <span class="directive">public</span> <span class="type">void</span> demo() {
+        UserSession userSession = userSessionSource.getUserSession();
+        events.publish(<span class="keyword">new</span> DemoEvent(<span class="local-variable">this</span>, userSession.getUser()));
+    }
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>默认情况下，所有事件都是同步处理的。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>处理事件有两种方法：</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实现 <code>ApplicationListener</code> 接口。</p> </li> 
+        <li> <p>方法使用 <code>@EventListener</code> 注解。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>在第一种情况下，必须创建一个实现 <code>ApplicationListener</code> 接口的 bean，以需要事件类型作为泛型参数：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Component</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">DemoEventListener</span> <span class="directive">implements</span> ApplicationListener&lt;DemoEvent&gt; {
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> <span class="predefined-type">Logger</span> log;
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> onApplicationEvent(DemoEvent event) {
+        log.debug(<span class="string"><span class="delimiter">"</span><span class="content">Demo event is published</span><span class="delimiter">"</span></span>);
+    }
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>第二种方法可用于隐藏实现接口的细节并在单个 bean 中监听多个事件：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Component</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MultipleEventListener</span> {
+    <span class="annotation">@Order</span>(<span class="integer">10</span>)
+    <span class="annotation">@EventListener</span>
+    <span class="directive">protected</span> <span class="type">void</span> handleDemoEvent(DemoEvent event) {
+        <span class="comment">// handle event</span>
+    }
+
+    <span class="annotation">@Order</span>(<span class="integer">1010</span>)
+    <span class="annotation">@EventListener</span>
+    <span class="directive">protected</span> <span class="type">void</span> handleUserLoginEvent(UserLoggedInEvent event) {
+        <span class="comment">// handle event</span>
+    }
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="admonitionblock warning"> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td> 
+          <td class="content"> 
+           <div class="paragraph"> 
+            <p>使用 <code>@EventListener</code> 注解的方法不适用于 <a href="services.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/services.html">services</a>，<a href="jmx_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_beans.html">JMX beans</a> 以及其它带有接口的 bean。如果使用此方法，将在应用程序启动时看到以下错误：</p> 
+           </div> 
+           <div class="listingblock"> 
+            <div class="content"> 
+             <pre>BeanInitializationException: Failed to process @EventListener annotation on bean. Need to invoke method declared on target class, but not found in any interface(s) of the exposed proxy type. Either pull the method up to an interface or switch to CGLIB proxies by enforcing proxy-target-class mode in your configuration.</pre> 
+            </div> 
+           </div> 
+           <div class="paragraph"> 
+            <p>如果确实需要在带有接口的 bean 中监听事件，可以通过实现 <code>ApplicationListener</code> 接口来代替。</p> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+      <div class="paragraph"> 
+       <p>可以使用 Spring 框架的 <code>Ordered</code> 接口和 <code>@Order</code> 注解来对事件处理方法排序。框架中所有 bean 和事件处理方法使用的是 100 到 1000 之间的 <code>order</code> 值，因此可以在框架的 order 值之前或之后添加自定义的处理顺序。如果要在平台 bean 之前添加 bean 或事件处理程序，可使用小于 100 的值。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>另请参阅<a href="login.html#login_events" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/login.html#login_events">登录事件</a>.</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="ui_events" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     UI 界面中的事件处理 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>通常，<code>Events</code> 将事件的发布委托给 <code>ApplicationContext</code> 执行。在 Web 层，可以为事件类使用特殊的接口 - <code>UiEvent</code>。这是一个事件的标记接口，实现这个接口的事件被发送到当前 UI 实例中的 UI 界面（当前 Web 浏览器标签页）。请注意，<code>UiEvent</code> 实例不会发送到 Spring bean。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>示例事件类：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.sales.web</span>;
+
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.events.UiEvent</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.security.entity.User</span>;
+<span class="keyword">import</span> <span class="include">org.springframework.context.ApplicationEvent</span>;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">UserRemovedEvent</span> <span class="directive">extends</span> ApplicationEvent <span class="directive">implements</span> UiEvent {
+
+    <span class="directive">private</span> User user;
+
+    <span class="directive">public</span> UserRemovedEvent(<span class="predefined-type">Object</span> source, User user) {
+        <span class="local-variable">super</span>(source);
+        <span class="local-variable">this</span>.user = user;
+    }
+
+    <span class="directive">public</span> User getUser() {
+        <span class="keyword">return</span> user;
+    }
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>可以在窗口的控制器中使用 <code>Events</code> bean 触发事件，使用方式和在 bean 中一样：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Inject</span>
+Events events;
+<span class="comment">// ...</span>
+UserRemovedEvent event = <span class="keyword">new</span> UserRemovedEvent(<span class="local-variable">this</span>, removedUser);
+events.publish(event);</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>为了处理事件，必须在 UI 界面中使用注解 <code>@EventListener</code> 定义方法（不支持 <code>ApplicationListener</code> 接口）：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Order</span>(<span class="integer">15</span>)
+<span class="annotation">@EventListener</span>
+<span class="directive">protected</span> <span class="type">void</span> onUserRemove(UserRemovedEvent event) {
+    notifications.create()
+            .withCaption(<span class="string"><span class="delimiter">"</span><span class="content">User is removed </span><span class="delimiter">"</span></span> + event.getUser())
+            .show();
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>可以使用 <code>@Order</code> 注解为事件监听器设定执行顺序。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>如果一个事件是 <code>UiEvent</code> 并使用来自 UI 线程的 <code>Events</code> bean 触发，那么带有 <code>@EventListener</code> 方法的打开的窗口或 frame 将接收到该事件。事件处理是同步的。只有用户打开的当前 Web 浏览器标签页中 UI 界面才会收到该事件。</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="messages.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/messages.html">3.2.6.5. Messages</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

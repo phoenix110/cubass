@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>集合的标准行为（历史版本） - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_legacy/list_actions.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_legacy/list_actions.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_legacy/list_actions.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screens.html">界面（历史版本）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="datasources.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasources.html">数据源（历史版本）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dialogs_and_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dialogs_and_notifications.html">对话框消息和通知消息（历史版本）</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="list_actions.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/list_actions.html" class='toc-highlighted'>集合的标准行为（历史版本）</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="picker_actions.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/picker_actions.html">选取器控件的标准行为（历史版本）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="screens.xml.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screens.xml.html">screens.xml (历史版本)</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screens.html">界面（历史版本）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="datasources.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasources.html">数据源（历史版本）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dialogs_and_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dialogs_and_notifications.html">对话框消息和通知消息（历史版本）</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="list_actions.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/list_actions.html" class='toc-highlighted'>集合的标准行为（历史版本）</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="picker_actions.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/picker_actions.html">选取器控件的标准行为（历史版本）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="screens.xml.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screens.xml.html">screens.xml (历史版本)</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect3"> 
+ <h4 id="list_actions">3.6.4. 集合的标准行为（历史版本）</h4> 
+ <div class="paragraph"> 
+  <p>对于 <code>ListComponent</code> 的继承者们（<a href="gui_Table.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Table.html">Table</a>，<a href="gui_GroupTable.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_GroupTable.html">GroupTable</a>，<a href="gui_TreeTable.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TreeTable.html">TreeTable</a> 和 <a href="gui_Tree.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Tree.html">Tree</a>），标准的行为是通过 <code>ListActionType</code> 枚举类型来定义的；这些操作的实现类在 <code>com.haulmont.cuba.gui.components.actions</code> 包。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>在表格中使用标准行为的示例：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;table</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">usersTable</span><span class="delimiter">"</span></span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">"</span><span class="content">100%</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;actions&gt;</span>
+      <span class="tag">&lt;action</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">create</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;action</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">edit</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;action</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">remove</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;action</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">refresh</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/actions&gt;</span>
+  <span class="tag">&lt;buttonsPanel&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">"</span><span class="content">usersTable.create</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">"</span><span class="content">usersTable.edit</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">"</span><span class="content">usersTable.remove</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">"</span><span class="content">usersTable.refresh</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/buttonsPanel&gt;</span>
+  <span class="tag">&lt;rowsCount</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;columns&gt;</span>
+      <span class="tag">&lt;column</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">login</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+      ...
+  <span class="tag">&lt;/columns&gt;</span>
+  <span class="tag">&lt;rows</span> <span class="attribute-name">datasource</span>=<span class="string"><span class="delimiter">"</span><span class="content">usersDs</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/table&gt;</span></code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>下面详细介绍这些行为：</p> 
+ </div> 
+ <div id="createAction" class="paragraph"> 
+  <p><strong>CreateAction - 创建</strong></p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>CreateAction</code> – 使用 <strong>create</strong> 标识符的 action。用来创建新的实例并且打开编辑界面。如果在编辑界面成功的提交了一个新的实体实例到数据库，<code>CreateAction</code> 会将这个新的实例添加到表格的数据源，并且在界面上使这个实体成为选中状态。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>CreateAction</code> 类中定义了下面这些特殊的方法：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><code>setOpenType()</code> 可以设置新实体编辑界面的打开模式。默认 <code>THIS_TAB - 当前标签页</code>。</p> 
+    <div class="paragraph"> 
+     <p>因为通过其它模式打开编辑界面的需求是很常见的（比如，<code>DIALOG - 对话框</code> 模式），可以在使用声明式方式创建 <code>create</code> 行为的时候，在 <code>action</code> 元素的 <code>openType</code> 属性指定需要的打开模式。通过这种方式可以避免在界面控制器获取 action 引用通过编程的方式设置。示例：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;table</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">usersTable</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;actions&gt;</span>
+      <span class="tag">&lt;action</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">create</span><span class="delimiter">"</span></span> <span class="attribute-name">openType</span>=<span class="string"><span class="delimiter">"</span><span class="content">DIALOG</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span></code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>setWindowId()</code> 可以设置实体编辑界面的标识符。默认情况下，使用 <code>{entity_name}.edit</code>，比如 <code>sales$Customer.edit</code>。</p> </li> 
+   <li> <p><code>setWindowParams()</code> 可以设置传递给编辑界面的 <code>init()</code> 方法的参数。这些参数可以通过 <code>@WindowParam</code> 注解<a href="screen_controller_injection.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_controller_injection.html">注入</a>到界面控制器中，或者也可以在<a href="datasource_query_params.html#datasource_query_params_param" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasource_query_params.html#datasource_query_params_param">数据源查询</a>中通过 <code>param$</code> 前缀直接使用。</p> </li> 
+   <li> <p><code>setWindowParamsSupplier()</code> 跟 <code>setWindowParams()</code> 的不同之处在于，这个方法可以在 action 即将要被调用的时候修改编辑窗口的参数值。可以提供新的参数，新的参数会跟 <code>setWindowParams()</code> 方法中提供的参数合并，并且覆盖之前的参数。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">createAction.setWindowParamsSupplier(() -&gt; {
+   Customer customer = metadata.create(Customer.class);
+   customer.setCategory(<span class="comment">/* some value dependent on the current state of the screen */</span>);
+   <span class="keyword">return</span> ParamsMap.of(<span class="string"><span class="delimiter">"</span><span class="content">customer</span><span class="delimiter">"</span></span>, customer);
+});</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>setInitialValues()</code> 可以设置将要编辑的实体的属性初始化值。这个方法接收一个 <code>Map</code> 对象，键值是属性名称，值为属性值。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; values = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+values.put(<span class="string"><span class="delimiter">"</span><span class="content">type</span><span class="delimiter">"</span></span>, CarType.PASSENGER);
+carCreateAction.setInitialValues(values);</code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>在 <a href="init_values_in_CreateAction.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/init_values_in_CreateAction.html">使用创建操作做初始化</a> 章节也提供一个使用 <code>setInitialValues()</code> 的例子。</p> 
+    </div> </li> 
+   <li> <p><code>setInitialValuesSupplier()</code> 跟 <code>setInitialValues()</code> 的不同之处在于，这个方法可以在 action 即将要被调用的时候修改实体初始化的值。可以提供新的参数，新的参数会跟 <code>setInitialValues()</code> 方法中提供的参数合并，并且覆盖之前的参数。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">carCreateAction.setInitialValuesSupplier(() -&gt;
+    ParamsMap.of(<span class="string"><span class="delimiter">"</span><span class="content">type</span><span class="delimiter">"</span></span>, <span class="comment">/* value depends on the current state of the screen */</span>));</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>setBeforeActionPerformedHandler()</code> 可以提供一个处理函数，这个函数在 action 执行之前调用。这个函数返回值是 <code>true</code> 的话，action 会继续执行；返回 <code>false</code> 终止执行。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">customersTableCreate.setBeforeActionPerformedHandler(() -&gt; {
+    showNotification(<span class="string"><span class="delimiter">"</span><span class="content">The new customer instance will be created</span><span class="delimiter">"</span></span>);
+    <span class="keyword">return</span> isValid();
+});</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>afterCommit()</code> 在新实体成功提交到数据库并且编辑界面关闭之后会调用此方法。这个方法本身没有实现，可以通过继承重写此方法来处理这个事件。</p> </li> 
+   <li> <p><code>setAfterCommitHandler()</code> 提供一个处理函数，在新实体成功提交到数据库并且编辑界面关闭之后会调用此函数。可以通过提供此函数避免创建 action 的子类并重写 <code>afterCommit()</code> 方法。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Named</span>(<span class="string"><span class="delimiter">"</span><span class="content">customersTable.create</span><span class="delimiter">"</span></span>)
+<span class="directive">private</span> CreateAction customersTableCreate;
+
+<span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> init(<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; params) {
+    customersTableCreate.setAfterCommitHandler(<span class="keyword">new</span> CreateAction.AfterCommitHandler() {
+        <span class="annotation">@Override</span>
+        <span class="directive">public</span> <span class="type">void</span> handle(<span class="predefined-type">Entity</span> entity) {
+            showNotification(<span class="string"><span class="delimiter">"</span><span class="content">Committed</span><span class="delimiter">"</span></span>, NotificationType.HUMANIZED);
+        }
+    });
+}</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>afterWindowClosed()</code> 不管实体是否提交，只要关闭了编辑界面就会最后调用此方法。这个方法本身没有实现，可以通过继承重写此方法来处理这个事件。</p> </li> 
+   <li> <p><code>setAfterWindowClosedHandler()</code> 提供一个处理函数，不管实体是否提交，只要关闭了编辑界面就会最后调用此函数。可以通过提供此函数避免创建 action 的子类并重写 <code>afterWindowClosed()</code> 方法。</p> </li> 
+  </ul> 
+ </div> 
+ <div id="editAction" class="paragraph"> 
+  <p><strong>EditAction - 编辑</strong></p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>EditAction</code> 是使用 <strong>edit</strong> 标识符的 action，用来为选中的实体实例打开编辑界面。如果编辑界面成功的将实例保存到数据库，<code>EditAction</code> 会更新表格数据源中的实例。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>EditAction</code> 类中定义了下面这些特殊的方法：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><code>setOpenType()</code> 可以设置实体编辑界面的打开模式。默认 <code>THIS_TAB - 当前标签页</code>。</p> 
+    <div class="paragraph"> 
+     <p>因为通过其它模式打开编辑界面的需求是很常见的（比如，<code>DIALOG - 对话框</code> 模式），可以在使用声明式方式创建 <code>edit</code> 行为的时候，在 <code>action</code> 元素的 <code>openType</code> 属性指定需要的打开模式。通过这种方式可以避免在界面控制器获取 action 引用通过编程的方式设置。示例：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;table</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">usersTable</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;actions&gt;</span>
+      <span class="tag">&lt;action</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">edit</span><span class="delimiter">"</span></span> <span class="attribute-name">openType</span>=<span class="string"><span class="delimiter">"</span><span class="content">DIALOG</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span></code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>setWindowId()</code> 可以设置实体编辑界面的标识符。默认情况下，使用 <code>{entity_name}.edit</code>，比如 <code>sales$Customer.edit</code>。</p> </li> 
+   <li> <p><code>setWindowParams()</code> 可以设置传递给编辑界面的 <code>init()</code> 方法的参数。这些参数可以通过 <code>@WindowParam</code> 注解<a href="screen_controller_injection.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_controller_injection.html">注入</a>到界面控制器中，或者也可以在<a href="datasource_query_params.html#datasource_query_params_param" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasource_query_params.html#datasource_query_params_param">数据源查询</a>中通过 <code>param$</code> 前缀直接使用。</p> </li> 
+   <li> <p><code>setWindowParamsSupplier()</code> 跟 <code>setWindowParams()</code> 的不同之处在于，这个方法可以在 action 即将要被调用的时候修改编辑窗口的参数值。可以提供新的参数，新的参数会跟 <code>setWindowParams()</code> 方法中提供的参数合并，并且覆盖之前的参数。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">customersTableEdit.setWindowParamsSupplier(() -&gt;
+    ParamsMap.of(<span class="string"><span class="delimiter">"</span><span class="content">category</span><span class="delimiter">"</span></span>, <span class="comment">/* some value dependent on the current state of the screen */</span>));</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>setBeforeActionPerformedHandler()</code> 可以提供一个处理函数，这个函数在 action 执行之前调用。这个函数返回值是 <code>true</code> 的话，action 会继续执行；返回 <code>false</code> 终止执行。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">customersTableEdit.setBeforeActionPerformedHandler(() -&gt; {
+    showNotification(<span class="string"><span class="delimiter">"</span><span class="content">The customer instance will be edited</span><span class="delimiter">"</span></span>);
+    <span class="keyword">return</span> isValid();
+});</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>afterCommit()</code> 在新实体成功提交到数据库并且编辑界面关闭之后会调用此方法。这个方法本身没有实现，可以通过继承重写此方法来处理这个事件。</p> </li> 
+   <li> <p><code>setAfterCommitHandler()</code> 提供一个处理函数，在新实体成功提交到数据库并且编辑界面关闭之后会调用此函数。可以通过提供此函数避免创建 action 的子类并重写 <code>afterCommit()</code> 方法。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Named</span>(<span class="string"><span class="delimiter">"</span><span class="content">customersTable.edit</span><span class="delimiter">"</span></span>)
+<span class="directive">private</span> EditAction customersTableEdit;
+
+<span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> init(<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; params) {
+    customersTableEdit.setAfterCommitHandler(<span class="keyword">new</span> EditAction.AfterCommitHandler() {
+        <span class="annotation">@Override</span>
+        <span class="directive">public</span> <span class="type">void</span> handle(<span class="predefined-type">Entity</span> entity) {
+            showNotification(<span class="string"><span class="delimiter">"</span><span class="content">Committed</span><span class="delimiter">"</span></span>, NotificationType.HUMANIZED);
+        }
+    });
+}</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>afterWindowClosed()</code> 不管实体是否提交，只要关闭了编辑界面就会最后调用此方法。这个方法本身没有实现，可以通过继承重写此方法来处理这个事件。</p> </li> 
+   <li> <p><code>setAfterWindowClosedHandler()</code> 提供一个处理函数，不管实体是否提交，只要关闭了编辑界面就会最后调用此函数。可以通过提供此函数避免创建 action 的子类并重写 <code>afterWindowClosed()</code> 方法。</p> </li> 
+   <li> <p><code>getBulkEditorIntegration()</code> 为表格批量编辑提供了可能性。表格需要设置 <code>multiselect</code> 属性启用。当表格选中多行的时候，如果触发 <code>EditAction</code> 行为，则会打开<a href="gui_BulkEditor.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_BulkEditor.html">批量编辑器</a>组件进行批量编辑。</p> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>返回的 <code>BulkEditorIntegration</code> 实例可以通过下面的方法进行进一步处理：</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>setOpenType()</code>,</p> </li> 
+        <li> <p><code>setExcludePropertiesRegex()</code>,</p> </li> 
+        <li> <p><code>setFieldValidators()</code>,</p> </li> 
+        <li> <p><code>setModelValidators()</code>,</p> </li> 
+        <li> <p><code>setAfterEditCloseHandler()</code>.</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Named</span>(<span class="string"><span class="delimiter">"</span><span class="content">clientsTable.edit</span><span class="delimiter">"</span></span>)
+<span class="directive">private</span> EditAction clientsTableEdit;
+
+<span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> init(<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; params) {
+    <span class="local-variable">super</span>.init(params);
+
+    clientsTableEdit.getBulkEditorIntegration()
+        .setEnabled(<span class="predefined-constant">true</span>)
+        .setOpenType(WindowManager.OpenType.DIALOG);
+}</code></pre> 
+     </div> 
+    </div> </li> 
+  </ul> 
+ </div> 
+ <div id="removeAction" class="paragraph"> 
+  <p><strong>RemoveAction - 删除</strong></p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>RemoveAction</code> - 是使用 <strong>remove</strong> 标识符的 action，用来删除选中的实体实例。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>RemoveAction</code> 类中定义了下面这些特殊的方法：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><code>setAutocommit()</code> 可以控制从数据库删除的动作是否提交。默认情况下，在动作触发之后会调用 <code>commit()</code> 提交从数据库删除实体。可以通过 <code>setAutocommit()</code> 方法或者设置构造器中对应的参数将 <code>autocommit</code> 属性设置为 false 来禁用自动提交。这样的话，需要显式调用数据源的 <code>commit()</code> 方法来提交改动。</p> 
+    <div class="paragraph"> 
+     <p><code>autocommit</code> 的值不会影响 <code>Datasource.CommitMode.PARENT</code> 模式下的数据源，比如，提供<a href="entity_attr_annotations.html#composition_annotation" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_attr_annotations.html#composition_annotation">组合</a>实体编辑的数据源。</p> 
+    </div> </li> 
+   <li> <p><code>setConfirmationMessage()</code> 设置删除数据确认窗口的信息文本。</p> </li> 
+   <li> <p><code>setConfirmationTitle()</code> 设置删除确认窗口的标题。</p> </li> 
+   <li> <p><code>setBeforeActionPerformedHandler()</code> 可以提供一个处理函数，这个函数在 action 执行之前调用。这个函数返回值是 <code>true</code> 的话，action 会继续执行；返回 <code>false</code> 终止执行。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">customersTableRemove.setBeforeActionPerformedHandler(() -&gt; {
+    showNotification(<span class="string"><span class="delimiter">"</span><span class="content">The customer instance will be removed</span><span class="delimiter">"</span></span>);
+    <span class="keyword">return</span> isValid();
+});</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>afterRemove()</code> 当实体被成功删除之后，调用此方法。这个方法本身没有实现，可以通过继承重写此方法来处理这个事件。</p> </li> 
+   <li> <p><code>setAfterRemoveHandler()</code> 提供一个处理函数，在实体成功从数据库删除之后会调用此函数。可以通过提供此函数避免创建 action 的子类并重写 <code>afterRemove()</code> 方法。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Named</span>(<span class="string"><span class="delimiter">"</span><span class="content">customersTable.remove</span><span class="delimiter">"</span></span>)
+<span class="directive">private</span> RemoveAction customersTableRemove;
+
+<span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> init(<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; params) {
+    customersTableRemove.setAfterRemoveHandler(<span class="keyword">new</span> RemoveAction.AfterRemoveHandler() {
+        <span class="annotation">@Override</span>
+        <span class="directive">public</span> <span class="type">void</span> handle(<span class="predefined-type">Set</span> removedItems) {
+            showNotification(<span class="string"><span class="delimiter">"</span><span class="content">Removed</span><span class="delimiter">"</span></span>, NotificationType.HUMANIZED);
+        }
+    });
+}</code></pre> 
+     </div> 
+    </div> </li> 
+  </ul> 
+ </div> 
+ <div id="refreshAction" class="paragraph"> 
+  <p><strong>RefreshAction - 刷新</strong></p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>RefreshAction</code> - 是使用 <strong>refresh</strong> 标识符的 action。用来更新（重新加载）实体集合。当触发时，这个动作会调用相应组件绑定的<a href="datasources.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasources.html">数据源</a>中的 <code>refresh()</code> 方法。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>RefreshAction</code> 类中定义了下面这些特殊的方法：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><code>setRefreshParams()</code> 可以设置传递给 <code>CollectionDatasource.refresh()</code> 方法的参数，这些参数之后会用在<a href="datasource_query.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasource_query.html">数据源查询</a>中。默认情况不会带任何参数。</p> </li> 
+   <li> <p><code>setRefreshParamsSupplier()</code> 跟 <code>setRefreshParams()</code> 的不同之处在于，这个方法可以在 action 即将要被调用的时候修改编辑窗口的参数值。可以提供新的参数，新的参数会跟 <code>setRefreshParams()</code> 方法中提供的参数合并，并且覆盖之前的参数。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">customersTableRefresh.setRefreshParamsSupplier(() -&gt;
+    ParamsMap.of(<span class="string"><span class="delimiter">"</span><span class="content">number</span><span class="delimiter">"</span></span>, <span class="comment">/* some value dependent on the current state of the screen */</span>));</code></pre> 
+     </div> 
+    </div> </li> 
+  </ul> 
+ </div> 
+ <div id="addAction" class="paragraph"> 
+  <p><strong>AddAction - 添加</strong></p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>AddAction</code> – 是使用 <strong>add</strong> 标识符的 action，用来选择一个已存在的实体并添加到集合中。当触发时，会打开实体的<a href="screen_lookup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_lookup.html">查找界面</a>。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>AddAction</code> 类中定义了下面这些特殊的方法：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><code>setOpenType()</code> 可以设置实体选择界面的打开模式。默认 <code>THIS_TAB - 当前标签页</code>。</p> 
+    <div class="paragraph"> 
+     <p>因为通过其它模式打开查找界面的需求是很常见的（比如，<code>DIALOG - 对话框</code> 模式），可以在使用声明式方式创建 <code>add</code> 行为的时候，在 <code>action</code> 元素的 <code>openType</code> 属性指定需要的打开模式。通过这种方式可以避免在界面控制器获取 action 引用通过编程的方式设置。示例：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;table</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">usersTable</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;actions&gt;</span>
+        <span class="tag">&lt;action</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">add</span><span class="delimiter">"</span></span> <span class="attribute-name">openType</span>=<span class="string"><span class="delimiter">"</span><span class="content">DIALOG</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span></code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>setWindowId()</code> 可以设置实体查找界面的标识符。默认情况下，使用 <code>{entity_name}.lookup</code>，比如 <code>sales$Customer.lookup</code>。如果不存在这种类型的界面，则会尝试打开 <code>{entity_name}.browse</code> 界面，比如 <code>sales$Customer.browse</code>。</p> </li> 
+   <li> <p><code>setWindowParams()</code> 可以设置传递给查找界面的 <code>init()</code> 方法的参数。这些参数可以通过 <code>@WindowParam</code> 注解<a href="screen_controller_injection.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_controller_injection.html">注入</a>到界面控制器中，或者也可以在<a href="datasource_query_params.html#datasource_query_params_param" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasource_query_params.html#datasource_query_params_param">数据源查询</a>中通过 <code>param$</code> 前缀直接使用。</p> </li> 
+   <li> <p><code>setWindowParamsSupplier()</code> 跟 <code>setWindowParams()</code> 的不同之处在于，这个方法可以在 action 即将要被调用的时候修改编辑窗口的参数值。可以提供新的参数，新的参数会跟 <code>setWindowParams()</code> 方法中提供的参数合并，并且覆盖之前的参数。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">tableAdd.setWindowParamsSupplier(() -&gt;
+    ParamsMap.of(<span class="string"><span class="delimiter">"</span><span class="content">customer</span><span class="delimiter">"</span></span>, getItem()));</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>setHandler()</code> 可以设置一个实现了 <code>Window.Lookup.Handler</code> 接口的对象，这个对象会传递给查找界面。默认情况下，会使用 <code>AddAction.DefaultHandler</code> 对象。</p> </li> 
+   <li> <p><code>setBeforeActionPerformedHandler()</code> 可以提供一个处理函数，这个函数在 action 执行之前调用。这个函数返回值是 <code>true</code> 的话，action 会继续执行；返回 <code>false</code> 终止执行。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">customersTableAdd.setBeforeActionPerformedHandler(() -&gt; {
+    notifications.create()
+            .withCaption(<span class="string"><span class="delimiter">"</span><span class="content">The new customer will be added</span><span class="delimiter">"</span></span>)
+            .show();
+    <span class="keyword">return</span> isValid();
+});</code></pre> 
+     </div> 
+    </div> </li> 
+  </ul> 
+ </div> 
+ <div id="excludeAction" class="paragraph"> 
+  <p><strong>ExcludeAction - 排除</strong></p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>ExcludeAction</code> - 是使用 <strong>exclude</strong> 标识符的 action。允许用户从一个实体集合中排除实体实例，而并不会从数据库删除。这个 action 的类是继承于 <code>RemoveAction</code>，但是在触发这个动作的时候调用的是 <code>CollectionDatasource</code> 里的 <code>excludeItem()</code> 而不是 <code>removeItem()</code>。此外，对于嵌套数据源中的实体，<code>ExcludeAction</code> 动作会将子实体跟父实体的连接断开。因此这个 action 可以用来编辑一对多的关联关系。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>除了 <code>RemoveAction</code> 里面的方法外，<code>ExcludeAction</code> 类中定义了下面这些特殊的方法：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><code>setConfirm()</code> – 定义是否要显示确认删除窗口。也可以通过 action 的构造器设置这个参数。默认值是 <code>false</code>。</p> </li> 
+   <li> <p><code>setBeforeActionPerformedHandler()</code> 可以提供一个处理函数，这个函数在 action 执行之前调用。这个函数返回值是 <code>true</code> 的话，action 会继续执行；返回 <code>false</code> 终止执行。示例：</p> </li> 
+  </ul> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre>customersTableExclude.setBeforeActionPerformedHandler(() -&gt; {
+    showNotification("The selected customer will be excluded");
+    return isValid();
+});</pre> 
+  </div> 
+ </div> 
+ <div id="excelAction" class="paragraph"> 
+  <p><strong>ExcelAction - 导出 Excel</strong></p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>ExcelAction</code> - 是使用 <strong>excel</strong> 标识符的 action。用来将表格数据导出成 XLS 格式的文件，并且下载。只能在 <a href="gui_Table.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Table.html">Table</a>，<a href="gui_GroupTable.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_GroupTable.html">GroupTable</a> 和 <a href="gui_TreeTable.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TreeTable.html">TreeTable</a> 组件添加此行为。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>当通过编程的方式创建这个行为的时候，可以用实现了 <code>ExportDisplay</code> 接口的类为文件下载设置 <code>display</code> 参数。默认情况下使用标准的实现类。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>ExcelAction</code> 类中定义了下面这些特殊的方法：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><code>setFileName()</code> - 设置 Excel 文件名称，不包含文件名后缀。</p> </li> 
+   <li> <p><code>getFileName()</code> - 返回 Excel 文件名称，不包含文件名后缀。</p> </li> 
+   <li> <p><code>setBeforeActionPerformedHandler()</code> 可以提供一个处理函数，这个函数在 action 执行之前调用。这个函数返回值是 <code>true</code> 的话，action 会继续执行；返回 <code>false</code> 终止执行。示例：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">customersTableExcel.setBeforeActionPerformedHandler(() -&gt; {
+    showNotification(<span class="string"><span class="delimiter">"</span><span class="content">The selected data will ve downloaded as an XLS file</span><span class="delimiter">"</span></span>);
+    <span class="keyword">return</span> isValid();
+});</code></pre> 
+     </div> 
+    </div> </li> 
+  </ul> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="picker_actions.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/picker_actions.html">3.6.5. 选取器控件的标准行为（历史版本）</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

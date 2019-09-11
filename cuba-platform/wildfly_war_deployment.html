@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>部署 WAR 到 WildFly - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/deployment/deployment_variants/wildfly_war_deployment.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/deployment/deployment_variants/wildfly_war_deployment.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/deployment/deployment_variants/wildfly_war_deployment.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_home.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_home.html">应用程序主目录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_dirs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_dirs.html">应用程序文件目录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="deployment_variants.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment_variants.html">部署选项</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="fast_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/fast_deployment.html">Tomcat 快速部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/war_deployment.html">部署 WAR 至 Jetty</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="wildfly_war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/wildfly_war_deployment.html" class='toc-highlighted'>部署 WAR 到 WildFly</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="tomcat_war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/tomcat_war_deployment.html">部署 WAR 至 Tomcat Windows 服务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="tomcat_war_deployment_linux.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/tomcat_war_deployment_linux.html">部署 WAR 至 Tomcat Linux 服务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="uberjar_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/uberjar_deployment.html">UberJAR 部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="docker_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/docker_deployment.html">使用 Docker 部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="jelastic_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jelastic_deployment.html">部署至 Jelastic Cloud</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="bluemix_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/bluemix_deployment.html">部署至 Bluemix Cloud</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="heroku_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/heroku_deployment.html">部署至 Heroku Cloud</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="proxy_configuration_tomcat.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/proxy_configuration_tomcat.html">Tomcat 的代理设置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="proxy_configuration_uberjar.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/proxy_configuration_uberjar.html">UberJAR 的代理服务配置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="scaling.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scaling.html">应用程序扩展</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="jmx_tools.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_tools.html">使用 JMX 工具</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="server_push_settings.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/server_push_settings.html">服务推送设置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="health_check_url.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/health_check_url.html">应用程序健康检查 URL</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_home.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_home.html">应用程序主目录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_dirs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_dirs.html">应用程序文件目录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="deployment_variants.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment_variants.html">部署选项</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="fast_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/fast_deployment.html">Tomcat 快速部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/war_deployment.html">部署 WAR 至 Jetty</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="wildfly_war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/wildfly_war_deployment.html" class='toc-highlighted'>部署 WAR 到 WildFly</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="tomcat_war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/tomcat_war_deployment.html">部署 WAR 至 Tomcat Windows 服务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="tomcat_war_deployment_linux.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/tomcat_war_deployment_linux.html">部署 WAR 至 Tomcat Linux 服务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="uberjar_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/uberjar_deployment.html">UberJAR 部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="docker_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/docker_deployment.html">使用 Docker 部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="jelastic_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jelastic_deployment.html">部署至 Jelastic Cloud</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="bluemix_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/bluemix_deployment.html">部署至 Bluemix Cloud</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="heroku_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/heroku_deployment.html">部署至 Heroku Cloud</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="proxy_configuration_tomcat.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/proxy_configuration_tomcat.html">Tomcat 的代理设置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="proxy_configuration_uberjar.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/proxy_configuration_uberjar.html">UberJAR 的代理服务配置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="scaling.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scaling.html">应用程序扩展</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="jmx_tools.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_tools.html">使用 JMX 工具</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="server_push_settings.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/server_push_settings.html">服务推送设置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="health_check_url.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/health_check_url.html">应用程序健康检查 URL</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect3"> 
+ <h4 id="wildfly_war_deployment">5.3.3. 部署 WAR 到 WildFly</h4> 
+ <div class="paragraph"> 
+  <p>CUBA 应用程序的 WAR 包可以部署在 <strong>WildFly</strong> 应用服务中。下面这个示例是部署使用 PostgreSQL 9.6 的 CUBA 应用程序到 Windows 的 WildFly 14.0.0。</p> 
+ </div> 
+ <div class="olist arabic"> 
+  <ol class="arabic"> 
+   <li> <p>编辑 <code>build.gradle</code> 并在 <strong>global</strong> 模块的 <code>dependencies</code> 部分添加依赖：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="groovy">runtime <span class="string"><span class="delimiter">'</span><span class="content">org.reactivestreams:reactive-streams:1.0.1</span><span class="delimiter">'</span></span></code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p>组装并且部署项目到默认的 Tomcat 服务，以便加载项目所有的依赖到本地。</p> </li> 
+   <li> <p>为程序配置<a href="app_home.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_home.html">应用程序主目录</a>：</p> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>创建一个 WildFly 服务能完全控制的目录，比如 <code>C:\Users\UserName\app_home</code>。</p> </li> 
+        <li> <p>从 <code>tomcat/conf</code> 拷贝 <code>logback.xml</code> 文件到这个目录，并修改 <code>logDir</code> 属性：</p> </li> 
+       </ul> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">logDir</span><span class="delimiter">"</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">"</span><span class="content">${app.home}/logs</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span></code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> </li> 
+   <li> <p>配置 WildFly 服务</p> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>在本地目录安装 WildFly，比如 <code>C:\wildfly</code>。</p> </li> 
+        <li> <p>编辑 <code>C:\wildfly\bin\standalone.conf.bat</code> 文件，并将下面这行添加到文件末尾：</p> </li> 
+       </ul> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="plain">set "JAVA_OPTS=%JAVA_OPTS% -Dapp.home=%USERPROFILE%/app_home -Dlogback.configurationFile=%USERPROFILE%/app_home/logback.xml"</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>这行里将 <code>app.home</code> 系统属性指向之前创建的应用程序主目录，并且设置日志的配置文件指向先前创建的 <code>logback.xml</code> 文件。也可以使用绝对路径替换 <code>%USERPROFILE%</code> 变量。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>对比一下 WildFly 的 Hibernate Validator 版本跟 CUBA 的有没有不同，如果 CUBA 使用的是比较新的版本，那么用 <code>tomcat\shared\lib</code> 下面的版本（比如 <code>hibernate-validator-5.4.2.Final.jar</code>）替换掉 <code>C:\wildfly\modules\system\layers\base\org\hibernate\validator\main\hibernate-validator-x.y.z-sometext.jar</code>。</p> </li> 
+        <li> <p>在 <code>\wildfly\modules\system\layers\base\org\hibernate\validator\main\module.xml</code> 文件中更新一下替换的 JAR 包的版本。</p> </li> 
+        <li> <p>在 WildFly 中注册 PostgreSQL 驱动，从 <code>tomcat\lib</code> 目录拷贝 <code>postgresql-9.4.1212.jar</code> 到 <code>C:\wildfly\standalone\deployments</code> 目录。</p> </li> 
+        <li> <p>配置 WildFly logger：打开 <code>\wildfly\standalone\configuration\standalone.xml</code> 文件，在 <code>&lt;subsystem xmlns="urn:jboss:domain:logging:{version}"</code> 区域添加下面两行：</p> 
+         <div class="listingblock"> 
+          <div class="content"> 
+           <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">urn:jboss:domain:logging:6.0</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;add-logging-api-dependencies</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">"</span><span class="content">false</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;use-deployment-logging-config</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">"</span><span class="content">false</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    . . .
+<span class="tag">&lt;/subsystem&gt;</span></code></pre> 
+          </div> 
+         </div> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> </li> 
+   <li> <p>创建 JDBC 数据源</p> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>执行 <code>standalone.bat</code> 启动 WildFly。</p> </li> 
+        <li> <p>浏览器打开管理员窗口 <code>http://localhost:9990</code>。第一次登录的时候，需要创建用户名和密码。</p> </li> 
+        <li> <p>打开 <strong>Configuration - Subsystems - Datasources and Drivers - Datasources</strong> 标签页，为应用程序创建新数据源：</p> </li> 
+       </ul> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="plain">Name: Cuba
+JNDI Name: java:/jdbc/CubaDS
+JDBC Driver: postgresql-9.4.1212.jar
+Driver Module Name: org.postgresql
+Driver Class Name: org.postgresql.Driver
+Connection URL: your database URL
+Username: your database username
+Password: your database password</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>如果按照之前的步骤拷贝了 <code>postgresql-x.y.z.jar</code>，那么 JDBC 驱动会在自动检测到的驱动列表里显示。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>点击 <strong>Test connection</strong> 按钮测试数据库连接。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>启用这个数据源。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> </li> 
+   <li> <p>构建应用程序</p> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>在 Studio 打开 <strong>Deployment &gt; *WAR settings</strong>。</p> </li> 
+        <li> <p>勾选 <strong>Build WAR</strong> 复选框。</p> </li> 
+        <li> <p>在 <strong>Application home directory</strong> 字段设置 <code>${app.home}</code>。</p> </li> 
+        <li> <p>保存设置。</p> </li> 
+        <li> <p>在 IDE 中打开 <a href="build.gradle.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/build.gradle.html">build.gradle</a> 并且在 <a href="build.gradle_buildWar.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/build.gradle_buildWar.html">buildWar</a> 任务中添加 <code>doAfter</code> 属性。这个属性会控制拷贝 WildFly 部署描述文件：</p> 
+         <div class="listingblock"> 
+          <div class="content"> 
+           <pre class="CodeRay highlight"><code data-lang="groovy">task buildWar(<span class="key">type</span>: CubaWarBuilding) {
+    appProperties = [<span class="string"><span class="delimiter">'</span><span class="content">cuba.automaticDatabaseUpdate</span><span class="delimiter">'</span></span> : <span class="predefined-constant">true</span>]
+    singleWar = <span class="predefined-constant">false</span>
+    appHome = <span class="string"><span class="delimiter">'</span><span class="content">${app.home}</span><span class="delimiter">'</span></span>
+    doAfter = {
+        copy {
+            from <span class="string"><span class="delimiter">'</span><span class="content">jboss-deployment-structure.xml</span><span class="delimiter">'</span></span>
+            into <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">${</span>project.buildDir<span class="inline-delimiter">}</span></span><span class="content">/buildWar/core/war/META-INF/</span><span class="delimiter">"</span></span>
+        }
+        copy {
+            from <span class="string"><span class="delimiter">'</span><span class="content">jboss-deployment-structure.xml</span><span class="delimiter">'</span></span>
+            into <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">${</span>project.buildDir<span class="inline-delimiter">}</span></span><span class="content">/buildWar/web/war/META-INF/</span><span class="delimiter">"</span></span>
+        }
+    }
+}</code></pre> 
+          </div> 
+         </div> 
+         <div class="admonitionblock tip"> 
+          <table> 
+           <tbody> 
+            <tr> 
+             <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+             <td class="content"> 
+              <div class="paragraph"> 
+               <p>对于单一 WAR（singleWAR）配置，这个任务稍有不同：</p> 
+              </div> 
+              <div class="listingblock"> 
+               <div class="content"> 
+                <pre class="CodeRay highlight"><code data-lang="groovy">task buildWar(<span class="key">type</span>: CubaWarBuilding) {
+    webXmlPath = <span class="string"><span class="delimiter">'</span><span class="content">modules/web/web/WEB-INF/single-war-web.xml</span><span class="delimiter">'</span></span>
+    appProperties = [<span class="string"><span class="delimiter">'</span><span class="content">cuba.automaticDatabaseUpdate</span><span class="delimiter">'</span></span> : <span class="predefined-constant">true</span>]
+    appHome = <span class="string"><span class="delimiter">'</span><span class="content">${app.home}</span><span class="delimiter">'</span></span>
+    doAfter = {
+        copy {
+            from <span class="string"><span class="delimiter">'</span><span class="content">jboss-deployment-structure.xml</span><span class="delimiter">'</span></span>
+            into <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">${</span>project.buildDir<span class="inline-delimiter">}</span></span><span class="content">/buildWar/war/META-INF/</span><span class="delimiter">"</span></span>
+        }
+    }
+}</code></pre> 
+               </div> 
+              </div> 
+              <div class="paragraph"> 
+               <p>如果项目还包含了 <a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">Polymer</a> 模块，在 <code>single-war-web.xml</code> 文件中添加下面这些配置：</p> 
+              </div> 
+              <div class="listingblock"> 
+               <div class="content"> 
+                <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;servlet&gt;</span>
+    <span class="tag">&lt;servlet-name&gt;</span>default<span class="tag">&lt;/servlet-name&gt;</span>
+    <span class="tag">&lt;init-param&gt;</span>
+        <span class="tag">&lt;param-name&gt;</span>resolve-against-context-root<span class="tag">&lt;/param-name&gt;</span>
+        <span class="tag">&lt;param-value&gt;</span>true<span class="tag">&lt;/param-value&gt;</span>
+    <span class="tag">&lt;/init-param&gt;</span>
+<span class="tag">&lt;/servlet&gt;</span></code></pre> 
+               </div> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </div> </li> 
+        <li> <p>在项目根目录，创建 <code>jboss-deployment-structure.xml</code> 文件，在里面添加 WildFly 部署描述文件：</p> </li> 
+       </ul> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="tag">&lt;jboss-deployment-structure</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">urn:jboss:deployment-structure:1.0</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;deployment&gt;</span>
+        <span class="tag">&lt;exclusions&gt;</span>
+            <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">org.apache.commons.logging</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">org.apache.log4j</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">org.jboss.logging</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">org.jboss.logging.jul-to-slf4j-stub</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">org.jboss.logmanager</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">org.jboss.logmanager.log4j</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">org.slf4j</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">org.slf4j.impl</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">org.slf4j.jcl-over-slf4j</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+        <span class="tag">&lt;/exclusions&gt;</span>
+    <span class="tag">&lt;/deployment&gt;</span>
+<span class="tag">&lt;/jboss-deployment-structure&gt;</span></code></pre> 
+       </div> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>执行 <code>buildWar</code> 任务创建 WAR 包。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> </li> 
+   <li> <p>从 <code>build\distributions\war</code> 目录拷贝 <code>app-core.war</code> 和 <code>app.war</code> 到 WildFly 目录 <code>\wildfly\standalone\deployments</code>。</p> </li> 
+   <li> <p>重启 WildFly 服务。</p> </li> 
+   <li> <p>可以通过 <code>http://localhost:8080/app</code> 访问应用，日志文件会保存在应用程序主目录的 <code>C:\Users\UserName\app_home\logs</code> 目录下。</p> </li> 
+  </ol> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="tomcat_war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/tomcat_war_deployment.html">5.3.4. 部署 WAR 至 Tomcat Windows 服务</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

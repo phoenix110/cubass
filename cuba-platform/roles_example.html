@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>配置角色 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/security_subsystem/security_examples/roles_example.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/security_subsystem/security_examples/roles_example.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/security_subsystem/security_examples/roles_example.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="security_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_web.html">WEB 安全</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_components.html">安全子系统组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="security_examples.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_examples.html">访问权限控制示例</a></div>
+<ul>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="roles_example.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/roles_example.html" class='toc-highlighted'>配置角色</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="local_admins_example.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/local_admins_example.html">创建本地管理员</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="ldap.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/ldap.html">集成 LDAP</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="sso.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/sso.html">CUBA 应用程序单点登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="social_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/social_login.html">社交网站登录</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="security_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_web.html">WEB 安全</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_components.html">安全子系统组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="security_examples.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_examples.html">访问权限控制示例</a></div>
+<ul>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="roles_example.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/roles_example.html" class='toc-highlighted'>配置角色</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="local_admins_example.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/local_admins_example.html">创建本地管理员</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="ldap.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/ldap.html">集成 LDAP</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="sso.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/sso.html">CUBA 应用程序单点登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="social_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/social_login.html">社交网站登录</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect3"> 
+ <h4 id="roles_example">6.3.1. 配置角色</h4> 
+ <div class="paragraph"> 
+  <p>建议按以下方式配置<a href="roles.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/roles.html">角色</a>和<a href="permissions.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/permissions.html">权限许可</a> ：</p> 
+ </div> 
+ <div class="olist arabic"> 
+  <ol class="arabic"> 
+   <li> <p>创建一个 <code><strong>Default - 默认</strong></code> 角色，这个角色禁止所有系统权限。最简单的方法是创建一个 <strong>Denying - 拒绝</strong> 类型的角色。然后为其勾选 <strong>Default role</strong> 默认复选框，这样所有新用户都默认带有该角色。</p> </li> 
+   <li> <p>为各类用户类别创建一系列允许特定权限的角色，有两种策略：</p> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>粗放化（Coarse-grained）角色 – 每个角色中都配置上某类用户责任范畴所需的所有权限，例如 <code><strong>Sales Manager</strong></code> 销售经理，<code><strong>Accountant</strong></code> 会计。这样的话，除了 <code><strong>Default</strong></code> 默认角色，每个用户只分配一个角色。</p> </li> 
+        <li> <p>精细化（Fine-grained）角色 – 每个角色都配置为可以操作某类功能。例如 <code><strong>Task Creator</strong></code> 任务创建，<code><strong>References Editor</strong></code> 引用编辑。这样的话，每个用户基于他的责任范畴会分配到多个角色。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>两种策略也可以组合使用。为不同的用户类别创建一系列角色来分配权限。</p> 
+      </div> 
+     </div> 
+    </div> </li> 
+   <li> <p>系统管理员可能会不需要分配任何角色，他们拥有所有系统对象的所有权限。也可以为其分配一个 <strong>Super</strong> 类型的角色，覆盖所有其它角色指定的限制。</p> </li> 
+  </ol> 
+ </div> 
+ <div id="roles_example_permissions" class="paragraph"> 
+  <p><strong>管理功能访问权限</strong></p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>需要给 <strong>Denying - 拒绝</strong> 角色提供访问管理功能的时候，需要放开一些权限，以下是快速参考。比如，只开放<a href="entity_log.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_log.html">实体日志</a>功能，在相应部分设置提到的权限。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>推荐至少提供 <code>sys$FileDescriptor</code> 实体的只读权限，因为这个实体在平台很多地方都会用到：邮件、附件、日志等。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>下面提到的权限可以通过相应标签页的 <code>Role</code> 编辑窗口进行配置：<strong>Entity - 实体</strong>, <strong>Screen - 界面</strong> 或者 <strong>Specific - 特殊功能</strong>。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>另外，可以通过 <a href="app_properties_reference.html#cuba.defaultPermissionValuesConfig" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html#cuba.defaultPermissionValuesConfig">cuba.defaultPermissionValuesConfig</a> 应用程序属性配置系统实体的默认访问权限。</p> 
+ </div> 
+ <div class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     Users - 用户 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p><a href="users.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/users.html">User</a> 实体可以在数据模型中用来做关联引用实体。需要在查询组件或者下拉框组件使用用户实体，只需要设置 <code>sec$User</code> 实体的权限就足够。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>如果需要使用 <strong>Denying - 拒绝</strong> 角色创建或者编辑 <code>User</code> 实体，还需要设置以下权限：</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>sec$User</code>, <code>sec$Group</code>; (可选) <code>sec$Role</code>, <code>sec$UserRole</code>, <code>sec$UserSubstitution</code>.</p> </li> 
+       </ul> 
+      </div> 
+      <div class="admonitionblock tip"> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+          <td class="content"> 
+           <div class="paragraph"> 
+            <p>读取 <code>sec$UserSubstitution</code> 实体的权限对<a href="user_substitution.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/user_substitution.html">代替用户</a>功能是至关重要的。</p> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>界面: <strong>Users</strong> 菜单项, <code>sec$User.edit</code>, <code>sec$Group.lookup</code>; (可选) <code>sec$Group.edit</code>, <code>sec$Role.edit</code>, <code>sec$Role.lookup</code>, <code>sec$User.changePassword</code>, <code>sec$User.copySettings</code>, <code>sec$User.newPasswords</code>, <code>sec$User.resetPasswords</code>, <code>sec$UserSubstitution.edit</code>.</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     Access Groups - 访问组 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>创建或者管理用户<a href="groups.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/groups.html">访问组</a>以及安全限制。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>sec$Group</code>, <code>sec$Constraint</code>, <code>sec$SessionAttribute</code>, <code>sec$LocalizedConstraintMessage</code>.</p> </li> 
+        <li> <p>界面: <strong>Access Groups</strong> 菜单项, <code>sec$Group.lookup</code>, <code>sec$Group.edit</code>, <code>sec$Constraint.edit</code>, <code>sec$SessionAttribute.edit</code>, <code>sec$LocalizedConstraintMessage.edit</code>.</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     Dynamic Attributes - 动态属性 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>访问额外的实体非持久化<a href="dynamic_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dynamic_attributes.html">属性</a>。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>sys$Category</code>, <code>sys$CategoryAttribute</code>, 以及数据模型需要的其它实体。</p> </li> 
+        <li> <p>界面: <strong>Dynamic Attributes</strong> 菜单项, <code>sys$Category.edit</code>, <code>sys$CategoryAttribute.edit</code>, <code>dynamicAttributesConditionEditor</code>, <code>dynamicAttributesConditionFrame</code>.</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     User Sessions - 用户会话 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>查看<a href="userSession.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/userSession.html">用户会话</a>数据。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>sec$User</code>, <code>sec$UserSessionEntity</code>.</p> </li> 
+        <li> <p>界面: <strong>User Sessions</strong> 菜单项, <code>sessionMessageWindow</code>.</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     Locks - 锁 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>设置实体的<a href="pessimistic_locking.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pessimistic_locking.html">悲观锁</a>。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>sys$LockInfo</code>, <code>sys$LockDescriptor</code>, 以及数据模型需要的其它实体。</p> </li> 
+        <li> <p>界面: <strong>Locks</strong> 菜单项, <code>sys$LockDescriptor.edit</code>.</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     External Files - 外部文件 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>访问应用的<a href="file_storage.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/file_storage.html">文件存储</a>。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>sys$FileDescriptor</code>.</p> </li> 
+        <li> <p>界面: <strong>External Files</strong> 菜单项; (可选) <code>sys$FileDescriptor.edit</code>.</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     Scheduled Tasks - 定时任务 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>创建和管理<a href="scheduled_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scheduled_tasks.html">定时任务</a>。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>sys$ScheduledTask</code>, <code>sys$ScheduledExecution</code>.</p> </li> 
+        <li> <p>界面: <strong>Scheduled Tasks</strong> 菜单项, <code>sys$ScheduledExecution.browse</code>, <code>sys$ScheduledTask.edit</code>.</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     Entity Inspector - 实体探查 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>从<a href="entity_inspector.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_inspector.html">实体探查</a>动态生成的界面中操作应用对象实体。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: 数据模型需要的实体。</p> </li> 
+        <li> <p>界面: <strong>Entity Inspector</strong> 菜单项, <code>entityInspector.edit</code>, 以及数据模型需要的其它实体。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     Entity Log - 实体日志 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>在<a href="entity_listeners.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_listeners.html">实体监听器</a>级别<a href="entity_log.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_log.html">记录</a>实体持久化操作。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>sec$EntityLog</code>, <code>sec$User</code>, <code>sec$EntityLogAttr</code>, <code>sec$LoggedAttribute</code>, <code>sec$LoggedEntity</code>, 以及数据模型需要的其它实体。</p> </li> 
+        <li> <p>界面: <strong>Entity Log</strong> 菜单项.</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     User Session Log - 用户会话日志 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>查看用户登入登出或者<a href="userSession_log.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/userSession_log.html">用户会话</a>的历史数据。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>sec$SessionLogEntry</code>.</p> </li> 
+        <li> <p>界面: <strong>User Session Log</strong> 菜单项.</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     Email History - 邮件历史 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>查看从应用发出的<a href="email_sending.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/email_sending.html">电子邮件</a>。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>sys$SendingMessage</code>, <code>sys$SendingAttachment</code>, <code>sys$FileDescriptor</code> (邮件附件需要).</p> </li> 
+        <li> <p>界面: <strong>Email History</strong> 菜单项, <code>sys$SendingMessage.attachments</code>.</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     Server Log - 服务器日志 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>查看并下载应用的<a href="logging_setup_tomcat.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/logging_setup_tomcat.html">日志文件</a>。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>sys$FileDescriptor</code>.</p> </li> 
+        <li> <p>界面: <strong>Server Log</strong> 菜单项, <code>serverLogDownloadOptionsDialog</code>.</p> </li> 
+        <li> <p>特殊功能: <code>下载日志文件</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     Screen Profiler - 界面资料 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>应用界面的使用量和使用时间的统计数据。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>sec$User</code>, <code>sys$ScreenProfilerEvent</code>.</p> </li> 
+        <li> <p>界面: <strong>Screen Profiler</strong> 菜单项.</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+   <dt class="hdlist1">
+     Reports - 报表 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>需要运行报表，参考 <a href="javascript:if(confirm('https://doc.cuba-platform.com/reporting-latest/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://doc.cuba-platform.com/reporting-latest/'" tppabs="https://doc.cuba-platform.com/reporting-latest/" target="_blank">报表生成器</a> 插件。</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>实体: <code>report$Report</code>, <code>report$ReportInputParameter</code>, <code>report$ReportGroup</code>.</p> </li> 
+        <li> <p>界面: <code>report$inputParameters</code>, <code>commonLookup</code>, <code>report$Report.run</code>, <code>report$showChart</code> (如果包含图表模板)。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="local_admins_example.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/local_admins_example.html">6.3.2. 创建本地管理员</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

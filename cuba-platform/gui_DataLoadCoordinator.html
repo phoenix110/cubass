@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>DataLoadCoordinator - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/gui_facets/gui_DataLoadCoordinator.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/gui_facets/gui_DataLoadCoordinator.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/gui_facets/gui_DataLoadCoordinator.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_screens.html">界面和界面片段（Fragments）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_vcl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_vcl.html">可视化组件库</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_data.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data.html">数据组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_facets.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_facets.html">非可视化组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Timer.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Timer.html">Timer</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_ClipboardTrigger.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_ClipboardTrigger.html">ClipboardTrigger</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="gui_DataLoadCoordinator.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_DataLoadCoordinator.html" class='toc-highlighted'>DataLoadCoordinator</a></div>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">操作以及操作接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_dialogs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_dialogs.html">对话框消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_notifications.html">通知消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="background_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/background_tasks.html">后台任务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_themes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_themes.html">主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="html-attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/html-attributes.html">可视化组件的 DOM 和 CSS 属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="shortcuts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/shortcuts.html">键盘快捷键</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="url_history_navigation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/url_history_navigation.html">URL 历史及导航</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="composite_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composite_components.html">组合组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pluggable_component_factories.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pluggable_component_factories.html">插件工厂</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="webComponentsHelper.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/webComponentsHelper.html">使用 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="own_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_components.html">自定义可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_web.html">通用 UI 基础设施</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html">Web 登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">匿名访问界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="unsupported_browser_page.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/unsupported_browser_page.html">不支持浏览器的界面</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_screens.html">界面和界面片段（Fragments）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_vcl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_vcl.html">可视化组件库</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_data.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data.html">数据组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_facets.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_facets.html">非可视化组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Timer.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Timer.html">Timer</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_ClipboardTrigger.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_ClipboardTrigger.html">ClipboardTrigger</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="gui_DataLoadCoordinator.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_DataLoadCoordinator.html" class='toc-highlighted'>DataLoadCoordinator</a></div>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">操作以及操作接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_dialogs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_dialogs.html">对话框消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_notifications.html">通知消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="background_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/background_tasks.html">后台任务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_themes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_themes.html">主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="html-attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/html-attributes.html">可视化组件的 DOM 和 CSS 属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="shortcuts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/shortcuts.html">键盘快捷键</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="url_history_navigation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/url_history_navigation.html">URL 历史及导航</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="composite_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composite_components.html">组合组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pluggable_component_factories.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pluggable_component_factories.html">插件工厂</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="webComponentsHelper.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/webComponentsHelper.html">使用 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="own_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_components.html">自定义可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_web.html">通用 UI 基础设施</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html">Web 登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">匿名访问界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="unsupported_browser_page.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/unsupported_browser_page.html">不支持浏览器的界面</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect4"> 
+ <h5 id="gui_DataLoadCoordinator">3.5.4.3. DataLoadCoordinator</h5> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/gui/components/DataLoadCoordinator.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/gui/components/DataLoadCoordinator.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/gui/components/DataLoadCoordinator.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>DataLoadCoordinator</code> facet 设计用来声明式的将数据加载器和数据容器、可视化组件、界面事件进行连接。其有两种工作模式：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p>自动模式，依赖于使用特定前缀的参数名称。前缀表示产生参数值和更改事件的组件。如果加载器的查询语句中没有参数（尽管在<a href="gui_data_loaders.html#gui_data_loader_query_conditions" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data_loaders.html#gui_data_loader_query_conditions">查询条件</a>中可能有参数），则该加载器会在 <code>界面</code> 的<a href="screen_controller_events.html#screen_BeforeShowEvent" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_controller_events.html#screen_BeforeShowEvent">BeforeShowEvent</a>或 <code>界面片段</code> 的<a href="screen_fragment_events.html#screenFragment_AttachEvent" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_fragment_events.html#screenFragment_AttachEvent">AttachEvent</a>中自动刷新。</p> 
+    <div class="paragraph"> 
+     <p>默认情况下，数据容器的参数前缀是 <code>container_</code>，可视化组件的参数前缀是 <code>component_</code>。</p> 
+    </div> </li> 
+   <li> <p>手动模式，连接通过 facet 或者通过 API 配置。</p> </li> 
+  </ul> 
+ </div> 
+ <div class="paragraph"> 
+  <p>也可以有半自动模式，有些连接通过显式指定，而其它的则配置为自动模式。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>当在界面中使用 <code>DataLoadCoordinator</code> 是，界面控制器的 <a href="screen_controller_annotations.html#LoadDataBeforeShow_annotation" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_controller_annotations.html#LoadDataBeforeShow_annotation">@LoadDataBeforeShow</a> 注解将会失去作用，因为数据的加载通过 facet 和自定义的时间处理器（如果有的话）控制。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>参阅下面的使用示例。</p> 
+ </div> 
+ <div class="olist arabic"> 
+  <ol class="arabic"> 
+   <li> <p>自动配置，<code>auto</code> 属性设置为 <code>true</code>。</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;window</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://schemas.haulmont.com/cuba/screen/window.xsd</span><span class="delimiter">"</span></span>
+        <span class="attribute-name">xmlns:c</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd</span><span class="delimiter">"</span></span> <span class="attribute-name">...</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;data</span> <span class="attribute-name">readOnly</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;collection</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">ownersDc</span><span class="delimiter">"</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">com.company.demo.entity.Owner</span><span class="delimiter">"</span></span> <span class="attribute-name">view</span>=<span class="string"><span class="delimiter">"</span><span class="content">owner-view</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;loader</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">ownersDl</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+                <span class="tag">&lt;query&gt;</span>
+                    <span class="inline-delimiter">&lt;![CDATA[</span>select e from demo_Owner e<span class="inline-delimiter">]]&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+                    <span class="tag">&lt;condition&gt;</span>
+                        <span class="tag">&lt;c:jpql&gt;</span>
+                            <span class="tag">&lt;c:where&gt;</span>e.category = :component_categoryFilterField<span class="tag">&lt;/c:where&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+                        <span class="tag">&lt;/c:jpql&gt;</span>
+                        <span class="tag">&lt;c:jpql&gt;</span>
+                            <span class="tag">&lt;c:where&gt;</span>e.name like :component_nameFilterField<span class="tag">&lt;/c:where&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
+                        <span class="tag">&lt;/c:jpql&gt;</span>
+                    <span class="tag">&lt;/condition&gt;</span>
+                <span class="tag">&lt;/query&gt;</span>
+            <span class="tag">&lt;/loader&gt;</span>
+        <span class="tag">&lt;/collection&gt;</span>
+        <span class="tag">&lt;collection</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">petsDc</span><span class="delimiter">"</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">com.company.demo.entity.Pet</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;loader</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">petsDl</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+                <span class="tag">&lt;query&gt;</span><span class="inline-delimiter">&lt;![CDATA[</span>select e from demo_Pet e where e.owner = :container_ownersDc<span class="inline-delimiter">]]&gt;</span><span class="tag">&lt;/query&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
+            <span class="tag">&lt;/loader&gt;</span>
+        <span class="tag">&lt;/collection&gt;</span>
+    <span class="tag">&lt;/data&gt;</span>
+    <span class="tag">&lt;facets&gt;</span>
+        <span class="tag">&lt;dataLoadCoordinator</span> <span class="attribute-name">auto</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/facets&gt;</span>
+    <span class="tag">&lt;layout&gt;</span>
+        <span class="tag">&lt;pickerField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">categoryFilterField</span><span class="delimiter">"</span></span> <span class="attribute-name">metaClass</span>=<span class="string"><span class="delimiter">"</span><span class="content">demo_OwnerCategory</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">nameFilterField</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="colist arabic"> 
+     <table> 
+      <tbody> 
+       <tr> 
+        <td><i class="conum" data-value="1"></i><b>1</b></td> 
+        <td>- 查询中没有参数，所以 <code>ownersDl</code> 加载器会在 <code>BeforeShowEvent</code> 触发。</td> 
+       </tr> 
+       <tr> 
+        <td><i class="conum" data-value="2"></i><b>2</b></td> 
+        <td>- <code>ownersDl</code> 加载器也会在 <code>categoryFilterField</code> 组件值更改的时候触发。</td> 
+       </tr> 
+       <tr> 
+        <td><i class="conum" data-value="3"></i><b>3</b></td> 
+        <td>- <code>ownersDl</code> 加载器也会在 <code>nameFilterField</code> 组件值更改的时候触发。由于条件使用了 <code>like</code> 子句，值会被自动包装在 '(?i)% %' 中，以便提供<a href="datasource_query_case_insensitive.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasource_query_case_insensitive.html">大小写不敏感查找</a>。</td> 
+       </tr> 
+       <tr> 
+        <td><i class="conum" data-value="4"></i><b>4</b></td> 
+        <td>- <code>petsDl</code> 加载器会在 <code>ownersDc</code> 数据容器内容变化时触发。</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> </li> 
+   <li> <p>手动配置，<code>auto</code> 属性未设置（或设置为 <code>false</code>），嵌套的记录定义了数据加载器会何时触发。</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;window</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://schemas.haulmont.com/cuba/screen/window.xsd</span><span class="delimiter">"</span></span>
+        <span class="attribute-name">xmlns:c</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd</span><span class="delimiter">"</span></span> <span class="attribute-name">...</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;data</span> <span class="attribute-name">readOnly</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;collection</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">ownersDc</span><span class="delimiter">"</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">com.company.demo.entity.Owner</span><span class="delimiter">"</span></span> <span class="attribute-name">view</span>=<span class="string"><span class="delimiter">"</span><span class="content">owner-view</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;loader</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">ownersDl</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+                <span class="tag">&lt;query&gt;</span>
+                    <span class="inline-delimiter">&lt;![CDATA[</span>select e from demo_Owner e<span class="inline-delimiter">]]&gt;</span>
+                    <span class="tag">&lt;condition&gt;</span>
+                        <span class="tag">&lt;c:jpql&gt;</span>
+                            <span class="tag">&lt;c:where&gt;</span>e.category = :category<span class="tag">&lt;/c:where&gt;</span>
+                        <span class="tag">&lt;/c:jpql&gt;</span>
+                        <span class="tag">&lt;c:jpql&gt;</span>
+                            <span class="tag">&lt;c:where&gt;</span>e.name like :name<span class="tag">&lt;/c:where&gt;</span>
+                        <span class="tag">&lt;/c:jpql&gt;</span>
+                    <span class="tag">&lt;/condition&gt;</span>
+                <span class="tag">&lt;/query&gt;</span>
+            <span class="tag">&lt;/loader&gt;</span>
+        <span class="tag">&lt;/collection&gt;</span>
+        <span class="tag">&lt;collection</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">petsDc</span><span class="delimiter">"</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">com.company.demo.entity.Pet</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;loader</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">petsDl</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+                <span class="tag">&lt;query&gt;</span><span class="inline-delimiter">&lt;![CDATA[</span>select e from demo_Pet e where e.owner = :owner<span class="inline-delimiter">]]&gt;</span><span class="tag">&lt;/query&gt;</span>
+            <span class="tag">&lt;/loader&gt;</span>
+        <span class="tag">&lt;/collection&gt;</span>
+    <span class="tag">&lt;/data&gt;</span>
+    <span class="tag">&lt;facets&gt;</span>
+        <span class="tag">&lt;dataLoadCoordinator&gt;</span>
+            <span class="tag">&lt;refresh</span> <span class="attribute-name">loader</span>=<span class="string"><span class="delimiter">"</span><span class="content">ownersDl</span><span class="delimiter">"</span></span>
+                     <span class="attribute-name">onScreenEvent</span>=<span class="string"><span class="delimiter">"</span><span class="content">Init</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+
+            <span class="tag">&lt;refresh</span> <span class="attribute-name">loader</span>=<span class="string"><span class="delimiter">"</span><span class="content">ownersDl</span><span class="delimiter">"</span></span> <span class="attribute-name">param</span>=<span class="string"><span class="delimiter">"</span><span class="content">category</span><span class="delimiter">"</span></span>
+                     <span class="attribute-name">onComponentValueChanged</span>=<span class="string"><span class="delimiter">"</span><span class="content">categoryFilterField</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+
+            <span class="tag">&lt;refresh</span> <span class="attribute-name">loader</span>=<span class="string"><span class="delimiter">"</span><span class="content">ownersDl</span><span class="delimiter">"</span></span> <span class="attribute-name">param</span>=<span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>
+                     <span class="attribute-name">onComponentValueChanged</span>=<span class="string"><span class="delimiter">"</span><span class="content">nameFilterField</span><span class="delimiter">"</span></span> <span class="attribute-name">likeClause</span>=<span class="string"><span class="delimiter">"</span><span class="content">CASE_INSENSITIVE</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
+
+            <span class="tag">&lt;refresh</span> <span class="attribute-name">loader</span>=<span class="string"><span class="delimiter">"</span><span class="content">petsDl</span><span class="delimiter">"</span></span> <span class="attribute-name">param</span>=<span class="string"><span class="delimiter">"</span><span class="content">owner</span><span class="delimiter">"</span></span>
+                     <span class="attribute-name">onContainerItemChanged</span>=<span class="string"><span class="delimiter">"</span><span class="content">ownersDc</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="tag">&lt;/dataLoadCoordinator&gt;</span>
+    <span class="tag">&lt;/facets&gt;</span>
+    <span class="tag">&lt;layout&gt;</span>
+        <span class="tag">&lt;pickerField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">categoryFilterField</span><span class="delimiter">"</span></span> <span class="attribute-name">metaClass</span>=<span class="string"><span class="delimiter">"</span><span class="content">demo_OwnerCategory</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">nameFilterField</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="colist arabic"> 
+     <table> 
+      <tbody> 
+       <tr> 
+        <td><i class="conum" data-value="1"></i><b>1</b></td> 
+        <td>- <code>ownersDl</code> 加载器会在 <code>InitEvent</code> 事件触发。</td> 
+       </tr> 
+       <tr> 
+        <td><i class="conum" data-value="2"></i><b>2</b></td> 
+        <td>- <code>ownersDl</code> 加载器会在 <code>categoryFilterField</code> 组件值更改的时候触发。</td> 
+       </tr> 
+       <tr> 
+        <td><i class="conum" data-value="3"></i><b>3</b></td> 
+        <td>- <code>ownersDl</code> 加载器会在 <code>nameFilterField</code> 组件值更改的时候触发。 由于条件使用了 <code>like</code> 子句，值会被自动包装在 '(?i)% %' 中，以便提供<a href="datasource_query_case_insensitive.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasource_query_case_insensitive.html">大小写不敏感查找</a>。</td> 
+       </tr> 
+       <tr> 
+        <td><i class="conum" data-value="4"></i><b>4</b></td> 
+        <td>- <code>petsDl</code> 加载器会在 <code>ownersDc</code> 数据容器内容变化时触发。</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> </li> 
+   <li> <p>半自动配置，当 <code>auto</code> 属性设置为 <code>true</code> 并且也有一些手动配置的触发器，facet 会为所有没有手动配置的加载器做自动配置。</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;window</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://schemas.haulmont.com/cuba/screen/window.xsd</span><span class="delimiter">"</span></span> <span class="attribute-name">...</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;data</span> <span class="attribute-name">readOnly</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;collection</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">ownersDc</span><span class="delimiter">"</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">com.company.demo.entity.Owner</span><span class="delimiter">"</span></span> <span class="attribute-name">view</span>=<span class="string"><span class="delimiter">"</span><span class="content">owner-view</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;loader</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">ownersDl</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+                <span class="tag">&lt;query&gt;</span>
+                    <span class="inline-delimiter">&lt;![CDATA[</span>select e from demo_Owner e<span class="inline-delimiter">]]&gt;</span>
+                <span class="tag">&lt;/query&gt;</span>
+            <span class="tag">&lt;/loader&gt;</span>
+        <span class="tag">&lt;/collection&gt;</span>
+        <span class="tag">&lt;collection</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">petsDc</span><span class="delimiter">"</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">com.company.demo.entity.Pet</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;loader</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">petsDl</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+                <span class="tag">&lt;query&gt;</span><span class="inline-delimiter">&lt;![CDATA[</span>select e from demo_Pet e where e.owner = :container_ownersDc<span class="inline-delimiter">]]&gt;</span><span class="tag">&lt;/query&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+            <span class="tag">&lt;/loader&gt;</span>
+        <span class="tag">&lt;/collection&gt;</span>
+    <span class="tag">&lt;/data&gt;</span>
+    <span class="tag">&lt;facets&gt;</span>
+        <span class="tag">&lt;dataLoadCoordinator</span> <span class="attribute-name">auto</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;refresh</span> <span class="attribute-name">loader</span>=<span class="string"><span class="delimiter">"</span><span class="content">ownersDl</span><span class="delimiter">"</span></span> <span class="attribute-name">onScreenEvent</span>=<span class="string"><span class="delimiter">"</span><span class="content">Init</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="tag">&lt;/dataLoadCoordinator&gt;</span>
+    <span class="tag">&lt;/facets&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="colist arabic"> 
+     <table> 
+      <tbody> 
+       <tr> 
+        <td><i class="conum" data-value="1"></i><b>1</b></td> 
+        <td>- <code>petsDl</code> 加载器配置在 <code>ownersDc</code> 数据容器内容变化时自动触发。</td> 
+       </tr> 
+       <tr> 
+        <td><i class="conum" data-value="2"></i><b>2</b></td> 
+        <td>- <code>ownersDl</code> 为手动配置，在 <code>InitEvent</code> 事件触发。</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> </li> 
+  </ol> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">3.5.5. 操作以及操作接口</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

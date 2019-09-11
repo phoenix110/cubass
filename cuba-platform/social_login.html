@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>ç¤¾äº¤ç½‘ç«™ç™»å½• - CUBA æ¡†æ¶å¼€å‘è€…æ‰‹å†Œ</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA æ¡†æ¶å¼€å‘è€…æ‰‹å†Œ</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/security_subsystem/social_login.adoc  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/security_subsystem/social_login.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/security_subsystem/social_login.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    å¤§å°å†™ï¼š
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> åŒºåˆ†
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> ä¸åŒºåˆ†
+                </div>
+                <!--<input type="submit" class="submit" value="æœç´¢">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">é¦–é¡µ</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">åºè¨€</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">å®‰è£…</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">å¿«é€Ÿå¼€å§‹</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">æ¡†æ¶è¯¦ç»†ä»‹ç»</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">åº”ç”¨ç¨‹åºå¼€å‘</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">åº”ç”¨ç¨‹åºéƒ¨ç½²</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">å®‰å…¨å­ç³»ç»Ÿ</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="security_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_web.html">WEB å®‰å…¨</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_components.html">å®‰å…¨å­ç³»ç»Ÿç»„ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_examples.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_examples.html">è®¿é—®æƒé™æ§åˆ¶ç¤ºä¾‹</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="ldap.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/ldap.html">é›†æˆ LDAP</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="sso.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/sso.html">CUBA åº”ç”¨ç¨‹åºå•ç‚¹ç™»å½•</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="social_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/social_login.html" class='toc-highlighted'>ç¤¾äº¤ç½‘ç«™ç™»å½•</a></div>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: é¡¹ç›®é…ç½®æ–‡ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: åº”ç”¨ç¨‹åºå±æ€§</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: ç³»ç»Ÿå‚æ•°</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: ç§»é™¤çš„éƒ¨åˆ†</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">æœ¯è¯­è¡¨</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">é¦–é¡µ</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">åºè¨€</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">å®‰è£…</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">å¿«é€Ÿå¼€å§‹</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">æ¡†æ¶è¯¦ç»†ä»‹ç»</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">åº”ç”¨ç¨‹åºå¼€å‘</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">åº”ç”¨ç¨‹åºéƒ¨ç½²</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">å®‰å…¨å­ç³»ç»Ÿ</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="security_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_web.html">WEB å®‰å…¨</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_components.html">å®‰å…¨å­ç³»ç»Ÿç»„ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_examples.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_examples.html">è®¿é—®æƒé™æ§åˆ¶ç¤ºä¾‹</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="ldap.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/ldap.html">é›†æˆ LDAP</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="sso.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/sso.html">CUBA åº”ç”¨ç¨‹åºå•ç‚¹ç™»å½•</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="social_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/social_login.html" class='toc-highlighted'>ç¤¾äº¤ç½‘ç«™ç™»å½•</a></div>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: é¡¹ç›®é…ç½®æ–‡ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: åº”ç”¨ç¨‹åºå±æ€§</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: ç³»ç»Ÿå‚æ•°</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: ç§»é™¤çš„éƒ¨åˆ†</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">æœ¯è¯­è¡¨</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect2"> 
+ <h3 id="social_login">6.6. ç¤¾äº¤ç½‘ç«™ç™»å½•</h3> 
+ <div class="paragraph"> 
+  <p>æœ¬ç« èŠ‚æåˆ°çš„ä¸»è¦æ˜¯ä½¿ç”¨ Facebookï¼ŒTwitter å’Œ Google+è¿™ä¸‰ä¸ªç¤¾äº¤ç½‘ç»œï¼Œä¾æ®ç½‘ç»œæƒ…å†µï¼Œæœ‰äº›ç½‘å€å¯èƒ½éœ€è¦ç§‘å­¦ä¸Šç½‘è®¿é—®ã€‚</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>ç¤¾äº¤ç½‘ç«™ç™»å½•ä¹Ÿæ˜¯<a href="sso.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/sso.html">å•ç‚¹ç™»å½•ï¼ˆSSOï¼‰</a> çš„ä¸€ç§å½¢å¼ï¼Œå¯ä»¥é€šè¿‡ç¤¾äº¤ç½‘ç«™çš„è´¦å·ï¼ˆæ¯”å¦‚ Facebookï¼ŒTwitter æˆ–è€… Google+ï¼‰æ¥ç™»å½• CUBA ç³»ç»Ÿï¼Œè€Œä¸éœ€è¦ä¸º CUBA åº”ç”¨ç¨‹åºåˆ›å»ºç‰¹å®šçš„è´¦å·ã€‚</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>ä¸‹é¢å°†ä½¿ç”¨ Facebook æ¥ä½œä¸ºç¤¾äº¤ç½‘ç»œç™»å½•çš„ç¤ºä¾‹ã€‚Facebook ä½¿ç”¨ OAuth2 è®¤è¯æœºåˆ¶ï¼Œæƒ³äº†è§£æ›´å¤šç»†èŠ‚è¯·å‚è€ƒ Facebook API å’Œ Facebook Login Flowï¼š <a href="javascript:if(confirm('https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow'" tppabs="https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow" class="bare" target="_blank">https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow</a> ã€‚</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>ç¤ºä¾‹é¡¹ç›®ä»£ç åœ¨è¿™é‡Œï¼š <a href="javascript:if(confirm('https://github.com/cuba-platform/sample-social-login  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cuba-platform/sample-social-login'" tppabs="https://github.com/cuba-platform/sample-social-login" target="_blank">GitHub</a>ï¼Œä»¥ä¸‹åˆ—å‡ºå…³é”®ç‚¹çš„å®ç°ã€‚</p> 
+ </div> 
+ <div class="olist arabic"> 
+  <ol class="arabic"> 
+   <li> <p>ä¸ºäº†è¿æ¥é¡¹ç›®åˆ° Facebookï¼Œéœ€è¦åˆ›å»º <strong>App ID</strong> ï¼ˆå”¯ä¸€åº”ç”¨ç¨‹åºæ ‡è¯†ç¬¦ï¼‰å’Œ <strong>App Secret</strong> ï¼ˆä¸ºåº”ç”¨ç¨‹åºé¡¹ç›®å‘é€åˆ° Facebook çš„è¯·æ±‚åšè®¤è¯çš„ä¸€ç§å¯†ç ï¼‰ã€‚æŒ‰ç…§ <a href="javascript:if(confirm('https://developers.facebook.com/docs/apps/register  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developers.facebook.com/docs/apps/register'" tppabs="https://developers.facebook.com/docs/apps/register" target="_blank">ä»‹ç»</a> ç”³è¯·ï¼Œç„¶ååœ¨ <strong>core</strong> æ¨¡å—çš„ <code>app.properties</code> æ–‡ä»¶ä¸­åˆ†åˆ«ä»¥ <code>facebook.appId</code> å’Œ <code>facebook.appSecret</code> è¿™ä¸¤ä¸ªå±æ€§æ³¨å†Œç”³è¯·åˆ°çš„å€¼ã€‚ç¤ºä¾‹ï¼š</p> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="listingblock"> 
+       <div class="title"> 
+        <a href="javascript:if(confirm('https://github.com/cuba-platform/sample-social-login/blob/master/modules/core/src/com/company/demo/app.properties  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cuba-platform/sample-social-login/blob/master/modules/core/src/com/company/demo/app.properties'" tppabs="https://github.com/cuba-platform/sample-social-login/blob/master/modules/core/src/com/company/demo/app.properties" target="_blank">app.properties</a> 
+       </div> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="properties">facebook.appId = 123456789101112
+facebook.appSecret = 123456789101112abcde131415fghi16</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>åŒæ ·ä¹Ÿéœ€è¦é…ç½®åœ¨ Facebook app æ³¨å†Œçš„ URLï¼Œå¡«å†™åœ¨ <strong>core</strong> å’Œ <strong>web</strong> æ¨¡å—çš„åº”ç”¨ç¨‹åºå±æ€§æ–‡ä»¶çš„ <a href="app_properties_reference.html#cuba.webAppUrl" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html#cuba.webAppUrl">cuba.webAppUrl</a> å‚æ•°ã€‚ç¤ºä¾‹ï¼š</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="properties">cuba.webAppUrl = http://cuba-fb.test:8080/app</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> </li> 
+   <li> <p>æ‰©å±• <a href="javascript:if(confirm('https://github.com/cuba-platform/sample-social-login/blob/master/modules/web/src/com/company/demo/web/login/ext-loginWindow.xml  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cuba-platform/sample-social-login/blob/master/modules/web/src/com/company/demo/web/login/ext-loginWindow.xml'" tppabs="https://github.com/cuba-platform/sample-social-login/blob/master/modules/web/src/com/company/demo/web/login/ext-loginWindow.xml" target="_blank">ç™»å½•ç•Œé¢</a> æ·»åŠ ç¤¾äº¤ç½‘ç»œç™»å½•æŒ‰é’®ã€‚è¿™ä¸ªæŒ‰é’®å°†è°ƒç”¨ <code>loginFacebook()</code> æ–¹æ³• - ç¤¾äº¤ç½‘ç»œç™»å½•æµç¨‹çš„å…¥å£ã€‚</p> </li> 
+   <li> <p>ä¸ºäº†ä½¿ç”¨ Facebook ç”¨æˆ·è´¦å·ï¼Œéœ€è¦åœ¨ CUBA æ ‡å‡†çš„ç”¨æˆ·è´¦å·ä¸­æ·»åŠ ä¸€ä¸ªé¢å¤–å­—æ®µã€‚æ‰©å±• <code>User</code> å®ä½“å¹¶æ·»åŠ å­—ç¬¦ä¸²ç±»å‹çš„å±æ€§ <code>facebookId</code>ï¼š</p> 
+    <div class="listingblock"> 
+     <div class="title"> 
+      <a href="javascript:if(confirm('https://github.com/cuba-platform/sample-social-login/blob/master/modules/global/src/com/company/demo/entity/SocialUser.java  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cuba-platform/sample-social-login/blob/master/modules/global/src/com/company/demo/entity/SocialUser.java'" tppabs="https://github.com/cuba-platform/sample-social-login/blob/master/modules/global/src/com/company/demo/entity/SocialUser.java" target="_blank">SocialUser.java</a> 
+     </div> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">FACEBOOK_ID</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> <span class="predefined-type">String</span> facebookId;</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p>åˆ›å»ºæœåŠ¡ï¼Œæ ¹æ®æä¾›çš„ <code>facebookId</code> åœ¨åº”ç”¨æ•°æ®åº“æŸ¥æ‰¾ç”¨æˆ·ï¼Œç„¶åè¦ä¹ˆè¿”å›å·²æœ‰ç”¨æˆ·ï¼Œè¦ä¹ˆåˆ›å»ºæ–°ç”¨æˆ·ï¼š</p> 
+    <div class="listingblock"> 
+     <div class="title"> 
+      <a href="javascript:if(confirm('https://github.com/cuba-platform/sample-social-login/blob/master/modules/global/src/com/company/demo/service/SocialRegistrationService.java  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cuba-platform/sample-social-login/blob/master/modules/global/src/com/company/demo/service/SocialRegistrationService.java'" tppabs="https://github.com/cuba-platform/sample-social-login/blob/master/modules/global/src/com/company/demo/service/SocialRegistrationService.java" target="_blank">SocialRegistrationService.java</a> 
+     </div> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">interface</span> <span class="class">SocialRegistrationService</span> {
+    <span class="predefined-type">String</span> NAME = <span class="string"><span class="delimiter">"</span><span class="content">demo_SocialRegistrationService</span><span class="delimiter">"</span></span>;
+
+    User findOrRegisterUser(<span class="predefined-type">String</span> facebookId, <span class="predefined-type">String</span> email, <span class="predefined-type">String</span> name);
+}</code></pre> 
+     </div> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="title"> 
+      <a href="javascript:if(confirm('https://github.com/cuba-platform/sample-social-login/blob/master/modules/core/src/com/company/demo/service/SocialRegistrationServiceBean.java  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cuba-platform/sample-social-login/blob/master/modules/core/src/com/company/demo/service/SocialRegistrationServiceBean.java'" tppabs="https://github.com/cuba-platform/sample-social-login/blob/master/modules/core/src/com/company/demo/service/SocialRegistrationServiceBean.java" target="_blank">SocialRegistrationServiceBean.java</a> 
+     </div> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Service</span>(SocialRegistrationService.NAME)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">SocialRegistrationServiceBean</span> <span class="directive">implements</span> SocialRegistrationService {
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> Metadata metadata;
+
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> Persistence persistence;
+
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> <span class="predefined-type">Configuration</span> configuration;
+
+    <span class="annotation">@Override</span>
+    <span class="annotation">@Transactional</span>
+    <span class="directive">public</span> User findOrRegisterUser(<span class="predefined-type">String</span> facebookId, <span class="predefined-type">String</span> email, <span class="predefined-type">String</span> name) {
+        EntityManager em = persistence.getEntityManager();
+
+        TypedQuery&lt;SocialUser&gt; query = em.createQuery(<span class="string"><span class="delimiter">"</span><span class="content">select u from sec$User u where u.facebookId = :facebookId</span><span class="delimiter">"</span></span>,
+                SocialUser.class);
+        query.setParameter(<span class="string"><span class="delimiter">"</span><span class="content">facebookId</span><span class="delimiter">"</span></span>, facebookId);
+        query.setViewName(<span class="predefined-type">View</span>.LOCAL);
+
+        SocialUser existingUser = query.getFirstResult();
+        <span class="keyword">if</span> (existingUser != <span class="predefined-constant">null</span>) {
+            <span class="keyword">return</span> existingUser;
+        }
+
+        SocialRegistrationConfig config = configuration.getConfig(SocialRegistrationConfig.class);
+
+        <span class="predefined-type">Group</span> defaultGroup = em.find(<span class="predefined-type">Group</span>.class, config.getDefaultGroupId(), <span class="predefined-type">View</span>.MINIMAL);
+
+        SocialUser user = metadata.create(SocialUser.class);
+        user.setFacebookId(facebookId);
+        user.setEmail(email);
+        user.setName(name);
+        user.setGroup(defaultGroup);
+        user.setActive(<span class="predefined-constant">true</span>);
+        user.setLogin(email);
+
+        em.persist(user);
+
+        <span class="keyword">return</span> user;
+    }
+}</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p>åˆ›å»ºæœåŠ¡æ¥ç®¡ç†ç™»å½•è¿‡ç¨‹ã€‚æœ¬ç¤ºä¾‹ä¸­æ˜¯ï¼š <a href="javascript:if(confirm('https://github.com/cuba-platform/sample-social-login/blob/master/modules/global/src/com/company/demo/service/FacebookService.java  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cuba-platform/sample-social-login/blob/master/modules/global/src/com/company/demo/service/FacebookService.java'" tppabs="https://github.com/cuba-platform/sample-social-login/blob/master/modules/global/src/com/company/demo/service/FacebookService.java" target="_blank">FacebookService</a> åŒ…å«ä¸¤ä¸ªæ–¹æ³•ï¼š <code>getLoginUrl()</code> å’Œ <code>getUserData()</code>ã€‚</p> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>getLoginUrl()</code> ç”Ÿæˆç™»å½• URLï¼ŒåŸºäºåº”ç”¨ç¨‹åº URL å’Œ OAuth2 è¿”å›ç±»å‹ï¼ˆä»£ç ã€è®¿é—®ä»¤ç‰Œï¼ˆaccess tokenï¼‰æˆ–è€…ä¸¤è€…éƒ½æœ‰ï¼Œå‚è€ƒ <a href="javascript:if(confirm('https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow'" tppabs="https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow" target="_blank">Facebook API æ–‡æ¡£</a> äº†è§£æ›´å¤šè¿”å›ç±»å‹ï¼‰ã€‚è¿™ä¸ªæ–¹æ³•çš„å®ç°å¯ä»¥å‚è€ƒ <a href="javascript:if(confirm('https://github.com/cuba-platform/sample-social-login/blob/master/modules/core/src/com/company/demo/service/FacebookServiceBean.java  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cuba-platform/sample-social-login/blob/master/modules/core/src/com/company/demo/service/FacebookServiceBean.java'" tppabs="https://github.com/cuba-platform/sample-social-login/blob/master/modules/core/src/com/company/demo/service/FacebookServiceBean.java" target="_blank">FacebookServiceBean.java</a> æ–‡ä»¶ã€‚</p> </li> 
+        <li> <p><code>getUserData()</code> ä½¿ç”¨æä¾›çš„åº”ç”¨ç¨‹åº URL å’Œä»£ç æ¥æŸ¥æ‰¾ Facebook ç”¨æˆ·ï¼Œå¹¶ä¸”è¿”å›å·²æœ‰ç”¨æˆ·çš„æ•°æ®æˆ–è€…åˆ›å»ºæ–°ç”¨æˆ·ã€‚åœ¨è¿™ä¸ªä¾‹å­ä¸­ï¼Œå¸Œæœ›è·å–ç”¨æˆ·çš„ idï¼Œå§“åå’Œ emailï¼Œid ä¹Ÿå°±æ˜¯ä¸Šé¢åˆ›å»ºçš„ <code>facebookId</code>ã€‚</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> </li> 
+   <li> <p>åœ¨ <strong>core</strong> æ¨¡å—çš„ <code>app.properties</code> æ–‡ä»¶ä¸­å®šä¹‰ <code>facebook.fields</code> å’Œ <code>facebook.scope</code> åº”ç”¨ç¨‹åºå±æ€§ï¼š</p> 
+    <div class="listingblock"> 
+     <div class="title"> 
+      <a href="javascript:if(confirm('https://github.com/cuba-platform/sample-social-login/blob/master/modules/core/src/com/company/demo/app.properties  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cuba-platform/sample-social-login/blob/master/modules/core/src/com/company/demo/app.properties'" tppabs="https://github.com/cuba-platform/sample-social-login/blob/master/modules/core/src/com/company/demo/app.properties" target="_blank">app.properties</a> 
+     </div> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="properties">facebook.fields = id,name,email
+facebook.scope = email</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p>è¿”å›æ‰©å±•ç™»å½•çª—å£æ§åˆ¶å™¨çš„ <code>loginFacebook()</code> æ–¹æ³•ã€‚è¿™ä¸ªæ§åˆ¶å™¨çš„æ‰€æœ‰ä»£ç åœ¨ <a href="javascript:if(confirm('https://github.com/cuba-platform/sample-social-login/blob/master/modules/web/src/com/company/demo/web/login/ExtAppLoginWindow.java  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cuba-platform/sample-social-login/blob/master/modules/web/src/com/company/demo/web/login/ExtAppLoginWindow.java'" tppabs="https://github.com/cuba-platform/sample-social-login/blob/master/modules/web/src/com/company/demo/web/login/ExtAppLoginWindow.java" target="_blank">ExtAppLoginWindow.java</a> æ–‡ä»¶ã€‚</p> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>åœ¨è¿™ä¸ªæ–¹æ³•ä¸­ï¼Œæœ‰é’ˆå¯¹å½“å‰ä¼šè¯çš„è¯·æ±‚å¤„ç†ï¼ˆrequest handlerï¼‰ï¼Œä¿å­˜å½“å‰ URL å¹¶ä¸”è°ƒç”¨é‡å®šå‘åˆ° Facebook è®¤è¯è¡¨å•ï¼š</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="title"> 
+        <a href="javascript:if(confirm('https://github.com/cuba-platform/sample-social-login/blob/master/modules/web/src/com/company/demo/web/login/ExtAppLoginWindow.java  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cuba-platform/sample-social-login/blob/master/modules/web/src/com/company/demo/web/login/ExtAppLoginWindow.java'" tppabs="https://github.com/cuba-platform/sample-social-login/blob/master/modules/web/src/com/company/demo/web/login/ExtAppLoginWindow.java" target="_blank">ExtAppLoginWindow.java</a> 
+       </div> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> RequestHandler facebookCallBackRequestHandler =
+        <span class="local-variable">this</span>::handleFacebookCallBackRequest;
+
+<span class="directive">private</span> <span class="predefined-type">URI</span> redirectUri;
+
+<span class="annotation">@Inject</span>
+<span class="directive">private</span> FacebookService facebookService;
+
+<span class="annotation">@Inject</span>
+<span class="directive">private</span> GlobalConfig globalConfig;
+
+<span class="directive">public</span> <span class="type">void</span> loginFacebook() {
+    VaadinSession.getCurrent()
+        .addRequestHandler(facebookCallBackRequestHandler);
+
+    <span class="local-variable">this</span>.redirectUri = Page.getCurrent().getLocation();
+
+    <span class="predefined-type">String</span> loginUrl = facebookService.getLoginUrl(globalConfig.getWebAppUrl(), OAuth2ResponseType.CODE);
+    Page.getCurrent()
+        .setLocation(loginUrl);
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p><code>handleFacebookCallBackRequest()</code> æ–¹æ³•ä¼šå¤„ç† Facebook è®¤è¯è¡¨å•ä¹‹åçš„å‡½æ•°å›è°ƒã€‚é¦–å…ˆï¼Œä½¿ç”¨ <code>UIAccessor</code> å®ä¾‹æ¥é”ä½ UI ç›´åˆ°ç™»å½•è¯·æ±‚å¤„ç†å®Œæ¯•ã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>ç„¶åï¼Œ<code>FacebookService</code> ä¼šè·å– facebook ç”¨æˆ·è´¦å·çš„ email å’Œ idã€‚åœ¨è¿™ä¹‹åï¼Œç›¸åº”çš„ CUBA ç”¨æˆ·ä¼šé€šè¿‡ <code>facebookId</code> è¢«æŸ¥æ‰¾åˆ°ï¼Œæˆ–è€…åœ¨æ­¤è¿‡ç¨‹ä¸­è¢«ç³»ç»Ÿåˆ›å»ºã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>æ¥ä¸‹æ¥ï¼Œè®¤è¯ä¼šè¢«è§¦å‘ï¼Œè¿™ä¸ªç”¨æˆ·çš„ç”¨æˆ·ä¼šè¯ä¼šè¢«åŠ è½½ï¼Œç„¶å UI ä¼šæ›´æ–°ã€‚ä¹‹åä¼šç§»é™¤ Facebook å›è°ƒå¤„ç†ï¼Œå› ä¸ºæ­¤æ—¶ä¸å†éœ€è¦è®¤è¯äº†ã€‚</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="title"> 
+        <a href="javascript:if(confirm('https://github.com/cuba-platform/sample-social-login/blob/master/modules/web/src/com/company/demo/web/login/ExtAppLoginWindow.java  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cuba-platform/sample-social-login/blob/master/modules/web/src/com/company/demo/web/login/ExtAppLoginWindow.java'" tppabs="https://github.com/cuba-platform/sample-social-login/blob/master/modules/web/src/com/company/demo/web/login/ExtAppLoginWindow.java" target="_blank">ExtAppLoginWindow.java</a> 
+       </div> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">boolean</span> handleFacebookCallBackRequest(VaadinSession session, VaadinRequest request,
+                                            VaadinResponse response) <span class="directive">throws</span> <span class="exception">IOException</span> {
+    <span class="keyword">if</span> (request.getParameter(<span class="string"><span class="delimiter">"</span><span class="content">code</span><span class="delimiter">"</span></span>) != <span class="predefined-constant">null</span>) {
+        uiAccessor.accessSynchronously(() -&gt; {
+            <span class="keyword">try</span> {
+                <span class="predefined-type">String</span> code = request.getParameter(<span class="string"><span class="delimiter">"</span><span class="content">code</span><span class="delimiter">"</span></span>);
+
+                FacebookUserData userData = facebookService.getUserData(globalConfig.getWebAppUrl(), code);
+
+                User user = socialRegistrationService.findOrRegisterUser(
+                        userData.getId(), userData.getEmail(), userData.getName());
+
+                App app = App.getInstance();
+                <span class="predefined-type">Connection</span> connection = app.getConnection();
+                <span class="predefined-type">Locale</span> defaultLocale = messages.getTools().getDefaultLocale();
+
+                connection.login(<span class="keyword">new</span> ExternalUserCredentials(user.getLogin(), defaultLocale));
+            } <span class="keyword">catch</span> (<span class="exception">Exception</span> e) {
+                log.error(<span class="string"><span class="delimiter">"</span><span class="content">Unable to login using Facebook</span><span class="delimiter">"</span></span>, e);
+            } <span class="keyword">finally</span> {
+                 session.removeRequestHandler(facebookCallBackRequestHandler);
+            }
+        });
+
+        ((VaadinServletResponse) response).getHttpServletResponse().
+            sendRedirect(ControllerUtils.getLocationWithoutParams(redirectUri));
+
+        <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+    }
+
+    <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+}</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> </li> 
+  </ol> 
+ </div> 
+ <div class="paragraph"> 
+  <p>ç°åœ¨ï¼Œå½“ç”¨æˆ·åœ¨ç™»å½•ç•Œé¢ç‚¹å‡» <strong>Facebook</strong> æŒ‰é’®æ—¶ï¼Œåº”ç”¨ç¨‹åºä¼šè·Ÿç”¨æˆ·è¯·æ±‚ä½¿ç”¨ Facebook è´¦å·å’Œé‚®ç®±ï¼Œå¦‚æœå¾—åˆ°ç”¨æˆ·æˆæƒï¼Œè¿™ä¸ªè´¦å·ç™»å½•åä¼šç›´æ¥è·³è½¬åˆ°åº”ç”¨ç¨‹åºä¸»ç•Œé¢ã€‚</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>å¯ä»¥é€šè¿‡ä½¿ç”¨è‡ªå®šä¹‰çš„ <code>LoginProvider</code>, <code>HttpRequestFilter</code> æˆ–è€… <a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html">Web ç™»å½•</a> ç« èŠ‚æåˆ°çš„äº‹ä»¶æ¥å®ç°å®šåˆ¶åŒ–ç™»å½•æœºåˆ¶ã€‚</p> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">ä¸‹ä¸€èŠ‚: <a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">7. Cookbook</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

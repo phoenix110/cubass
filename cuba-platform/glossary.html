@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>术语表 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/glossary.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/glossary.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/glossary.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html" class='toc-highlighted'>术语表</a></div>
+<ul>
+</ul>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html" class='toc-highlighted'>术语表</a></div>
+<ul>
+</ul>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect1"> 
+ <h2 id="glossary">8. 术语表</h2> 
+ <div class="sectionbody"> 
+  <div class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Application Tiers - 应用分层</strong> 
+    </dt> 
+    <dd> 
+     <p>参考 <a href="app_tiers.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_tiers.html">应用程序层和块</a>。</p> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="app_properties_glossentry" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Application Properties - 应用程序属性</strong> 
+    </dt> 
+    <dd> 
+     <p>应用程序属性是为应用程序配置和功能等不同方面配置的带有名称的数据值。参考 <a href="app_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties.html">应用程序属性</a>。</p> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>Application Blocks - 应用程序 block</strong> 
+    </dt> 
+    <dd> 
+     <p>参考 <a href="app_tiers.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_tiers.html">应用程序层和块</a>。block，作为专用词，中文一般不翻译。</p> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="artifact" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Artifact - 工件</strong> 
+    </dt> 
+    <dd> 
+     <p>在本手册的上下文中，工件是指一个文件（通常是 JAR 或者 ZIP 文件）包含了可执行代码或者构建项目生成的其它代码。工件具有按照特定规则定义的名称和版本号，并且可以保存在工件仓库里。</p> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="artifact_repository" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Artifact Repository - 工件仓库</strong> 
+    </dt> 
+    <dd> 
+     <p>按特定目录结构保存 <a href="#artifact">artifacts</a> 的服务器，当项目启动构建时，项目依赖的工件都从这个仓库加载。</p> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="base_projects" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Base Projects - 基本项目</strong> 
+    </dt> 
+    <dd> 
+     <p>跟<a href="app_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components.html">应用程序组件</a>一个意思，这个术语在之前版本的平台和文档中使用。</p> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="container" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Container - 容器</strong> 
+    </dt> 
+    <dd> 
+     <p>容器控制应用程序里面对象的生命周期以及配置。这个是依赖注入（反转控制）机制的基本组件。</p> 
+     <div class="paragraph"> 
+      <p>CUBA 框架使用 <strong>Spring 框架</strong> 的容器。</p> 
+     </div> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>DB - 数据库</strong> 
+    </dt> 
+    <dd> 
+     <p>关系型数据库。</p> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>Datasource - 数据源</strong> 
+    </dt> 
+    <dd> 
+     <p>参考 <a href="datasources.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasources.html">数据源（历史版本）</a>.</p> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>Dependency Injection - 依赖注入</strong> 
+    </dt> 
+    <dd> 
+     <p>也称反转控制（IoC）。一个用来获取使用的对象链接的机制，这个机制会假设一个对象只需要声明它依赖的那些对象，而由容器来帮助创建所有需要的对象并将这些对象注入到依赖他们的对象中去。</p> 
+     <div class="paragraph"> 
+      <p>参考 <a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Dependency_injection  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Dependency_injection'" tppabs="https://en.wikipedia.org/wiki/Dependency_injection" class="bare" target="_blank">https://en.wikipedia.org/wiki/Dependency_injection</a></p> 
+     </div> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="eager_fetching" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Eager Fetching - 预加载</strong> 
+    </dt> 
+    <dd> 
+     <p>跟请求的实体一起加载子类实体以及关联实体的数据。</p> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="entity" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Entity - 实体</strong> 
+    </dt> 
+    <dd> 
+     <p>数据模型的主要元素，参考 <a href="data_model.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/data_model.html">数据模型</a>。</p> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>Entity Browser - 实体浏览界面</strong> 
+    </dt> 
+    <dd> 
+     <p>包含一个用来显示<a href="#entity">实体</a>列表的表格以及一些用来创建、编辑和删除实体的按钮的界面。</p> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>EntityManager</strong> 
+    </dt> 
+    <dd> 
+     <p>中间件层的组件，用来持久化<a href="data_model.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/data_model.html">实体</a>。</p> 
+     <div class="paragraph"> 
+      <p>参考 <a href="entityManager.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityManager.html">EntityManager</a>.</p> 
+     </div> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="interceptor" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Interceptor - 拦截器</strong> 
+    </dt> 
+    <dd> 
+     <p>面向切面编程的一个概念，可以用来改变或者扩展对象方法的执行过程。</p> 
+     <div class="paragraph"> 
+      <p>参考 <a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Interceptor_pattern  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Interceptor_pattern'" tppabs="https://en.wikipedia.org/wiki/Interceptor_pattern" class="bare" target="_blank">https://en.wikipedia.org/wiki/Interceptor_pattern</a></p> 
+     </div> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="jmx" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>JMX</strong> 
+    </dt> 
+    <dd> 
+     <p>Java Management Extensions − 提供工具来管理应用、系统对象和设备的一种技术。为 <a href="jmx_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_beans.html">JMX-components</a> 定义了标准。</p> 
+     <div class="paragraph"> 
+      <p>更多细节可以参考 <a href="javascript:if(confirm('http://www.oracle.com/technetwork/java/javase/tech/javamanagement-140525.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.oracle.com/technetwork/java/javase/tech/javamanagement-140525.html'" tppabs="http://www.oracle.com/technetwork/java/javase/tech/javamanagement-140525.html" class="bare" target="_blank">http://www.oracle.com/technetwork/java/javase/tech/javamanagement-140525.html</a></p> 
+     </div> 
+     <div class="paragraph"> 
+      <p>也可参考 <a href="jmx_tools.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_tools.html">使用 JMX 工具</a>。</p> 
+     </div> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="jpa" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>JPA</strong> 
+    </dt> 
+    <dd> 
+     <p>Java Persistence API – <a href="orm.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/orm.html">ORM</a> 技术的一套标准规范。CUBA 框架使用实现了此规范的 <strong>EclipseLink</strong> 框架。</p> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="jpql" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>JPQL</strong> 
+    </dt> 
+    <dd> 
+     <p>平台独立的面向对象的查询语言，是 JPA 规范的一部分。</p> 
+     <div class="paragraph"> 
+      <p>更多细节可以参考 <a href="javascript:if(confirm('https://en.wikibooks.org/wiki/Java_Persistence/JPQL  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikibooks.org/wiki/Java_Persistence/JPQL'" tppabs="https://en.wikibooks.org/wiki/Java_Persistence/JPQL" class="bare" target="_blank">https://en.wikibooks.org/wiki/Java_Persistence/JPQL</a></p> 
+     </div> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>Lazy loading - 懒加载</strong> 
+    </dt> 
+    <dd> 
+     <p>参考 <a href="lazy_loading.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/lazy_loading.html">延迟加载</a>.</p> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="local_attribute" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Local attribute - 本地属性</strong> 
+    </dt> 
+    <dd> 
+     <p>实体的属性，此属性不关联其它实体，也不是其它实体的集合。典型情况下，实体的所有本地属性都存在数据库的一张表内（当然不包括特定的实体继承的情况）。</p> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>Localized message pack - 本地化语言消息包</strong> 
+    </dt> 
+    <dd> 
+     <p>参考 <a href="message_packs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/message_packs.html">语言消息包</a>。翻译时有时候简称语言包，本地化语言包等。</p> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>Managed Beans - 托管 bean</strong> 
+    </dt> 
+    <dd> 
+     <p>包含应用程序业务逻辑的组件。</p> 
+     <div class="paragraph"> 
+      <p>参考 <a href="managed_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/managed_beans.html">托管 Bean</a>.</p> 
+     </div> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>Main Message Pack - 主语言消息包</strong> 
+    </dt> 
+    <dd> 
+     <p>参考 <a href="main_message_pack.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/main_message_pack.html">主语言消息包</a>.</p> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>MBeans</strong> 
+    </dt> 
+    <dd> 
+     <p>带有 JMX 接口的<a href="managed_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/managed_beans.html">托管 bean</a>。典型情况下，这些 bean 包含一个内部状态（比如可以是缓存，配置数据或者统计数据），这个内部状态需要通过 JMX 访问。</p> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="middleware_glossentry" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Middleware - 中间件</strong> 
+    </dt> 
+    <dd> 
+     <p>中间层 –  包含业务逻辑的<a href="app_tiers.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_tiers.html">应用程序层</a>，跟数据库通信并且为更高的客户端层提供接口通用接口服务。有时候不翻译，有时候翻译成中间件或者中间层。</p> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="optimistic_locking" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Optimistic locking - 乐观锁</strong> 
+    </dt> 
+    <dd> 
+     <p>乐观锁 - 用来管理不同用户访问共享数据的一种方式，这里假设不同用户对同一实体实例只有非常低的可能性进行并发访问。采用这种方案并不会真正意义上对数据加锁，而是在数据发生变动时检查在数据库是否存在更新版本的数据。如果存在，则会抛出异常，用户需要重新加载实体。</p> 
+     <div class="paragraph"> 
+      <p>也可参考 <a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Optimistic_concurrency_control  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Optimistic_concurrency_control'" tppabs="https://en.wikipedia.org/wiki/Optimistic_concurrency_control" class="bare" target="_blank">https://en.wikipedia.org/wiki/Optimistic_concurrency_control</a></p> 
+     </div> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>ORM</strong> 
+    </dt> 
+    <dd> 
+     <p>对象关系映射 – 将关系型数据库的表跟编程语言中对象进行关联的一种技术。</p> 
+     <div class="paragraph"> 
+      <p>参考 <a href="orm.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/orm.html">ORM 层</a>.</p> 
+     </div> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="persistence_context" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Persistent context - 持久化上下文</strong> 
+    </dt> 
+    <dd> 
+     <p>一组从数据库加载的或者刚创建的实体实例。持久化上下文作为当前事务的数据缓存。当事务提交时，所有持久化上下文内的实体变更都被保存到数据库。</p> 
+     <div class="paragraph"> 
+      <p>参考 <a href="entityManager.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityManager.html">EntityManager</a>.</p> 
+     </div> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="screen_controller_glossentry" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>Screen Controller - 界面控制器</strong> 
+    </dt> 
+    <dd> 
+     <p>包含界面初始化和事件处理逻辑的 Java 类。结合界面的 <a href="#screen_xml_glossentry">XML 描述</a>一起工作。</p> 
+     <div class="paragraph"> 
+      <p>参考 <a href="screen_controller.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_controller.html">界面控制器</a>.</p> 
+     </div> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>Services - 服务</strong> 
+    </dt> 
+    <dd> 
+     <p>中间件服务为客户端调用提供业务接口并且形成中间件壁垒。服务可以封装业务逻辑或者将执行过程代理给 <a href="managed_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/managed_beans.html">Managed Beans</a>。</p> 
+     <div class="paragraph"> 
+      <p>参考 <a href="services.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/services.html">服务</a>.</p> 
+     </div> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>Soft deletion - 软删除</strong> 
+    </dt> 
+    <dd> 
+     <p>参考 <a href="soft_deletion.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/soft_deletion.html">软删除</a>.</p> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>UI</strong> 
+    </dt> 
+    <dd> 
+     <p>用户界面。</p> 
+    </dd> 
+    <dt class="hdlist1"> 
+     <strong>View - 视图</strong> 
+    </dt> 
+    <dd> 
+     <p>参考 <a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">视图</a></p> 
+    </dd> 
+   </dl> 
+  </div> 
+  <div id="screen_xml_glossentry" class="dlist"> 
+   <dl> 
+    <dt class="hdlist1"> 
+     <strong>XML-descriptor - 界面 XML 描述</strong> 
+    </dt> 
+    <dd> 
+     <p>包含界面可视化组件布局和数据源的 XML 文件。</p> 
+     <div class="paragraph"> 
+      <p>参考 <a href="screen_xml.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_xml.html">界面 XML 描述</a>.</p> 
+     </div> 
+    </dd> 
+   </dl> 
+  </div> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">CUBA 框架开发者手册</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

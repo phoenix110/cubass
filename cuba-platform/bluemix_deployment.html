@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>部署至 Bluemix Cloud - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/deployment/deployment_variants/bluemix_deployment.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/deployment/deployment_variants/bluemix_deployment.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/deployment/deployment_variants/bluemix_deployment.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_home.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_home.html">应用程序主目录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_dirs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_dirs.html">应用程序文件目录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="deployment_variants.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment_variants.html">部署选项</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="fast_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/fast_deployment.html">Tomcat 快速部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/war_deployment.html">部署 WAR 至 Jetty</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="wildfly_war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/wildfly_war_deployment.html">部署 WAR 到 WildFly</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="tomcat_war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/tomcat_war_deployment.html">部署 WAR 至 Tomcat Windows 服务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="tomcat_war_deployment_linux.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/tomcat_war_deployment_linux.html">部署 WAR 至 Tomcat Linux 服务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="uberjar_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/uberjar_deployment.html">UberJAR 部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="docker_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/docker_deployment.html">使用 Docker 部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="jelastic_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jelastic_deployment.html">部署至 Jelastic Cloud</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="bluemix_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/bluemix_deployment.html" class='toc-highlighted'>部署至 Bluemix Cloud</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="heroku_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/heroku_deployment.html">部署至 Heroku Cloud</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="proxy_configuration_tomcat.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/proxy_configuration_tomcat.html">Tomcat 的代理设置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="proxy_configuration_uberjar.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/proxy_configuration_uberjar.html">UberJAR 的代理服务配置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="scaling.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scaling.html">应用程序扩展</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="jmx_tools.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_tools.html">使用 JMX 工具</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="server_push_settings.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/server_push_settings.html">服务推送设置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="health_check_url.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/health_check_url.html">应用程序健康检查 URL</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_home.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_home.html">应用程序主目录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_dirs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_dirs.html">应用程序文件目录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="deployment_variants.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment_variants.html">部署选项</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="fast_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/fast_deployment.html">Tomcat 快速部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/war_deployment.html">部署 WAR 至 Jetty</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="wildfly_war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/wildfly_war_deployment.html">部署 WAR 到 WildFly</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="tomcat_war_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/tomcat_war_deployment.html">部署 WAR 至 Tomcat Windows 服务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="tomcat_war_deployment_linux.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/tomcat_war_deployment_linux.html">部署 WAR 至 Tomcat Linux 服务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="uberjar_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/uberjar_deployment.html">UberJAR 部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="docker_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/docker_deployment.html">使用 Docker 部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="jelastic_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jelastic_deployment.html">部署至 Jelastic Cloud</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="bluemix_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/bluemix_deployment.html" class='toc-highlighted'>部署至 Bluemix Cloud</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="heroku_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/heroku_deployment.html">部署至 Heroku Cloud</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="proxy_configuration_tomcat.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/proxy_configuration_tomcat.html">Tomcat 的代理设置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="proxy_configuration_uberjar.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/proxy_configuration_uberjar.html">UberJAR 的代理服务配置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="scaling.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scaling.html">应用程序扩展</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="jmx_tools.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_tools.html">使用 JMX 工具</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="server_push_settings.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/server_push_settings.html">服务推送设置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="health_check_url.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/health_check_url.html">应用程序健康检查 URL</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect3"> 
+ <h4 id="bluemix_deployment">5.3.9. 部署至 Bluemix Cloud</h4> 
+ <div class="paragraph"> 
+  <p>CUBA Studio 通过几个简单步骤支持 IBM® Bluemix® 云部署。</p> 
+ </div> 
+ <div class="admonitionblock tip"> 
+  <table> 
+   <tbody> 
+    <tr> 
+     <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+     <td class="content"> 
+      <div class="paragraph"> 
+       <p>Bluemix 云部署目前只支持使用 PostgreSQL 数据库的项目。HSQLDB 只支持 <em>in-process</em> 的情况，也就是说，每次应用程序重启时，会重建数据库，之前的用户数据会丢失。</p> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="olist arabic"> 
+  <ol class="arabic"> 
+   <li> <p>创建一个 Bluemix 账号。下载并且安装：</p> 
+    <div class="olist loweralpha"> 
+     <ol class="loweralpha" type="a"> 
+      <li> <p>Bluemix CLI: <a href="javascript:if(confirm('http://clis.ng.bluemix.net/ui/home.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://clis.ng.bluemix.net/ui/home.html'" tppabs="http://clis.ng.bluemix.net/ui/home.html" class="bare" target="_blank">http://clis.ng.bluemix.net/ui/home.html</a></p> </li> 
+      <li> <p>Cloud Foundry CLI: <a href="javascript:if(confirm('https://github.com/cloudfoundry/cli/releases  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cloudfoundry/cli/releases'" tppabs="https://github.com/cloudfoundry/cli/releases" class="bare" target="_blank">https://github.com/cloudfoundry/cli/releases</a></p> </li> 
+      <li> <p>确保 <code>bluemix</code> 和 <code>cf</code> 命令在命令行窗口有效。如果不行的话，添加 Bluemix 的 bin 目录，比如 <code>\IBM\Bluemix\bin</code> 到 <code>PATH</code> 环境变量。</p> </li> 
+     </ol> 
+    </div> </li> 
+   <li> <p>在 Bluemix 创建一个空间（Space），需要的话，可以在一个空间里面使用几个应用程序。</p> </li> 
+   <li> <p>在空间中创建一个应用服务：<strong>Create App</strong> → <strong>CloudFoundry Apps</strong> → <strong>Tomcat</strong>。</p> </li> 
+   <li> <p>给应用指定一个名称。名称需要是唯一的，因为这个名称会作为应用程序 URL 的一部分。</p> </li> 
+   <li> <p>创建一个数据库服务，点击空间 dashboard 中的 <strong>Create service</strong> 然后选择 <strong>ElephantSQL</strong>。</p> </li> 
+   <li> <p>打开应用管理并且将数据库服务连接至应用程序。点击 <strong>Connect Existing</strong>。要使改动生效，系统需要重新加载（restaging/updating）应用程序。目前暂时不需要做这一步，因为应用程序会重新部署。</p> </li> 
+   <li> <p>数据库服务连接上之后，数据库的用户密码可以通过点击 <strong>View Credentials</strong> 看到。数据库的属性存在程序运行时的 <code>VCAP_SERVICES</code> 环境变量里面，可以通过 <code>cf&nbsp;env</code> 命令看到。创建的数据库也可以从空间外面访问到，因此可以从开发环境连接线上的数据库。</p> </li> 
+   <li> <p>设置 CUBA 项目运行在 PostgreSQL 数据库上（跟 Bluemix 类似的数据库环境）</p> </li> 
+   <li> <p>生成数据库脚本然后启动本地 Tomcat 服务。确保应用程序启动没问题。</p> </li> 
+   <li> <p>生成 WAR 文件用来部署到 Tomcat。</p> 
+    <div class="olist loweralpha"> 
+     <ol class="loweralpha" type="a"> 
+      <li> <p>在 CUBA 项目视图的 <strong>Project</strong> 部分点击 <strong>Deployment &gt; WAR Settings</strong> 。</p> </li> 
+      <li> <p>勾选全部的复选框启用所有的功能，因为正确的部署是 <strong>Single WAR</strong> 带有 JDBC 驱动和 <code>context.xml</code>。</p> 
+       <div class="imageblock" style="text-align: center"> 
+        <div class="content"> 
+         <img src="bluemix_war_settings.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/bluemix_war_settings.png" alt="bluemix war settings"> 
+        </div> 
+       </div> </li> 
+      <li> <p>点击 <strong>Custom context.XML field</strong> 旁边的 <strong>Generate</strong> 按钮。在弹出的对话框中填写 Bluemix 里面创建的数据库的用户密码信息。</p> 
+       <div class="paragraph"> 
+        <p>从 DB 服务拿到的 <code>uri</code> 里面包含数据库的用户密码信息，按照下面这个示例使用：</p> 
+       </div> 
+       <div class="listingblock"> 
+        <div class="content"> 
+         <pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">"</span><span class="content">elephantsql</span><span class="delimiter">"</span></span>: [
+    {
+      <span class="key"><span class="delimiter">"</span><span class="content">credentials</span><span class="delimiter">"</span></span>: {
+        <span class="key"><span class="delimiter">"</span><span class="content">uri</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">postgres://ixbtsvsq:F_KyeQjpEdpQfd4n0KpEFCYyzKAbN1W9@qdjjtnkv.db.elephantsql.com:5432/ixbtsvsq</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">max_conns</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">5</span><span class="delimiter">"</span></span>
+      }
+    }
+  ]
+}</code></pre> 
+        </div> 
+       </div> 
+       <div class="paragraph"> 
+        <p><strong>Database user</strong>: <code>ixbtsvsq</code></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><strong>Database password</strong>: <code>F_KyeQjpEdpQfd4n0KpEFCYyzKAbN1W9</code></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><strong>Database URL</strong>: <code>qdjjtnkv.db.elephantsql.com:5432</code></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><strong>Database name</strong>: <code>ixbtsvsq</code></p> 
+       </div> </li> 
+      <li> <p>点击 <strong>Generate</strong> 按钮生成单一 WAR 需要的自定义 <code>web.xml</code> 文件。</p> </li> 
+      <li> <p>保存设置。使用 Studio 的 <code>buildWar</code> Gradle 任务或者命令行生成 WAR 包。</p> 
+       <div class="imageblock" style="text-align: center"> 
+        <div class="content"> 
+         <img src="bluemix_buildWar.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/bluemix_buildWar.png" alt="bluemix buildWar"> 
+        </div> 
+       </div> 
+       <div class="paragraph"> 
+        <p>成功的话，会在项目的 <code>build/distributions/war/</code> 目录生成 <code>app.war</code>。</p> 
+       </div> </li> 
+     </ol> 
+    </div> </li> 
+   <li> <p>在项目的根目录手动创建 <code>manifest.yml</code> 文件。文件内容需要包含下列信息：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="yml"><span class="key">applications</span>:
+- <span class="string"><span class="content">path: build/distributions/war/app.war</span></span>
+  <span class="key">memory</span>: <span class="string"><span class="content">1G</span></span>
+  <span class="key">instances</span>: <span class="string"><span class="content">1</span></span>
+  <span class="key">domain</span>: <span class="string"><span class="content">eu-gb.mybluemix.net</span></span>
+  <span class="key">name</span>: <span class="string"><span class="content">myluckycuba</span></span>
+  <span class="key">host</span>: <span class="string"><span class="content">myluckycuba</span></span>
+  <span class="key">disk_quota</span>: <span class="string"><span class="content">1024M</span></span>
+  <span class="key">buildpack</span>: <span class="string"><span class="content">java_buildpack</span></span>
+  <span class="key">env</span>:
+    <span class="key">JBP_CONFIG_TOMCAT</span>: <span class="string"><span class="content">'{tomcat: { version: 8.0.+ }}'</span></span>
+    <span class="key">JBP_CONFIG_OPEN_JDK_JRE</span>: <span class="string"><span class="content">'{jre: { version: 1.8.0_+ }}'</span></span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>这里的参数：</p> 
+    </div> 
+    <div class="ulist"> 
+     <ul> 
+      <li> <p><code>path</code> - WAR 包文件的相对路径。</p> </li> 
+      <li> <p><code>memory</code> - 默认的内存限制是 1G。可以根据应用的具体情况增加或者减少，也可以通过 Bluemix 的 web 页面调整。需要注意内存大小直接影响运行费用。</p> </li> 
+      <li> <p><code>name</code> - 上面在云服务里创建的 Tomcat 应用的名称（取决于项目地址，参考 <code>App URL</code>，比如 <code>https://myluckycuba.eu-gb.mybluemix.net/</code>）。</p> </li> 
+      <li> <p><code>host</code> - 跟名称一样。</p> </li> 
+      <li> <p><code>env</code> - 设置 Tomcat 版本和 Java 版本的环境变量。</p> </li> 
+     </ul> 
+    </div> </li> 
+   <li> <p>在命令行切换到 CUBA 项目的根目录。</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="yml"><span class="error">cd your_project_directory</span></code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p>连接到 Bluemix（再次检查域名）</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="yml"><span class="error">cf api https://api.eu-gb.bluemix.net</span></code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p>登录 Bluemix 账号。</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="yml"><span class="error">cf login -u your_bluemix_id -o your_bluemix_ORG</span></code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p>部署 WAR 到 Tomcat</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="yml"><span class="error">cf push</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p><code>push</code> 命令从 <code>manifest.yml</code> 文件中读取所有需要的参数信息。</p> 
+    </div> </li> 
+   <li> <p>可以通过 Bluemix 的 web 页面 dashboard 的 <strong>Log</strong> 标签页查看 Tomcat 服务的日志，也可以在命令行通过以下命令查看：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="yml"><span class="error">cf logs cuba-app --recent</span></code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p>部署过程完成后，可以在浏览器通过 <code>host.domain</code> URL 来访问。这个 URL 会显示在 <strong>Cloud Foundry Apps</strong> 表格的 <strong>ROUTE</strong> 字段。</p> </li> 
+  </ol> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="heroku_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/heroku_deployment.html">5.3.10. 部署至 Heroku Cloud</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

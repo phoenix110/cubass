@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>应用程序扩展 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/deployment/scaling.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/deployment/scaling.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/deployment/scaling.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_home.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_home.html">应用程序主目录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_dirs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_dirs.html">应用程序文件目录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment_variants.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment_variants.html">部署选项</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="proxy_configuration_tomcat.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/proxy_configuration_tomcat.html">Tomcat 的代理设置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="proxy_configuration_uberjar.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/proxy_configuration_uberjar.html">UberJAR 的代理服务配置</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="scaling.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scaling.html" class='toc-highlighted'>应用程序扩展</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cluster_webclient.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cluster_webclient.html">配置 Web 客户端集群</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cluster_mw.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cluster_mw.html">配置 Middleware 集群</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="serverId.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/serverId.html">服务器 ID</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="jmx_tools.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_tools.html">使用 JMX 工具</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="server_push_settings.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/server_push_settings.html">服务推送设置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="health_check_url.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/health_check_url.html">应用程序健康检查 URL</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_home.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_home.html">应用程序主目录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_dirs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_dirs.html">应用程序文件目录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment_variants.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment_variants.html">部署选项</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="proxy_configuration_tomcat.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/proxy_configuration_tomcat.html">Tomcat 的代理设置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="proxy_configuration_uberjar.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/proxy_configuration_uberjar.html">UberJAR 的代理服务配置</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="scaling.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scaling.html" class='toc-highlighted'>应用程序扩展</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cluster_webclient.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cluster_webclient.html">配置 Web 客户端集群</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cluster_mw.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cluster_mw.html">配置 Middleware 集群</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="serverId.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/serverId.html">服务器 ID</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="jmx_tools.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_tools.html">使用 JMX 工具</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="server_push_settings.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/server_push_settings.html">服务推送设置</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="health_check_url.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/health_check_url.html">应用程序健康检查 URL</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect2"> 
+ <h3 id="scaling">5.6. 应用程序扩展</h3> 
+ <div class="paragraph"> 
+  <p>本章节介绍在负载增加或者有更强的容错需求的时候怎样对包含 <strong>Middleware</strong> 和 <strong>Web Client</strong> blocks 的 CUBA 应用程序进行扩展。</p> 
+ </div> 
+ <table class="tableblock frame-all grid-all spread"> 
+  <colgroup> 
+   <col style="width: 60%;"> 
+   <col style="width: 40%;"> 
+  </colgroup> 
+  <tbody> 
+   <tr> 
+    <td class="tableblock halign-left valign-top"> 
+     <div> 
+      <div class="paragraph"> 
+       <p><strong>扩展级别 1. 两个 blocks 部署在同一个应用服务内</strong></p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>这是使用标准<a href="fast_deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/fast_deployment.html">快速部署</a>流程的最简单情况。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>在这种情况下，<strong>Web Client</strong> 和 <strong>Middleware</strong> 之间的数据传输性能可以达到最大化，因为当启用 <a href="app_properties_reference.html#cuba.useLocalServiceInvocation" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html#cuba.useLocalServiceInvocation">cuba.useLocalServiceInvocation</a> 应用程序属性时，可以跳过网络堆栈直接调用 Middleware 服务。</p> 
+      </div> 
+     </div></td> 
+    <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image"><img src="scaling_1.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/scaling_1.png" alt="scaling_1"></span></p></td> 
+   </tr> 
+   <tr> 
+    <td class="tableblock halign-left valign-top"> 
+     <div> 
+      <div class="paragraph"> 
+       <p><strong>扩展级别 2. Middleware 和 web 客户端部署在不同的应用程序服务内</strong></p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>这个选择可以在两个应用服务器之间分散负载，从而更好的使用两个服务器的资源。还有，用这种部署方式从 web 用户来的负载会对其它进程的执行影响小一些。这里的其它进程是指处理其它客户端类型、运行<a href="scheduled_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scheduled_tasks.html">计划任务</a>还有潜在可能的一些从中间层（middle layer）来的集成任务（integration tasks）。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>对服务器资源的要求：</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>Tomcat 1 (Web 客户端):</p> 
+         <div class="ulist"> 
+          <ul> 
+           <li> <p>内存大小 – 按比例分配给同时在线的用户</p> </li> 
+           <li> <p>CPU – 按照使用的强度</p> </li> 
+          </ul> 
+         </div> </li> 
+        <li> <p>Tomcat 2 (Middleware):</p> 
+         <div class="ulist"> 
+          <ul> 
+           <li> <p>内存大小 – 固定大小，而且相对来说不大</p> </li> 
+           <li> <p>CPU – 取决于 web 客户端和其它进程的使用强度</p> </li> 
+          </ul> 
+         </div> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>在这种部署选择或者更复杂的部署情况下，web 客户端的 <a href="app_properties_reference.html#cuba.useLocalServiceInvocation" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html#cuba.useLocalServiceInvocation">cuba.useLocalServiceInvocation</a> 应用程序属性应该设置成 <code>false</code>，<a href="app_properties_reference.html#cuba.connectionUrlList" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html#cuba.connectionUrlList">cuba.connectionUrlList</a> 属性需要包含 Middleware block 的 URL。</p> 
+      </div> 
+     </div></td> 
+    <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image"><img src="scaling_2.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/scaling_2.png" alt="scaling_2"></span></p></td> 
+   </tr> 
+   <tr> 
+    <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>扩展级别 3. Web 客户端集群搭配单一 Middleware 服务</strong> </p><p class="tableblock">这种部署选择是用在，由于并发用户数太大导致 Web 客户端的内存需求超过了单一 JVM 的承载能力的场景。集群中多个 Web 客户端启动后，用户连接通过负载均衡来处理。所有的 Web 客户端都连接同一个 Middleware 服务器。 </p><p class="tableblock">多个 Web 客户端自动提供了一定级别的容错。但是，不支持在客户端之间复制 HTTP 会话，如果有一个 web 客户端服务器计划外宕机了，所有连到这个服务器的用户需要重新登录应用程序。 </p><p class="tableblock">这个部署选择的配置在 <a href="cluster_webclient.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cluster_webclient.html">配置 Web 客户端集群</a> 介绍。</p></td> 
+    <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image"><img src="scaling_3.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/scaling_3.png" alt="scaling_3"></span></p></td> 
+   </tr> 
+   <tr> 
+    <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>扩展级别 4. Web 客户端集群搭配 Middleware 集群</strong> </p><p class="tableblock">这个方案是最强大的部署选择，能提供全面的 Web 客户端和 Middleware 容错性和负载均衡。 </p><p class="tableblock">连接到 Web 客户端的用户通过负载均衡接入。多个 Web 客户端服务器跟 Middleware 集群协作提供服务。Middleware 服务不需要额外的负载均衡 - 通过 <a href="app_properties_reference.html#cuba.connectionUrlList" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html#cuba.connectionUrlList">cuba.connectionUrlList</a> 应用程序属性已经足够定义 Middleware 服务器 URL 列表。另外还可通过<a href="cluster_mw_zk.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cluster_mw_zk.html">集成 Apache ZooKeeper 插件</a>用来做 Middleware 服务的动态发现。 </p><p class="tableblock">多个 Middleware 服务会交换用户会话、锁等信息。这样的话，Middleware 可以提供全容错 - 其中一台服务宕机之后，另一台可用的 Middleware 服务会接过用户的请求继续处理，从而不会影响终端用户的感受。 </p><p class="tableblock">这个部署选择的配置在 <a href="cluster_mw.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cluster_mw.html">配置 Middleware 集群</a> 介绍。</p></td> 
+    <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image"><img src="scaling_4.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/scaling_4.png" alt="scaling_4"></span></p></td> 
+   </tr> 
+  </tbody> 
+ </table>    
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="cluster_webclient.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cluster_webclient.html">5.6.1. 配置 Web 客户端集群</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

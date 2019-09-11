@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>Web 登录 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/web_login.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/web_login.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/web_login.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_screens.html">界面和界面片段（Fragments）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_vcl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_vcl.html">可视化组件库</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_data.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data.html">数据组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_facets.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_facets.html">非可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">操作以及操作接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_dialogs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_dialogs.html">对话框消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_notifications.html">通知消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="background_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/background_tasks.html">后台任务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_themes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_themes.html">主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="html-attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/html-attributes.html">可视化组件的 DOM 和 CSS 属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="shortcuts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/shortcuts.html">键盘快捷键</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="url_history_navigation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/url_history_navigation.html">URL 历史及导航</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="composite_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composite_components.html">组合组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pluggable_component_factories.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pluggable_component_factories.html">插件工厂</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="webComponentsHelper.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/webComponentsHelper.html">使用 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="own_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_components.html">自定义可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_web.html">通用 UI 基础设施</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html" class='toc-highlighted'>Web 登录</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">匿名访问界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="unsupported_browser_page.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/unsupported_browser_page.html">不支持浏览器的界面</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_screens.html">界面和界面片段（Fragments）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_vcl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_vcl.html">可视化组件库</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_data.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data.html">数据组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_facets.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_facets.html">非可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">操作以及操作接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_dialogs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_dialogs.html">对话框消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_notifications.html">通知消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="background_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/background_tasks.html">后台任务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_themes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_themes.html">主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="html-attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/html-attributes.html">可视化组件的 DOM 和 CSS 属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="shortcuts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/shortcuts.html">键盘快捷键</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="url_history_navigation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/url_history_navigation.html">URL 历史及导航</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="composite_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composite_components.html">组合组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pluggable_component_factories.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pluggable_component_factories.html">插件工厂</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="webComponentsHelper.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/webComponentsHelper.html">使用 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="own_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_components.html">自定义可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_web.html">通用 UI 基础设施</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html" class='toc-highlighted'>Web 登录</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">匿名访问界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="unsupported_browser_page.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/unsupported_browser_page.html">不支持浏览器的界面</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect3"> 
+ <h4 id="web_login">3.5.19. Web 登录</h4> 
+ <div class="paragraph"> 
+  <p>本节介绍 Web 客户端身份验证的工作原理以及如何在项目中进行扩展。有关中间层身份验证的信息，请参阅<a href="login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/login.html">登录</a>。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>Web 客户端 block 的登录过程的实现机制如下：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><code>ConnectionImpl</code> 实现了 <code>Connection</code>。</p> </li> 
+   <li> <p><code>LoginProvider</code> 实现。</p> </li> 
+   <li> <p><code>HttpRequestFilter</code> 实现。</p> </li> 
+  </ul> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="WebLoginStructure.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/WebLoginStructure.png" alt="WebLoginStructure"> 
+  </div> 
+  <div class="title">
+    Figure 28. Web 客户端的登录机制 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>Web 登录子系统的主要接口是 <code>Connection</code>，它包含以下关键方法：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><strong>login()</strong> - 验证用户、启动会话并更改连接状态。</p> </li> 
+   <li> <p><strong>logout()</strong> - 退出系统。</p> </li> 
+   <li> <p><strong>substituteUser()</strong> - 用另一个用户替换当前会话中的用户。此方法会创建一个新的 <strong>UserSession</strong> 实例，但会话 ID 不变。</p> </li> 
+   <li> <p><strong>getSession()</strong> - 获取当前用户会话。</p> </li> 
+  </ul> 
+ </div> 
+ <div class="paragraph"> 
+  <p>成功登录后，<strong>Connection</strong> 将 <strong>UserSession</strong> 对象存储到 <code>VaadinSession</code> 的属性中并设置 <code>SecurityContext</code>。<strong>Connection</strong> 对象被绑定到 <code>VaadinSession</code>，因此无法从非 UI 线程使用它，如果在非 UI 线程调用 <code>login/logout</code> ，则会抛出 <strong>IllegalConcurrentAccessException</strong>。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>通常，登录是通过 <code>AppLoginWindow</code> 界面执行的，该界面支持使用用户名/密码和“记住我”凭据登录。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>Connection</code> 的默认实现是 <code>ConnectionImpl</code>，它将登录委托给 <code>LoginProvider</code> 实例链。<code>LoginProvider</code> 是一个可以处理特定 <code>Credentials</code> 实现的登录模块，它还有一个特殊的 <code>supports()</code> 方法，允许调用者查询它是否支持给定的 <code>Credentials</code> 类型。</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="WebLoginProcedure.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/WebLoginProcedure.png" alt="WebLoginProcedure"> 
+  </div> 
+  <div class="title">
+    Figure 29. 标准用户登录过程 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>标准用户登录过程：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p>用户输入用户名和密码。</p> </li> 
+   <li> <p>Web 客户端 block 创建一个 <code>LoginPasswordCredentials</code> 对象，将用户名和密码传递给其构造函数，并使用此凭据调用 <code>Connection.login()</code> 方法。</p> </li> 
+   <li> <p><code>Connection</code> 查找对象 <code>LoginProvider</code> 对象链。 这种情况下使用的是 <code>LoginPasswordLoginProvider</code> ，它支持 <code>LoginPasswordCredentials</code> 凭据。<code>LoginPasswordLoginProvider</code> 使用 <code>PasswordEncryption</code> bean 的 <code>getPlainHash()</code> 方法散列密码，并调用 <code>AuthenticationService.login(Credentials)</code>。 根据 <a href="app_properties_reference.html#cuba.checkPasswordOnClient" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html#cuba.checkPasswordOnClient">cuba.checkPasswordOnClient</a>属性设置，它要使用户名和密码调用 <code>AuthenticationService.login(Credentials)</code> 方法；或者通过用户名加载 <code>User</code> 实体、根据加载的密码哈希验证密码，验证通过后使用 <code>TrustedClientCredentials</code> 和 <a href="app_properties_reference.html#cuba.trustedClientPassword" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html#cuba.trustedClientPassword">cuba.trustedClientPassword</a>作为可信客户端登录。</p> </li> 
+   <li> <p>如果验证成功，则创建的具有活动<a href="userSession.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/userSession.html">UserSession</a>的 <code>AuthenticationDetails</code> 实例将被回传给 <code>Connection</code>。</p> </li> 
+   <li> <p><code>Connection</code> 创建一个 <code>ClientUserSession</code> 包装器并将其设置到 <code>VaadinSession</code> 的属性中。</p> </li> 
+   <li> <p><code>Connection</code> 创建一个 <code>SecurityContext</code> 实例并将其设置为 <code>AppContext</code>。</p> </li> 
+   <li> <p><code>Connection</code> 触发 <code>StateChangeEvent</code>，此事件会触发 UI 更新和 <code>AppMainWindow</code> 初始化。</p> </li> 
+  </ul> 
+ </div> 
+ <div class="paragraph"> 
+  <p>所有 <code>LoginProvider</code> 实现必须：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p>使用 <code>Credentials</code> 对象验证用户。</p> </li> 
+   <li> <p>使用 <code>AuthenticationService</code> 启动新用户会话或返回另一个活动会话（例如，匿名的）。</p> </li> 
+   <li> <p>返回身份验证详细信息，如果无法使用此 <code>Credentials</code> 对象登录用户，则返回空，例如，如果登录提供程序已被禁用或未正确配置。</p> </li> 
+   <li> <p>如果出现错误的 <code>Credentials</code>，则抛出 <code>LoginException</code> 或将 <code>LoginException</code> 从中间件传递给调用者。</p> </li> 
+  </ul> 
+ </div> 
+ <div id="web_http_filter" class="paragraph"> 
+  <p><code>HttpRequestFilter</code> - bean 的标记接口，这种 bean 将作为 HTTP 过滤器自动被添加到应用程序过滤器链： <a href="javascript:if(confirm('https://docs.oracle.com/javaee/6/api/javax/servlet/Filter.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://docs.oracle.com/javaee/6/api/javax/servlet/Filter.html'" tppabs="https://docs.oracle.com/javaee/6/api/javax/servlet/Filter.html" class="bare" target="_blank">https://docs.oracle.com/javaee/6/api/javax/servlet/Filter.html</a> 。可以使用它来实现其它形式的身份验证、对 HTTP 请求和响应进行预处理或后处理。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>要添加额外的 <code>Filter</code> ， 可以创建 Spring Framework 组件并实现 <code>HttpRequestFilter</code> 接口：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Component</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">CustomHttpFilter</span> <span class="directive">implements</span> HttpRequestFilter {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> init(FilterConfig filterConfig) <span class="directive">throws</span> ServletException {
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> doFilter(ServletRequest request, ServletResponse response,
+                         FilterChain chain)
+            <span class="directive">throws</span> <span class="exception">IOException</span>, ServletException {
+        <span class="comment">// delegate to the next filter/servlet</span>
+        chain.doFilter(request, response);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> destroy() {
+    }
+}</code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>请注意，最简单的实现必须将执行委托给 <code>FilterChain</code>，否则应用程序将无法工作。默认情况下，作为 <code>HttpRequestFilter</code> bean 被添加的过滤器将不会收到对 <code>VAADIN</code> 目录和 <code>cuba.web.cubaHttpFilterBypassUrls</code> app 属性中指定的其它路径的请求。</p> 
+ </div> 
+ <div id="built_in_login_providers" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     内置登录提供程序 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>平台包含以下 <code>LoginProvider</code> 接口的实现：</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>AnonymousLoginProvider</code> - 为不需登录的用户提供匿名登录。</p> </li> 
+        <li> <p><code>LoginPasswordLoginProvider</code> -将登录委托给使用 <code>LoginPasswordCredentials</code> 的 <code>AuthenticationService</code>。</p> </li> 
+        <li> <p><code>RememberMeLoginProvider</code>- 将登录委托给使用 <code>RememberMeCredentials</code> 的 <code>AuthenticationService</code>。</p> </li> 
+        <li> <p><code>LdapLoginProvider</code> - 授受 <code>LoginPasswordCredentials</code> 参数，使用 LDAP 执行身份验证并将登录委托给使用 <code>TrustedClientCredentials</code> 的 <code>AuthenticationService</code> 服务。</p> </li> 
+        <li> <p><code>ExternalUserLoginProvider</code> - 授受 <code>ExternalUserCredentials</code> 参数，将登录委托给使用 <code>TrustedClientCredentials</code> 的 <code>AuthenticationService</code> 服务。可使用提供的用户名执行登录。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>所有实现都使用 <code>AuthenticationService.login()</code> 创建一个活动的用户会话。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>可以使用 Spring Framework 的机制覆盖它们中的任何一个。</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="web_login_events" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     事件 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p><code>Connection</code> 的标准实现 - <code>ConnectionImpl</code> 在登录过程中触发以下应用程序<a href="events.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/events.html">事件</a>：</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>BeforeLoginEvent</code> / <code>AfterLoginEvent</code></p> </li> 
+        <li> <p><code>LoginFailureEvent</code></p> </li> 
+        <li> <p><code>UserConnectedEvent</code> / <code>UserDisconnectedEvent</code></p> </li> 
+        <li> <p><code>UserSessionStartedEvent</code> / <code>UserSessionFinishedEvent</code></p> </li> 
+        <li> <p><code>UserSessionSubstitutedEvent</code></p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p><code>BeforeLoginEvent</code> 和 <code>LoginFailureEvent</code> 的事件处理程序可能抛出 <code>LoginException</code> 来取消登录过程或覆盖初始登录失败异常。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>例如，可以使用 <code>BeforeLoginEvent</code> 实现只允许登录名中包含有公司域名的用户登录 Web 客户端。</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Component</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">BeforeLoginEventListener</span> {
+    <span class="annotation">@Order</span>(<span class="integer">10</span>)
+    <span class="annotation">@EventListener</span>
+    <span class="directive">protected</span> <span class="type">void</span> onBeforeLogin(BeforeLoginEvent event) <span class="directive">throws</span> <span class="exception">LoginException</span> {
+        <span class="keyword">if</span> (event.getCredentials() <span class="keyword">instanceof</span> LoginPasswordCredentials) {
+            LoginPasswordCredentials loginPassword = (LoginPasswordCredentials) event.getCredentials();
+
+            <span class="keyword">if</span> (loginPassword.getLogin() != <span class="predefined-constant">null</span>
+                    &amp;&amp; !loginPassword.getLogin().contains(<span class="string"><span class="delimiter">"</span><span class="content">@company</span><span class="delimiter">"</span></span>)) {
+                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">LoginException</span>(
+                        <span class="string"><span class="delimiter">"</span><span class="content">Only users from @company are allowed to login</span><span class="delimiter">"</span></span>);
+            }
+        }
+    }
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>此外，标准应用程序类 - <code>DefaultApp</code> 会触发以下事件：</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>AppInitializedEvent</code> - 在 <code>App</code> 初始化后触发，每个 HTTP 会话执行一次。</p> </li> 
+        <li> <p><code>AppStartedEvent</code> - 在以匿名用户身份登录进行第一次请求处理时触发。事件处理器可以使用绑定到 <code>App</code> 的 <code>Connection</code> 对象来完成用户登录。</p> </li> 
+        <li> <p><code>AppLoggedInEvent</code> - 用户登录成功时的 <code>App</code> UI 初始化后触发。</p> </li> 
+        <li> <p><code>AppLoggedOutEvent</code> - 用户注销时的 <code>App</code> UI 初始化后触发。</p> </li> 
+        <li> <p><code>SessionHeartbeatEvent</code> - 收到来自客户端 Web 浏览器的心跳请求时触发。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p><code>AppStartedEvent</code> 可用于使用第三方认证系统实现 SSO 登录，例如 Jasig CAS。通常，它与自定义 <code>HttpRequestFilter</code> bean 一起使用，该 bean 应收集并提供其它身份验证数据。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>我们假设：如果用户有一个特殊的 cookie 值 - <code>PROMO_USER</code>，应用程序将自动登录。</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Order</span>(<span class="integer">10</span>)
+<span class="annotation">@Component</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">AppStartedEventListener</span> <span class="directive">implements</span> ApplicationListener&lt;AppStartedEvent&gt; {
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> PROMO_USER_COOKIE = <span class="string"><span class="delimiter">"</span><span class="content">PROMO_USER</span><span class="delimiter">"</span></span>;
+
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> <span class="predefined-type">Logger</span> log;
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> onApplicationEvent(AppStartedEvent event) {
+        <span class="predefined-type">String</span> promoUserLogin = event.getApp().getCookieValue(PROMO_USER_COOKIE);
+        <span class="keyword">if</span> (promoUserLogin != <span class="predefined-constant">null</span>) {
+            <span class="predefined-type">Connection</span> connection = event.getApp().getConnection();
+            <span class="keyword">if</span> (!connection.isAuthenticated()) {
+                <span class="keyword">try</span> {
+                    connection.login(<span class="keyword">new</span> ExternalUserCredentials(promoUserLogin));
+                } <span class="keyword">catch</span> (<span class="exception">LoginException</span> e) {
+                    log.warn(<span class="string"><span class="delimiter">"</span><span class="content">Unable to login promo user {}: {}</span><span class="delimiter">"</span></span>, promoUserLogin, e.getMessage());
+                } <span class="keyword">finally</span> {
+                    event.getApp().removeCookie(PROMO_USER_COOKIE);
+                }
+            }
+        }
+    }
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>因此，如果用户拥有“PROMO_USER”cookie 并打开应用程序，它们将自动以 <code>promoUserLogin</code> 身份登录。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>如果要在登录和 UI 初始化后执行其它操作，可以使用 <code>AppLoggedInEvent</code>。 需要注意的是，在事件处理程序中必须检查用户是否进行了身份验证，因为所有事件也会对 <code>anonymous</code> 用户触发。</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="web_login_extension_points" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     扩展点 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>可以使用以下类型的扩展点扩展登录机制：</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>Connection</code> - 替换现有的 <code>ConnectionImpl</code>。</p> </li> 
+        <li> <p><code>HttpRequestFilter</code> - 实现额外的 <code>HttpRequestFilter</code>。</p> </li> 
+        <li> <p><code>LoginProvider</code> 实现 - 实现额外的或替换现有的 <code>LoginProvider</code>。</p> </li> 
+        <li> <p>事件 - 为一个可用的<a href="#web_login_events">事件</a>实现事件处理器。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>可以使用 Spring Framework 机制替换现有 bean，例如通过在 <strong>web</strong> 模块的 Spring XML 配置中注册新 bean。</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">cuba_LoginPasswordLoginProvider</span><span class="delimiter">"</span></span>
+      <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">com.company.demo.web.CustomLoginProvider</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span></code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">3.5.20. 匿名访问界面</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

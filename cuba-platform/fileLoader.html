@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>FileLoader 接口 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/features/file_storage/fileLoader.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/features/file_storage/fileLoader.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/features/file_storage/fileLoader.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dynamic_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dynamic_attributes.html">动态属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="email_sending.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/email_sending.html">发送邮件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_inspector.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_inspector.html">实体探查器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="entity_log.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_log.html">实体日志</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="entity_snapshots.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_snapshots.html">实体快照</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_statistics.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_statistics.html">实体统计</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entityImportExport.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityImportExport.html">以 JSON 格式导入和导出实体</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="file_storage.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/file_storage.html">文件存储</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="file_upload.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/file_upload.html">上传文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="file_download.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/file_download.html">下载文件</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="fileLoader.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/fileLoader.html" class='toc-highlighted'>FileLoader 接口</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="file_storage_impl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/file_storage_impl.html">标准文件存储实现</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="aws_file_storage_impl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/aws_file_storage_impl.html">Amazon S3 文件存储实现</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="folders_pane.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/folders_pane.html">文件夹面板</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="credits.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/credits.html">关于软件组件信息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="myBatis.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/myBatis.html">MyBatis 集成</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pessimistic_locking.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pessimistic_locking.html">悲观锁</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="queryRunner.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/queryRunner.html">使用 QueryRunner 执行 SQL</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="scheduled_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scheduled_tasks.html">计划任务的执行</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="link_to_screen.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/link_to_screen.html">界面链接</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="uniqueNumbers.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/uniqueNumbers.html">序列生成</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="userSession_log.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/userSession_log.html">用户会话日志</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dynamic_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dynamic_attributes.html">动态属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="email_sending.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/email_sending.html">发送邮件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_inspector.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_inspector.html">实体探查器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="entity_log.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_log.html">实体日志</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="entity_snapshots.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_snapshots.html">实体快照</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_statistics.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_statistics.html">实体统计</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entityImportExport.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityImportExport.html">以 JSON 格式导入和导出实体</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="file_storage.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/file_storage.html">文件存储</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="file_upload.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/file_upload.html">上传文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="file_download.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/file_download.html">下载文件</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="fileLoader.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/fileLoader.html" class='toc-highlighted'>FileLoader 接口</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="file_storage_impl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/file_storage_impl.html">标准文件存储实现</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="aws_file_storage_impl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/aws_file_storage_impl.html">Amazon S3 文件存储实现</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="folders_pane.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/folders_pane.html">文件夹面板</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="credits.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/credits.html">关于软件组件信息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="myBatis.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/myBatis.html">MyBatis 集成</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pessimistic_locking.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pessimistic_locking.html">悲观锁</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="queryRunner.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/queryRunner.html">使用 QueryRunner 执行 SQL</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="scheduled_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scheduled_tasks.html">计划任务的执行</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="link_to_screen.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/link_to_screen.html">界面链接</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="uniqueNumbers.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/uniqueNumbers.html">序列生成</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="userSession_log.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/userSession_log.html">用户会话日志</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect4"> 
+ <h5 id="fileLoader">3.9.8.3. FileLoader 接口</h5> 
+ <div class="paragraph"> 
+  <p>使用 <code>FileLoader</code> 接口可以在中间层和客户端层使用相同的一组方法处理文件存储。文件的上传和下载是使用“流”的方式执行的：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><code>saveStream()</code> – 将 <code>InputStream</code> 内容保存到文件存储中。</p> </li> 
+   <li> <p><code>openStream()</code> – 返回输入流以从文件存储加载文件内容。</p> </li> 
+  </ul> 
+ </div> 
+ <div class="admonitionblock tip"> 
+  <table> 
+   <tbody> 
+    <tr> 
+     <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+     <td class="content"> 
+      <div class="paragraph"> 
+       <p><code>FileLoader</code> 的客户端和服务端实现遵循通用规则：始终通过在输入和输出流之间复制数据来进行文件传输。在应用程序的任何层，文件都不会完全加载到内存中，从而可以传输几乎任何大小的文件。</p> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="paragraph"> 
+  <p>作为使用 <code>FileLoader</code> 的一个例子，我们考虑一个简单的任务，将用户输入的内容保存到文本文件中，并在同一界面上的另一个字段中显示文件内容。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>该界面包含两个 <code>textArea</code> 字段。假设用户在第一个 <code>textArea</code> 中输入文本，单击下面的 <code>buttonIn</code>，文本将保存到 <code>FileStorage</code>。通过单击 <code>buttonOut</code>，第二个 <code>textArea</code> 将显示保存文件的内容。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>下面是上述界面的 XML 描述片段：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;hbox</span> <span class="attribute-name">margin</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span>
+      <span class="attribute-name">spacing</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;vbox</span> <span class="attribute-name">spacing</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;textArea</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">textAreaIn</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;button</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">buttonIn</span><span class="delimiter">"</span></span>
+                <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">"</span><span class="content">Save text in file</span><span class="delimiter">"</span></span>
+                <span class="attribute-name">invoke</span>=<span class="string"><span class="delimiter">"</span><span class="content">onButtonInClick</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/vbox&gt;</span>
+    <span class="tag">&lt;vbox</span> <span class="attribute-name">spacing</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;textArea</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">textAreaOut</span><span class="delimiter">"</span></span>
+                  <span class="attribute-name">editable</span>=<span class="string"><span class="delimiter">"</span><span class="content">false</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;button</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">buttonOut</span><span class="delimiter">"</span></span>
+                <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">"</span><span class="content">Show the saved text</span><span class="delimiter">"</span></span>
+                <span class="attribute-name">invoke</span>=<span class="string"><span class="delimiter">"</span><span class="content">onButtonOutClick</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/vbox&gt;</span>
+<span class="tag">&lt;/hbox&gt;</span></code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>界面控制器包含两个按钮上调用的方法：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p>在 <code>onButtonInClick()</code> 方法中，我们用第一个 <code>textArea</code> 的输入内容创建一个字节数组。然后我们创建一个 <code>FileDescriptor</code> 对象，并使用其属性定义新文件名、扩展名、大小和创建日期。</p> 
+    <div class="paragraph"> 
+     <p>然后我们使用 <code>FileLoader</code> 的 <code>saveStream()</code> 方法保存新文件，将 <code>FileDescriptor</code> 传递给它，并使用 <code>InputStream</code> supplier 提供文件内容。最后使用 <code>DataManager</code> 接口将 <code>FileDescriptor</code> 提交到数据存储。</p> 
+    </div> </li> 
+   <li> <p>在 <code>onButtonOutClick()</code> 方法中，我们使用 <code>FileLoader</code> 的 <code>openStream()</code> 方法提取保存的文件的内容。然后我们在第二个 <code>textArea</code> 中显示文件的内容。</p> </li> 
+  </ul> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.entity.FileDescriptor</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.global.DataManager</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.global.FileLoader</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.global.FileStorageException</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.global.Metadata</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.components.AbstractWindow</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.components.ResizableTextArea</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.upload.FileUploadingAPI</span>;
+<span class="keyword">import</span> <span class="include">org.apache.commons.io.IOUtils</span>;
+
+<span class="keyword">import</span> <span class="include">javax.inject.Inject</span>;
+<span class="keyword">import</span> <span class="include">java.io.ByteArrayInputStream</span>;
+<span class="keyword">import</span> <span class="include">java.io.IOException</span>;
+<span class="keyword">import</span> <span class="include">java.io.InputStream</span>;
+<span class="keyword">import</span> <span class="include">java.util.Date</span>;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">FileLoaderScreen</span> <span class="directive">extends</span> AbstractWindow {
+
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> Metadata metadata;
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> FileLoader fileLoader;
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> DataManager dataManager;
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> ResizableTextArea textAreaIn;
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> ResizableTextArea textAreaOut;
+
+    <span class="directive">private</span> <span class="predefined-type">FileDescriptor</span> fileDescriptor;
+
+    <span class="directive">public</span> <span class="type">void</span> onButtonInClick() {
+        <span class="type">byte</span><span class="type">[]</span> bytes = textAreaIn.getRawValue().getBytes();
+
+        fileDescriptor = metadata.create(<span class="predefined-type">FileDescriptor</span>.class);
+        fileDescriptor.setName(<span class="string"><span class="delimiter">"</span><span class="content">Input.txt</span><span class="delimiter">"</span></span>);
+        fileDescriptor.setExtension(<span class="string"><span class="delimiter">"</span><span class="content">txt</span><span class="delimiter">"</span></span>);
+        fileDescriptor.setSize((<span class="type">long</span>) bytes.length);
+        fileDescriptor.setCreateDate(<span class="keyword">new</span> <span class="predefined-type">Date</span>());
+
+        <span class="keyword">try</span> {
+            fileLoader.saveStream(fileDescriptor, () -&gt; <span class="keyword">new</span> <span class="predefined-type">ByteArrayInputStream</span>(bytes));
+        } <span class="keyword">catch</span> (FileStorageException e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">RuntimeException</span>(e);
+        }
+
+        dataManager.commit(fileDescriptor);
+    }
+
+    <span class="directive">public</span> <span class="type">void</span> onButtonOutClick() {
+        <span class="keyword">try</span> {
+            <span class="predefined-type">InputStream</span> inputStream = fileLoader.openStream(fileDescriptor);
+            textAreaOut.setValue(IOUtils.toString(inputStream));
+        } <span class="keyword">catch</span> (FileStorageException | <span class="exception">IOException</span> e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">RuntimeException</span>(e);
+        }
+    }
+}</code></pre> 
+  </div> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="fileLoader_recipe.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/fileLoader_recipe.png" alt="fileLoader recipe"> 
+  </div> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="file_storage_impl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/file_storage_impl.html">3.9.8.4. 标准文件存储实现</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

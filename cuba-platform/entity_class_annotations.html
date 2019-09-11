@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>ç±»æ³¨è§£ - CUBA æ¡†æ¶å¼€å‘è€…æ‰‹å†Œ</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA æ¡†æ¶å¼€å‘è€…æ‰‹å†Œ</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/common_components/data_model/entity_annotations/entity_class_annotations.adoc  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/common_components/data_model/entity_annotations/entity_class_annotations.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/common_components/data_model/entity_annotations/entity_class_annotations.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    å¤§å°å†™ï¼š
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> åŒºåˆ†
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> ä¸åŒºåˆ†
+                </div>
+                <!--<input type="submit" class="submit" value="æœç´¢">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">é¦–é¡µ</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">åºè¨€</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">å®‰è£…</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">å¿«é€Ÿå¼€å§‹</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">æ¡†æ¶è¯¦ç»†ä»‹ç»</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">æ¶æ„</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">é€šç”¨ç»„ä»¶</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="data_model.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/data_model.html">æ•°æ®æ¨¡å‹</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="base_entity_classes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/base_entity_classes.html">åŸºç¡€å®ä½“ç±»</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="entity_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_annotations.html">å®ä½“æ³¨è§£</a></div>
+<ul>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="entity_class_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_class_annotations.html" class='toc-highlighted'>ç±»æ³¨è§£</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_attr_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_attr_annotations.html">å±æ€§æ³¨è§£</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="enum_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/enum_attributes.html">æšä¸¾å±æ€§</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="soft_deletion.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/soft_deletion.html">è½¯åˆ é™¤</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="metadata_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/metadata_framework.html">å…ƒæ•°æ®æ¡†æ¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">è§†å›¾</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="managed_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/managed_beans.html">æ‰˜ç®¡ Bean</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="jmx_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_beans.html">JMX Beans</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="infrastructure_interfaces.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/infrastructure_interfaces.html">åŸºç¡€è®¾æ–½æ¥å£</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="appContext.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/appContext.html">åº”ç”¨ç¨‹åºä¸Šä¸‹æ–‡(AppContext)</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_lifecycle_events.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_lifecycle_events.html">åº”ç”¨ç¨‹åºç”Ÿå‘½å‘¨æœŸäº‹ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties.html">åº”ç”¨ç¨‹åºå±æ€§</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="localization.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/localization.html">æ¶ˆæ¯æœ¬åœ°åŒ–</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="authentication.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/authentication.html">ç”¨æˆ·è®¤è¯</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="exception_handling.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/exception_handling.html">å¼‚å¸¸å¤„ç†</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="bean_validation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/bean_validation.html">Bean éªŒè¯</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_attribute_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_attribute_access.html">å®ä½“å±æ€§è®¿é—®æ§åˆ¶</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">æ•°æ®åº“ç»„ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">ä¸­é—´ä»¶ç»„ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">é€šç”¨ç”¨æˆ·ç•Œé¢ï¼ˆGUIï¼‰</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI å†å²ç‰ˆæœ¬ API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">å‰ç«¯ç”¨æˆ·ç•Œé¢</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal ç»„ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">å¹³å°åŠŸèƒ½</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">åŠŸèƒ½æ‰©å±•</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">åº”ç”¨ç¨‹åºå¼€å‘</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">åº”ç”¨ç¨‹åºéƒ¨ç½²</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">å®‰å…¨å­ç³»ç»Ÿ</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: é¡¹ç›®é…ç½®æ–‡ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: åº”ç”¨ç¨‹åºå±æ€§</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: ç³»ç»Ÿå‚æ•°</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: ç§»é™¤çš„éƒ¨åˆ†</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">æœ¯è¯­è¡¨</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">é¦–é¡µ</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">åºè¨€</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">å®‰è£…</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">å¿«é€Ÿå¼€å§‹</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">æ¡†æ¶è¯¦ç»†ä»‹ç»</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">æ¶æ„</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">é€šç”¨ç»„ä»¶</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="data_model.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/data_model.html">æ•°æ®æ¨¡å‹</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="base_entity_classes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/base_entity_classes.html">åŸºç¡€å®ä½“ç±»</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="entity_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_annotations.html">å®ä½“æ³¨è§£</a></div>
+<ul>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="entity_class_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_class_annotations.html" class='toc-highlighted'>ç±»æ³¨è§£</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_attr_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_attr_annotations.html">å±æ€§æ³¨è§£</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="enum_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/enum_attributes.html">æšä¸¾å±æ€§</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="soft_deletion.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/soft_deletion.html">è½¯åˆ é™¤</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="metadata_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/metadata_framework.html">å…ƒæ•°æ®æ¡†æ¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">è§†å›¾</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="managed_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/managed_beans.html">æ‰˜ç®¡ Bean</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="jmx_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_beans.html">JMX Beans</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="infrastructure_interfaces.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/infrastructure_interfaces.html">åŸºç¡€è®¾æ–½æ¥å£</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="appContext.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/appContext.html">åº”ç”¨ç¨‹åºä¸Šä¸‹æ–‡(AppContext)</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_lifecycle_events.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_lifecycle_events.html">åº”ç”¨ç¨‹åºç”Ÿå‘½å‘¨æœŸäº‹ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties.html">åº”ç”¨ç¨‹åºå±æ€§</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="localization.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/localization.html">æ¶ˆæ¯æœ¬åœ°åŒ–</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="authentication.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/authentication.html">ç”¨æˆ·è®¤è¯</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="exception_handling.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/exception_handling.html">å¼‚å¸¸å¤„ç†</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="bean_validation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/bean_validation.html">Bean éªŒè¯</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_attribute_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_attribute_access.html">å®ä½“å±æ€§è®¿é—®æ§åˆ¶</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">æ•°æ®åº“ç»„ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">ä¸­é—´ä»¶ç»„ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">é€šç”¨ç”¨æˆ·ç•Œé¢ï¼ˆGUIï¼‰</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI å†å²ç‰ˆæœ¬ API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">å‰ç«¯ç”¨æˆ·ç•Œé¢</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal ç»„ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">å¹³å°åŠŸèƒ½</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">åŠŸèƒ½æ‰©å±•</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">åº”ç”¨ç¨‹åºå¼€å‘</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">åº”ç”¨ç¨‹åºéƒ¨ç½²</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">å®‰å…¨å­ç³»ç»Ÿ</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: é¡¹ç›®é…ç½®æ–‡ä»¶</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: åº”ç”¨ç¨‹åºå±æ€§</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: ç³»ç»Ÿå‚æ•°</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: ç§»é™¤çš„éƒ¨åˆ†</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">æœ¯è¯­è¡¨</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect5"> 
+ <h6 id="entity_class_annotations">3.2.1.2.1. ç±»æ³¨è§£</h6> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/Embeddable.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/Embeddable.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/Embeddable.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="embeddable_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Embeddable 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>å®šä¹‰ä¸€ä¸ªä¸æ‰€å±å®ä½“å­˜å‚¨åœ¨åŒä¸€è¡¨ä¸­çš„åµŒå…¥å®ä½“ã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>åº”ä½¿ç”¨ <a href="#metaclass_annotation">@MetaClass</a> æ³¨è§£æ¥æŒ‡å®šå®ä½“åç§°ã€‚</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/EnableRestore.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/EnableRestore.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/EnableRestore.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="enableRestore_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @EnableRestore 
+   </dt> 
+   <dd> 
+    <p>è¡¨ç¤ºè½¯åˆ é™¤çš„å®ä½“å®ä¾‹æ˜¯å¦å¯ä»¥é€šè¿‡ <strong>Administration &gt; Data Recovery</strong> èœå•æ‰“å¼€çš„ <code>core$Entity.restore</code> ç•Œé¢è¿›è¡Œæ¢å¤ã€‚</p> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/Entity.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/Entity.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/Entity.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="entity_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Entity 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>å£°æ˜ä¸€ä¸ªç±»æ˜¯ä¸€ä¸ªæ•°æ®æ¨¡å‹å®ä½“ã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>å‚æ•°:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>name</code> â€“ å®ä½“çš„åç§°,å¿…é¡»å¸¦æœ‰å‰ç¼€ï¼Œä»¥ <code>$</code> ç¬¦å·åˆ†éš”å‰ç¼€ã€‚å»ºè®®ä½¿ç”¨é¡¹ç›®çš„ç®€ç§°ä½œä¸ºå‰ç¼€æ¥å½¢æˆå•ç‹¬çš„å‘½åç©ºé—´ã€‚</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>ä¾‹å¦‚:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Entity</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">sales$Customer</span><span class="delimiter">"</span></span>)</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/Extends.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/Extends.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/Extends.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="extends_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Extends 
+   </dt> 
+   <dd> 
+    <p>è¡¨ç¤ºè¯¥å®ä½“æ˜¯ä¸€ä¸ªå¯¹åŸºç¡€å®ä½“çš„æ‰©å±•ï¼Œåœ¨åº”ç”¨ç¨‹åºä¸­åº”è¯¥ä½¿ç”¨å®ƒæ¥ä»£æ›¿å…¶åŸºç¡€å®ä½“ã€‚å‚é˜… <a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">åŠŸèƒ½æ‰©å±•</a>ã€‚</p> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/DiscriminatorColumn.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/DiscriminatorColumn.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/DiscriminatorColumn.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="discriminatorColumn_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @DiscriminatorColumn 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>åœ¨ <code>SINGLE_TABLE</code> å’Œ <code>JOINED</code> ç»§æ‰¿ç­–ç•¥çš„æƒ…å†µä¸‹ï¼Œç”¨äºå®šä¹‰è´Ÿè´£åŒºåˆ†å®ä½“ç±»å‹çš„æ•°æ®åº“åˆ—ã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>å‚æ•°:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>name</code> â€“ é‰´åˆ«å™¨åˆ—åã€‚</p> </li> 
+        <li> <p><code>discriminatorType</code> â€“ é‰´åˆ«å™¨åˆ—çš„ç±»å‹ã€‚</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>ä¾‹å¦‚:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@DiscriminatorColumn</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">TYPE</span><span class="delimiter">"</span></span>, discriminatorType = DiscriminatorType.INTEGER)</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/DiscriminatorValue.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/DiscriminatorValue.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/DiscriminatorValue.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="discriminatorValue_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @DiscriminatorValue 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>å®šä¹‰æ­¤å®ä½“çš„é‰´åˆ«å™¨åˆ—å€¼ã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>ä¾‹å¦‚:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@DiscriminatorValue</span>(<span class="string"><span class="delimiter">"</span><span class="content">0</span><span class="delimiter">"</span></span>)</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/IdSequence.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/IdSequence.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/IdSequence.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="idsequence_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @IdSequence 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>å¦‚æœå®ä½“æ˜¯ <code>BaseLongIdEntity</code> æˆ– <code>BaseIntegerIdEntity</code> çš„å­ç±»ï¼Œåˆ™åº”æ˜ç¡®å®šä¹‰ç”¨äºç”Ÿæˆæ ‡è¯†ç¬¦çš„æ•°æ®åº“åºåˆ—åç§°ã€‚å¦‚æœå®ä½“æ²¡æœ‰æ­¤æ³¨è§£ï¼Œåˆ™æ¡†æ¶å°†è‡ªåŠ¨ç”Ÿæˆåç§°å¹¶åˆ›å»ºä¸€ä¸ªåºåˆ—ã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>å‚æ•°:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>name</code> â€“ åºåˆ—åç§°ã€‚</p> </li> 
+        <li> <p><code>cached</code> - å¯é€‰å‚æ•°ï¼Œå®šä¹‰åºåˆ—åº”è¯¥ä»¥ <a href="app_properties_reference.html#cuba.numberIdCacheSize" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html#cuba.numberIdCacheSize">cuba.numberIdCacheSize</a> é€’å¢ï¼Œå¹¶å°†æœªä½¿ç”¨çš„ ID å€¼ç¼“å­˜åœ¨å†…å­˜ä¸­ã€‚é»˜è®¤ä¸º Falseã€‚</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/Inheritance.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/Inheritance.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/Inheritance.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="inheritance_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Inheritance 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>å®šä¹‰å®ä½“ç±»çš„ç»§æ‰¿ç­–ç•¥ã€‚æ­¤æ³¨è§£åœ¨å®ä½“ç»§æ‰¿å±‚æ¬¡çš„æ ¹ç±»ä¸ŠæŒ‡å®šã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>å‚æ•°:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>strategy</code> â€“ ç»§æ‰¿ç­–ç•¥ï¼Œé»˜è®¤ä¸º <code>SINGLE_TABLE</code>ã€‚</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/Listeners.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/Listeners.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/Listeners.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="listeners_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Listeners 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>å®šä¹‰ç›‘å¬å™¨åˆ—è¡¨ï¼Œç”¨æ¥å“åº”ä¸­é—´<a href="app_tiers.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_tiers.html">å±‚</a>çš„å®ä½“å®ä¾‹ç”Ÿå‘½å‘¨æœŸäº‹ä»¶ã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>åœ¨æ³¨è§£å€¼ä¸­æŒ‡å®šç›‘å¬å™¨ bean åç§°ï¼Œå¯ä»¥æ˜¯å­—ç¬¦ä¸²æˆ–å­—ç¬¦ä¸²æ•°ç»„ã€‚è¯·å‚é˜…<a href="entity_listeners.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_listeners.html">å®ä½“ç›‘å¬å™¨</a>ã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>ä¾‹å¦‚:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Listeners</span>(<span class="string"><span class="delimiter">"</span><span class="content">sample_UserEntityListener</span><span class="delimiter">"</span></span>)</code></pre> 
+       </div> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Listeners</span>({<span class="string"><span class="delimiter">"</span><span class="content">sample_FooListener</span><span class="delimiter">"</span></span>,<span class="string"><span class="delimiter">"</span><span class="content">sample_BarListener</span><span class="delimiter">"</span></span>})</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/MappedSuperclass.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/MappedSuperclass.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/MappedSuperclass.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="mappedSuperclass_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @MappedSuperclass 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>è¡¨ç¤ºè¯¥ç±»ç”¨ä½œå…¶å®ƒå®ä½“ç±»çš„çˆ¶ç±»ï¼Œå…¶å±æ€§å¿…é¡»ç”¨ä½œåä»£å®ä½“çš„ä¸€éƒ¨åˆ†ã€‚è¿™ç§ç±»ä¸å…³è”ä»»ä½•ç‰¹å®šçš„æ•°æ®åº“è¡¨ã€‚</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/MetaClass.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/MetaClass.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/MetaClass.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="metaclass_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @MetaClass 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>ç”¨äºå£°æ˜éæŒä¹…åŒ–æˆ–<a href="#embeddable_annotation">åµŒå…¥</a>å®ä½“ï¼ˆä¹Ÿå°±æ˜¯ä¸èƒ½ç”¨ <code>@javax.persistence.Entity</code> æ³¨è§£ï¼‰</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>å‚æ•°:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>name</code> â€“ å®ä½“åç§°ï¼Œå¿…é¡»ä»¥ä¸€ä¸ªå‰ç¼€å¼€å¤´ï¼Œä»¥ <code>$</code> ç¬¦å·åˆ†éš”å‰ç¼€ã€‚å»ºè®®ä½¿ç”¨é¡¹ç›®çš„ç®€ç§°ä½œä¸ºå‰ç¼€æ¥å½¢æˆå•ç‹¬çš„å‘½åç©ºé—´ã€‚</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>ä¾‹å¦‚:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@MetaClass</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">sales$Customer</span><span class="delimiter">"</span></span>)</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/NamePattern.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/NamePattern.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/NamePattern.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="namePattern_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @NamePattern 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>å®šä¹‰å¦‚ä½•åˆ›å»ºè¡¨ç¤ºå•ä¸€å®ä½“çš„å­—ç¬¦ä¸²ã€‚å¯ä»¥è®¤ä¸ºæ˜¯åº”ç”¨ç¨‹åºçº§åˆ«çš„ <code>toString()</code> æ–¹æ³•ã€‚åœ¨ UI ä¸­åˆ°å¤„éƒ½ç”¨å¾—ä¸Šï¼Œæ¯”å¦‚åœ¨ç±»ä¼¼ <code>TextField</code> æˆ–è€… <code>LookupField</code> çš„å•ä¸€å­—æ®µä¸­éœ€è¦å±•ç¤ºä¸€ä¸ªå®ä½“ã€‚ä¹Ÿå¯ä»¥é€šè¿‡ç¼–ç¨‹çš„æ–¹å¼ä½¿ç”¨ <code>MetadataTools.getInstanceName()</code> æ–¹æ³•è·å–å®ä¾‹åç§°ã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>æ³¨è§£å€¼åº”è¯¥æ˜¯ <code>{0}|{1}</code> æ ¼å¼çš„å­—ç¬¦ä¸²ï¼Œå…¶ä¸­ï¼š</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>{0}</code> â€“ å¯ä»¥æœ‰ä¸¤ç§ç±»å‹çš„æ ¼å¼åŒ–å­—ç¬¦ä¸²ï¼š</p> 
+         <div class="ulist"> 
+          <ul> 
+           <li> <p>å¸¦æœ‰ <code>%s</code> å ä½ç¬¦çš„å­—ç¬¦ä¸²ï¼Œç”¨æ¥å¯¹å®ä½“å±æ€§è¿›è¡Œæ ¼å¼åŒ–ã€‚å±æ€§å€¼ä¼šæ ¹æ®å…¶ <a href="datatype.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datatype.html">datatypes</a> è¢«æ ¼å¼åŒ–æˆå­—ç¬¦ä¸²ã€‚</p> </li> 
+           <li> <p>å¸¦æœ‰ <code>#</code> å‰ç¼€çš„å¯¹è±¡æ–¹æ³•åç§°ã€‚æ–¹æ³•å¿…é¡»è¿”å› <code>String</code>ï¼Œå¹¶ä¸”æ²¡æœ‰å‚æ•°ã€‚</p> </li> 
+          </ul> 
+         </div> </li> 
+        <li> <p><code>{1}</code> - ä½¿ç”¨é€—å·åˆ†éš”çš„å±æ€§åç§°åˆ—è¡¨ï¼Œ <code>{0}</code> éƒ¨åˆ†å®šä¹‰çš„å­—ç¬¦ä¸²æ ¼å¼ä¸­çš„å˜é‡ä¸è¿™éƒ¨åˆ†çš„å­—æ®µåå¯¹åº”ã€‚å³ä½¿åœ¨ <code>{0}</code> ä¸­ä½¿ç”¨çš„æ˜¯æ–¹æ³•åï¼Œä»ç„¶éœ€è¦æ­¤å­—æ®µåˆ—è¡¨ï¼Œå› ä¸ºè¿™ä¸ªåˆ—è¡¨ä¹Ÿè¢«ç”¨äºæ„é€  <code>_minimal</code> <a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">è§†å›¾</a>ã€‚</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>ä¾‹å¦‚:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@NamePattern</span>(<span class="string"><span class="delimiter">"</span><span class="content">%s|name</span><span class="delimiter">"</span></span>)</code></pre> 
+       </div> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@NamePattern</span>(<span class="string"><span class="delimiter">"</span><span class="content">%s - %s|name,date</span><span class="delimiter">"</span></span>)</code></pre> 
+       </div> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@NamePattern</span>(<span class="string"><span class="delimiter">"</span><span class="content">#getCaption|login,name</span><span class="delimiter">"</span></span>)</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('https://docs.oracle.com/javaee/7/api/javax/annotation/PostConstruct.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://docs.oracle.com/javaee/7/api/javax/annotation/PostConstruct.html'" tppabs="https://docs.oracle.com/javaee/7/api/javax/annotation/PostConstruct.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="postConstruct_entity_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @PostConstruct 
+   </dt> 
+   <dd> 
+    <p>å¯ä»¥ä¸ºæ–¹æ³•æŒ‡å®šæ­¤æ³¨è§£ã€‚åœ¨ <a href="metadata.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/metadata.html">Metadata.create()</a> æ–¹æ³•åˆ›å»ºå®ä½“å®ä¾‹ä¹‹åå°†ç«‹å³è°ƒç”¨æ­¤æ–¹æ³•ã€‚å½“å®ä¾‹åˆå§‹åŒ–éœ€è¦è°ƒç”¨<a href="managed_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/managed_beans.html">æ‰˜ç®¡ Bean</a> æ—¶éå¸¸æ–¹ä¾¿ã€‚è¯·å‚é˜… <a href="init_values_in_class.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/init_values_in_class.html">å®ä½“å­—æ®µåˆå§‹åŒ–</a>ã€‚</p> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('https://docs.oracle.com/javaee/7/api/javax/persistence/PrimaryKeyJoinColumn.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://docs.oracle.com/javaee/7/api/javax/persistence/PrimaryKeyJoinColumn.html'" tppabs="https://docs.oracle.com/javaee/7/api/javax/persistence/PrimaryKeyJoinColumn.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="primaryKeyJoinColumn_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @PrimaryKeyJoinColumn 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>åœ¨ <code>JOINED</code> ç»§æ‰¿ç­–ç•¥çš„æƒ…å†µä¸‹ç”¨äºä¸ºå®ä½“æŒ‡å®šå¤–é”®åˆ—ï¼Œè¯¥å¤–é”®æ˜¯çˆ¶ç±»å®ä½“ä¸»é”®çš„å¼•ç”¨ã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>å‚æ•°:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>name</code> â€“ å®ä½“çš„å¤–é”®åˆ—çš„åç§°</p> </li> 
+        <li> <p><code>referencedColumnName</code> â€“ çˆ¶ç±»å®ä½“çš„ä¸»é”®åˆ—çš„åç§°</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>ä¾‹å¦‚:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@PrimaryKeyJoinColumn</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">CARD_ID</span><span class="delimiter">"</span></span>, referencedColumnName = <span class="string"><span class="delimiter">"</span><span class="content">ID</span><span class="delimiter">"</span></span>)</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/PublishEntityChangedEvents.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/PublishEntityChangedEvents.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/PublishEntityChangedEvents.html" class="api-docs-btn" target="_blank">API DOCS</a> 
+ </div> 
+ <div id="publishEntityChangedEvents_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @PublishEntityChangedEvents 
+   </dt> 
+   <dd> 
+    <p>è¡¨ç¤ºå®ä½“åœ¨æ•°æ®åº“æ”¹åŠ¨æ—¶ï¼Œæ¡†æ¶ä¼šå‘é€ <a href="entityChangedEvent.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityChangedEvent.html">EntityChangedEvent</a> äº‹ä»¶ã€‚</p> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/SystemLevel.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/SystemLevel.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/SystemLevel.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="systemLevel_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @SystemLevel 
+   </dt> 
+   <dd> 
+    <p>è¡¨ç¤ºè¯¥å®ä½“æ˜¯ç³»ç»Ÿçº§åˆ«çš„å®ä½“ï¼Œä¸èƒ½åœ¨å„ç§å®ä½“åˆ—è¡¨ä¸­è¿›è¡Œé€‰æ‹©ï¼Œä¾‹å¦‚<a href="gui_Filter.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Filter.html">é€šç”¨è¿‡æ»¤å™¨</a>å‚æ•°ç±»å‹æˆ–<a href="dynamic_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dynamic_attributes.html">åŠ¨æ€å±æ€§</a>ç±»å‹ã€‚</p> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('https://docs.oracle.com/javaee/7/api/javax/persistence/Table.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://docs.oracle.com/javaee/7/api/javax/persistence/Table.html'" tppabs="https://docs.oracle.com/javaee/7/api/javax/persistence/Table.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="table_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Table 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>å®šä¹‰å®ä½“çš„æ•°æ®åº“è¡¨ã€‚</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>å‚æ•°:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>name</code> â€“ è¡¨å</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>ä¾‹å¦‚:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Table</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">SALES_CUSTOMER</span><span class="delimiter">"</span></span>)</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/TrackEditScreenHistory.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/TrackEditScreenHistory.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/TrackEditScreenHistory.html" class="api-docs-btn" target="_blank">API æ–‡æ¡£</a> 
+ </div> 
+ <div id="trackEditScreenHistory_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @TrackEditScreenHistory 
+   </dt> 
+   <dd> 
+    <p>è¡¨ç¤ºç³»ç»Ÿå°†ä¼šä¿å­˜<a href="screen_edit.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_edit.html">ç¼–è¾‘ç•Œé¢</a>çš„æ‰“å¼€å†å²è®°å½•ï¼Œå¹¶èƒ½å¤Ÿåœ¨ <code>sec$ScreenHistory.browse</code> å±•ç¤ºã€‚ç•Œé¢å¯ä»¥ä½¿ç”¨ä¸‹é¢çš„ <a href="menu.xml.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/menu.xml.html">web-menu.xml</a> å…ƒç´ æ·»åŠ åˆ°ä¸»èœå•ï¼š</p> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;item</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">sec$ScreenHistory.browse</span><span class="delimiter">"</span></span> <span class="attribute-name">insertAfter</span>=<span class="string"><span class="delimiter">"</span><span class="content">settings</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span></code></pre> 
+  </div> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">ä¸‹ä¸€èŠ‚: <a href="entity_attr_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_attr_annotations.html">3.2.1.2.2. å±æ€§æ³¨è§£</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

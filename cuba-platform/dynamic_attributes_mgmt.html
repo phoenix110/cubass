@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>管理动态属性 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/features/dynamic_attributes/dynamic_attributes_mgmt.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/features/dynamic_attributes/dynamic_attributes_mgmt.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/features/dynamic_attributes/dynamic_attributes_mgmt.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="dynamic_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dynamic_attributes.html">动态属性</a></div>
+<ul>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="dynamic_attributes_mgmt.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dynamic_attributes_mgmt.html" class='toc-highlighted'>管理动态属性</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="categorized_entity.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/categorized_entity.html">DynamicAttributesPanel</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="email_sending.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/email_sending.html">发送邮件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_inspector.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_inspector.html">实体探查器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="entity_log.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_log.html">实体日志</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="entity_snapshots.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_snapshots.html">实体快照</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_statistics.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_statistics.html">实体统计</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entityImportExport.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityImportExport.html">以 JSON 格式导入和导出实体</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="file_storage.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/file_storage.html">文件存储</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="folders_pane.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/folders_pane.html">文件夹面板</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="credits.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/credits.html">关于软件组件信息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="myBatis.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/myBatis.html">MyBatis 集成</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pessimistic_locking.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pessimistic_locking.html">悲观锁</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="queryRunner.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/queryRunner.html">使用 QueryRunner 执行 SQL</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="scheduled_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scheduled_tasks.html">计划任务的执行</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="link_to_screen.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/link_to_screen.html">界面链接</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="uniqueNumbers.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/uniqueNumbers.html">序列生成</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="userSession_log.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/userSession_log.html">用户会话日志</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="dynamic_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dynamic_attributes.html">动态属性</a></div>
+<ul>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="dynamic_attributes_mgmt.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dynamic_attributes_mgmt.html" class='toc-highlighted'>管理动态属性</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="categorized_entity.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/categorized_entity.html">DynamicAttributesPanel</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="email_sending.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/email_sending.html">发送邮件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_inspector.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_inspector.html">实体探查器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="entity_log.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_log.html">实体日志</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="entity_snapshots.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_snapshots.html">实体快照</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_statistics.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_statistics.html">实体统计</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entityImportExport.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityImportExport.html">以 JSON 格式导入和导出实体</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="file_storage.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/file_storage.html">文件存储</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="folders_pane.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/folders_pane.html">文件夹面板</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="credits.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/credits.html">关于软件组件信息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="myBatis.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/myBatis.html">MyBatis 集成</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pessimistic_locking.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pessimistic_locking.html">悲观锁</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="queryRunner.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/queryRunner.html">使用 QueryRunner 执行 SQL</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="scheduled_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/scheduled_tasks.html">计划任务的执行</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="link_to_screen.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/link_to_screen.html">界面链接</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="uniqueNumbers.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/uniqueNumbers.html">序列生成</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="userSession_log.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/userSession_log.html">用户会话日志</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect4"> 
+ <h5 id="dynamic_attributes_mgmt">3.9.1.1. 管理动态属性</h5> 
+ <div class="paragraph"> 
+  <p>可以在 <strong>Administration&gt;Dynamic Attributes</strong> 界面管理动态属性。界面的左边有类别列表，右边是属于选中分类的属性。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>如果要给一个实体创建动态属性，首先需要创建一个分类。如果该实体类实现了 <code>Categorized</code> 接口，分类编辑器里面的 <strong>Default</strong> 复选框表示该分类会自动选为新实例的类型。如果实体没有实现 <code>Categorized</code> 接口，则不会用复选框的值，你可以自己为该实体创建单一类型，或者创建多个类型 - 实体的所有属性都会按照<a href="#dynamic_attributes_visibility">动态属性可见性设置</a>展示。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>在修改了动态属性配置之后，点击分类浏览部分的 <strong>Apply settings</strong> 按钮。改动也可以通过菜单的 <strong>Administration &gt; JMX Console</strong> 调用 <code>app-core.cuba:type=CachingFacade</code> JMX bean 的 <code>clearDynamicAttributesCache()</code> 方法应用。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>下面是类别编辑器的界面示例：</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="categoryEditor.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/categoryEditor.png" alt="categoryEditor"> 
+  </div> 
+  <div class="title">
+    Figure 38. 类别编辑界面 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>如果应用程序支持多种语言，则会显示 <strong>Name localization</strong> 分组框。它允许为每个可用的语言环境设置类别的本地化名称。</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="categoryLocalization.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/categoryLocalization.png" alt="categoryLocalization"> 
+  </div> 
+  <div class="title">
+    Figure 39. 本地化类别名称 
+  </div> 
+ </div> 
+ <div id="dynamic_attributes_mgmt_attr_location" class="paragraph"> 
+  <p>在 <strong>Attributes Location</strong> 标签页，可以在 <a href="categorized_entity.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/categorized_entity.html">DynamicAttributesPanel</a> 内设置每个动态属性的位置。</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="dynamic_attributes_location.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/dynamic_attributes_location.png" alt="dynamic attributes location"> 
+  </div> 
+  <div class="title">
+    Figure 40. 设置动态属性的位置 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>在 <strong>Columns count</strong> 下拉列表中指定列的数量。如要更改属性的位置，从属性列表拖拽该属性放置到目的行列的位置。也可以添加空的单元格或者更改属性的顺序。做完更改后，点击 <strong>Save configuration</strong> 按钮。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>实体编辑器的 <code>DynamicAttributesPanel</code> 面板中属性的位置：</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="dynamic_attributes_location_rezult.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/dynamic_attributes_location_rezult.png" alt="dynamic attributes location rezult"> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>动态属性编辑界面可以设置属性的名称、系统代码、值类型、属性的默认值，以及验证脚本。</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="runtimePropertyEditor.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/runtimePropertyEditor.png" alt="runtimePropertyEditor"> 
+  </div> 
+  <div class="title">
+    Figure 41. 动态属性编辑界面 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>对于除 <code>Boolean</code> 以外的所有值类型，都有一个 <strong>Width</strong> 字段可用于设置 <code>Form</code> 中的字段宽度（以像素为单位或百分比）。如果 <strong>Width</strong> 字段为空，则假定其值为 100％。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>对于除 <code>Boolean</code> 之外的所有值类型，还有一个 <strong>Is collection</strong> 复选框。允许为所选类型创建多值动态属性。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>对于所有的数字类型：<code>Double</code>、<code>Fixed-point number</code>、<code>Integer</code> - 可以用下列字段： * <strong>Minimum value</strong> – 当输入属性值时，会检查属性值必须大于等于指定的最小值。 * <strong>Maximum value</strong> – 当输入属性值时，会检查属性值必须小于等于指定的最大值。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>对于 <code>Fixed-point number</code> 值类型，可以使用 <strong>Number format pattern</strong> 字段设置格式模板。模板按照 <a href="javascript:if(confirm('https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html'" tppabs="https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html" target="_blank">DecimalFormat</a> 介绍的规则设置。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>对于所有的值类型，可以在 <strong>Validation script</strong> 字段设置脚本用于验证用户输入的值。验证逻辑在 Groovy 脚本中。如果 Groovy 验证失败，脚本应当返回一个错误消息。否则，脚本可以不返回任何值或者返回 <code>null</code>。被检查的值在脚本中可以使用 <code>value</code> 变量获取。错误消息使用一个 Groovy 字符串；其中可以用 <code>$value</code> 关键字来生成格式化的消息。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>示例：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">if</span> (!value.startsWith(<span class="string"><span class="delimiter">"</span><span class="content">correctValue</span><span class="delimiter">"</span></span>)) <span class="keyword">return</span> <span class="string"><span class="delimiter">"</span><span class="content">the value '</span><span class="char">\$</span><span class="content">value' is incorrect</span><span class="delimiter">"</span></span></code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>对于 <code>Enumeration</code> 值类型，通过列表编辑器在 <strong>Enumeration</strong> 字段中定义命名值集合。</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="runtimePropertyEnum.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/runtimePropertyEnum.png" alt="runtimePropertyEnum"> 
+  </div> 
+  <div class="title">
+    Figure 42. Enumeration 类型的动态属性编辑界面 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>每个枚举值可以进行本地化显示设置。</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="runtimePropertyEnumLocalization.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/runtimePropertyEnumLocalization.png" alt="runtimePropertyEnumLocalization"> 
+  </div> 
+  <div class="title">
+    Figure 43. Enumeration 类型动态属性本地化设置 
+  </div> 
+ </div> 
+ <div id="dynamic_attributes_lookupField" class="paragraph"> 
+  <p>对于 <code>String</code>、<code>Double</code>、<code>Entity</code>、<code>Fixed-point number</code> 和 <code>Integer</code> 数据类型，可以使用 <strong>Lookup field</strong> 复选框。如果设置了该复选框，用户可以从下拉列表中选择属性值。可选值列表可在 <strong>Calculated values and options</strong> 标签页<a href="#dynamic_attributes_optionsType">配置</a>。<code>Entity</code> 数据类型会配置 Where 和 Join 语句。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>再看看 <strong>Calculated values and options</strong> 标签页。在 <strong>Attribute depends on</strong> 字段，可以设置当前属性依赖的其它属性。当改变其中一个依赖属性时，则会重新执行计算该属性值的脚本或者执行计算可能值列表的脚本。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>计算属性值的 Groovy 脚本通过 <strong>Recalculation value script</strong> 字段设置。脚本必须返回一个新的参数值。脚本会收到下面这些参数：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><code>entity</code> – 编辑的实体；</p> </li> 
+   <li> <p><code>dynamicAttributes</code> – 一个 map 映射，<code>key</code> – 属性代码，<code>value</code> – 动态属性的值。</p> </li> 
+  </ul> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="dynamic_attributes_recalculation.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/dynamic_attributes_recalculation.png" alt="dynamic attributes recalculation"> 
+  </div> 
+  <div class="title">
+    Figure 44. 值重算脚本 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>使用 <code>dynamicAttributes</code> map 重算脚本示例：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">if</span> (dynamicAttributes[<span class="string"><span class="delimiter">'</span><span class="content">PassengerNumberofseats</span><span class="delimiter">'</span></span>] &gt; <span class="integer">9</span>) <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">Bus</span><span class="delimiter">'</span></span> <span class="keyword">else</span> <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">Passenger car</span><span class="delimiter">'</span></span></code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>脚本会在属性依赖的其它属性中任何一个发生变化时进行调用。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>如果定义了脚本，属性的输入字段将变成不可编辑状态。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>重算只能在这些 UI 组件有效：<a href="gui_Form.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Form.html">Form</a>、<a href="categorized_entity.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/categorized_entity.html">DynamicAttributesPanel</a>。</p> 
+ </div> 
+ <div id="dynamic_attributes_optionsType" class="paragraph"> 
+  <p><strong>Options type</strong> 字段定义选项加载器的类型，如果 <strong>General</strong> 标签页的<a href="#dynamic_attributes_lookupField">查找控件</a>复选框选中，则必须选择 <strong>Options type</strong>。如果复选框没有选中，<strong>Options type</strong> 会不可用。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>可用的选项加载器类型：Groovy、SQL、JPQL（仅对于 <code>Entity</code> 数据类型）。</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p>Groovy 选项加载器会使用 Groovy 脚本加载值的列表。<code>entity</code> 变量会传递给脚本，因此可以在脚本中使用实体的属性（包括动态属性）。<code>String</code> 类型的属性脚本示例：</p> 
+    <div class="imageblock" style="text-align: center"> 
+     <div class="content"> 
+      <img src="dynamic_attributes_Groovy_options.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/dynamic_attributes_Groovy_options.png" alt="dynamic attributes Groovy options"> 
+     </div> 
+     <div class="title">
+       Figure 45. Groovy 选项加载器的脚本 
+     </div> 
+    </div> </li> 
+   <li> <p>SQL 选项加载器使用 SQL 脚本加载选项值。可以在脚本中使用 <code>${entity}</code> 变量访问实体。使用 <code>${entity.&lt;field&gt;}</code> 访问实体参数，<code>field</code> 是实体参数的名称。<code>+</code> 前缀可以用来访问实体的动态属性，比如 <code>${entity.+&lt;field&gt;}</code>。脚本示例（这里我们访问实体和实体的动态属性 <code>Categorytype</code>）：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="sql"><span class="class">select</span> name <span class="keyword">from</span> DYNAMICATTRIBUTESLOADER_TAG
+<span class="keyword">where</span> CUSTOMER_ID = <span class="error">$</span>{entity}
+<span class="keyword">and</span> NAME = <span class="error">$</span>{entity.+Categorytype}</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p>JPQL 选项加载器只能使用在 <code>Entity</code> 类型的动态属性。JPQL 条件通过 <strong>JoinClause</strong> 和 <strong>Where Clause</strong> 字段设置。另外，可以使用 <strong>Constraint Wizard</strong>，能动态创建 JPQL 条件。在 JPQL 参数中可以使用 <code>{entity}</code> 和 <code>{entity.&lt;field&gt;}</code>。</p> </li> 
+  </ul> 
+ </div> 
+ <div class="paragraph"> 
+  <p>所有类型的动态属性都支持本地化：</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="runtimePropertyLocalization.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/runtimePropertyLocalization.png" alt="runtimePropertyLocalization"> 
+  </div> 
+  <div class="title">
+    Figure 46. 动态属性本地化 
+  </div> 
+ </div> 
+ <div id="dynamic_attributes_visibility" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     动态属性的可见性 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>动态属性还可以设置可见性，定义在哪些界面中显示。默认情况下，动态属性不显示。</p> 
+      </div> 
+      <div class="imageblock" style="text-align: center"> 
+       <div class="content"> 
+        <img src="runtimePropertyVisibility.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/runtimePropertyVisibility.png" alt="runtimePropertyVisibility"> 
+       </div> 
+       <div class="title">
+         Figure 47. 动态属性可见性设置 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>除了界面之外，还可以为属性指定显示组件（比如，可以在界面中，指定多个<a href="gui_Form.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Form.html">Form</a>组件显示同一实体的字段）。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>如果该属性在界面上标记为可见，则在界面上用来展示相应实体的所有表单和表格中会自动显示该属性。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>对动态属性的访问也受<a href="roles.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/roles.html">用户角色</a>设置的限制。动态属性的安全设置与常规属性的安全设置类似。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>动态属性可以手动添加到界面，给数据加载器添加 <code>dynamicAttributes="true"</code> 属性并使用带 <code>+</code> 前缀的动态属性代码绑定组件：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;data&gt;</span>
+    <span class="tag">&lt;instance</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">carDc</span><span class="delimiter">"</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">com.company.app.entity.Car</span><span class="delimiter">"</span></span> <span class="attribute-name">view</span>=<span class="string"><span class="delimiter">"</span><span class="content">_local</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;loader</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">carDl</span><span class="delimiter">"</span></span> <span class="attribute-name">dynamicAttributes</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/instance&gt;</span>
+<span class="tag">&lt;/data&gt;</span>
+<span class="tag">&lt;layout&gt;</span>
+    <span class="tag">&lt;form</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">form</span><span class="delimiter">"</span></span>
+          <span class="attribute-name">dataContainer</span>=<span class="string"><span class="delimiter">"</span><span class="content">carDc</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="comment">&lt;!--...--&gt;</span>
+        <span class="tag">&lt;textField</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">+PassengerNumberofseats</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/form&gt;</span></code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="categorized_entity.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/categorized_entity.html">3.9.1.2. DynamicAttributesPanel</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

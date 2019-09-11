@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>引入类库 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/security_subsystem/ldap/jespa/jespa_lib.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/security_subsystem/ldap/jespa/jespa_lib.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/security_subsystem/ldap/jespa/jespa_lib.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="security_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_web.html">WEB 安全</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_components.html">安全子系统组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_examples.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_examples.html">访问权限控制示例</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="ldap.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/ldap.html">集成 LDAP</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="ldap_basic.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/ldap_basic.html">基础 LDAP 集成</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="jespa.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jespa.html">使用 Jespa 集成活动目录</a></div>
+<ul>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="jespa_lib.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jespa_lib.html" class='toc-highlighted'>引入类库</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="jespa_conf.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jespa_conf.html">安装和配置</a></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="sso.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/sso.html">CUBA 应用程序单点登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="social_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/social_login.html">社交网站登录</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="security_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_web.html">WEB 安全</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_components.html">安全子系统组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_examples.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_examples.html">访问权限控制示例</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="ldap.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/ldap.html">集成 LDAP</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="ldap_basic.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/ldap_basic.html">基础 LDAP 集成</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="jespa.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jespa.html">使用 Jespa 集成活动目录</a></div>
+<ul>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="jespa_lib.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jespa_lib.html" class='toc-highlighted'>引入类库</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="jespa_conf.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jespa_conf.html">安装和配置</a></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="sso.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/sso.html">CUBA 应用程序单点登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="social_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/social_login.html">社交网站登录</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect4"> 
+ <h5 id="jespa_lib">6.4.2.1. 引入类库</h5> 
+ <div class="paragraph"> 
+  <p>从 <a href="javascript:if(confirm('http://www.ioplex.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.ioplex.com/'" tppabs="http://www.ioplex.com/" target="_blank"></a><a href="javascript:if(confirm('http://www.ioplex.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.ioplex.com/'" tppabs="http://www.ioplex.com/" class="bare" target="_blank">http://www.ioplex.com</a> 下载这个库，然后把这个 JAR 上传到 <a href="build.gradle.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/build.gradle.html">build.gradle</a> 脚本中注册的一个<a href="glossary.html#artifact_repository" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html#artifact_repository">仓库</a>中。仓库可以是 <code>mavenLocal()</code> 或者内部仓库（私仓）。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>在 <code>build.gradle</code> 中的 <strong>web</strong> 模块配置部分添加以下依赖：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="groovy">configure(webModule) {
+    ...
+    dependencies {
+        compile(<span class="string"><span class="delimiter">'</span><span class="content">com.company.thirdparty:jespa:1.1.17</span><span class="delimiter">'</span></span>)  <span class="comment">// from a custom repository</span>
+        compile(<span class="string"><span class="delimiter">'</span><span class="content">jcifs:jcifs:1.3.17</span><span class="delimiter">'</span></span>)                   <span class="comment">// from Maven Central</span>
+        ...</code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>在 <strong>web</strong> 模块创建一个 <code>LoginProvider</code> 的实现类：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.sample.web</span>;
+
+<span class="keyword">import</span> <span class="include">com.company.sample.config.ActiveDirectoryConfig</span>;
+<span class="keyword">import</span> <span class="include">com.company.sample.web.sys.DomainAliasesResolver</span>;
+<span class="keyword">import</span> <span class="include">com.google.common.collect.ImmutableMap</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.global.ClientType</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.global.GlobalConfig</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.sys.AppContext</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.sys.ConditionalOnAppProperty</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.security.auth</span>.*;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.security.global.LoginException</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.web.auth.WebAuthConfig</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.web.security.LoginProvider</span>;
+<span class="keyword">import</span> <span class="include">jespa.http.HttpSecurityService</span>;
+<span class="keyword">import</span> <span class="include">jespa.ntlm.NtlmSecurityProvider</span>;
+<span class="keyword">import</span> <span class="include">jespa.security.PasswordCredential</span>;
+<span class="keyword">import</span> <span class="include">jespa.security.SecurityProviderException</span>;
+<span class="keyword">import</span> <span class="include">org.apache.commons.lang3.StringUtils</span>;
+<span class="keyword">import</span> <span class="include">org.slf4j.Logger</span>;
+<span class="keyword">import</span> <span class="include">org.slf4j.LoggerFactory</span>;
+<span class="keyword">import</span> <span class="include">org.springframework.core.Ordered</span>;
+<span class="keyword">import</span> <span class="include">org.springframework.stereotype.Component</span>;
+
+<span class="keyword">import</span> <span class="include">javax.annotation.Nullable</span>;
+<span class="keyword">import</span> <span class="include">javax.annotation.PostConstruct</span>;
+<span class="keyword">import</span> <span class="include">javax.inject.Inject</span>;
+<span class="keyword">import</span> <span class="include">javax.servlet.FilterChain</span>;
+<span class="keyword">import</span> <span class="include">javax.servlet.ServletException</span>;
+<span class="keyword">import</span> <span class="include">javax.servlet.ServletRequest</span>;
+<span class="keyword">import</span> <span class="include">javax.servlet.ServletResponse</span>;
+<span class="keyword">import</span> <span class="include">javax.servlet.http.HttpServletRequest</span>;
+<span class="keyword">import</span> <span class="include">java.io.IOException</span>;
+<span class="keyword">import</span> <span class="include">java.io.Serializable</span>;
+<span class="keyword">import</span> <span class="include">java.util.HashMap</span>;
+<span class="keyword">import</span> <span class="include">java.util.Map</span>;
+
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">com.haulmont.cuba.web.security.ExternalUserCredentials.EXTERNAL_AUTH_USER_SESSION_ATTRIBUTE</span>;
+
+<span class="annotation">@ConditionalOnAppProperty</span>(property = <span class="string"><span class="delimiter">"</span><span class="content">activeDirectory.integrationEnabled</span><span class="delimiter">"</span></span>, value = <span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span>)
+<span class="annotation">@Component</span>(<span class="string"><span class="delimiter">"</span><span class="content">sample_JespaAuthProvider</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">JespaAuthProvider</span> <span class="directive">extends</span> HttpSecurityService <span class="directive">implements</span> LoginProvider, Ordered {
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> log = LoggerFactory.getLogger(JespaAuthProvider.class);
+
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> GlobalConfig globalConfig;
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> WebAuthConfig webAuthConfig;
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> DomainAliasesResolver domainAliasesResolver;
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> AuthenticationService authenticationService;
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, DomainInfo&gt; domains = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+    <span class="directive">private</span> <span class="directive">static</span> <span class="predefined-type">String</span> defaultDomain;
+
+    <span class="annotation">@PostConstruct</span>
+    <span class="directive">public</span> <span class="type">void</span> init() <span class="directive">throws</span> ServletException {
+        initDomains();
+
+        <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; properties = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+        properties.put(<span class="string"><span class="delimiter">"</span><span class="content">jespa.bindstr</span><span class="delimiter">"</span></span>, getBindStr());
+        properties.put(<span class="string"><span class="delimiter">"</span><span class="content">jespa.service.acctname</span><span class="delimiter">"</span></span>, getAcctName());
+        properties.put(<span class="string"><span class="delimiter">"</span><span class="content">jespa.service.password</span><span class="delimiter">"</span></span>, getAcctPassword());
+        properties.put(<span class="string"><span class="delimiter">"</span><span class="content">jespa.account.canonicalForm</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">3</span><span class="delimiter">"</span></span>);
+        properties.put(<span class="string"><span class="delimiter">"</span><span class="content">jespa.log.path</span><span class="delimiter">"</span></span>, globalConfig.getLogDir() + <span class="string"><span class="delimiter">"</span><span class="content">/jespa.log</span><span class="delimiter">"</span></span>);
+        properties.put(<span class="string"><span class="delimiter">"</span><span class="content">http.parameter.anonymous.name</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">anon</span><span class="delimiter">"</span></span>);
+        fillFromSystemProperties(properties);
+
+        <span class="keyword">try</span> {
+            <span class="local-variable">super</span>.init(JespaAuthProvider.class.getName(), <span class="predefined-constant">null</span>, properties);
+        } <span class="keyword">catch</span> (SecurityProviderException e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> ServletException(e);
+        }
+    }
+
+    <span class="annotation">@Nullable</span>
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> AuthenticationDetails login(Credentials credentials) <span class="directive">throws</span> <span class="exception">LoginException</span> {
+        LoginPasswordCredentials lpCredentials = (LoginPasswordCredentials) credentials;
+
+        <span class="predefined-type">String</span> login = lpCredentials.getLogin();
+        <span class="comment">// parse domain by login</span>
+        <span class="predefined-type">String</span> domain;
+        <span class="type">int</span> atSignPos = login.indexOf(<span class="string"><span class="delimiter">"</span><span class="content">@</span><span class="delimiter">"</span></span>);
+        <span class="keyword">if</span> (atSignPos &gt;= <span class="integer">0</span>) {
+            <span class="predefined-type">String</span> domainAlias = login.substring(atSignPos + <span class="integer">1</span>);
+            domain = domainAliasesResolver.getDomainName(domainAlias).toUpperCase();
+        } <span class="keyword">else</span> {
+            <span class="type">int</span> slashPos = login.indexOf(<span class="string"><span class="delimiter">'</span><span class="char">\\</span><span class="delimiter">'</span></span>);
+            <span class="keyword">if</span> (slashPos &lt;= <span class="integer">0</span>) {
+                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">LoginException</span>(<span class="string"><span class="delimiter">"</span><span class="content">Invalid name: %s</span><span class="delimiter">"</span></span>, login);
+            }
+            <span class="predefined-type">String</span> domainAlias = login.substring(<span class="integer">0</span>, slashPos);
+            domain = domainAliasesResolver.getDomainName(domainAlias).toUpperCase();
+        }
+
+        DomainInfo domainInfo = domains.get(domain);
+        <span class="keyword">if</span> (domainInfo == <span class="predefined-constant">null</span>) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">LoginException</span>(<span class="string"><span class="delimiter">"</span><span class="content">Unknown domain: %s</span><span class="delimiter">"</span></span>, domain);
+        }
+
+        <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; securityProviderProps = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+        securityProviderProps.put(<span class="string"><span class="delimiter">"</span><span class="content">bindstr</span><span class="delimiter">"</span></span>, domainInfo.getBindStr());
+        securityProviderProps.put(<span class="string"><span class="delimiter">"</span><span class="content">service.acctname</span><span class="delimiter">"</span></span>, domainInfo.getAcctName());
+        securityProviderProps.put(<span class="string"><span class="delimiter">"</span><span class="content">service.password</span><span class="delimiter">"</span></span>, domainInfo.getAcctPassword());
+        securityProviderProps.put(<span class="string"><span class="delimiter">"</span><span class="content">account.canonicalForm</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">3</span><span class="delimiter">"</span></span>);
+        fillFromSystemProperties(securityProviderProps);
+
+        NtlmSecurityProvider provider = <span class="keyword">new</span> NtlmSecurityProvider(securityProviderProps);
+        <span class="keyword">try</span> {
+            PasswordCredential credential = <span class="keyword">new</span> PasswordCredential(login, lpCredentials.getPassword().toCharArray());
+            provider.authenticate(credential);
+        } <span class="keyword">catch</span> (SecurityProviderException e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">LoginException</span>(<span class="string"><span class="delimiter">"</span><span class="content">Authentication error: %s</span><span class="delimiter">"</span></span>, e.getMessage());
+        }
+
+        TrustedClientCredentials trustedCredentials = <span class="keyword">new</span> TrustedClientCredentials(
+                lpCredentials.getLogin(),
+                webAuthConfig.getTrustedClientPassword(),
+                lpCredentials.getLocale(),
+                lpCredentials.getParams());
+
+        trustedCredentials.setClientInfo(lpCredentials.getClientInfo());
+        trustedCredentials.setClientType(ClientType.WEB);
+        trustedCredentials.setIpAddress(lpCredentials.getIpAddress());
+        trustedCredentials.setOverrideLocale(lpCredentials.isOverrideLocale());
+        trustedCredentials.setSyncNewUserSessionReplication(lpCredentials.isSyncNewUserSessionReplication());
+
+        <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Serializable</span>&gt; targetSessionAttributes;
+        <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Serializable</span>&gt; sessionAttributes = lpCredentials.getSessionAttributes();
+        <span class="keyword">if</span> (sessionAttributes != <span class="predefined-constant">null</span>
+                &amp;&amp; !sessionAttributes.isEmpty()) {
+            targetSessionAttributes = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;(sessionAttributes);
+            targetSessionAttributes.put(EXTERNAL_AUTH_USER_SESSION_ATTRIBUTE, <span class="predefined-constant">true</span>);
+        } <span class="keyword">else</span> {
+            targetSessionAttributes = ImmutableMap.of(EXTERNAL_AUTH_USER_SESSION_ATTRIBUTE, <span class="predefined-constant">true</span>);
+        }
+        trustedCredentials.setSessionAttributes(targetSessionAttributes);
+
+        <span class="keyword">return</span> authenticationService.login(trustedCredentials);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">boolean</span> supports(<span class="predefined-type">Class</span>&lt;?&gt; credentialsClass) {
+        <span class="keyword">return</span> LoginPasswordCredentials.class.isAssignableFrom(credentialsClass);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">int</span> getOrder() {
+        <span class="keyword">return</span> HIGHEST_PLATFORM_PRECEDENCE + <span class="integer">50</span>;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> destroy() {
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            <span class="directive">throws</span> <span class="exception">IOException</span>, ServletException {
+
+        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+        <span class="keyword">if</span> (httpServletRequest.getHeader(<span class="string"><span class="delimiter">"</span><span class="content">User-Agent</span><span class="delimiter">"</span></span>) != <span class="predefined-constant">null</span>) {
+            <span class="predefined-type">String</span> ua = httpServletRequest.getHeader(<span class="string"><span class="delimiter">"</span><span class="content">User-Agent</span><span class="delimiter">"</span></span>)
+                    .toLowerCase();
+
+            <span class="type">boolean</span> windows = ua.contains(<span class="string"><span class="delimiter">"</span><span class="content">windows</span><span class="delimiter">"</span></span>);
+            <span class="type">boolean</span> gecko = ua.contains(<span class="string"><span class="delimiter">"</span><span class="content">gecko</span><span class="delimiter">"</span></span>) &amp;&amp; !ua.contains(<span class="string"><span class="delimiter">"</span><span class="content">webkit</span><span class="delimiter">"</span></span>);
+
+            <span class="keyword">if</span> (!windows &amp;&amp; gecko) {
+                chain.doFilter(request, response);
+                <span class="keyword">return</span>;
+            }
+        }
+        <span class="local-variable">super</span>.doFilter(request, response, chain);
+    }
+
+    <span class="directive">private</span> <span class="type">void</span> initDomains() {
+        <span class="predefined-type">String</span> domainsStr = AppContext.getProperty(<span class="string"><span class="delimiter">"</span><span class="content">activeDirectory.domains</span><span class="delimiter">"</span></span>);
+        <span class="keyword">if</span> (StringUtils.isEmpty(domainsStr)) {
+            <span class="keyword">return</span>;
+        }
+
+        <span class="predefined-type">String</span><span class="type">[]</span> strings = domainsStr.split(<span class="string"><span class="delimiter">"</span><span class="content">;</span><span class="delimiter">"</span></span>);
+        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &lt; strings.length; i++) {
+            <span class="predefined-type">String</span> domain = strings[i];
+            domain = domain.trim();
+
+            <span class="keyword">if</span> (StringUtils.isEmpty(domain)) {
+                <span class="keyword">continue</span>;
+            }
+
+            <span class="predefined-type">String</span><span class="type">[]</span> parts = domain.split(<span class="string"><span class="delimiter">"</span><span class="char">\\</span><span class="content">|</span><span class="delimiter">"</span></span>);
+            <span class="keyword">if</span> (parts.length != <span class="integer">4</span>) {
+                log.error(<span class="string"><span class="delimiter">"</span><span class="content">Invalid ActiveDirectory domain definition: </span><span class="delimiter">"</span></span> + domain);
+                <span class="keyword">break</span>;
+            } <span class="keyword">else</span> {
+                domains.put(parts[<span class="integer">0</span>], <span class="keyword">new</span> DomainInfo(parts[<span class="integer">1</span>], parts[<span class="integer">2</span>], parts[<span class="integer">3</span>]));
+                <span class="keyword">if</span> (i == <span class="integer">0</span>) {
+                    defaultDomain = parts[<span class="integer">0</span>];
+                }
+            }
+        }
+    }
+
+    <span class="directive">public</span> <span class="predefined-type">String</span> getDefaultDomain() {
+        <span class="keyword">return</span> defaultDomain != <span class="predefined-constant">null</span> ? defaultDomain : <span class="string"><span class="delimiter">"</span><span class="delimiter">"</span></span>;
+    }
+
+    <span class="directive">public</span> <span class="predefined-type">String</span> getBindStr() {
+        <span class="keyword">return</span> getBindStr(getDefaultDomain());
+    }
+
+    <span class="directive">public</span> <span class="predefined-type">String</span> getBindStr(<span class="predefined-type">String</span> domain) {
+        initDomains();
+        DomainInfo domainInfo = domains.get(domain);
+        <span class="keyword">return</span> domainInfo != <span class="predefined-constant">null</span> ? domainInfo.getBindStr() : <span class="string"><span class="delimiter">"</span><span class="delimiter">"</span></span>;
+    }
+
+    <span class="directive">public</span> <span class="predefined-type">String</span> getAcctName() {
+        <span class="keyword">return</span> getAcctName(getDefaultDomain());
+    }
+
+    <span class="directive">public</span> <span class="predefined-type">String</span> getAcctName(<span class="predefined-type">String</span> domain) {
+        initDomains();
+        DomainInfo domainInfo = domains.get(domain);
+        <span class="keyword">return</span> domainInfo != <span class="predefined-constant">null</span> ? domainInfo.getAcctName() : <span class="string"><span class="delimiter">"</span><span class="delimiter">"</span></span>;
+    }
+
+    <span class="directive">public</span> <span class="predefined-type">String</span> getAcctPassword() {
+        <span class="keyword">return</span> getAcctPassword(getDefaultDomain());
+    }
+
+    <span class="directive">public</span> <span class="predefined-type">String</span> getAcctPassword(<span class="predefined-type">String</span> domain) {
+        initDomains();
+        DomainInfo domainInfo = domains.get(domain);
+        <span class="keyword">return</span> domainInfo != <span class="predefined-constant">null</span> ? domainInfo.getAcctPassword() : <span class="string"><span class="delimiter">"</span><span class="delimiter">"</span></span>;
+    }
+
+    <span class="directive">public</span> <span class="type">void</span> fillFromSystemProperties(<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; params) {
+        <span class="keyword">for</span> (<span class="predefined-type">String</span> name : AppContext.getPropertyNames()) {
+            <span class="keyword">if</span> (name.startsWith(<span class="string"><span class="delimiter">"</span><span class="content">jespa.</span><span class="delimiter">"</span></span>)) {
+                params.put(name, AppContext.getProperty(name));
+            }
+        }
+    }
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">DomainInfo</span> {
+
+        <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> bindStr;
+        <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> acctName;
+        <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> acctPassword;
+
+        DomainInfo(<span class="predefined-type">String</span> bindStr, <span class="predefined-type">String</span> acctName, <span class="predefined-type">String</span> acctPassword) {
+            <span class="local-variable">this</span>.acctName = acctName;
+            <span class="local-variable">this</span>.acctPassword = acctPassword;
+            <span class="local-variable">this</span>.bindStr = bindStr;
+        }
+
+        <span class="directive">public</span> <span class="predefined-type">String</span> getBindStr() {
+            <span class="keyword">return</span> bindStr;
+        }
+
+        <span class="directive">public</span> <span class="predefined-type">String</span> getAcctName() {
+            <span class="keyword">return</span> acctName;
+        }
+
+        <span class="directive">public</span> <span class="predefined-type">String</span> getAcctPassword() {
+            <span class="keyword">return</span> acctPassword;
+        }
+    }
+}</code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>创建一个 bean 用来在 <strong>web</strong> 模块使用别名解析域名：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.sample.web</span>;
+
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.sys.AppContext</span>;
+<span class="keyword">import</span> <span class="include">org.apache.commons.lang3.StringUtils</span>;
+<span class="keyword">import</span> <span class="include">org.slf4j.Logger</span>;
+<span class="keyword">import</span> <span class="include">org.slf4j.LoggerFactory</span>;
+<span class="keyword">import</span> <span class="include">org.springframework.stereotype.Component</span>;
+
+<span class="keyword">import</span> <span class="include">java.util.Arrays</span>;
+<span class="keyword">import</span> <span class="include">java.util.HashMap</span>;
+<span class="keyword">import</span> <span class="include">java.util.List</span>;
+<span class="keyword">import</span> <span class="include">java.util.Map</span>;
+<span class="keyword">import</span> <span class="include">java.util.stream.Collectors</span>;
+
+<span class="annotation">@Component</span>(DomainAliasesResolver.NAME)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">DomainAliasesResolver</span> {
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> NAME = <span class="string"><span class="delimiter">"</span><span class="content">sample_DomainAliasesResolver</span><span class="delimiter">"</span></span>;
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> log = LoggerFactory.getLogger(DomainAliasesResolver.class);
+
+    <span class="directive">private</span> <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; aliases = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+
+    <span class="directive">public</span> DomainAliasesResolver() {
+        <span class="predefined-type">String</span> domainAliases = AppContext.getProperty(<span class="string"><span class="delimiter">"</span><span class="content">activeDirectory.aliases</span><span class="delimiter">"</span></span>);
+        <span class="keyword">if</span> (StringUtils.isEmpty(domainAliases)) {
+            <span class="keyword">return</span>;
+        }
+
+        <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; aliasesPairs = <span class="predefined-type">Arrays</span>.stream(StringUtils.split(domainAliases, <span class="string"><span class="delimiter">'</span><span class="content">;</span><span class="delimiter">'</span></span>))
+                .filter(StringUtils::isNotEmpty)
+                .collect(Collectors.toList());
+
+        <span class="keyword">for</span> (<span class="predefined-type">String</span> aliasDefinition : aliasesPairs) {
+            <span class="predefined-type">String</span><span class="type">[]</span> aliasParts = StringUtils.split(aliasDefinition, <span class="string"><span class="delimiter">'</span><span class="content">|</span><span class="delimiter">'</span></span>);
+            <span class="keyword">if</span> (aliasParts == <span class="predefined-constant">null</span>
+                    || aliasParts.length != <span class="integer">2</span>
+                    || StringUtils.isBlank(aliasParts[<span class="integer">0</span>])
+                    || StringUtils.isBlank(aliasParts[<span class="integer">1</span>])) {
+                log.warn(<span class="string"><span class="delimiter">"</span><span class="content">Incorrect domain alias definition: '{}'</span><span class="delimiter">"</span></span>, aliasDefinition);
+            } <span class="keyword">else</span> {
+                aliases.put(aliasParts[<span class="integer">0</span>].toLowerCase(), aliasParts[<span class="integer">1</span>]);
+            }
+        }
+    }
+
+    <span class="directive">public</span> <span class="predefined-type">String</span> getDomainName(<span class="predefined-type">String</span> alias) {
+        <span class="predefined-type">String</span> alias_lc = alias.toLowerCase();
+
+        <span class="predefined-type">String</span> domain = aliases.get(alias_lc);
+        <span class="keyword">if</span> (domain == <span class="predefined-constant">null</span>) {
+            <span class="keyword">return</span> alias;
+        }
+
+        log.debug(<span class="string"><span class="delimiter">"</span><span class="content">Resolved domain '{}' from alias '{}'</span><span class="delimiter">"</span></span>, domain, alias);
+
+        <span class="keyword">return</span> domain;
+    }
+}</code></pre> 
+  </div> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="jespa_conf.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jespa_conf.html">6.4.2.2. 安装和配置</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

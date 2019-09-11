@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>创建 GWT 组件 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/own_components/own_component_samples/gwt_component_sample.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/own_components/own_component_samples/gwt_component_sample.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/own_components/own_component_samples/gwt_component_sample.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_screens.html">界面和界面片段（Fragments）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_vcl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_vcl.html">可视化组件库</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_data.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data.html">数据组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_facets.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_facets.html">非可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">操作以及操作接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_dialogs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_dialogs.html">对话框消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_notifications.html">通知消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="background_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/background_tasks.html">后台任务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_themes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_themes.html">主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="html-attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/html-attributes.html">可视化组件的 DOM 和 CSS 属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="shortcuts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/shortcuts.html">键盘快捷键</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="url_history_navigation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/url_history_navigation.html">URL 历史及导航</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="composite_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composite_components.html">组合组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pluggable_component_factories.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pluggable_component_factories.html">插件工厂</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="webComponentsHelper.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/webComponentsHelper.html">使用 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="own_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_components.html">自定义可视化组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="using_webjars.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/using_webjars.html">使用 WebJars</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="jsComponent.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jsComponent.html">通用 JavaScriptComponent</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="own_component_samples.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_component_samples.html">创建自定义可视化组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="vaadin_addon_sample.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/vaadin_addon_sample.html">使用第三方 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="vaadin_addon_sample_gui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/vaadin_addon_sample_gui.html">集成 Vaadin 组件到通用 UI 中</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="js_library_sample.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js_library_sample.html">使用 JavaScript 库</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="gwt_component_sample.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gwt_component_sample.html" class='toc-highlighted'>创建 GWT 组件</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="own_component_in_studio.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_component_in_studio.html">CUBA Studio 对自定义可视化组件的支持</a></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_web.html">通用 UI 基础设施</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html">Web 登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">匿名访问界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="unsupported_browser_page.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/unsupported_browser_page.html">不支持浏览器的界面</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_screens.html">界面和界面片段（Fragments）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_vcl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_vcl.html">可视化组件库</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_data.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data.html">数据组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_facets.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_facets.html">非可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">操作以及操作接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_dialogs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_dialogs.html">对话框消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_notifications.html">通知消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="background_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/background_tasks.html">后台任务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_themes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_themes.html">主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="html-attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/html-attributes.html">可视化组件的 DOM 和 CSS 属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="shortcuts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/shortcuts.html">键盘快捷键</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="url_history_navigation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/url_history_navigation.html">URL 历史及导航</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="composite_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composite_components.html">组合组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pluggable_component_factories.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pluggable_component_factories.html">插件工厂</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="webComponentsHelper.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/webComponentsHelper.html">使用 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="own_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_components.html">自定义可视化组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="using_webjars.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/using_webjars.html">使用 WebJars</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="jsComponent.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jsComponent.html">通用 JavaScriptComponent</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="own_component_samples.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_component_samples.html">创建自定义可视化组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="vaadin_addon_sample.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/vaadin_addon_sample.html">使用第三方 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="vaadin_addon_sample_gui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/vaadin_addon_sample_gui.html">集成 Vaadin 组件到通用 UI 中</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="js_library_sample.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js_library_sample.html">使用 JavaScript 库</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="gwt_component_sample.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gwt_component_sample.html" class='toc-highlighted'>创建 GWT 组件</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="own_component_in_studio.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_component_in_studio.html">CUBA Studio 对自定义可视化组件的支持</a></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_web.html">通用 UI 基础设施</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html">Web 登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">匿名访问界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="unsupported_browser_page.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/unsupported_browser_page.html">不支持浏览器的界面</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect5"> 
+ <h6 id="gwt_component_sample">3.5.17.3.4. 创建 GWT 组件</h6> 
+ <div class="paragraph"> 
+  <p>在本节中，我们介绍如何创建一个简单的 GWT 组件（由 5 颗星组成的评级字段）及其在应用程序界面中的用法。</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="rating_field_component.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/ui_component/rating_field_component.png" alt="rating field component"> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>在 CUBA Studio 中创建一个新项目，并将其命名为 <code>ratingsample</code>。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>创建 <strong>web-toolkit</strong> 模块。一个简便的方法就是使用 <strong>CUBA Studio</strong>：在主菜单，点击 <strong>CUBA &gt; Advanced &gt; Manage modules &gt; Create 'web-toolkit' Module</strong>。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>为了创建 GWT 组件，需要创建下列文件：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><code>RatingFieldWidget.java</code> - <strong>web-toolkit</strong> 模块中的 GWT 部件。</p> </li> 
+   <li> <p><code>RatingFieldServerComponent.java</code> - Vaadin 组件类。</p> </li> 
+   <li> <p><code>RatingFieldState.java</code> - 组件状态类。</p> </li> 
+   <li> <p><code>RatingFieldConnector.java</code> - 连接器，用于连接客户端代码和服务器组件。</p> </li> 
+   <li> <p><code>RatingFieldServerRpc.java</code> - 为客户端定义服务器 API 的类。</p> </li> 
+  </ul> 
+ </div> 
+ <div class="paragraph"> 
+  <p>现在创建需要的文件并对其进行必要的更改。</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p>在 <strong>web-toolkit</strong> 模块中创建 <code>RatingFieldWidget</code> 类。使用下面代码作为其内容：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.ratingsample.web.toolkit.ui.client.ratingfield</span>;
+
+<span class="keyword">import</span> <span class="include">com.google.gwt.dom.client.DivElement</span>;
+<span class="keyword">import</span> <span class="include">com.google.gwt.dom.client.SpanElement</span>;
+<span class="keyword">import</span> <span class="include">com.google.gwt.dom.client.Style.Display</span>;
+<span class="keyword">import</span> <span class="include">com.google.gwt.user.client.DOM</span>;
+<span class="keyword">import</span> <span class="include">com.google.gwt.user.client.Event</span>;
+<span class="keyword">import</span> <span class="include">com.google.gwt.user.client.ui.FocusWidget</span>;
+
+<span class="keyword">import</span> <span class="include">java.util.ArrayList</span>;
+<span class="keyword">import</span> <span class="include">java.util.List</span>;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">RatingFieldWidget</span> <span class="directive">extends</span> FocusWidget {
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CLASSNAME = <span class="string"><span class="delimiter">"</span><span class="content">ratingfield</span><span class="delimiter">"</span></span>;
+
+    <span class="comment">// API for handle clicks</span>
+    <span class="directive">public</span> <span class="type">interface</span> <span class="class">StarClickListener</span> {
+        <span class="type">void</span> starClicked(<span class="type">int</span> value);
+    }
+
+    <span class="directive">protected</span> <span class="predefined-type">List</span>&lt;SpanElement&gt; stars = <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;&gt;(<span class="integer">5</span>);
+    <span class="directive">protected</span> StarClickListener listener;
+    <span class="directive">protected</span> <span class="type">int</span> value = <span class="integer">0</span>;
+
+    <span class="directive">public</span> RatingFieldWidget() {
+        DivElement container = DOM.createDiv().cast();
+        container.getStyle().setDisplay(Display.INLINE_BLOCK);
+        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &lt; <span class="integer">5</span>; i++) {
+            SpanElement star = DOM.createSpan().cast();
+
+            <span class="comment">// add star element to the container</span>
+            DOM.insertChild(container, star, i);
+            <span class="comment">// subscribe on ONCLICK event</span>
+            DOM.sinkEvents(star, <span class="predefined-type">Event</span>.ONCLICK);
+
+            stars.add(star);
+        }
+        setElement(container);
+
+        setStylePrimaryName(CLASSNAME);
+    }
+
+    <span class="comment">// main method for handling events in GWT widgets</span>
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> onBrowserEvent(<span class="predefined-type">Event</span> event) {
+        <span class="local-variable">super</span>.onBrowserEvent(event);
+
+        <span class="keyword">switch</span> (event.getTypeInt()) {
+            <span class="comment">// react on ONCLICK event</span>
+            <span class="keyword">case</span> <span class="predefined-type">Event</span>.ONCLICK:
+                SpanElement element = event.getEventTarget().cast();
+                <span class="comment">// if click was on the star</span>
+                <span class="type">int</span> index = stars.indexOf(element);
+                <span class="keyword">if</span> (index &gt;= <span class="integer">0</span>) {
+                    <span class="type">int</span> value = index + <span class="integer">1</span>;
+                    <span class="comment">// set internal value</span>
+                    setValue(value);
+
+                    <span class="comment">// notify listeners</span>
+                    <span class="keyword">if</span> (listener != <span class="predefined-constant">null</span>) {
+                        listener.starClicked(value);
+                    }
+                }
+                <span class="keyword">break</span>;
+        }
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> setStylePrimaryName(<span class="predefined-type">String</span> style) {
+        <span class="local-variable">super</span>.setStylePrimaryName(style);
+
+        <span class="keyword">for</span> (SpanElement star : stars) {
+            star.setClassName(style + <span class="string"><span class="delimiter">"</span><span class="content">-star</span><span class="delimiter">"</span></span>);
+        }
+
+        updateStarsStyle(<span class="local-variable">this</span>.value);
+    }
+
+    <span class="comment">// let application code change the state</span>
+    <span class="directive">public</span> <span class="type">void</span> setValue(<span class="type">int</span> value) {
+        <span class="local-variable">this</span>.value = value;
+        updateStarsStyle(value);
+    }
+
+    <span class="comment">// refresh visual representation</span>
+    <span class="directive">private</span> <span class="type">void</span> updateStarsStyle(<span class="type">int</span> value) {
+        <span class="keyword">for</span> (SpanElement star : stars) {
+            star.removeClassName(getStylePrimaryName() + <span class="string"><span class="delimiter">"</span><span class="content">-star-selected</span><span class="delimiter">"</span></span>);
+        }
+
+        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &lt; value; i++) {
+            stars.get(i).addClassName(getStylePrimaryName() + <span class="string"><span class="delimiter">"</span><span class="content">-star-selected</span><span class="delimiter">"</span></span>);
+        }
+    }
+}</code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>部件（Widget）是一个客户端类，负责在 Web 浏览器中显示组件并处理浏览器事件。它定义了与服务端配合起来工作的接口。在这个的例子中，这些接口是 <code>setValue()</code> 方法和 <code>StarClickListener</code> 接口。</p> 
+    </div> </li> 
+   <li> <p><code>RatingFieldServerComponent</code> 是一个 Vaadin 组件类。它定义了服务端代码 API、访问器方法、事件监听器和数据源连接。开发人员在应用程序代码中使用的是这个类的方法。</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.ratingsample.web.toolkit.ui</span>;
+
+<span class="keyword">import</span> <span class="include">com.company.ratingsample.web.toolkit.ui.client.ratingfield.RatingFieldServerRpc</span>;
+<span class="keyword">import</span> <span class="include">com.company.ratingsample.web.toolkit.ui.client.ratingfield.RatingFieldState</span>;
+<span class="keyword">import</span> <span class="include">com.vaadin.ui.AbstractField</span>;
+
+<span class="comment">// the field will have a value with integer type</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">RatingFieldServerComponent</span> <span class="directive">extends</span> AbstractField&lt;<span class="predefined-type">Integer</span>&gt; {
+
+    <span class="directive">public</span> RatingFieldServerComponent() {
+        <span class="comment">// register an interface implementation that will be invoked on a request from the client</span>
+        registerRpc((RatingFieldServerRpc) value -&gt; setValue(value, <span class="predefined-constant">true</span>));
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> <span class="type">void</span> doSetValue(<span class="predefined-type">Integer</span> value) {
+        <span class="keyword">if</span> (value == <span class="predefined-constant">null</span>) {
+            value = <span class="integer">0</span>;
+        }
+        getState().value = value;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">Integer</span> getValue() {
+        <span class="keyword">return</span> getState().value;
+    }
+
+    <span class="comment">// define own state class</span>
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> RatingFieldState getState() {
+        <span class="keyword">return</span> (RatingFieldState) <span class="local-variable">super</span>.getState();
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> RatingFieldState getState(<span class="type">boolean</span> markAsDirty) {
+        <span class="keyword">return</span> (RatingFieldState) <span class="local-variable">super</span>.getState(markAsDirty);
+    }
+}</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>RatingFieldState</code> 状态类定义客户端和服务器之间发送的数据。它包含在服务端自动序列化并在客户端上反序列化的公共字段。</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.ratingsample.web.toolkit.ui.client.ratingfield</span>;
+
+<span class="keyword">import</span> <span class="include">com.vaadin.shared.AbstractFieldState</span>;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">RatingFieldState</span> <span class="directive">extends</span> AbstractFieldState {
+    {   <span class="comment">// change the main style name of the component</span>
+        primaryStyleName = <span class="string"><span class="delimiter">"</span><span class="content">ratingfield</span><span class="delimiter">"</span></span>;
+    }
+    <span class="comment">// define a field for the value</span>
+    <span class="directive">public</span> <span class="type">int</span> value = <span class="integer">0</span>;
+}</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p><code>RatingFieldServerRpc</code> 接口定义了客户端可调用的服务器 API。它的方法可以由 Vaadin 内置的 RPC 机制调用。我们将在此组件中实现此接口。</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.ratingsample.web.toolkit.ui.client.ratingfield</span>;
+
+<span class="keyword">import</span> <span class="include">com.vaadin.shared.communication.ServerRpc</span>;
+
+<span class="directive">public</span> <span class="type">interface</span> <span class="class">RatingFieldServerRpc</span> <span class="directive">extends</span> ServerRpc {
+    <span class="comment">//method will be invoked in the client code</span>
+    <span class="type">void</span> starClicked(<span class="type">int</span> value);
+}</code></pre> 
+     </div> 
+    </div> </li> 
+   <li> <p>在 <strong>web-toolkit</strong> 模块中创建 <code>RatingFieldConnector</code> 类，连接器将客户端代码与服务端连接起来。</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.ratingsample.web.toolkit.ui.client.ratingfield</span>;
+
+<span class="keyword">import</span> <span class="include">com.company.ratingsample.web.toolkit.ui.RatingFieldServerComponent</span>;
+<span class="keyword">import</span> <span class="include">com.vaadin.client.communication.StateChangeEvent</span>;
+<span class="keyword">import</span> <span class="include">com.vaadin.client.ui.AbstractFieldConnector</span>;
+<span class="keyword">import</span> <span class="include">com.vaadin.shared.ui.Connect</span>;
+
+<span class="comment">// link the connector with the server implementation of RatingField</span>
+<span class="comment">// extend AbstractField connector</span>
+<span class="annotation">@Connect</span>(RatingFieldServerComponent.class)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">RatingFieldConnector</span> <span class="directive">extends</span> AbstractFieldConnector {
+
+    <span class="comment">// we will use a RatingFieldWidget widget</span>
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> RatingFieldWidget getWidget() {
+        RatingFieldWidget widget = (RatingFieldWidget) <span class="local-variable">super</span>.getWidget();
+
+        <span class="keyword">if</span> (widget.listener == <span class="predefined-constant">null</span>) {
+            widget.listener = value -&gt;
+                    getRpcProxy(RatingFieldServerRpc.class).starClicked(value);
+        }
+        <span class="keyword">return</span> widget;
+    }
+
+    <span class="comment">// our state class is RatingFieldState</span>
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> RatingFieldState getState() {
+        <span class="keyword">return</span> (RatingFieldState) <span class="local-variable">super</span>.getState();
+    }
+
+    <span class="comment">// react on server state change</span>
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> onStateChanged(StateChangeEvent stateChangeEvent) {
+        <span class="local-variable">super</span>.onStateChanged(stateChangeEvent);
+
+        <span class="comment">// refresh the widget if the value on server has changed</span>
+        <span class="keyword">if</span> (stateChangeEvent.hasPropertyChanged(<span class="string"><span class="delimiter">"</span><span class="content">value</span><span class="delimiter">"</span></span>)) {
+            getWidget().setValue(getState().value);
+        }
+    }
+}</code></pre> 
+     </div> 
+    </div> </li> 
+  </ul> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>RatingFieldWidget</code> 类中不定义组件的外观样式，只为关键元素指定样式名称。要定义组件的外观，需要创建样式表文件。简便方法就是使用 <strong>CUBA Studio</strong>：在主菜单，点击 <strong>CUBA &gt; Advanced &gt; Manage themes &gt; Create theme extension</strong>。在弹窗中选择 <code>hover</code> 主题。另一个方法是使用 <a href="javascript:if(confirm('https://www.cuba-platform.com/marketplace/cuba-cli  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.cuba-platform.com/marketplace/cuba-cli'" tppabs="https://www.cuba-platform.com/marketplace/cuba-cli" target="_blank">CUBA CLI</a> 的 <code>extend-theme</code> 命令。<code>hover</code> 主题使用了 <strong>FontAwesome</strong> 的象形符号字体替代了 <a href="icon_set.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/icon_set.html">icons</a>。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>建议以 SCSS 混入(Mixin)的形式将组件样式放到 <code>components/componentname</code> 目录中的单独文件 <code>componentname.scss</code> 中。在 <strong>web</strong> 模块的 <code>themes/hover/com.company.ratingsample</code> 目录中创建 <code>components/ratingfield</code> 目录结构。然后在 <code>ratingfield</code> 目录中创建 <code>ratingfield.scss</code> 文件：</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="gwt_theme_ext_structure.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/ui_component/gwt_theme_ext_structure.png" alt="gwt theme ext structure"> 
+  </div> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@mixin</span> <span class="error">r</span><span class="error">a</span><span class="error">t</span><span class="error">i</span><span class="error">n</span><span class="error">g</span><span class="error">f</span><span class="error">i</span><span class="error">e</span><span class="error">l</span><span class="error">d</span>(<span class="error">$</span><span class="tag">primary-stylename</span>: <span class="tag">ratingfield</span>) {
+  .<span class="error">#</span>{<span class="error">$</span><span class="key">primary-stylename</span>}<span class="key">-star</span> {
+    <span class="key">font-family</span>: <span class="value">FontAwesome</span>;
+    <span class="key">font-size</span>: <span class="error">$</span><span class="value">v-font-size--h2</span>;
+    <span class="key">padding-right</span>: <span class="error">r</span><span class="error">o</span><span class="error">u</span><span class="error">n</span><span class="error">d</span>(<span class="error">$</span><span class="value">v-unit-size</span>/<span class="float">4</span>);
+    <span class="key">cursor</span>: <span class="value">pointer</span>;
+
+    <span class="error">&amp;</span>:<span class="value">after</span> {
+          <span class="key">content</span>: <span class="string"><span class="delimiter">'</span><span class="content">\f006</span><span class="delimiter">'</span></span>; // <span class="string"><span class="delimiter">'</span><span class="content">fa-star-o</span><span class="delimiter">'</span></span>
+    }
+  }
+
+  .<span class="error">#</span>{<span class="error">$</span><span class="key">primary-stylename</span>}<span class="key">-star-selected</span> {
+    <span class="error">&amp;</span>:<span class="value">after</span> {
+          <span class="key">content</span>: <span class="string"><span class="delimiter">'</span><span class="content">\f005</span><span class="delimiter">'</span></span>; // <span class="string"><span class="delimiter">'</span><span class="content">fa-star</span><span class="delimiter">'</span></span>
+    }
+  }
+
+  .<span class="error">#</span>{<span class="error">$</span><span class="key">primary-stylename</span>} .<span class="error">#</span>{<span class="error">$</span><span class="key">primary-stylename</span>}<span class="key">-star</span>:<span class="value">last-child</span> {
+    <span class="key">padding-right</span>: <span class="float">0</span>;
+  }
+
+  .<span class="error">#</span>{<span class="error">$</span><span class="key">primary-stylename</span>}.<span class="key">v-disabled</span> .<span class="error">#</span>{<span class="error">$</span><span class="key">primary-stylename</span>}<span class="key">-star</span> {
+    <span class="key">cursor</span>: <span class="value">default</span>;
+  }
+}</code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>将此文件包含在 <code>hover-ext.scss</code> 主题文件中：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">components/ratingfield/ratingfield</span><span class="delimiter">"</span></span>;
+
+<span class="directive">@mixin</span> <span class="tag">com_company_ratingsample-hover-ext</span> {
+  <span class="directive">@include</span> <span class="key">ratingfield</span>;
+}</code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>为了演示组件的工作原理，我们在 <strong>web</strong> 模块中创建一个新的界面。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>将界面命名为 <code>rating-screen</code>。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>在 IDE 中打开 <code>rating-screen.xml</code> 文件。Rating 组件需要一个容器，我们在界面 XML 中声明它：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;</span>
+<span class="tag">&lt;window</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://schemas.haulmont.com/cuba/screen/window.xsd</span><span class="delimiter">"</span></span>
+        <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">"</span><span class="content">msg://caption</span><span class="delimiter">"</span></span>
+        <span class="attribute-name">messagesPack</span>=<span class="string"><span class="delimiter">"</span><span class="content">com.company.ratingsample.web.screens.rating</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;layout</span> <span class="attribute-name">expand</span>=<span class="string"><span class="delimiter">"</span><span class="content">container</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;vbox</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">container</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            <span class="comment">&lt;!-- we'll add vaadin component here--&gt;</span>
+        <span class="tag">&lt;/vbox&gt;</span>
+    <span class="tag">&lt;/layout&gt;</span>
+<span class="tag">&lt;/window&gt;</span></code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>打开 <code>RatingScreen.java</code> 界面控制器并添加将组件放置到界面上的代码。</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.ratingsample.web.screens.rating</span>;
+
+<span class="keyword">import</span> <span class="include">com.company.ratingsample.web.toolkit.ui.RatingFieldServerComponent</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.components.VBoxLayout</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.screen.Screen</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.screen.Subscribe</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.screen.UiController</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.screen.UiDescriptor</span>;
+<span class="keyword">import</span> <span class="include">com.vaadin.ui.Layout</span>;
+
+<span class="keyword">import</span> <span class="include">javax.inject.Inject</span>;
+
+<span class="annotation">@UiController</span>(<span class="string"><span class="delimiter">"</span><span class="content">ratingsample_RatingScreen</span><span class="delimiter">"</span></span>)
+<span class="annotation">@UiDescriptor</span>(<span class="string"><span class="delimiter">"</span><span class="content">rating-screen.xml</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">RatingScreen</span> <span class="directive">extends</span> Screen {
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> VBoxLayout container;
+
+    <span class="annotation">@Subscribe</span>
+    <span class="directive">protected</span> <span class="type">void</span> onInit(InitEvent event) {
+        RatingFieldServerComponent field = <span class="keyword">new</span> RatingFieldServerComponent();
+        field.setCaption(<span class="string"><span class="delimiter">"</span><span class="content">Rate this!</span><span class="delimiter">"</span></span>);
+        container.unwrap(Layout.class).addComponent(field);
+    }
+}</code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>启动应用程序服务并查看结果。</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="rating_screen_result.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/ui_component/rating_screen_result.png" alt="rating screen result"> 
+  </div> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="own_component_in_studio.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_component_in_studio.html">3.5.17.3.5. CUBA Studio 对自定义可视化组件的支持</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

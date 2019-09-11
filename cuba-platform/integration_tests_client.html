@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>Web 集成测试 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/development/testing/integration_tests_client.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/development/testing/integration_tests_client.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/development/testing/integration_tests_client.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="recommended_code_style.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/recommended_code_style.html">推荐编码标准</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="project_file_structure.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/project_file_structure.html">项目文件结构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="build_scripts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/build_scripts.html">构建脚本</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="project_creation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/project_creation.html">创建项目</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_components_recipes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_recipes.html">使用应用程序组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="logging.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/logging.html">日志</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="debugging.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/debugging.html">调试</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="testing.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/testing.html">测试</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="integration_tests_mw.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/integration_tests_mw.html">中间件集成测试</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="integration_tests_client.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/integration_tests_client.html" class='toc-highlighted'>Web 集成测试</a></div>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="hot_deploy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/hot_deploy.html">热部署</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="recommended_code_style.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/recommended_code_style.html">推荐编码标准</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="project_file_structure.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/project_file_structure.html">项目文件结构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="build_scripts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/build_scripts.html">构建脚本</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="project_creation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/project_creation.html">创建项目</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_components_recipes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_recipes.html">使用应用程序组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="logging.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/logging.html">日志</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="debugging.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/debugging.html">调试</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="testing.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/testing.html">测试</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="integration_tests_mw.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/integration_tests_mw.html">中间件集成测试</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="integration_tests_client.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/integration_tests_client.html" class='toc-highlighted'>Web 集成测试</a></div>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="hot_deploy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/hot_deploy.html">热部署</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect3"> 
+ <h4 id="integration_tests_client">4.8.2. Web 集成测试</h4> 
+ <div class="paragraph"> 
+  <p>Web 集成测试运行在 Web 客户端 block 的 Spring 容器中。测试容器独立于中间件工作，因为框架会自动为所有中间件服务创建桩代码。测试基础设施由 <code>com.haulmont.cuba.web.testsupport</code> 及其内部包的下列类组成：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><code>TestContainer</code> - Spring 容器的包装器，用来作为项目特定容器的基类。</p> </li> 
+   <li> <p><code>TestServiceProxy</code> - 为中间件服务提供默认的桩代码。该类可以用来注册为特定用例 mock 的服务，参考其 <code>mock()</code> 静态方法。</p> </li> 
+   <li> <p><code>DataServiceProxy</code> - <code>DataManager</code> 的默认桩代码。其包含一个 <code>commit()</code> 方法的实现，能模拟真正的数据存储的行为：能让新实体 detach，增加实体版本，等等。加载方法返回 null 和空集合。</p> </li> 
+   <li> <p><code>TestUiEnvironment</code> - 提供一组方法用来配置和获取 `TestContainer。该类的实例在测试中需要作为 JUnit Rule 来使用。</p> </li> 
+   <li> <p><code>TestEntityFactory</code> - 测试中为方便创建实体实例的工厂。可以通过 <code>TestContainer</code> 获取工厂。</p> </li> 
+  </ul> 
+ </div> 
+ <div class="paragraph"> 
+  <p>尽管框架为服务提供了默认桩代码，但是在测试中也许需要自己创建服务的 mock。要创建 mock，可以使用任何 mocking 框架，通过添加其为依赖即可，如<a href="testing.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/testing.html">上节</a>所说。服务的 mock 均使用 <code>TestServiceProxy.mock()</code> 方法注册。</p> 
+ </div> 
+ <div id="integration_tests_client_container" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     Web 集成测试容器示例 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>在 <code>web</code> 模块创建 <code>test</code> 目录。然后在 <code>test</code> 目录合适的包内创建项目的测试容器类：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.sales.web</span>;
+
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.web.testsupport.TestContainer</span>;
+
+<span class="keyword">import</span> <span class="include">java.util.ArrayList</span>;
+<span class="keyword">import</span> <span class="include">java.util.Arrays</span>;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">SalesWebTestContainer</span> <span class="directive">extends</span> TestContainer {
+
+    <span class="directive">public</span> SalesWebTestContainer() {
+        appComponents = <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;&gt;(<span class="predefined-type">Arrays</span>.asList(
+                <span class="string"><span class="delimiter">"</span><span class="content">com.haulmont.cuba</span><span class="delimiter">"</span></span>
+                <span class="comment">// add CUBA add-ons and custom app components here</span>
+        ));
+        appPropertiesFiles = <span class="predefined-type">Arrays</span>.asList(
+                <span class="comment">// List the files defined in your web.xml</span>
+                <span class="comment">// in appPropertiesConfig context parameter of the web module</span>
+                <span class="string"><span class="delimiter">"</span><span class="content">com/company/sales/web-app.properties</span><span class="delimiter">"</span></span>,
+                <span class="comment">// Add this file which is located in CUBA and defines some properties</span>
+                <span class="comment">// specifically for test environment. You can replace it with your own</span>
+                <span class="comment">// or add another one in the end.</span>
+                <span class="string"><span class="delimiter">"</span><span class="content">com/haulmont/cuba/web/testsupport/test-web-app.properties</span><span class="delimiter">"</span></span>
+        );
+    }
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">Common</span> <span class="directive">extends</span> SalesWebTestContainer {
+
+        <span class="comment">// A common singleton instance of the test container which is initialized once for all tests</span>
+        <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> SalesWebTestContainer.Common INSTANCE = <span class="keyword">new</span> SalesWebTestContainer.Common();
+
+        <span class="directive">private</span> <span class="directive">static</span> <span class="directive">volatile</span> <span class="type">boolean</span> initialized;
+
+        <span class="directive">private</span> Common() {
+        }
+
+        <span class="annotation">@Override</span>
+        <span class="directive">public</span> <span class="type">void</span> before() <span class="directive">throws</span> <span class="predefined-type">Throwable</span> {
+            <span class="keyword">if</span> (!initialized) {
+                <span class="local-variable">super</span>.before();
+                initialized = <span class="predefined-constant">true</span>;
+            }
+            setupContext();
+        }
+
+        <span class="annotation">@Override</span>
+        <span class="directive">public</span> <span class="type">void</span> after() {
+            cleanupContext();
+            <span class="comment">// never stops - do not call super</span>
+        }
+    }
+}</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="integration_tests_client_ex1" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     UI 界面测试示例 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>下面是 Web 集成测试的示例，在一些用户操作之后检查了编辑实体的状态。</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.sales.web.customer</span>;
+
+<span class="keyword">import</span> <span class="include">com.company.sales.entity.Customer</span>;
+<span class="keyword">import</span> <span class="include">com.company.sales.web.SalesWebTestContainer</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.Screens</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.components.Button</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.screen.OpenMode</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.web.app.main.MainScreen</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.web.testsupport.TestEntityFactory</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.web.testsupport.TestEntityState</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.web.testsupport.TestUiEnvironment</span>;
+<span class="keyword">import</span> <span class="include">org.junit.Before</span>;
+<span class="keyword">import</span> <span class="include">org.junit.Rule</span>;
+<span class="keyword">import</span> <span class="include">org.junit.Test</span>;
+
+<span class="keyword">import</span> <span class="include">java.util.Collections</span>;
+
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.junit.Assert</span>.*;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">CustomerEditInteractionTest</span> {
+
+    <span class="annotation">@Rule</span>
+    <span class="directive">public</span> TestUiEnvironment environment =
+            <span class="keyword">new</span> TestUiEnvironment(SalesWebTestContainer.Common.INSTANCE).withUserLogin(<span class="string"><span class="delimiter">"</span><span class="content">admin</span><span class="delimiter">"</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
+
+    <span class="directive">private</span> Customer customer;
+
+    <span class="annotation">@Before</span>
+    <span class="directive">public</span> <span class="type">void</span> setUp() <span class="directive">throws</span> <span class="exception">Exception</span> {
+        TestEntityFactory&lt;Customer&gt; customersFactory =
+                environment.getContainer().getEntityFactory(Customer.class, TestEntityState.NEW);
+
+        customer = customersFactory.create(<span class="predefined-type">Collections</span>.emptyMap()); <i class="conum" data-value="2"></i><b>(2)</b>
+    }
+
+    <span class="annotation">@Test</span>
+    <span class="directive">public</span> <span class="type">void</span> testGenerateName() {
+        Screens screens = environment.getScreens(); <i class="conum" data-value="3"></i><b>(3)</b>
+
+        screens.create(MainScreen.class, OpenMode.ROOT).show(); <i class="conum" data-value="4"></i><b>(4)</b>
+
+        CustomerEdit customerEdit = screens.create(CustomerEdit.class); <i class="conum" data-value="5"></i><b>(5)</b>
+        customerEdit.setEntityToEdit(customer);
+        customerEdit.show();
+
+        assertNull(customerEdit.getEditedEntity().getName());
+
+        <span class="predefined-type">Button</span> generateBtn = (<span class="predefined-type">Button</span>) customerEdit.getWindow().getComponent(<span class="string"><span class="delimiter">"</span><span class="content">generateBtn</span><span class="delimiter">"</span></span>); <i class="conum" data-value="6"></i><b>(6)</b>
+        customerEdit.onGenerateBtnClick(<span class="keyword">new</span> <span class="predefined-type">Button</span>.ClickEvent(generateBtn)); <i class="conum" data-value="7"></i><b>(7)</b>
+
+        assertEquals(<span class="string"><span class="delimiter">"</span><span class="content">Generated name</span><span class="delimiter">"</span></span>, customerEdit.getEditedEntity().getName());
+    }
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="colist arabic"> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td><i class="conum" data-value="1"></i><b>1</b></td> 
+          <td>- 定义带共享容器和带有 <code>admin</code> 的用户会话存根的测试环境。</td> 
+         </tr> 
+         <tr> 
+          <td><i class="conum" data-value="2"></i><b>2</b></td> 
+          <td>- 创建 <code>new</code> 状态的实体实例。</td> 
+         </tr> 
+         <tr> 
+          <td><i class="conum" data-value="3"></i><b>3</b></td> 
+          <td>- 从环境获取 <code>Screens</code> 基础设施对象。</td> 
+         </tr> 
+         <tr> 
+          <td><i class="conum" data-value="4"></i><b>4</b></td> 
+          <td>- 打开主界面，打开应用程序界面必须的步骤。</td> 
+         </tr> 
+         <tr> 
+          <td><i class="conum" data-value="5"></i><b>5</b></td> 
+          <td>- 创建、初始化并打开实体编辑界面。</td> 
+         </tr> 
+         <tr> 
+          <td><i class="conum" data-value="6"></i><b>6</b></td> 
+          <td>- 获取 <code>Button</code> 组件。</td> 
+         </tr> 
+         <tr> 
+          <td><i class="conum" data-value="7"></i><b>7</b></td> 
+          <td>- 创建一个点击事件，并以调用控制器方法的方式响应点击操作。</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="integration_tests_client_ex2" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     测试在界面加载数据的示例 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>下面是一个 web 集成测试的示例，检查加载数据的正确性。</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.sales.web.customer</span>;
+
+<span class="keyword">import</span> <span class="include">com.company.sales.entity.Customer</span>;
+<span class="keyword">import</span> <span class="include">com.company.sales.web.SalesWebTestContainer</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.app.DataService</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.entity.Entity</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.global.LoadContext</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.Screens</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.model.InstanceContainer</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.screen.OpenMode</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.gui.screen.UiControllerUtils</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.web.app.main.MainScreen</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.web.testsupport.TestEntityFactory</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.web.testsupport.TestEntityState</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.web.testsupport.TestUiEnvironment</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.web.testsupport.proxy.TestServiceProxy</span>;
+<span class="keyword">import</span> <span class="include">mockit.Delegate</span>;
+<span class="keyword">import</span> <span class="include">mockit.Expectations</span>;
+<span class="keyword">import</span> <span class="include">mockit.Mocked</span>;
+<span class="keyword">import</span> <span class="include">org.junit.After</span>;
+<span class="keyword">import</span> <span class="include">org.junit.Before</span>;
+<span class="keyword">import</span> <span class="include">org.junit.Rule</span>;
+<span class="keyword">import</span> <span class="include">org.junit.Test</span>;
+
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.junit.Assert.assertEquals</span>;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">CustomerEditLoadDataTest</span> {
+
+    <span class="annotation">@Rule</span>
+    <span class="directive">public</span> TestUiEnvironment environment =
+            <span class="keyword">new</span> TestUiEnvironment(SalesWebTestContainer.Common.INSTANCE).withUserLogin(<span class="string"><span class="delimiter">"</span><span class="content">admin</span><span class="delimiter">"</span></span>);
+
+    <span class="annotation">@Mocked</span>
+    <span class="directive">private</span> DataService dataService; <i class="conum" data-value="1"></i><b>(1)</b>
+
+    <span class="directive">private</span> Customer customer;
+
+    <span class="annotation">@Before</span>
+    <span class="directive">public</span> <span class="type">void</span> setUp() <span class="directive">throws</span> <span class="exception">Exception</span> {
+        <span class="keyword">new</span> Expectations() {{ <i class="conum" data-value="2"></i><b>(2)</b>
+            dataService.load((LoadContext&lt;? <span class="directive">extends</span> <span class="predefined-type">Entity</span>&gt;) any);
+            result = <span class="keyword">new</span> Delegate() {
+                <span class="predefined-type">Entity</span> load(LoadContext lc) {
+                    <span class="keyword">if</span> (<span class="string"><span class="delimiter">"</span><span class="content">sales_Customer</span><span class="delimiter">"</span></span>.equals(lc.getEntityMetaClass())) {
+                        <span class="keyword">return</span> customer;
+                    } <span class="keyword">else</span>
+                        <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+                }
+            };
+        }};
+
+        TestServiceProxy.mock(DataService.class, dataService); <i class="conum" data-value="3"></i><b>(3)</b>
+
+        TestEntityFactory&lt;Customer&gt; customersFactory =
+                environment.getContainer().getEntityFactory(Customer.class, TestEntityState.DETACHED);
+
+        customer = customersFactory.create(
+                <span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Homer</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">email</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">homer@simpson.com</span><span class="delimiter">"</span></span>); <i class="conum" data-value="4"></i><b>(4)</b>
+    }
+
+    <span class="annotation">@After</span>
+    <span class="directive">public</span> <span class="type">void</span> tearDown() <span class="directive">throws</span> <span class="exception">Exception</span> {
+        TestServiceProxy.clear(); <i class="conum" data-value="5"></i><b>(5)</b>
+    }
+
+    <span class="annotation">@Test</span>
+    <span class="directive">public</span> <span class="type">void</span> testLoadData() {
+        Screens screens = environment.getScreens();
+
+        screens.create(MainScreen.class, OpenMode.ROOT).show();
+
+        CustomerEdit customerEdit = screens.create(CustomerEdit.class);
+        customerEdit.setEntityToEdit(customer);
+        customerEdit.show();
+
+        InstanceContainer customerDc = UiControllerUtils.getScreenData(customerEdit).getContainer(<span class="string"><span class="delimiter">"</span><span class="content">customerDc</span><span class="delimiter">"</span></span>); <i class="conum" data-value="6"></i><b>(6)</b>
+        assertEquals(customer, customerDc.getItem());
+    }
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="colist arabic"> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td><i class="conum" data-value="1"></i><b>1</b></td> 
+          <td>- 使用 JMockit framework 定义数据服务 mock。</td> 
+         </tr> 
+         <tr> 
+          <td><i class="conum" data-value="2"></i><b>2</b></td> 
+          <td>- 定义 mock 行为。</td> 
+         </tr> 
+         <tr> 
+          <td><i class="conum" data-value="3"></i><b>3</b></td> 
+          <td>- 注册 mock。</td> 
+         </tr> 
+         <tr> 
+          <td><i class="conum" data-value="4"></i><b>4</b></td> 
+          <td>- 创建 <code>detached</code> 状态的实体实例。</td> 
+         </tr> 
+         <tr> 
+          <td><i class="conum" data-value="5"></i><b>5</b></td> 
+          <td>- 测试完成后移除 mock。</td> 
+         </tr> 
+         <tr> 
+          <td><i class="conum" data-value="6"></i><b>6</b></td> 
+          <td>- 获取数据容器。</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="hot_deploy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/hot_deploy.html">4.9. 热部署</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

@@ -1,0 +1,1634 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>验证器控件 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/gui_vcl/gui_misc/gui_validator.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/gui_vcl/gui_misc/gui_validator.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/gui_vcl/gui_misc/gui_validator.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_screens.html">界面和界面片段（Fragments）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_vcl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_vcl.html">可视化组件库</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_components.html">可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_layouts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_layouts.html">布局容器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="screen_layout_rules.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_layout_rules.html">界面布局规则</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_misc.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_misc.html">其它</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="uiComponents.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/uiComponents.html">UiComponents</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_formatter.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_formatter.html">格式化控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_presentations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_presentations.html">展示设置</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="gui_validator.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_validator.html" class='toc-highlighted'>验证器控件</a></div>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_api.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_api.html">可视化组件 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html">组件的 XML 属性</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_data.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data.html">数据组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_facets.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_facets.html">非可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">操作以及操作接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_dialogs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_dialogs.html">对话框消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_notifications.html">通知消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="background_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/background_tasks.html">后台任务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_themes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_themes.html">主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="html-attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/html-attributes.html">可视化组件的 DOM 和 CSS 属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="shortcuts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/shortcuts.html">键盘快捷键</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="url_history_navigation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/url_history_navigation.html">URL 历史及导航</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="composite_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composite_components.html">组合组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pluggable_component_factories.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pluggable_component_factories.html">插件工厂</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="webComponentsHelper.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/webComponentsHelper.html">使用 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="own_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_components.html">自定义可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_web.html">通用 UI 基础设施</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html">Web 登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">匿名访问界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="unsupported_browser_page.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/unsupported_browser_page.html">不支持浏览器的界面</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_screens.html">界面和界面片段（Fragments）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_vcl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_vcl.html">可视化组件库</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_components.html">可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_layouts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_layouts.html">布局容器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="screen_layout_rules.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_layout_rules.html">界面布局规则</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_misc.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_misc.html">其它</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="uiComponents.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/uiComponents.html">UiComponents</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_formatter.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_formatter.html">格式化控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_presentations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_presentations.html">展示设置</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="gui_validator.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_validator.html" class='toc-highlighted'>验证器控件</a></div>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_api.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_api.html">可视化组件 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html">组件的 XML 属性</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_data.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data.html">数据组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_facets.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_facets.html">非可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">操作以及操作接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_dialogs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_dialogs.html">对话框消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_notifications.html">通知消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="background_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/background_tasks.html">后台任务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_themes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_themes.html">主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="html-attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/html-attributes.html">可视化组件的 DOM 和 CSS 属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="shortcuts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/shortcuts.html">键盘快捷键</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="url_history_navigation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/url_history_navigation.html">URL 历史及导航</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="composite_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composite_components.html">组合组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pluggable_component_factories.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pluggable_component_factories.html">插件工厂</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="webComponentsHelper.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/webComponentsHelper.html">使用 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="own_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_components.html">自定义可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_web.html">通用 UI 基础设施</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html">Web 登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">匿名访问界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="unsupported_browser_page.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/unsupported_browser_page.html">不支持浏览器的界面</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect5"> 
+ <h6 id="gui_validator">3.5.2.4.4. 验证器控件</h6> 
+ <div class="paragraph"> 
+  <p><code>Validator</code> 设计用来检查可视化组件中输入的值。</p> 
+ </div> 
+ <div class="admonitionblock warning"> 
+  <table> 
+   <tbody> 
+    <tr> 
+     <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td> 
+     <td class="content"> 
+      <div class="paragraph"> 
+       <p>验证和输入检查是需要区分开来的，输入检查是说：假设一个文本组件（比如，<a href="gui_TextField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextField.html">TextField</a>）的数据类型设置的不是字符串（这种情况可能出现在绑定实体属性或者手动设置控件的 <code>datatype</code> ），那么这个组件会阻止用户输入不符合它定义的数据类型的值。当这个组件失去焦点时或者用户按了 <strong>回车</strong>，会显示验证错误信息。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>验证不会在输入同时或者失去焦点时马上反馈，而是会在组件的 <code>validate()</code> 方法调用的时候。也就是说这个组件（还有这个组件关联的实体属性）暂时会包含一个可能并不符合验证规则的值。但是这没关系，因为需要验证的字段一般都会在编辑界面，所有的字段提交前会自动调用验证方法。如果组件不在一个编辑界面，那么这个组件的 <code>validate()</code> 方法需要在界面控制器显式的调用。</p> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="paragraph"> 
+  <p>CUBA 框架包含了一组最常用的验证器实现，可以直接在项目中使用：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p><a href="#gui_validator_DecimalMaxValidator">DecimalMaxValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_DecimalMinValidator">DecimalMinValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_DigitsValidator">DigitsValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_FutureOrPresentValidator">FutureOrPresentValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_FutureValidator">FutureValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_MaxValidator">MaxValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_MinValidator">MinValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_NegativeOrZeroValidator">NegativeOrZeroValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_NegativeValidator">NegativeValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_NotBlankValidator">NotBlankValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_NotEmptyValidator">NotEmptyValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_NotNullValidator">NotNullValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_PastOrPresentValidator">PastOrPresentValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_PastValidator">PastValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_PositiveOrZeroValidator">PositiveOrZeroValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_PositiveValidator">PositiveValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_RegexpValidator">RegexpValidator</a></p> </li> 
+   <li> <p><a href="#gui_validator_SizeValidator">SizeValidator</a></p> </li> 
+  </ul> 
+ </div> 
+ <div class="paragraph"> 
+  <p>在界面的 XML 描述中，组件的验证器可以在嵌套的 <code>validators</code> 元素中定义。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>可以通过 CUBA Studio 添加验证器。下面是给 <code>TextField</code> 组件添加验证器的例子：</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="gui_validator.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gui_validator.png" alt="gui validator"> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>每个验证器都是一个 <code>Prototype Bean</code>，如果希望在 Java 代码中使用验证器，需要通过 <code>BeanLocator</code> 来获取。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>有些验证器在错误消息中使用了 Groovy 字符串。这样的话，可以给错误消息传递参数（比如，<code>$value</code>）。这些参数会考虑用户的 locale 配置。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>你可以使用自定义的 Java 类作为验证器，自定义类需要实现 <code>Consumer</code> 接口。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>在界面的 XML 描述中，自定义的验证器可以在嵌套的 <code>validator</code> 元素中定义。</p> 
+ </div> 
+ <div class="admonitionblock tip"> 
+  <table> 
+   <tbody> 
+    <tr> 
+     <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+     <td class="content"> 
+      <div class="paragraph"> 
+       <p>如果验证器是作为内部类实现的话，则需要使用 <code>static</code> 进行声明，然后在 XML 中类名用 "$" 分隔，示例：</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p><code>&lt;validator class="com.sample.sales.gui.AddressEdit$ZipValidator"/&gt;</code></p> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="paragraph"> 
+  <p>给组件设置验证类的方法除了 XML 描述之外，也可以使用编程的方式 - 使用组件的 <code>addValidator()</code> 方法添加验证器的实例。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>创建验证邮编的验证器类：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ZipValidator</span> <span class="directive">implements</span> Consumer&lt;<span class="predefined-type">String</span>&gt; {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> accept(<span class="predefined-type">String</span> s) <span class="directive">throws</span> ValidationException {
+        <span class="keyword">if</span> (s != <span class="predefined-constant">null</span> &amp;&amp; s.length() != <span class="integer">6</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> ValidationException(<span class="string"><span class="delimiter">"</span><span class="content">Zip must be of 6 characters length</span><span class="delimiter">"</span></span>);
+    }
+}</code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>在<a href="gui_TextField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextField.html">TextField</a>组件中使用邮编验证器的示例：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">zipField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">zip</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validator</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">com.company.sample.web.ZipValidator</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>在界面控制器用编程的方式设置验证器：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="java">zipField.addValidator(value -&gt; {
+    <span class="keyword">if</span> (value != <span class="predefined-constant">null</span> &amp;&amp; value.length() != <span class="integer">6</span>)
+        <span class="keyword">throw</span> <span class="keyword">new</span> ValidationException(<span class="string"><span class="delimiter">"</span><span class="content">Zip must be of 6 characters length</span><span class="delimiter">"</span></span>);
+});</code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>下面我们看看框架预定义的这些验证器。</p> 
+ </div> 
+ <div id="gui_validator_DecimalMaxValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     DecimalMaxValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查值必须小于等于指定的最大值。 支持的类型：<code>BigDecimal</code>、<code>BigInteger</code>、<code>Long</code>、<code>Integer</code> 以及使用当前 locale 表示 <code>BigDecimal</code> 的 <code>String</code> 类型。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>value</code> − 最大值（必须）；</p> </li> 
+        <li> <p><code>inclusive</code> − 当设置成 <code>true</code> 时，值必须小于或等于指定的最大值。默认值是 <code>true</code>。</p> </li> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。该消息可以包含 <code>$value</code> 和 <code>$max</code> 关键字，用于格式化输出。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.decimalMaxInclusive</code></p> </li> 
+        <li> <p><code>validation.constraints.decimalMax</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;decimalMax</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">"</span><span class="content">10000</span><span class="delimiter">"</span></span> <span class="attribute-name">inclusive</span>=<span class="string"><span class="delimiter">"</span><span class="content">false</span><span class="delimiter">"</span></span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Value '$value' cannot be greater than `$max`</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">DecimalMaxValidator maxValidator = beanLocator.getPrototype(DecimalMaxValidator.NAME, <span class="keyword">new</span> <span class="predefined-type">BigDecimal</span>(<span class="integer">100</span>));
+numberField.addValidator(maxValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_DecimalMinValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     DecimalMinValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查值必须大于等于指定的最小值。 支持的类型：<code>BigDecimal</code>、<code>BigInteger</code>、<code>Long</code>、<code>Integer</code> 以及使用当前 locale 表示 <code>BigDecimal</code> 的 <code>String</code> 类型。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>value</code> − 最小值（必须）；</p> </li> 
+        <li> <p><code>inclusive</code> − 当设置成 <code>true</code> 时，值必须大于或等于指定的最小值。默认值是 <code>true</code>。</p> </li> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。该消息可以包含 <code>$value</code> 和 <code>$min</code> 关键字，用于格式化输出。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.decimalMinInclusive</code></p> </li> 
+        <li> <p><code>validation.constraints.decimalMin</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;decimalMin</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">"</span><span class="content">100</span><span class="delimiter">"</span></span> <span class="attribute-name">inclusive</span>=<span class="string"><span class="delimiter">"</span><span class="content">false</span><span class="delimiter">"</span></span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Value '$value' cannot be less than `$min`</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">DecimalMinValidator minValidator = beanLocator.getPrototype(DecimalMinValidator.NAME, <span class="keyword">new</span> <span class="predefined-type">BigDecimal</span>(<span class="integer">100</span>));
+numberField.addValidator(minValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_DigitsValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     DigitsValidator 
+   </dt> 
+   <dd> 
+    <p>检查值必须是一个指定范围内的数字。 支持的类型：<code>BigDecimal</code>、<code>BigInteger</code>、<code>Long</code>、<code>Integer</code> 以及使用当前 locale 表示 <code>BigDecimal</code> 的 <code>String</code> 类型。</p> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>integer</code> − 整数部分数字的个数（必须）；</p> </li> 
+        <li> <p><code>fraction</code> − 小数部分数字的个数（必须）；</p> </li> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。该消息可以包含 <code>$value</code>、<code>$integer</code> 和 <code>$fraction</code> 关键字，用于格式化输出。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.digits</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;digits</span> <span class="attribute-name">integer</span>=<span class="string"><span class="delimiter">"</span><span class="content">3</span><span class="delimiter">"</span></span> <span class="attribute-name">fraction</span>=<span class="string"><span class="delimiter">"</span><span class="content">2</span><span class="delimiter">"</span></span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Value '$value' is out of bounds ($integer digits are expected in integer part and $fraction in fractional part)</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">DigitsValidator digitsValidator = beanLocator.getPrototype(DigitsValidator.NAME, <span class="integer">3</span>, <span class="integer">2</span>);
+numberField.addValidator(digitsValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_FutureOrPresentValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     FutureOrPresentValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查日期或时间是否在将来或者现在。它不使用 Groovy 字符串，所以没有参数可用于消息格式化。 支持的类型：<code>java.util.Date</code>、<code>LocalDate</code>、<code>LocalDateTime</code>、<code>LocalTime</code>、<code>OffsetDateTime</code>、<code>OffsetTime</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>checkSeconds</code> − 当设置成 <code>true</code> 时，验证器需要使用秒和毫秒比较日期或者时间。默认值是 <code>false</code>。</p> </li> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.futureOrPresent</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dateField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">dateTimePropertyField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">dateTimeProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;futureOrPresent</span> <span class="attribute-name">checkSeconds</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/dateField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">FutureOrPresentValidator futureOrPresentValidator = beanLocator.getPrototype(FutureOrPresentValidator.NAME);
+dateField.addValidator(futureOrPresentValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_FutureValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     FutureValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>它验证时间或者日期必须在将来。它不使用 Groovy 字符串，所以没有参数可用于消息格式化。 支持的类型：<code>java.util.Date</code>、<code>LocalDate</code>、<code>LocalDateTime</code>、<code>LocalTime</code>、<code>OffsetDateTime</code>、<code>OffsetTime</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>checkSeconds</code> − 当设置成 <code>true</code> 时，验证器需要使用秒和毫秒比较日期或者时间。默认值是 <code>false</code>。</p> </li> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.future</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;timeField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">localTimeField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">localTimeProperty</span><span class="delimiter">"</span></span> <span class="attribute-name">showSeconds</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;future</span> <span class="attribute-name">checkSeconds</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/timeField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">FutureValidator futureValidator = beanLocator.getPrototype(FutureValidator.NAME);
+timeField.addValidator(futureValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_MaxValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     MaxValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查值必须小于或等于指定的最大值。 支持的类型：<code>BigDecimal</code>、<code>BigInteger</code>、<code>Long</code>、<code>Integer</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>value</code> − 最大值（必须）；</p> </li> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。该消息可以包含 <code>$value</code> 和 <code>$max</code> 关键字，用于格式化输出。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.max</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;max</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">"</span><span class="content">20500</span><span class="delimiter">"</span></span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Value '$value' must be less than or equal to '$max'</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">MaxValidator maxValidator = beanLocator.getPrototype(MaxValidator.NAME, <span class="integer">20500</span>);
+numberField.addValidator(maxValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_MinValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     MinValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查值必须大于等于指定的最小值。 支持的类型：<code>BigDecimal</code>、<code>BigInteger</code>、<code>Long</code>、<code>Integer</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>value</code> − 最小值（必须）；</p> </li> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。该消息可以包含 <code>$value</code> 和 <code>$min</code> 关键字，用于格式化输出。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.min</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;min</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">"</span><span class="content">30</span><span class="delimiter">"</span></span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Value '$value' must be greater than or equal to '$min'</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">MinValidator minValidator = beanLocator.getPrototype(MinValidator.NAME, <span class="integer">30</span>);
+numberField.addValidator(minValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_NegativeOrZeroValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     NegativeOrZeroValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查值必须小于等于 0。 支持的类型：<code>BigDecimal</code>、<code>BigInteger</code>、<code>Long</code>、<code>Integer</code>、<code>Double</code>、<code>Float</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。该消息可以包含 <code>$value</code> 关键字，用于格式化输出。注意，<code>Float</code> 并没有它自己的数据类型，不会使用用户的 locale 进行格式化。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.negativeOrZero</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;negativeOrZero</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Value '$value' must be less than or equal to 0</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">NegativeOrZeroValidator negativeOrZeroValidator = beanLocator.getPrototype(NegativeOrZeroValidator.NAME);
+numberField.addValidator(negativeOrZeroValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_NegativeValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     NegativeValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查值必须小于 0。 支持的类型：<code>BigDecimal</code>、<code>BigInteger</code>、<code>Long</code>、<code>Integer</code>、<code>Double</code>、<code>Float</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。该消息可以包含 <code>$value</code> 关键字，用于格式化输出。注意，<code>Float</code> 并没有它自己的数据类型，不会使用用户的 locale 进行格式化。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.negative</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;negative</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Value '$value' should be less than 0</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">NegativeValidator negativeValidator = beanLocator.getPrototype(NegativeValidator.NAME);
+numberField.addValidator(negativeValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_NotBlankValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     NotBlankValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查值至少包含一个非空字符。它不使用 Groovy 字符串，所以没有参数可用于消息格式化。 支持的类型：<code>String</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.notBlank</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">textField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">textProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;notBlank</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Value must contain at least one non-whitespace character</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">NotBlankValidator notBlankValidator = beanLocator.getPrototype(NotBlankValidator.NAME);
+textField.addValidator(notBlankValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_NotEmptyValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     NotEmptyValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查值不是 <code>null</code> 也非空。 支持的类型：<code>Collection</code> 和 <code>String</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。该消息可以包含 <code>$value</code> 关键字，用于格式化输出，只对 <code>String</code> 类型有效。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.notEmpty</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">textField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">textProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;notBlank</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Value must contain at least one non-whitespace character</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">NotBlankValidator notBlankValidator = beanLocator.getPrototype(NotBlankValidator.NAME);
+textField.addValidator(notBlankValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_NotNullValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     NotNullValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查值不是 <code>null</code>。它不使用 Groovy 字符串，所以没有参数可用于消息格式化。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.notNull</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;notNull</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">NotNullValidator notNullValidator = beanLocator.getPrototype(NotNullValidator.NAME);
+numberField.addValidator(notNullValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_PastOrPresentValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     PastOrPresentValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查时间或者日期在过去或者现在。它不使用 Groovy 字符串，所以没有参数可用于消息格式化。 支持的类型：<code>java.util.Date</code>、<code>LocalDate</code>、<code>LocalDateTime</code>、<code>LocalTime</code>、<code>OffsetDateTime</code>、<code>OffsetTime</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>checkSeconds</code> − 当设置为 <code>ture</code> 时，验证器需要使用秒和毫秒比较日期或者时间。默认值是 <code>false</code>。</p> </li> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.pastOrPresent</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dateField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">dateTimeField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">dateTimeProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;pastOrPresent</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/dateField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">PastOrPresentValidator pastOrPresentValidator = beanLocator.getPrototype(PastOrPresentValidator.NAME);
+numberField.addValidator(pastOrPresentValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_PastValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     PastValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查时间或者日期在过去。它不使用 Groovy 字符串，所以没有参数可用于消息格式化。 支持的类型：<code>java.util.Date</code>、<code>LocalDate</code>、<code>LocalDateTime</code>、<code>LocalTime</code>、<code>OffsetDateTime</code>、<code>OffsetTime</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>checkSeconds</code> − 当设置为 <code>ture</code> 时，验证器需要使用秒和毫秒比较日期或者时间。默认值是 <code>false</code>。</p> </li> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.past</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dateField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">dateTimeField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">dateTimeProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;pastOrPresent</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/dateField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">PastOrPresentValidator pastOrPresentValidator = beanLocator.getPrototype(PastOrPresentValidator.NAME);
+numberField.addValidator(pastOrPresentValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_PositiveOrZeroValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     PositiveOrZeroValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查值必须大于等于 0。 支持的类型：<code>BigDecimal</code>、<code>BigInteger</code>、<code>Long</code>、<code>Integer</code>、<code>Double</code>、<code>Float</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。该消息可以包含 <code>$value</code> 关键字，用于格式化输出。注意，<code>Float</code> 并没有它自己的数据类型，不会使用用户的 locale 进行格式化。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.positiveOrZero</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;positiveOrZero</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Value '$value' should be greater than or equal to '0'</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">PositiveOrZeroValidator positiveOrZeroValidator = beanLocator.getPrototype(PositiveOrZeroValidator.NAME);
+numberField.addValidator(positiveOrZeroValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_PositiveValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     PositiveValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查值必须严格大于 0。 支持的类型：<code>BigDecimal</code>、<code>BigInteger</code>、<code>Long</code>、<code>Integer</code>、<code>Double</code>、<code>Float</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。该消息可以包含 <code>$value</code> 关键字，用于格式化输出。注意，<code>Float</code> 并没有它自己的数据类型，不会使用用户的 locale 进行格式化。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.positive</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">numberProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;positive</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Value '$value' should be greater than '0'</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">PositiveValidator positiveValidator = beanLocator.getPrototype(PositiveValidator.NAME);
+numberField.addValidator(positiveValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_RegexpValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     RegexpValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查 <code>String</code> 的值是否能匹配提供的正则表达式。 支持的类型：<code>String</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>regexp</code> − 一个用于匹配的正则表达式（必须）；</p> </li> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。该消息可以包含 <code>$value</code> 关键字，用于格式化输出。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.regexp</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">textField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">textProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;regexp</span> <span class="attribute-name">regexp</span>=<span class="string"><span class="delimiter">"</span><span class="content">[a-z]*</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">RegexpValidator regexpValidator = beanLocator.getPrototype(RegexpValidator.NAME, <span class="string"><span class="delimiter">"</span><span class="content">[a-z]*</span><span class="delimiter">"</span></span>);
+textField.addValidator(regexpValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="gui_validator_SizeValidator" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     SizeValidator 
+   </dt> 
+   <dd> 
+    <div class="paragraph"> 
+     <p>检查值在一定范围内。 支持的类型：<code>Collection</code> 和 <code>String</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>它有如下属性：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>min</code> − 最小值（不包含），不能小于 0。默认值是 0；</p> </li> 
+        <li> <p><code>max</code> − 最大值（不包含），不能小于 0。默认值是 <code>Integer.MAX_VALUE</code>；</p> </li> 
+        <li> <p><code>message</code> − 自定义的消息，用于在验证失败时展示给用户。该消息可以包含 <code>$value</code>（只对 <code>String</code> 类型有效），<code>$min</code>、<code>$max</code> 关键字，用于格式化输出。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>默认消息键值：</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>validation.constraints.collectionSizeRange</code></p> </li> 
+        <li> <p><code>validation.constraints.sizeRange</code></p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>XML 描述中用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;textField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">textField</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">textProperty</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;size</span> <span class="attribute-name">min</span>=<span class="string"><span class="delimiter">"</span><span class="content">2</span><span class="delimiter">"</span></span> <span class="attribute-name">max</span>=<span class="string"><span class="delimiter">"</span><span class="content">10</span><span class="delimiter">"</span></span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Value '$value' should be between '$min' and '$max'</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/textField&gt;</span>
+
+<span class="tag">&lt;twinColumn</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">twinColumn</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;validators&gt;</span>
+        <span class="tag">&lt;size</span> <span class="attribute-name">min</span>=<span class="string"><span class="delimiter">"</span><span class="content">2</span><span class="delimiter">"</span></span> <span class="attribute-name">max</span>=<span class="string"><span class="delimiter">"</span><span class="content">4</span><span class="delimiter">"</span></span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">"</span><span class="content">Collection size must be between $min and $max</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/validators&gt;</span>
+<span class="tag">&lt;/twinColumn&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Java 代码用法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">SizeValidator sizeValidator = beanLocator.getPrototype(SizeValidator.NAME);
+textField.addValidator(sizeValidator);</code></pre> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="gui_api.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_api.html">3.5.2.5. 可视化组件 API</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

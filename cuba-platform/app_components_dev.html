@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>创建应用程序组件 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/development/app_components_recipes/app_components_dev.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/development/app_components_recipes/app_components_dev.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/development/app_components_recipes/app_components_dev.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="recommended_code_style.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/recommended_code_style.html">推荐编码标准</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="project_file_structure.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/project_file_structure.html">项目文件结构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="build_scripts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/build_scripts.html">构建脚本</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="project_creation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/project_creation.html">创建项目</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="app_components_recipes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_recipes.html">使用应用程序组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_components_usage.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_usage.html">使用公共扩展组件</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="app_components_dev.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_dev.html" class='toc-highlighted'>创建应用程序组件</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_components_sample.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_sample.html">应用程序组件示例</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_components_additional_ds.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_additional_ds.html">应用程序组建里的附加数据存储</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="servlet_registration_sample.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/servlet_registration_sample.html">注册组件中的 DispatcherServlet</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="logging.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/logging.html">日志</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="debugging.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/debugging.html">调试</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="testing.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/testing.html">测试</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="hot_deploy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/hot_deploy.html">热部署</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="recommended_code_style.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/recommended_code_style.html">推荐编码标准</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="project_file_structure.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/project_file_structure.html">项目文件结构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="build_scripts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/build_scripts.html">构建脚本</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="project_creation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/project_creation.html">创建项目</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="app_components_recipes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_recipes.html">使用应用程序组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_components_usage.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_usage.html">使用公共扩展组件</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="app_components_dev.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_dev.html" class='toc-highlighted'>创建应用程序组件</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_components_sample.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_sample.html">应用程序组件示例</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_components_additional_ds.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_additional_ds.html">应用程序组建里的附加数据存储</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="servlet_registration_sample.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/servlet_registration_sample.html">注册组件中的 DispatcherServlet</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="logging.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/logging.html">日志</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="debugging.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/debugging.html">调试</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="testing.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/testing.html">测试</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="hot_deploy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/hot_deploy.html">热部署</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect3"> 
+ <h4 id="app_components_dev">4.5.2. 创建应用程序组件</h4> 
+ <div class="paragraph"> 
+  <p>如果正在开发可复用的应用程序组件，本节包含一些有用的建议。</p> 
+ </div> 
+ <div id="app_components_dev_naming" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     命名规则 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="olist arabic"> 
+       <ol class="arabic"> 
+        <li> <p>使用标准的反转域名表示法选择根 java 包，例如 <code>com.jupiter.amazingsearch</code>。</p> 
+         <div class="paragraph"> 
+          <p>根包不应该以任何其它组件或应用程序的根包开头。例如，如果有一个带有 <code>com.jupiter.tickets</code> 根包的应用程序，则不能将 <code>com.jupiter.tickets.amazingsearch</code> 包用于组件。原因是 Spring 从指定的根包开始扫描 bean 的类路径，并且每个组件的扫描空间必须是唯一的。</p> 
+         </div> </li> 
+        <li> <p>命名空间用作数据库表的前缀，因此对于公共组件，应该是一个表示综合含义的单词(或缩写)，如 <code>jptams</code>，而不仅仅是 <code>search</code>。这样可以将目标应用程序中命名冲突的风险降到最低。不能在命名空间中使用下划线和短横，只能使用字母和数字。</p> </li> 
+        <li> <p>模块前缀应该与命名空间名称一致，但可以包含短横，如 <code>jpt-amsearch</code>。</p> </li> 
+        <li> <p>使用命名空间作为 bean 名称和应用程序属性的前缀，例如：</p> 
+         <div class="listingblock"> 
+          <div class="content"> 
+           <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Component</span>(<span class="string"><span class="delimiter">"</span><span class="content">jptams_Finder</span><span class="delimiter">"</span></span>)
+<span class="annotation">@Property</span>(<span class="string"><span class="delimiter">"</span><span class="content">jptams.ignoreCase</span><span class="delimiter">"</span></span>)</code></pre> 
+          </div> 
+         </div> </li> 
+       </ol> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="app_components_dev_install_local" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     安装到本地 Maven 仓库 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>要使组件可用于本地计算机上的项目，请通过执行 <strong>CUBA &gt; Advanced &gt; Install app component</strong> 主命令将其安装到本地 Maven 仓库中。这个命令实际上只是在停止 Gradle 守护进程之后运行 <code>install</code> Gradle 任务。</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="app_components_dev_upload" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     上传到远程 Maven 仓库 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="olist arabic"> 
+       <ol class="arabic"> 
+        <li> <p>按照<a href="private_repo.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/private_repo.html">安装配置私仓</a>中的说明设置私仓。</p> </li> 
+        <li> <p>指定项目的仓库和凭证，由于使用私仓，此处不能设置标准 CUBA 仓库。</p> </li> 
+        <li> <p>在文本编辑器中打开组件项目的 <code>build.gradle</code>，并将 <code>uploadRepository</code> 添加到 <code>cuba</code> 部分：</p> 
+         <div class="listingblock"> 
+          <div class="content"> 
+           <pre class="CodeRay highlight"><code data-lang="groovy">cuba {
+    <span class="comment">//...</span>
+    <span class="comment">// repository for uploading your artifacts</span>
+    uploadRepository {
+        url = <span class="string"><span class="delimiter">'</span><span class="content">http://repo.company.com/nexus/content/repositories/snapshots</span><span class="delimiter">'</span></span>
+        user = <span class="string"><span class="delimiter">'</span><span class="content">admin</span><span class="delimiter">'</span></span>
+        password = <span class="string"><span class="delimiter">'</span><span class="content">admin123</span><span class="delimiter">'</span></span>
+    }
+}</code></pre> 
+          </div> 
+         </div> </li> 
+        <li> <p>在 Studio 中打开组件项目。</p> </li> 
+        <li> <p>从命令行运行 <code>uploadArchives</code> Gradle 任务。组件的工件将被上传到仓库。</p> </li> 
+        <li> <p>从本地 Maven 仓库中删除组件工件，以确保在下一次装载应用程序项目时会从远程仓库下载组件：只需删除位于用户主目录中的 <code>.m2/repository/com/company</code> 文件夹。</p> </li> 
+        <li> <p>现在，当装载并运行使用此组件的应用程序时，将从远程仓库中下载依赖的扩展组件。</p> </li> 
+       </ol> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="app_components_dev_upload_bintray" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     上传到 Bintray 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="olist arabic"> 
+       <ol class="arabic"> 
+        <li> <p>首先，在 <a href="javascript:if(confirm('https://bintray.com/signup/oss  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://bintray.com/signup/oss'" tppabs="https://bintray.com/signup/oss" class="bare" target="_blank">https://bintray.com/signup/oss</a> 注册账号</p> 
+         <div class="admonitionblock tip"> 
+          <table> 
+           <tbody> 
+            <tr> 
+             <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+             <td class="content"> 
+              <div class="paragraph"> 
+               <p>可以在 Bintray 上使用社交账户登录（GitHub，Gmail，Twitter），但稍后必须重置密码，因为获取 API 密钥需要此帐户的密码（见下文）。</p> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </div> </li> 
+        <li> <p>获取 Bintray 用户名。可以在登录 Bintray 后看到的 URL 中找到。例如，在 <code>https://bintray.com/vividphoenix</code> 中，<code>vividphoenix</code> 是用户名。</p> </li> 
+        <li> <p>获取 API 密钥。可以在 Bintray 编辑个人资料界面中找到。在 API 密钥部分，系统会要求输入帐户密码以获取密钥。然后，将能够使用此密钥和用户名进行 Bintray 的 Gradle 插件验证：</p> 
+         <div class="ulist"> 
+          <ul> 
+           <li> <p>Bintray 凭证可以添加为环境变量：</p> 
+            <div class="listingblock"> 
+             <div class="content"> 
+              <pre class="CodeRay highlight"><code data-lang="plain">BINTRAY_USER=your_bintray_user
+BINTRAY_API_KEY=9696c1cb90752357ded8fdf20eb3fa921bf9dbbb</code></pre> 
+             </div> 
+            </div> </li> 
+           <li> <p>除了环境变量，也可以在项目的 <code>build.gradle</code> 文件中显式定义这些参数：</p> 
+            <div class="listingblock"> 
+             <div class="content"> 
+              <pre class="CodeRay highlight"><code data-lang="plain">bintray {
+    user = 'bintray_user'
+    key = 'bintray_api_key'
+    ...
+}</code></pre> 
+             </div> 
+            </div> </li> 
+           <li> <p>或者，可以在命令行中提供 Bintray 凭据的参数：</p> 
+            <div class="listingblock"> 
+             <div class="content"> 
+              <pre class="CodeRay highlight"><code data-lang="plain">./gradlew clean assemble bintrayUpload -Pcuba.artifact.version=1.0.0 -PbintrayUser=your_bintray_user -PbintrayApiKey=9696c1cb90752357ded8fdf20eb3fa921bf9dbbb</code></pre> 
+             </div> 
+            </div> </li> 
+          </ul> 
+         </div> </li> 
+        <li> <p>创建 <em>Maven</em> 类型的公共仓库。对于开源（OSS）仓库，必须设置许可证类型。</p> 
+         <div class="paragraph"> 
+          <p>Bintray 会隐式的使用仓库内的包。此时，还不是必须要创建组件包，因为在之后的 <code>gradle bintrayUpload</code> 任务会自动创建。</p> 
+         </div> </li> 
+        <li> <p>在 <code>build.gradle</code> 中，添加 Bintray 上传插件的依赖如下：</p> 
+         <div class="listingblock"> 
+          <div class="content"> 
+           <pre class="CodeRay highlight"><code data-lang="groovy">buildscript {
+    <span class="comment">// ...</span>
+    dependencies {
+        classpath <span class="string"><span class="delimiter">"</span><span class="content">com.haulmont.gradle:cuba-plugin:</span><span class="inline"><span class="inline-delimiter">$</span>cubaVersion</span><span class="delimiter">"</span></span>
+        <span class="comment">// Bintray upload plugin</span>
+        classpath <span class="string"><span class="delimiter">"</span><span class="content">com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0</span><span class="delimiter">"</span></span>
+    }
+}</code></pre> 
+          </div> 
+         </div> </li> 
+        <li> <p>在 <code>build.gradle</code> 结尾，添加 Bintray 插件设置：</p> 
+         <div class="listingblock"> 
+          <div class="content"> 
+           <pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">/** * If you have a multi-project build, make sure to apply the plugin and the plugin configuration to every project which artifacts you want to publish to Bintray. */</span>
+subprojects {
+    apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">com.jfrog.bintray</span><span class="delimiter">'</span></span>
+
+    bintray {
+        user = project.hasProperty(<span class="string"><span class="delimiter">'</span><span class="content">bintrayUser</span><span class="delimiter">'</span></span>) ? project.property(<span class="string"><span class="delimiter">'</span><span class="content">bintrayUser</span><span class="delimiter">'</span></span>) : <span class="predefined-type">System</span>.getenv(<span class="string"><span class="delimiter">'</span><span class="content">BINTRAY_USER</span><span class="delimiter">'</span></span>)
+        key = project.hasProperty(<span class="string"><span class="delimiter">'</span><span class="content">bintrayApiKey</span><span class="delimiter">'</span></span>) ? project.property(<span class="string"><span class="delimiter">'</span><span class="content">bintrayApiKey</span><span class="delimiter">'</span></span>) : <span class="predefined-type">System</span>.getenv(<span class="string"><span class="delimiter">'</span><span class="content">BINTRAY_API_KEY</span><span class="delimiter">'</span></span>)
+
+        configurations = [<span class="string"><span class="delimiter">'</span><span class="content">archives</span><span class="delimiter">'</span></span>]
+
+        <span class="comment">// make files public ?</span>
+        publish = <span class="predefined-constant">true</span>
+        <span class="comment">// override existing artifacts?</span>
+        override = <span class="predefined-constant">false</span>
+
+        <span class="comment">// metadata</span>
+        pkg {
+            repo = <span class="string"><span class="delimiter">'</span><span class="content">main</span><span class="delimiter">'</span></span>           <span class="comment">// your repository name</span>
+            name = <span class="string"><span class="delimiter">'</span><span class="content">amazingsearch</span><span class="delimiter">'</span></span>  <span class="comment">// package name - it will be created upon upload</span>
+            desc = <span class="string"><span class="delimiter">'</span><span class="content">AmasingSearch</span><span class="delimiter">'</span></span>  <span class="comment">// optional package description</span>
+
+            <span class="comment">// organization name, if your repository is created inside an organization.</span>
+            <span class="comment">// remove this parameter if you don't have an organization</span>
+            userOrg = <span class="string"><span class="delimiter">'</span><span class="content">jupiter-org</span><span class="delimiter">'</span></span>
+
+            websiteUrl = <span class="string"><span class="delimiter">'</span><span class="content">https://github.com/jupiter/amazing-search</span><span class="delimiter">'</span></span>
+            issueTrackerUrl = <span class="string"><span class="delimiter">'</span><span class="content">https://github.com/jupiter/amazing-search/issues</span><span class="delimiter">'</span></span>
+            vcsUrl = <span class="string"><span class="delimiter">'</span><span class="content">https://github.com/jupiter/amazing-search.git</span><span class="delimiter">'</span></span> <span class="comment">// mandatory for Open Source projects</span>
+
+            licenses = [<span class="string"><span class="delimiter">"</span><span class="content">Apache-2.0</span><span class="delimiter">"</span></span>]
+            labels = [<span class="string"><span class="delimiter">'</span><span class="content">cuba-platform</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">opensource</span><span class="delimiter">'</span></span>]
+
+            <span class="comment">//githubRepo = 'amazingsearch/cuba-platform' // optional Github repository</span>
+            <span class="comment">//githubReleaseNotesFile = 'README.md' // optional Github readme file</span>
+        }
+    }
+}</code></pre> 
+          </div> 
+         </div> 
+         <div class="ulist"> 
+          <ul> 
+           <li> <p><code>pkg:repo</code> 是仓库（使用 <code>main</code>），</p> </li> 
+           <li> <p><code>pkg:name</code> 是包名（使用唯一名称，例如 <code>amazingsearch</code>），</p> </li> 
+           <li> <p><code>pkg:desc</code> 将显示在 Bintray 界面上的可选组件包描述，</p> </li> 
+           <li> <p><code>pkg:userOrg</code> - 是仓库所属组织的名称（如果没有设置，默认情况下 <code>BINTRAY_USER</code> 将用作组织名称）。</p> </li> 
+          </ul> 
+         </div> </li> 
+        <li> <p>现在，可以使用以下命令构建和上传项目：</p> 
+         <div class="listingblock"> 
+          <div class="content"> 
+           <pre class="CodeRay highlight"><code data-lang="plain">./gradlew clean assemble bintrayUpload -Pcuba.artifact.version=1.0.0</code></pre> 
+          </div> 
+         </div> </li> 
+        <li> <p>如果在 CUBA 市场上发布扩展组件，则其仓库将链接到标准 CUBA 仓库，用户不必在其项目中指定仓库。</p> </li> 
+       </ol> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="app_components_sample.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components_sample.html">4.5.3. 应用程序组件示例</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

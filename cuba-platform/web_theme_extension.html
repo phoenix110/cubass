@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>扩展现有主题 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/gui_themes/web_theme_extension.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/gui_themes/web_theme_extension.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/gui_themes/web_theme_extension.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_screens.html">界面和界面片段（Fragments）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_vcl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_vcl.html">可视化组件库</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_data.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data.html">数据组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_facets.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_facets.html">非可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">操作以及操作接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_dialogs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_dialogs.html">对话框消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_notifications.html">通知消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="background_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/background_tasks.html">后台任务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_themes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_themes.html">主题</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_theme_usage.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_theme_usage.html">使用现有主题</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="web_theme_extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_theme_extension.html" class='toc-highlighted'>扩展现有主题</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="web_theme_creation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_theme_creation.html">创建自定义主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_theme_inheritance.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_theme_inheritance.html">使用应用程序组件中的主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_theme_reusable.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_theme_reusable.html">创建可复用主题</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="html-attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/html-attributes.html">可视化组件的 DOM 和 CSS 属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="shortcuts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/shortcuts.html">键盘快捷键</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="url_history_navigation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/url_history_navigation.html">URL 历史及导航</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="composite_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composite_components.html">组合组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pluggable_component_factories.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pluggable_component_factories.html">插件工厂</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="webComponentsHelper.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/webComponentsHelper.html">使用 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="own_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_components.html">自定义可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_web.html">通用 UI 基础设施</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html">Web 登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">匿名访问界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="unsupported_browser_page.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/unsupported_browser_page.html">不支持浏览器的界面</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_screens.html">界面和界面片段（Fragments）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_vcl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_vcl.html">可视化组件库</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_data.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data.html">数据组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_facets.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_facets.html">非可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">操作以及操作接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_dialogs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_dialogs.html">对话框消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_notifications.html">通知消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="background_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/background_tasks.html">后台任务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_themes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_themes.html">主题</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_theme_usage.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_theme_usage.html">使用现有主题</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="web_theme_extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_theme_extension.html" class='toc-highlighted'>扩展现有主题</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="web_theme_creation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_theme_creation.html">创建自定义主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_theme_inheritance.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_theme_inheritance.html">使用应用程序组件中的主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_theme_reusable.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_theme_reusable.html">创建可复用主题</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="html-attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/html-attributes.html">可视化组件的 DOM 和 CSS 属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="shortcuts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/shortcuts.html">键盘快捷键</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="url_history_navigation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/url_history_navigation.html">URL 历史及导航</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="composite_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composite_components.html">组合组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pluggable_component_factories.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pluggable_component_factories.html">插件工厂</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="webComponentsHelper.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/webComponentsHelper.html">使用 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="own_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_components.html">自定义可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_web.html">通用 UI 基础设施</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html">Web 登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">匿名访问界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="unsupported_browser_page.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/unsupported_browser_page.html">不支持浏览器的界面</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect4"> 
+ <h5 id="web_theme_extension">3.5.9.2. 扩展现有主题</h5> 
+ <div class="paragraph"> 
+  <p>平台主题可以在项目中被修改。在修改后的主题中，可以：</p> 
+ </div> 
+ <div class="ulist"> 
+  <ul> 
+   <li> <p>改变品牌 Logo 图片。</p> </li> 
+   <li> <p>在可视化组件中添加图标并使用它们。请参阅下面的<a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a>部分。</p> </li> 
+   <li> <p>为可视化组件创建新样式，并在<a href="gui_attributes.html#gui_attr_stylename" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_stylename">stylename</a>属性中使用它们。这需要一些 CSS 专业知识。</p> </li> 
+   <li> <p>修改可视化组件的现有样式。</p> </li> 
+   <li> <p>修改常用参数，例如背景颜色 、 边距 、间距等。</p> </li> 
+  </ul> 
+ </div> 
+ <div id="web_theme_extension_structure" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     文件结构和构建脚本 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>主题在 <a href="javascript:if(confirm('http://sass-lang.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/'" tppabs="http://sass-lang.com/" target="_blank">SCSS</a> 中定义。要修改（扩展）项目中的主题，应该在 <strong>web</strong> 模块中创建特定的文件结构。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>一种便捷的方法是使用 <strong>CUBA Studio</strong>：在主菜单中，单击 <strong>CUBA &gt; Advanced &gt; Manage themes &gt; Create theme extension</strong>。在弹出窗口中选择要扩展的主题。另一种方法是使用 <a href="javascript:if(confirm('https://www.cuba-platform.com/marketplace/cuba-cli  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.cuba-platform.com/marketplace/cuba-cli'" tppabs="https://www.cuba-platform.com/marketplace/cuba-cli" target="_blank">CUBA CLI</a> 中的 <code>theme</code> 命令。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>最终，以下目录结构将在 <code>modules/web</code> 目录中被创建（对于 Halo 主题扩展）：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="plain">themes/
+  halo/
+    branding/
+        app-icon-login.png
+        app-icon-menu.png
+    com.company.application/
+        app-component.scss
+        halo-ext.scss
+        halo-ext-defaults.scss
+    favicon.ico
+    styles.scss</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>除此之外，<a href="build.gradle.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/build.gradle.html">build.gradle</a>脚本将会添加进 <code>buildScssThemes</code> 任务，该任务在每次构建 <strong>web</strong> 模块时自动执行。可选的<a href="build.gradle_deployThemes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/build.gradle_deployThemes.html">deployThemes</a>任务可用于将主题中的更改快速应用于正在运行的应用程序。</p> 
+      </div> 
+      <div class="admonitionblock tip"> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+          <td class="content"> 
+           <div class="paragraph"> 
+            <p>如果项目包含带有扩展主题的<a href="app_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_components.html">应用程序组件</a>，并且希望此扩展用于整个项目，那么也应该为项目创建主题扩展。有关如何继承组件主题的详细信息，请参阅<a href="web_theme_inheritance.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_theme_inheritance.html">使用应用程序组件中的主题</a>部分。</p> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="web_theme_extension_branding" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     更改品牌 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>可以配置一些品牌相关的属性，例如图标、登录和主应用程序窗口标题以及网站图标（<code>favicon.ico</code>）。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>要使用自定义图片，请替换 <code>modules/web/themes/halo/branding</code> 目录中的默认图片。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>要设置窗口标题和登录窗口欢迎文本，请在 <strong>web</strong> 模块的<a href="main_message_pack.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/main_message_pack.html">主消息包</a>中设置窗口标题和登录窗口欢迎文本（即 <code>modules/web/&lt;root_package&gt;/web/messages.properties</code> 文件及其针对不同语言环境的变体）。消息包允许为不同的用户区域设置使用不同的图像文件。示例 <code>messages.properties</code> 文件：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="plain">application.caption = MyApp
+application.logoImage = branding/myapp-menu.png
+
+loginWindow.caption = MyApp Login
+loginWindow.welcomeLabel = Welcome to MyApp!
+loginWindow.logoImage = branding/myapp-login.png</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p><code>favicon.ico</code> 的路径没有被指定，因为它必须位于主题的根目录中。</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="web_theme_extension_fonts" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     添加字体 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>可以为 Web 主题添加自定义字体。添加一个 Font Family，将其导入 <code>styles.scss</code> 文件的第一行，例如：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="properties">@import url(http://fonts.googleapis.com/css?family=Roboto);</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="web_theme_extension_styles" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     创建新样式 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>为显示客户名称的字段设置黄色背景颜色的示例。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>在 XML 描述中， 定义了 <a href="gui_FieldGroup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_FieldGroup.html">FieldGroup</a>组件：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;fieldGroup</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">fieldGroup</span><span class="delimiter">"</span></span> <span class="attribute-name">datasource</span>=<span class="string"><span class="delimiter">"</span><span class="content">customerDs</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">address</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/fieldGroup&gt;</span></code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p><code>FieldGroup</code> 的 <code>field</code> 元素没有<a href="gui_attributes.html#gui_attr_stylename" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_stylename">stylename</a>属性，因此我们必须在控制器中设置字段的样式名称：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Named</span>(<span class="string"><span class="delimiter">"</span><span class="content">fieldGroup.name</span><span class="delimiter">"</span></span>)
+<span class="directive">private</span> <span class="predefined-type">TextField</span> nameField;
+
+<span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> init(<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; params) {
+    nameField.setStyleName(<span class="string"><span class="delimiter">"</span><span class="content">name-field</span><span class="delimiter">"</span></span>);
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>在 <code>halo-ext.scss</code> 文件中，将新样式定义添加到 <code>halo-ext</code> mixin：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@mixin</span> <span class="tag">com_company_application-halo-ext</span> {
+  .<span class="key">name-field</span> {
+    <span class="key">background-color</span>: <span class="value">lightyellow</span>;
+  }
+}</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>重建项目后，字段将如下所示：</p> 
+      </div> 
+      <div class="imageblock" style="text-align: center"> 
+       <div class="content"> 
+        <img src="gui_themes_fieldgroup_1.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gui_themes_fieldgroup_1.png" alt="gui themes fieldgroup 1"> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="web_theme_extension_modify_styles" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     修改可视化组件的现有样式 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>要修改现有组件的样式参数，请将相应的 CSS 代码添加到 <code>halo-ext.scss</code> 文件的 <code>halo-ext</code> mixin 中。使用 Web 浏览器的开发人员工具查找分配给可视化组件元素的 CSS 类。例如，要以粗体显示应用程序菜单项，<code>halo-ext.scss</code> 文件的内容应如下所示：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@mixin</span> <span class="tag">com_company_application-halo-ext</span> {
+  .<span class="key">v-menubar-menuitem-caption</span> {
+      <span class="key">font-weight</span>: <span class="value">bold</span>;
+  }
+}</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="web_theme_extension_common" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     修改通用参数 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>主题包含许多控制应用程序背景颜色、组件大小、边距和其它参数的 SCSS 变量。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>以下是 Halo 主题扩展的示例，因为它基于来自 <strong>Vaadin</strong> 的 <a href="javascript:if(confirm('https://vaadin.com/valo  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vaadin.com/valo'" tppabs="https://vaadin.com/valo" target="_blank">Valo</a> 主题，并提供最广泛的自定义选项。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p><code>themes/halo/halo-ext-defaults.scss</code> 文件用于覆盖主题变量。大多数 Halo 变量对应于 <a href="javascript:if(confirm('https://vaadin.com/api/valo  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vaadin.com/api/valo'" tppabs="https://vaadin.com/api/valo" target="_blank">Valo 文档</a> 中描述的变量。以下是最常见的变量：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="css"><span class="error">$</span><span class="tag">v-background-color</span>: <span class="color">#fafafa</span>;        <span class="comment">/* component background colour */</span>
+<span class="error">$</span><span class="tag">v-app-background-color</span>: <span class="color">#e7ebf2</span>;    <span class="comment">/* application background colour */</span>
+<span class="error">$</span><span class="tag">v-panel-background-color</span>: <span class="color">#fff</span>;     <span class="comment">/* panel background colour */</span>
+<span class="error">$</span><span class="tag">v-focus-color</span>: <span class="color">#3b5998</span>;             <span class="comment">/* focused element colour */</span>
+<span class="error">$</span><span class="tag">v-error-indicator-color</span>: <span class="color">#ed473b</span>;   <span class="comment">/* empty required fields colour */</span>
+
+<span class="error">$</span><span class="tag">v-line-height</span>: <span class="float">1.35</span>;                <span class="comment">/* line height */</span>
+<span class="error">$</span><span class="tag">v-font-size</span>: <span class="float">14px</span>;                  <span class="comment">/* font size */</span>
+<span class="error">$</span><span class="tag">v-font-weight</span>: <span class="float">400</span>;                 <span class="comment">/* font weight */</span>
+<span class="error">$</span><span class="tag">v-unit-size</span>: <span class="float">30px</span>;                  <span class="comment">/* base theme size, defines the height for buttons, fields and other elements */</span>
+
+<span class="error">$</span><span class="tag">v-font-size--h1</span>: <span class="float">24px</span>;              <span class="comment">/* h1-style Label size */</span>
+<span class="error">$</span><span class="tag">v-font-size--h2</span>: <span class="float">20px</span>;              <span class="comment">/* h2-style Label size */</span>
+<span class="error">$</span><span class="tag">v-font-size--h3</span>: <span class="float">16px</span>;              <span class="comment">/* h3-style Label size */</span>
+
+<span class="comment">/* margins for containers */</span>
+<span class="error">$</span><span class="tag">v-layout-margin-top</span>: <span class="float">10px</span>;
+<span class="error">$</span><span class="tag">v-layout-margin-left</span>: <span class="float">10px</span>;
+<span class="error">$</span><span class="tag">v-layout-margin-right</span>: <span class="float">10px</span>;
+<span class="error">$</span><span class="tag">v-layout-margin-bottom</span>: <span class="float">10px</span>;
+
+<span class="comment">/* spacing between components in a container (if enabled) */</span>
+<span class="error">$</span><span class="tag">v-layout-spacing-vertical</span>: <span class="float">10px</span>;
+<span class="error">$</span><span class="tag">v-layout-spacing-horizontal</span>: <span class="float">10px</span>;
+
+<span class="comment">/* whether filter search button should have "friendly" style*/</span>
+<span class="error">$</span><span class="tag">cuba-filter-friendly-search-button</span>: <span class="tag">true</span>;
+
+<span class="comment">/* whether button that has primary action or marked as primary itself should be highlighted*/</span>
+<span class="error">$</span><span class="tag">cuba-highlight-primary-action</span>: <span class="tag">false</span>;
+
+<span class="comment">/* basic table and datagrid settings */</span>
+<span class="error">$</span><span class="tag">v-table-row-height</span>: <span class="float">30px</span>;
+<span class="error">$</span><span class="tag">v-table-header-font-size</span>: <span class="float">13px</span>;
+<span class="error">$</span><span class="tag">v-table-cell-padding-horizontal</span>: <span class="float">7px</span>;
+<span class="error">$</span><span class="tag">v-grid-row-height</span>
+<span class="error">$</span><span class="tag">v-grid-row-selected-background-color</span>
+<span class="error">$</span><span class="tag">v-grid-cell-padding-horizontal</span>
+
+<span class="comment">/* input field focus style */</span>
+<span class="error">$</span><span class="tag">v-focus-style</span>: <span class="tag">inset</span> <span class="float">0px</span> <span class="float">0px</span> <span class="float">5px</span> <span class="float">1px</span> <span class="color">rgba($v-focus-color, 0.5)</span>;
+<span class="comment">/* required fields focus style */</span>
+<span class="error">$</span><span class="tag">v-error-focus-style</span>: <span class="tag">inset</span> <span class="float">0px</span> <span class="float">0px</span> <span class="float">5px</span> <span class="float">1px</span> <span class="color">rgba($v-error-indicator-color, 0.5)</span>;
+
+<span class="comment">/* animation for elements is enabled by default */</span>
+<span class="error">$</span><span class="tag">v-animations-enabled</span>: <span class="tag">true</span>;
+<span class="comment">/* popup window animation is disabled by default */</span>
+<span class="error">$</span><span class="tag">v-window-animations-enabled</span>: <span class="tag">false</span>;
+
+<span class="comment">/* inverse header is controlled by cuba.web.useInverseHeader property */</span>
+<span class="error">$</span><span class="tag">v-support-inverse-menu</span>: <span class="tag">true</span>;
+
+<span class="comment">/* show "required" indicators for components */</span>
+<span class="error">$</span><span class="tag">v-show-required-indicators</span>: <span class="tag">false</span> <span class="error">!</span><span class="tag">default</span>;</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>下面提供了具有深色背景和略微减少外边距的示例主题 <code>halo-ext-defaults.scss</code>：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="css"><span class="error">$</span><span class="tag">v-background-color</span>: <span class="color">#444D50</span>;
+
+<span class="error">$</span><span class="tag">v-font-size--h1</span>: <span class="float">22px</span>;
+<span class="error">$</span><span class="tag">v-font-size--h2</span>: <span class="float">18px</span>;
+<span class="error">$</span><span class="tag">v-font-size--h3</span>: <span class="float">16px</span>;
+
+<span class="error">$</span><span class="tag">v-layout-margin-top</span>: <span class="float">8px</span>;
+<span class="error">$</span><span class="tag">v-layout-margin-left</span>: <span class="float">8px</span>;
+<span class="error">$</span><span class="tag">v-layout-margin-right</span>: <span class="float">8px</span>;
+<span class="error">$</span><span class="tag">v-layout-margin-bottom</span>: <span class="float">8px</span>;
+
+<span class="error">$</span><span class="tag">v-layout-spacing-vertical</span>: <span class="float">8px</span>;
+<span class="error">$</span><span class="tag">v-layout-spacing-horizontal</span>: <span class="float">8px</span>;
+
+<span class="error">$</span><span class="tag">v-table-row-height</span>: <span class="float">25px</span>;
+<span class="error">$</span><span class="tag">v-table-header-font-size</span>: <span class="float">13px</span>;
+<span class="error">$</span><span class="tag">v-table-cell-padding-horizontal</span>: <span class="float">5px</span>;
+
+<span class="error">$</span><span class="tag">v-support-inverse-menu</span>: <span class="tag">false</span>;</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>另外一个示例展示了使用一组变量使得 Halo 主题看上去跟旧的 Havana 主题差不多，Havana 主题从框架 7.0 版本开始已经移除了。</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="css"><span class="error">$</span><span class="tag">cuba-menubar-background-color</span>: <span class="color">#315379</span>;
+<span class="error">$</span><span class="tag">cuba-menubar-border-color</span>: <span class="color">#315379</span>;
+<span class="error">$</span><span class="tag">v-table-row-height</span>: <span class="float">25px</span>;
+<span class="error">$</span><span class="tag">v-selection-color</span>: <span class="color">rgb(77, 122, 178)</span>;
+<span class="error">$</span><span class="tag">v-table-header-font-size</span>: <span class="float">12px</span>;
+<span class="error">$</span><span class="tag">v-textfield-border</span>: <span class="float">1px</span> <span class="tag">solid</span> <span class="color">#A5C4E0</span>;
+
+<span class="error">$</span><span class="tag">v-selection-item-selection-color</span>: <span class="color">#4D7AB2</span>;
+
+<span class="error">$</span><span class="tag">v-app-background-color</span>: <span class="color">#E3EAF1</span>;
+<span class="error">$</span><span class="tag">v-font-size</span>: <span class="float">12px</span>;
+<span class="error">$</span><span class="tag">v-font-weight</span>: <span class="float">400</span>;
+<span class="error">$</span><span class="tag">v-unit-size</span>: <span class="float">25px</span>;
+<span class="error">$</span><span class="tag">v-border-radius</span>: <span class="float">0px</span>;
+<span class="error">$</span><span class="tag">v-border</span>: <span class="float">1px</span> <span class="tag">solid</span> <span class="color">#9BB3D3</span> <span class="error">!</span><span class="tag">default</span>;
+<span class="error">$</span><span class="tag">v-font-family</span>: <span class="tag">Verdana</span>,<span class="tag">tahoma</span>,<span class="tag">arial</span>,<span class="tag">geneva</span>,<span class="tag">helvetica</span>,<span class="tag">sans-serif</span>,<span class="string"><span class="delimiter">"</span><span class="content">Trebuchet MS</span><span class="delimiter">"</span></span>;
+
+<span class="error">$</span><span class="tag">v-panel-background-color</span>: <span class="color">#ffffff</span>;
+<span class="error">$</span><span class="tag">v-background-color</span>: <span class="color">#ffffff</span>;
+
+<span class="error">$</span><span class="tag">cuba-menubar-menuitem-text-color</span>: <span class="color">#ffffff</span>;
+
+<span class="error">$</span><span class="tag">cuba-app-menubar-padding-top</span>: <span class="float">8px</span>;
+<span class="error">$</span><span class="tag">cuba-app-menubar-padding-bottom</span>: <span class="float">8px</span>;
+
+<span class="error">$</span><span class="tag">cuba-menubar-text-color</span>: <span class="color">#ffffff</span>;
+<span class="error">$</span><span class="tag">cuba-menubar-submenu-padding</span>: <span class="float">1px</span>;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div id="web_theme_extension_header" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     更改应用程序标题 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>Halo 主题支持<a href="app_properties_reference.html#cuba.web.useInverseHeader" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html#cuba.web.useInverseHeader">cuba.web.useInverseHeader</a>属性，该属性控制应用程序标题的颜色。默认情况下，此属性设置为 <code>true</code>，它设置一个暗色（高对比）标题。只需将此属性设置为 <code>false</code>，即可不需要对主题进行任何更改而创建一个亮色标题。</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="web_theme_creation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_theme_creation.html">3.5.9.3. 创建自定义主题</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

@@ -1,0 +1,1093 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>字段组 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/gui_vcl/gui_components/gui_FieldGroup.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/gui_vcl/gui_components/gui_FieldGroup.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/gui_framework/gui_vcl/gui_components/gui_FieldGroup.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_screens.html">界面和界面片段（Fragments）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_vcl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_vcl.html">可视化组件库</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_components.html">可视化组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_AppMenu.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_AppMenu.html">应用程序菜单</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_BrowserFrame.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_BrowserFrame.html">浏览器框架</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Button.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Button.html">按钮</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_BulkEditor.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_BulkEditor.html">批量编辑器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Calendar.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Calendar.html">日历控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_CapsLockIndicator.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_CapsLockIndicator.html">大小写锁定提示器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_CheckBox.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_CheckBox.html">复选框</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_ColorPicker.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_ColorPicker.html">颜色选择器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_CheckBoxGroup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_CheckBoxGroup.html">复选框组</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_CurrencyField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_CurrencyField.html">货币组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_DataGrid.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_DataGrid.html">数据网格</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_DateField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_DateField.html">日期时间组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_DatePicker.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_DatePicker.html">日期选择器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Embedded.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Embedded.html">嵌入式组件（废弃）</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="gui_FieldGroup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_FieldGroup.html" class='toc-highlighted'>字段组</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_FileMultiUploadField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_FileMultiUploadField.html">多文件上传控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_FileUploadField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_FileUploadField.html">文件上传控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Filter.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Filter.html">过滤器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Form.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Form.html">表单</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_GroupTable.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_GroupTable.html">分组表格</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Image.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Image.html">图片组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Label.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Label.html">标签组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Link.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Link.html">链接组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_LinkButton.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_LinkButton.html">链接按钮</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_LookupField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_LookupField.html">下拉框</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_LookupPickerField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_LookupPickerField.html">下拉选择器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_MaskedField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_MaskedField.html">掩码字段</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_OptionsGroup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_OptionsGroup.html">选项组</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_OptionsList.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_OptionsList.html">选项列表</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_PasswordField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_PasswordField.html">密码字段</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_PickerField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_PickerField.html">选择器控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_PopupButton.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_PopupButton.html">弹窗按钮</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_PopupView.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_PopupView.html">弹窗查看控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_ProgressBar.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_ProgressBar.html">进度条</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_RadioButtonGroup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_RadioButtonGroup.html">单选按钮组</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_RelatedEntities.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_RelatedEntities.html">关联实体组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_ResizableTextArea.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_ResizableTextArea.html">可调大小文本区</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_RichTextArea.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_RichTextArea.html">富文本区</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_SearchPickerField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_SearchPickerField.html">搜索选择器控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_SideMenu.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_SideMenu.html">侧边菜单</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_SourceCodeEditor.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_SourceCodeEditor.html">源码编辑器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_SuggestionField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_SuggestionField.html">建议字段</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_SuggestionPickerField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_SuggestionPickerField.html">建议选择器字段</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Table.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Table.html">表格</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TextArea.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextArea.html">文本区</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TextField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextField.html">文本控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TimeField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TimeField.html">时间组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TokenList.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TokenList.html">标签列表</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Tree.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Tree.html">树</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TreeDataGrid.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TreeDataGrid.html">树形数据网格</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TreeTable.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TreeTable.html">树形表格</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TwinColumn.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TwinColumn.html">双列</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_layouts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_layouts.html">布局容器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="screen_layout_rules.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_layout_rules.html">界面布局规则</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_misc.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_misc.html">其它</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_api.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_api.html">可视化组件 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html">组件的 XML 属性</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_data.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data.html">数据组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_facets.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_facets.html">非可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">操作以及操作接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_dialogs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_dialogs.html">对话框消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_notifications.html">通知消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="background_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/background_tasks.html">后台任务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_themes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_themes.html">主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="html-attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/html-attributes.html">可视化组件的 DOM 和 CSS 属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="shortcuts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/shortcuts.html">键盘快捷键</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="url_history_navigation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/url_history_navigation.html">URL 历史及导航</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="composite_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composite_components.html">组合组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pluggable_component_factories.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pluggable_component_factories.html">插件工厂</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="webComponentsHelper.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/webComponentsHelper.html">使用 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="own_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_components.html">自定义可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_web.html">通用 UI 基础设施</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html">Web 登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">匿名访问界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="unsupported_browser_page.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/unsupported_browser_page.html">不支持浏览器的界面</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_screens.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_screens.html">界面和界面片段（Fragments）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_vcl.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_vcl.html">可视化组件库</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="gui_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_components.html">可视化组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_AppMenu.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_AppMenu.html">应用程序菜单</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_BrowserFrame.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_BrowserFrame.html">浏览器框架</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Button.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Button.html">按钮</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_BulkEditor.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_BulkEditor.html">批量编辑器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Calendar.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Calendar.html">日历控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_CapsLockIndicator.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_CapsLockIndicator.html">大小写锁定提示器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_CheckBox.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_CheckBox.html">复选框</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_ColorPicker.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_ColorPicker.html">颜色选择器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_CheckBoxGroup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_CheckBoxGroup.html">复选框组</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_CurrencyField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_CurrencyField.html">货币组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_DataGrid.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_DataGrid.html">数据网格</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_DateField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_DateField.html">日期时间组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_DatePicker.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_DatePicker.html">日期选择器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Embedded.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Embedded.html">嵌入式组件（废弃）</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="gui_FieldGroup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_FieldGroup.html" class='toc-highlighted'>字段组</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_FileMultiUploadField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_FileMultiUploadField.html">多文件上传控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_FileUploadField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_FileUploadField.html">文件上传控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Filter.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Filter.html">过滤器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Form.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Form.html">表单</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_GroupTable.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_GroupTable.html">分组表格</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Image.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Image.html">图片组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Label.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Label.html">标签组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Link.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Link.html">链接组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_LinkButton.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_LinkButton.html">链接按钮</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_LookupField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_LookupField.html">下拉框</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_LookupPickerField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_LookupPickerField.html">下拉选择器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_MaskedField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_MaskedField.html">掩码字段</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_OptionsGroup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_OptionsGroup.html">选项组</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_OptionsList.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_OptionsList.html">选项列表</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_PasswordField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_PasswordField.html">密码字段</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_PickerField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_PickerField.html">选择器控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_PopupButton.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_PopupButton.html">弹窗按钮</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_PopupView.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_PopupView.html">弹窗查看控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_ProgressBar.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_ProgressBar.html">进度条</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_RadioButtonGroup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_RadioButtonGroup.html">单选按钮组</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_RelatedEntities.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_RelatedEntities.html">关联实体组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_ResizableTextArea.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_ResizableTextArea.html">可调大小文本区</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_RichTextArea.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_RichTextArea.html">富文本区</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_SearchPickerField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_SearchPickerField.html">搜索选择器控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_SideMenu.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_SideMenu.html">侧边菜单</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_SourceCodeEditor.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_SourceCodeEditor.html">源码编辑器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_SuggestionField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_SuggestionField.html">建议字段</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_SuggestionPickerField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_SuggestionPickerField.html">建议选择器字段</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Table.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Table.html">表格</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TextArea.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextArea.html">文本区</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TextField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextField.html">文本控件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TimeField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TimeField.html">时间组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TokenList.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TokenList.html">标签列表</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_Tree.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Tree.html">树</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TreeDataGrid.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TreeDataGrid.html">树形数据网格</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TreeTable.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TreeTable.html">树形表格</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_TwinColumn.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TwinColumn.html">双列</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_layouts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_layouts.html">布局容器</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="screen_layout_rules.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_layout_rules.html">界面布局规则</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_misc.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_misc.html">其它</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_api.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_api.html">可视化组件 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html">组件的 XML 属性</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_data.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_data.html">数据组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_facets.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_facets.html">非可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_Action.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Action.html">操作以及操作接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_dialogs.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_dialogs.html">对话框消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_notifications.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_notifications.html">通知消息</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="background_tasks.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/background_tasks.html">后台任务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_themes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_themes.html">主题</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_icons.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_icons.html">图标</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="html-attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/html-attributes.html">可视化组件的 DOM 和 CSS 属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="shortcuts.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/shortcuts.html">键盘快捷键</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="url_history_navigation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/url_history_navigation.html">URL 历史及导航</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="composite_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composite_components.html">组合组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="pluggable_component_factories.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/pluggable_component_factories.html">插件工厂</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="webComponentsHelper.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/webComponentsHelper.html">使用 Vaadin 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="own_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/own_components.html">自定义可视化组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_web.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_web.html">通用 UI 基础设施</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="web_login.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/web_login.html">Web 登录</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="gui_anonymous_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_anonymous_access.html">匿名访问界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="unsupported_browser_page.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/unsupported_browser_page.html">不支持浏览器的界面</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect5"> 
+ <h6 id="gui_FieldGroup">3.5.2.1.15. 字段组</h6> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('https://demo.cuba-platform.cn/sampler/open?screen=simple-fieldgroup  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://demo.cuba-platform.cn/sampler/open?screen=simple-fieldgroup'" tppabs="https://demo.cuba-platform.cn/sampler/open?screen=simple-fieldgroup" class="live-demo-btn" target="_blank">在线示例</a> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/gui/components/FieldGroup.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/gui/components/FieldGroup.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/gui/components/FieldGroup.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>FieldGroup</code> 用来集中显示和编辑实体的多个属性。</p> 
+ </div> 
+ <div class="imageblock" style="text-align: center"> 
+  <div class="content"> 
+   <img src="gui_fieldGroup.png" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gui_fieldGroup.png" alt="gui fieldGroup"> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>该组件对应的 XML 名称： <code>fieldGroup</code></p> 
+ </div> 
+ <div class="admonitionblock warning"> 
+  <table> 
+   <tbody> 
+    <tr> 
+     <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td> 
+     <td class="content"> 
+      <div class="paragraph"> 
+       <p><code>FieldGroup</code> 只能在基于<a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">历史 API</a> 的界面中使用。当前 API 中通过 <a href="gui_Form.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Form.html">Form</a> 组件提供类似功能。</p> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="paragraph"> 
+  <p>下面这个例子展示了在 XML 中定义一组字段的情况：</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dsContext&gt;</span>
+    <span class="tag">&lt;datasource</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">orderDs</span><span class="delimiter">"</span></span>
+                <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">com.sample.sales.entity.Order</span><span class="delimiter">"</span></span>
+                <span class="attribute-name">view</span>=<span class="string"><span class="delimiter">"</span><span class="content">order-with-customer</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;/datasource&gt;</span>
+<span class="tag">&lt;/dsContext&gt;</span>
+<span class="tag">&lt;layout&gt;</span>
+    <span class="tag">&lt;fieldGroup</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">orderFieldGroup</span><span class="delimiter">"</span></span> <span class="attribute-name">datasource</span>=<span class="string"><span class="delimiter">"</span><span class="content">orderDs</span><span class="delimiter">"</span></span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">"</span><span class="content">250px</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">date</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">customer</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">amount</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/fieldGroup&gt;</span>
+<span class="tag">&lt;/layout&gt;</span></code></pre> 
+  </div> 
+ </div> 
+ <div class="paragraph"> 
+  <p>在上面这个例子中，<code>dsContext</code> 定义了一个包含单个实体 <code>Order</code> 的<a href="datasources.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasources.html">数据源</a> <code>orderDs</code>。这里用 <code>fieldGroup</code> 组件的 <code>datasource</code> 属性来定义这个数据源。XML 元素 <code>field</code> 定义了那些需要显示在界面上的实体属性。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>fieldGroup</code> 的 XML 元素:</p> 
+ </div> 
+ <div id="gui_FieldGroup_column" class="ulist"> 
+  <ul> 
+   <li> <p><code>column</code> – 可选元素，用来把字段放到多个列显示。为了达到这样的效果，<code>field</code> 元素不能直接放在 <code>fieldGroup</code> 元素里面，而需要放在一个 <code>column</code> 元素里，比如：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;fieldGroup</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">orderFieldGroup</span><span class="delimiter">"</span></span> <span class="attribute-name">datasource</span>=<span class="string"><span class="delimiter">"</span><span class="content">orderDs</span><span class="delimiter">"</span></span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">"</span><span class="content">100%</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;column</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">"</span><span class="content">250px</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">num</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">date</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">amount</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/column&gt;</span>
+    <span class="tag">&lt;column</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">"</span><span class="content">400px</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">customer</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">info</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/column&gt;</span>
+<span class="tag">&lt;/fieldGroup&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>这样的话，字段会被排成两列；第一列包含的几个字段的宽度会是 <code>250px</code>，第二列几个字段的宽度会是 <code>400px</code>。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p><code>column</code> 元素的属性:</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div id="gui_FieldGroup_column_width" class="ulist"> 
+       <ul> 
+        <li> <p><code>width</code> – 定义列中的字段宽度。默认的字段宽度是 <code>200px</code>。这里可以采用像素或者整个列宽的百分比来定义。</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_column_flex" class="ulist"> 
+       <ul> 
+        <li> <p><code>flex</code> – 伸缩率，定义当 <code>fieldGroup</code> 整体的宽度发生变化时，此列相对于其它列水平伸缩的程度。比如，可以定义一列的 <code>flex=1</code>，另一列的 <code>flex=3</code>。</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_column_id" class="ulist"> 
+       <ul> 
+        <li> <p><code>id</code> – 列 id，可选，在做<a href="screen_extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_extension.html">界面扩展</a>的时候会用到。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> </li> 
+  </ul> 
+ </div> 
+ <div id="gui_FieldGroup_field" class="ulist"> 
+  <ul> 
+   <li> <p><code>field</code> – 主要的组件元素，定义组件的一个字段。</p> 
+    <div class="paragraph"> 
+     <p>自定义的字段也可以放在 <code>field</code> 元素里：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;fieldGroup&gt;</span>
+    <span class="tag">&lt;field</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">demo</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;lookupField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">demoField</span><span class="delimiter">"</span></span> <span class="attribute-name">datasource</span>=<span class="string"><span class="delimiter">"</span><span class="content">userDs</span><span class="delimiter">"</span></span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">group</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/field&gt;</span>
+<span class="tag">&lt;/fieldGroup&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p><code>field</code> 元素的 XML 属性:</p> 
+    </div> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div id="gui_FieldGroup_field_id" class="ulist"> 
+       <ul> 
+        <li> <p><code>id</code> – 如果 <code>property</code> 没设置，那么必须设置 id；如果 <code>property</code> 设置了，那么 id 默认跟 <code>property</code> 取一样的值。<code>id</code> 属性需要使用唯一的标识符，要么是 <code>property</code> 定义的字段名，要么是通过编程的方式定义的一个字段。如果是采取编程方式定义，那么 <code>field</code> 也需要有 <code>custom="true"</code> （参阅下面 custom 的说明）</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_field_property" class="ulist"> 
+       <ul> 
+        <li> <p><code>property</code> - 如果 <code>id</code> 没设置，那么必须设置此属性；这个属性的值必须是一个实体属性的名称，用来显示这个绑定的字段。</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_field_caption" class="ulist"> 
+       <ul> 
+        <li> <p><code>caption</code> − 定义字段的显示名称。如果没设置的话，则会显示实体的<a href="entity_localization.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_localization.html">属性本地化名称</a>。</p> </li> 
+        <li> <p><code>inputPrompt</code> - 如果这个字段使用的组件支持 <a href="gui_attributes.html#gui_attr_inputPrompt" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_inputPrompt">inputPrompt</a> 属性的话，这里可以直接设置这个属性的值。</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_field_visible" class="ulist"> 
+       <ul> 
+        <li> <p><code>visible</code> − 通过这个属性控制是否显示这个字段及其名称（caption）。</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_field_datasource" class="ulist"> 
+       <ul> 
+        <li> <p><code>datasource</code> − 可以设置该字段单独的<a href="datasources.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasources.html">数据源</a>，而不用整个 <code>fieldGroup</code> 组件的数据源。这样的话，一个 <code>fieldGroup</code> 就可以显示来自不同实体的属性了。</p> </li> 
+        <li> <p><code>optionsDatasource</code> 定义了一个用来做选项列表的<a href="datasources.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasources.html">数据源</a>名称。可以给实体属性关联的字段定义选项数据源。默认情况下，选择关联实体的时候是通过一个查找界面来操作。但是如果 <code>optionsDatasource</code> 属性设置了，则可以通过下拉列表来选择。也就是说，其实设置这个属性会导致原本默认的 <a href="gui_LookupPickerField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_LookupPickerField.html">LookupPickerField</a> 会被 <a href="gui_PickerField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_PickerField.html">PickerField</a> 替换掉。</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_field_width" class="ulist"> 
+       <ul> 
+        <li> <p><code>width</code> − 设置字段宽度，不包括显示名称。默认是 <code>200px</code>。宽度值可以是像素值或者整个列宽的百分比。需要同时设置一列中所有的字段统一宽度，可以通过设置上面提到过的 <code>column</code> 的 <code>width</code> 属性。</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_field_custom" class="ulist"> 
+       <ul> 
+        <li> <p><code>custom</code> – 如果设置成 <code>true</code>，表示这个字段不关联实体的属性，也不关联一个对应的组件。然后这个字段需要通过 <code>FieldGroup</code> 的 <code>setComponent()</code> 方法以编程方式实现，具体可以参考下面对于 <code>setComponent()</code> 的解释。</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_field_generator" class="ulist"> 
+       <ul> 
+        <li> <p><code>generator</code> 属性用来以声明的方式创建自定义字段，需要设置这个属性的值为一个可以返回自定义组件的方法名：</p> 
+         <div class="listingblock"> 
+          <div class="content"> 
+           <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;fieldGroup</span> <span class="attribute-name">datasource</span>=<span class="string"><span class="delimiter">"</span><span class="content">productDs</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;column</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">"</span><span class="content">250px</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">description</span><span class="delimiter">"</span></span> <span class="attribute-name">generator</span>=<span class="string"><span class="delimiter">"</span><span class="content">generateDescriptionField</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/column&gt;</span>
+<span class="tag">&lt;/fieldGroup&gt;</span></code></pre> 
+          </div> 
+         </div> 
+         <div class="listingblock"> 
+          <div class="content"> 
+           <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="predefined-type">Component</span> generateDescriptionField(Datasource datasource, <span class="predefined-type">String</span> fieldId) {
+    <span class="predefined-type">TextArea</span> textArea = uiComponents.create(<span class="predefined-type">TextArea</span>.NAME);
+    textArea.setRows(<span class="integer">5</span>);
+    textArea.setDatasource(datasource, fieldId);
+    <span class="keyword">return</span> textArea;
+}</code></pre> 
+          </div> 
+         </div> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_field_link" class="ulist"> 
+       <ul> 
+        <li> <p><code>link</code> - 如果设置成 <code>true</code>，那么这个字段会显示成一个到实体编辑器的链接而不显示一个实体选择器字段。这个场景在只让用户看到关联的实体而不允许用户去修改实体关系的时候会用到。</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_field_linkScreen" class="ulist"> 
+       <ul> 
+        <li> <p><code>linkScreen</code> - 当 <code>link</code> 属性设置成 <code>true</code>，用来定义点击链接时需要打开的界面的标识符。</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_field_linkScreenOpenType" class="ulist"> 
+       <ul> 
+        <li> <p><code>linkScreenOpenType</code> - 定义界面打开的类型（<code>THIS_TAB</code> 、 <code>NEW_TAB</code> 或者 <code>DIALOG</code>）。</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_field_linkInvoke" class="ulist"> 
+       <ul> 
+        <li> <p><code>linkInvoke</code> - 定义一个控制器方法，在点击链接时调用这个方法，而不是打开界面。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>根据需要显示的实体属性类型的不同，可以使用下面这些 <code>field</code> 的属性：</p> 
+      </div> 
+      <div id="gui_FieldGroup_field_mask" class="ulist"> 
+       <ul> 
+        <li> <p><code>mask</code> 如果给一个文本型的实体属性设置这个 <code>mask</code> 属性，那么界面组件会用 <a href="gui_MaskedField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_MaskedField.html">MaskedField</a> 替换 <a href="gui_TextField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextField.html">TextField</a>，并使用适当的掩码，此时也可以设置 <code>valueMode</code> 属性。</p> </li> 
+       </ul> 
+      </div> 
+      <div id="gui_FieldGroup_field_rows" class="ulist"> 
+       <ul> 
+        <li> <p><code>rows</code> 如果给一个文本型的实体属性设置这个 <code>rows</code> 属性，那么界面组件会用 <a href="gui_TextArea.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextArea.html">TextArea</a> 替换 <a href="gui_TextField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextField.html">TextField</a>，并将文字重组成适当的行数，此时也可以设置 <code>cols</code> 属性。</p> </li> 
+        <li> <p><code>maxLength</code> 对于文本型实体属性，可以定义 <code>maxLength</code> 属性，跟 <a href="gui_TextField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextField.html">TextField</a> 中描述的一致。</p> </li> 
+        <li> <p><code>dateFormat</code> 对于 <code>date</code> 或者 <code>dateTime</code> 类型的实体属性，可以设置 <code>dateFormat</code> 和 <code>resolution</code> 参数，使用的组件是 <a href="gui_DateField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_DateField.html">DateField</a>。</p> </li> 
+        <li> <p><code>showSeconds</code> 如果实体属性是 <code>time</code> 类型，可以设置界面组件 <a href="gui_TimeField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TimeField.html">TimeField</a> 的 <code>showSeconds</code> 属性。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> </li> 
+  </ul> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>fieldGroup</code> 的 XML 属性:</p> 
+ </div> 
+ <div id="gui_FieldGroup_border" class="ulist"> 
+  <ul> 
+   <li> <p><code>border</code> 属性可以设置成 <code>hidden</code> 或者 <code>visible</code>。默认值是 <code>hidden</code>。如果设置成 <code>visible</code>，<code>fieldGroup</code> 组件会有边框（border）而且会被高亮。在 web 的实现中，通过添加 <code>cuba-fieldgroup-border</code> 这个 CSS 类显示边框。</p> </li> 
+  </ul> 
+ </div> 
+ <div id="gui_FieldGroup_captionAlignment" class="ulist"> 
+  <ul> 
+   <li> <p><code>captionAlignment</code> 属性定义 <code>FieldGroup</code> 内字段的名称与字段的相对位置。可选项：<code>LEFT</code> 和 <code>TOP</code> 。</p> </li> 
+  </ul> 
+ </div> 
+ <div id="gui_FieldGroup_fieldFactoryBean" class="ulist"> 
+  <ul> 
+   <li> <p><code>fieldFactoryBean</code> 在 XML 描述里面，声明式的字段默认是通过 <code>FieldGroupFieldFactory</code> 接口创建的。可以使用这个属性，覆盖默认工厂，将此属性设置成自定义 <code>FieldGroupFieldFactory</code> 实现的名称。</p> 
+    <div id="gui_FieldGroup_setFieldFactory" class="paragraph"> 
+     <p>通过编程的方式创建 <code>FieldGroup</code> 的话，可以使用 <code>setFieldFactory()</code> 方法。</p> 
+    </div> </li> 
+  </ul> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>FieldGroup</code> 接口的方法：</p> 
+ </div> 
+ <div id="gui_FieldGroup_addField" class="ulist"> 
+  <ul> 
+   <li> <p><code>addField</code> 在运行时将字段添加到 <code>FieldGroup</code>。接受 <code>FieldConfig</code> 类型实例作为参数，也可以通过 <code>colIndex</code> 和 <code>rowIndex</code> 参数定义字段的位置。</p> </li> 
+  </ul> 
+ </div> 
+ <div id="gui_FieldGroup_bind" class="ulist"> 
+  <ul> 
+   <li> <p><code>bind()</code> 在 <code>setDatasource()</code> 之后触发的方法，用来为添加的字段绑定相应的 UI 组件。</p> </li> 
+  </ul> 
+ </div> 
+ <div id="gui_FieldGroup_createField" class="ulist"> 
+  <ul> 
+   <li> <p><code>createField()</code> 用来创建新的实现了 <code>FieldConfig</code> 接口的 FieldGroup 元素：</p> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java">fieldGroup.addField(fieldGroup.createField(<span class="string"><span class="delimiter">"</span><span class="content">newField</span><span class="delimiter">"</span></span>));</code></pre> 
+     </div> 
+    </div> </li> 
+  </ul> 
+ </div> 
+ <div id="gui_FieldGroup_getComponent" class="ulist"> 
+  <ul> 
+   <li> <p><code>getComponent()</code> 返回一个跟字段绑定的可视化组件。这个也许在需要设置额外的组件参数时，通过这个方法得到这个可视化组件。因为上面提到的 <code>field</code> 提供的 XML 配置的参数有限。</p> 
+    <div class="paragraph"> 
+     <p>在界面控制器中，如果想获取对可视化组件的引用，可以采用<a href="screen_controller_injection.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_controller_injection.html">注入</a>的方式，而不是通过显式地调用 <code>getFieldNN("id").getComponentNN()</code> 的方式。具体做法是，使用 <code>@Named</code> 注解，提供的注解参数是 <code>fieldGroup</code> 的标识符加 <code>.</code> 再加上字段标识符。</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>比如下面例子中，在用一个字段选择关联的实体的时候，可以添加一个 Open 操作，然后删掉这个字段的 Clear 操作：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;fieldGroup</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">orderFieldGroup</span><span class="delimiter">"</span></span> <span class="attribute-name">datasource</span>=<span class="string"><span class="delimiter">"</span><span class="content">orderDs</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">date</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">customer</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;field</span> <span class="attribute-name">property</span>=<span class="string"><span class="delimiter">"</span><span class="content">amount</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/fieldGroup&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Named</span>(<span class="string"><span class="delimiter">"</span><span class="content">orderFieldGroup.customer</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> PickerField customerField;
+
+<span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> init(<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; params) {
+    customerField.addOpenAction();
+    customerField.removeAction(customerField.getAction(PickerField.ClearAction.NAME));
+}</code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>要使用 <code>getComponent()</code> 获取或者注入字段组件，需要知道字段中使用的组件的类型。下面这个表列举了实体的属性类型和组件的对应关系：</p> 
+    </div> 
+    <table class="tableblock frame-all grid-all spread"> 
+     <colgroup> 
+      <col style="width: 33%;"> 
+      <col style="width: 33%;"> 
+      <col style="width: 33%;"> 
+     </colgroup> 
+     <thead> 
+      <tr> 
+       <th class="tableblock halign-left valign-middle">实体属性类型</th> 
+       <th class="tableblock halign-left valign-middle">附加条件</th> 
+       <th class="tableblock halign-left valign-middle">字段可视化组件类型</th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">关联实体</p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock">指定了 <code>optionsDatasource</code></p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="gui_LookupPickerField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_LookupPickerField.html">LookupPickerField</a></p></td> 
+      </tr> 
+      <tr> 
+       <td class="tableblock halign-left valign-middle"></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="gui_PickerField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_PickerField.html">PickerField</a></p></td> 
+      </tr> 
+      <tr> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock">枚举类型 (<code>enum</code>)</p></td> 
+       <td class="tableblock halign-left valign-middle"></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="gui_LookupField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_LookupField.html">LookupField</a></p></td> 
+      </tr> 
+      <tr> 
+       <td class="tableblock halign-left valign-middle" rowspan="3"><p class="tableblock"><code>string</code></p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock">指定了 <code>mask</code></p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="gui_MaskedField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_MaskedField.html">MaskedField</a></p></td> 
+      </tr> 
+      <tr> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock">指定了 <code>rows</code></p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="gui_TextArea.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextArea.html">TextArea</a></p></td> 
+      </tr> 
+      <tr> 
+       <td class="tableblock halign-left valign-middle"></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="gui_TextField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextField.html">TextField</a></p></td> 
+      </tr> 
+      <tr> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>boolean</code></p></td> 
+       <td class="tableblock halign-left valign-middle"></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="gui_CheckBox.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_CheckBox.html">CheckBox</a></p></td> 
+      </tr> 
+      <tr> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>date</code>, <code>dateTime</code></p></td> 
+       <td class="tableblock halign-left valign-middle"></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="gui_DateField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_DateField.html">DateField</a></p></td> 
+      </tr> 
+      <tr> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>time</code></p></td> 
+       <td class="tableblock halign-left valign-middle"></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="gui_TimeField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TimeField.html">TimeField</a></p></td> 
+      </tr> 
+      <tr> 
+       <td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock"><code>int</code>, <code>long</code>, <code>double</code>, <code>decimal</code></p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock">指定了 <code>mask</code></p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="gui_MaskedField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_MaskedField.html">MaskedField</a></p></td> 
+      </tr> 
+      <tr> 
+       <td class="tableblock halign-left valign-middle"></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="gui_TextField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextField.html">TextField</a></p></td> 
+      </tr> 
+      <tr> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>UUID</code></p></td> 
+       <td class="tableblock halign-left valign-middle"></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="gui_MaskedField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_MaskedField.html">MaskedField</a> 16 进制掩码</p></td> 
+      </tr> 
+     </tbody> 
+    </table> </li> 
+  </ul> 
+ </div> 
+ <div id="gui_FieldGroup_removeField" class="ulist"> 
+  <ul> 
+   <li> <p><code>removeField()</code> 支持在运行时根据 <code>id</code> 移除字段.</p> </li> 
+  </ul> 
+ </div> 
+ <div id="gui_FieldGroup_setComponent" class="ulist"> 
+  <ul> 
+   <li> <p><code>setComponent()</code> 为字段设置自定义的可视化组件。可以在 XML 元素 <code>field</code> 的属性 <code>custom="true"</code> 或者使用 <code>createField()</code> 方法创建字段时使用。当与 <code>custom="true"</code> 一起使用的时候，数据源（datasource）和对应的属性（property）需要手动设置。</p> 
+    <div class="paragraph"> 
+     <p><code>FieldConfig</code> 接口类的实例可以通过 <code>getField()</code> 或者 <code>getFieldNN()</code> 方法获取，然后就可以调用它的 <code>setComponent()</code> 方法：</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Inject</span>
+<span class="directive">protected</span> FieldGroup fieldGroup;
+<span class="annotation">@Inject</span>
+<span class="directive">protected</span> UiComponents uiComponents;
+<span class="annotation">@Inject</span>
+<span class="directive">private</span> Datasource&lt;User&gt; userDs;
+
+<span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> init(<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; params) {
+    PasswordField passwordField = uiComponents.create(PasswordField.NAME);
+    passwordField.setDatasource(userDs, <span class="string"><span class="delimiter">"</span><span class="content">password</span><span class="delimiter">"</span></span>);
+    fieldGroup.getFieldNN(<span class="string"><span class="delimiter">"</span><span class="content">password</span><span class="delimiter">"</span></span>).setComponent(passwordField);
+}</code></pre> 
+     </div> 
+    </div> </li> 
+  </ul> 
+ </div> 
+ <hr> 
+ <div class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     fieldGroup 的属性 
+   </dt> 
+   <dd> 
+    <p><a href="gui_attributes.html#gui_attr_align" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_align">align</a> - <a href="#gui_FieldGroup_border">border</a> - <a href="gui_attributes.html#gui_attr_caption" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_caption">caption</a> - <a href="gui_attributes.html#gui_attr_captionAsHtml" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_captionAsHtml">captionAsHtml</a> - <a href="#gui_FieldGroup_captionAlignment">captionAlignment</a> - <a href="gui_attributes.html#gui_attr_contextHelpText" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_contextHelpText">contextHelpText</a> - <a href="gui_attributes.html#gui_attr_contextHelpTextHtmlEnabled" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_contextHelpTextHtmlEnabled">contextHelpTextHtmlEnabled</a> - <a href="gui_attributes.html#gui_attr_css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_css">css</a> - <a href="gui_attributes.html#gui_attr_datasource" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_datasource">datasource</a> - <a href="gui_attributes.html#gui_attr_description" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_description">description</a> - <a href="gui_attributes.html#gui_attr_descriptionAsHtml" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_descriptionAsHtml">descriptionAsHtml</a> - <a href="gui_attributes.html#gui_attr_editable" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_editable">editable</a> - <a href="gui_attributes.html#gui_attr_enable" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_enable">enable</a> - <a href="gui_attributes.html#gui_attr_expandRatio" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_expandRatio">box.expandRatio</a> - <a href="#gui_FieldGroup_fieldFactoryBean">fieldFactoryBean</a> - <a href="gui_attributes.html#gui_attr_id" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_id">id</a> - <a href="gui_attributes.html#gui_attr_height" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_height">height</a> - <a href="gui_attributes.html#gui_attr_stylename" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_stylename">stylename</a> - <a href="gui_attributes.html#gui_attr_visible" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_visible">visible</a> - <a href="gui_attributes.html#gui_attr_width" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_width">width</a></p> 
+   </dd> 
+   <dt class="hdlist1">
+     column 的属性 
+   </dt> 
+   <dd> 
+    <p><a href="#gui_FieldGroup_column_flex">flex</a> - <a href="#gui_FieldGroup_column_id">id</a> - <a href="#gui_FieldGroup_column_width">width</a></p> 
+   </dd> 
+   <dt class="hdlist1">
+     field 的属性 
+   </dt> 
+   <dd> 
+    <p><a href="#gui_FieldGroup_field_caption">caption</a> - <a href="gui_attributes.html#gui_attr_captionProperty" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_captionProperty">captionProperty</a> - <a href="#gui_FieldGroup_field_rows">cols</a> - <a href="#gui_FieldGroup_field_custom">custom</a> - <a href="#gui_FieldGroup_field_datasource">datasource</a> - <a href="gui_DateField.html#gui_DateField_dateFormat" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_DateField.html#gui_DateField_dateFormat">dateFormat</a> - <a href="gui_attributes.html#gui_attr_description" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_description">description</a> - <a href="gui_attributes.html#gui_attr_editable" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_editable">editable</a> - <a href="gui_attributes.html#gui_attr_enable" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_enable">enable</a> - <a href="#gui_FieldGroup_field_generator">generator</a> - <a href="#gui_FieldGroup_field_id">id</a> - <a href="#gui_FieldGroup_field_link">link</a> - <a href="#gui_FieldGroup_field_linkInvoke">linkInvoke</a> - <a href="#gui_FieldGroup_field_linkScreen">linkScreen</a> - <a href="#gui_FieldGroup_field_linkScreenOpenType">linkScreenOpenType</a> - <a href="#gui_FieldGroup_field_mask">mask</a> - <a href="gui_TextField.html#gui_TextField_maxLength" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TextField.html#gui_TextField_maxLength">maxLength</a> - <a href="gui_attributes.html#gui_attr_optionsDatasource" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_optionsDatasource">optionsDatasource</a> - <a href="#gui_FieldGroup_field_property">property</a> - <a href="gui_attributes.html#gui_attr_required" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_required">required</a> - <a href="gui_attributes.html#gui_attr_requiredMessage" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_requiredMessage">requiredMessage</a> - <a href="gui_DateField.html#gui_DateField_resolution" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_DateField.html#gui_DateField_resolution">resolution</a> - <a href="#gui_FieldGroup_field_rows">rows</a> - <a href="gui_TimeField.html#gui_TimeField_showSeconds" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_TimeField.html#gui_TimeField_showSeconds">showSeconds</a> - <a href="gui_attributes.html#gui_attr_tabIndex" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_tabIndex">tabIndex</a> - <a href="#gui_FieldGroup_field_visible">visible</a> - <a href="gui_attributes.html#gui_attr_width" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_width">width</a></p> 
+   </dd> 
+   <dt class="hdlist1">
+     field 的 XML 元素 
+   </dt> 
+   <dd> 
+    <p><a href="#gui_FieldGroup_column">column</a> - <a href="#gui_FieldGroup_field">field</a> - <a href="gui_attributes.html#gui_attr_inputPrompt" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_attributes.html#gui_attr_inputPrompt">inputPrompt</a> - <a href="gui_validator.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_validator.html">validator</a></p> 
+   </dd> 
+   <dt class="hdlist1">
+     API 
+   </dt> 
+   <dd> 
+    <p><a href="#gui_FieldGroup_addField">addField</a> - <a href="#gui_FieldGroup_bind">bind</a> - <a href="#gui_FieldGroup_createField">createField</a> - <a href="#gui_FieldGroup_getComponent">getComponent</a> - <a href="#gui_FieldGroup_removeField">removeField</a> - <a href="#gui_FieldGroup_setComponent">setComponent</a> - <a href="#gui_FieldGroup_setFieldFactory">setFieldFactory</a></p> 
+   </dd> 
+  </dl> 
+ </div> 
+ <hr> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="gui_FileMultiUploadField.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_FileMultiUploadField.html">3.5.2.1.16. 多文件上传控件</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

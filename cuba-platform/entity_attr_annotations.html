@@ -1,0 +1,1315 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>属性注解 - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/common_components/data_model/entity_annotations/entity_attr_annotations.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/common_components/data_model/entity_annotations/entity_attr_annotations.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/common_components/data_model/entity_annotations/entity_attr_annotations.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="data_model.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/data_model.html">数据模型</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="base_entity_classes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/base_entity_classes.html">基础实体类</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="entity_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_annotations.html">实体注解</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_class_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_class_annotations.html">类注解</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="entity_attr_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_attr_annotations.html" class='toc-highlighted'>属性注解</a></div>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="enum_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/enum_attributes.html">枚举属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="soft_deletion.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/soft_deletion.html">软删除</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="metadata_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/metadata_framework.html">元数据框架</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">视图</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="managed_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/managed_beans.html">托管 Bean</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="jmx_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_beans.html">JMX Beans</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="infrastructure_interfaces.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/infrastructure_interfaces.html">基础设施接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="appContext.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/appContext.html">应用程序上下文(AppContext)</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_lifecycle_events.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_lifecycle_events.html">应用程序生命周期事件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties.html">应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="localization.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/localization.html">消息本地化</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="authentication.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/authentication.html">用户认证</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="exception_handling.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/exception_handling.html">异常处理</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="bean_validation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/bean_validation.html">Bean 验证</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_attribute_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_attribute_access.html">实体属性访问控制</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="data_model.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/data_model.html">数据模型</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="base_entity_classes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/base_entity_classes.html">基础实体类</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="entity_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_annotations.html">实体注解</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_class_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_class_annotations.html">类注解</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="entity_attr_annotations.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_attr_annotations.html" class='toc-highlighted'>属性注解</a></div>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="enum_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/enum_attributes.html">枚举属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="soft_deletion.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/soft_deletion.html">软删除</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="metadata_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/metadata_framework.html">元数据框架</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">视图</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="managed_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/managed_beans.html">托管 Bean</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="jmx_beans.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/jmx_beans.html">JMX Beans</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="infrastructure_interfaces.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/infrastructure_interfaces.html">基础设施接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="appContext.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/appContext.html">应用程序上下文(AppContext)</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_lifecycle_events.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_lifecycle_events.html">应用程序生命周期事件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="app_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties.html">应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="localization.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/localization.html">消息本地化</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="authentication.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/authentication.html">用户认证</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="exception_handling.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/exception_handling.html">异常处理</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="bean_validation.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/bean_validation.html">Bean 验证</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_attribute_access.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_attribute_access.html">实体属性访问控制</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect5"> 
+ <h6 id="entity_attr_annotations">3.2.1.2.2. 属性注解</h6> 
+ <div class="paragraph"> 
+  <p>应该为相应的字段设置属性注解，此情况除外：如果需要声明只读且非持久属性 <code>foo</code>，则只创建 <code>getFoo()</code> 方法并使用 <code>@MetaProperty</code> 注解就可以了。</p> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/CaseConversion.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/CaseConversion.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/CaseConversion.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="caseconversion_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @CaseConversion 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>表明使用此注解的实体属性绑定的文本输入框控件会自动转换大小写。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>type</code> - 转换类型：<code>UPPER</code>（默认值）、<code>LOWER</code>。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>示例：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@CaseConversion</span>(type = ConversionType.UPPER)
+<span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">COUNTRY_CODE</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> <span class="predefined-type">String</span> countryCode;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/Column.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/Column.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/Column.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="column_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Column 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>定义用于存储属性值的 DB 列。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>name</code> – 列名。</p> </li> 
+        <li> <p><code>length</code> – （可选参数，默认为 <code>255</code> ） - 列字段的长度。还用于生成<a href="metadata_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/metadata_framework.html">元数据</a>，可以限制绑定到此属性的可视化组件中输入文本的最大长度。添加 <code>@Lob</code> 注解可以移除对属性长度的限制。</p> </li> 
+        <li> <p><code>nullable</code> – （可选参数，默认为 <code>true</code> ） - 确定属性是否可以包含 <code>null</code> 值。当 <code>nullable = false</code> 时，JPA 会确保该字段在保存时有值。此外，带有该属性的可视化组件会要求用户必须输入值。</p> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/Composition.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/Composition.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/Composition.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="composition_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Composition 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>表示一种组合的关系，是比关联更紧密的一种关系。本质上，这意味着相关实体仅作为已有实体的一部分存在，也就是与已有实体一起创建和删除。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>例如，订单中的条目列表（ <code>Order</code> 类包含 <code>Item</code> 实例的集合，<code>Item</code> 实例不能独立存在）：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@OneToMany</span>(mappedBy = <span class="string"><span class="delimiter">"</span><span class="content">order</span><span class="delimiter">"</span></span>)
+<span class="annotation">@Composition</span>
+<span class="directive">protected</span> <span class="predefined-type">List</span>&lt;Item&gt; items;</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>另一个例子是一对一的关系：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Composition</span>
+<span class="annotation">@OneToOne</span>(fetch = FetchType.LAZY)
+<span class="annotation">@JoinColumn</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">DETAILS_ID</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> CustomerDetails details;</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>选择 <code>@Composition</code> 注解类型的关系可以在<a href="screen_edit.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_edit.html">编辑界面</a>中使用数据源的特殊提交模式。在此模式下，仅在提交主实体时保存对关联实例的更改。详细信息，请参阅<a href="composition_recipe.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/composition_recipe.html">组合结构</a>。</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/Embedded.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/Embedded.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/Embedded.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="embedded_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Embedded 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>定义可嵌入类型的引用属性。被引用实体应该具有 <code>@Embeddable</code> 注解。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>例如:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Embedded</span>
+<span class="directive">protected</span> Address address;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/EmbeddedParameters.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/EmbeddedParameters.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/EmbeddedParameters.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="embeddedParameters_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @EmbeddedParameters 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>默认情况下，如果嵌入实体的所有属性在数据库中为空，则 <a href="orm.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/orm.html">ORM</a> 不会创建嵌入实体的实例。当实例始终为非空时，可以使用 <code>@EmbeddedParameters</code> 注解指定不同的行为，例如：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Embedded</span>
+<span class="annotation">@EmbeddedParameters</span>(nullAllowed = <span class="predefined-constant">false</span>)
+<span class="directive">protected</span> Address address;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/Id.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/Id.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/Id.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="id_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Id 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>表示该属性是实体主键。通常，此注解在基类的字段上设置，例如 <a href="base_entity_classes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/base_entity_classes.html">BaseUuidEntity</a>。仅在继承 <code>BaseStringIdEntity</code> 基类（即用于创建主键是字符串类型的实体）的情况下，才需要对特定实体类使用此注解。</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/IgnoreUserTimeZone.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/IgnoreUserTimeZone.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/IgnoreUserTimeZone.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="ignoreUserTimeZone" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @IgnoreUserTimeZone 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>使框架忽略时间戳类型属性的用户<a href="timeZone.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/timeZone.html">时区</a>（如果当前会话设置了时区），时间戳属性使用 <code>@javax.persistence.Temporal.TIMESTAMP</code> 注解。</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/JoinColumn.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/JoinColumn.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/JoinColumn.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="joinColumn_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @JoinColumn 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>定义确定实体之间关系的 DB 列。存在此注解则表示该关联关系的拥有方（owning side）。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>name</code> – 列名</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>例如:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ManyToOne</span>(fetch = FetchType.LAZY)
+<span class="annotation">@JoinColumn</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">CUSTOMER_ID</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> Customer customer;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/JoinTable.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/JoinTable.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/JoinTable.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="joinTable_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @JoinTable 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>定义 <code>@ManyToMany</code> 关系拥有方的关联表。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>name</code> – 关联表表名</p> </li> 
+        <li> <p><code>joinColumns</code> – 关联表中的 <code>@JoinColumn</code> 元素对应于关联关系拥有方的主键（包含 <code>@JoinTable</code> 注解的那个）</p> </li> 
+        <li> <p><code>inverseJoinColumns</code> – 关联表中的 <code>@JoinColumn</code> 元素对应于关系非拥有方（non-owning side）的主键。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>关系拥有方的 <code>Group</code> 类的 <code>customers</code> 属性示例：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ManyToMany</span>
+<span class="annotation">@JoinTable</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">SALES_CUSTOMER_GROUP_LINK</span><span class="delimiter">"</span></span>,
+ joinColumns = <span class="annotation">@JoinColumn</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">GROUP_ID</span><span class="delimiter">"</span></span>),
+ inverseJoinColumns = <span class="annotation">@JoinColumn</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">CUSTOMER_ID</span><span class="delimiter">"</span></span>))
+<span class="directive">protected</span> <span class="predefined-type">Set</span>&lt;Customer&gt; customers;</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>同一关系非拥有方的 <code>Customer</code> 类的 <code>groups</code> 属性的示例：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ManyToMany</span>(mappedBy = <span class="string"><span class="delimiter">"</span><span class="content">customers</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> <span class="predefined-type">Set</span>&lt;<span class="predefined-type">Group</span>&gt; groups;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/Lob.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/Lob.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/Lob.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="lob_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Lob 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>表示该属性没有任何长度限制。此注解与 <code>@Column</code> 注解一起使用。如果设置了 <code>@Lob</code>，则忽略 <code>@Column</code> 中的默认或明确定义的长度。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>示例：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">DESCRIPTION</span><span class="delimiter">"</span></span>)
+<span class="annotation">@Lob</span>
+<span class="directive">private</span> <span class="predefined-type">String</span> description;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/LocalizedValue.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/LocalizedValue.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/LocalizedValue.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="localizedValue_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @LocalizedValue 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>确定获取属性的本地化值的方法，实现是使用 <a href="messageTools.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/messageTools.html">MessageTools</a>.<code>getLocValue()</code> 方法获取本地化值。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>messagePack</code> – 显式定义从哪个包中获取本地化消息的包名，例如，<code>com.haulmont.cuba.core.entity</code>。</p> </li> 
+        <li> <p><code>messagePackExpr</code> – 定义包名路径的表达式，包含本地化消息的包名称（例如，<code>proc.messagesPack</code>）。路径从当前实体的属性开始。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>下面示例中的注解表明 <code>state</code> 属性值的本地化消息应该从 <code>proc</code> 实体的 <code>messagesPack</code> 属性中定义的包中获取。</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">STATE</span><span class="delimiter">"</span></span>)
+<span class="annotation">@LocalizedValue</span>(messagePackExpr = <span class="string"><span class="delimiter">"</span><span class="content">proc.messagesPack</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> <span class="predefined-type">String</span> state;
+
+<span class="annotation">@ManyToOne</span>(fetch = FetchType.LAZY)
+<span class="annotation">@JoinColumn</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">PROC_ID</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> Proc proc;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/Lookup.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/Lookup.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/Lookup.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="lookup_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Lookup 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>定义引用属性的查找类型设置。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>type</code> - 默认值为 <code>SCREEN</code>，表示从<a href="screen_lookup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/screen_lookup.html">查找界面</a>中选择引用。 <code>DROPDOWN</code> 表示从下拉列表中选择引用。如果查找类型设置为 <code>DROPDOWN</code>，则在创建编辑界面时，Studio 将生成<a href="datasources.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datasources.html">选项数据源</a>。因此，应在生成实体编辑界面之前设置查找类型参数。此外，<a href="gui_Filter.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_Filter.html">Filter</a> 组件将允许用户从下拉列表中而不是查找界面中选择此类型的参数。</p> </li> 
+        <li> <p><code>actions</code> - 定义默认情况下要在 FieldGroup 内的 PickerField 组件中使用的操作。可能的值：<code>lookup</code> 、 <code>clear</code> 、 <code>open</code>。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Lookup</span>(type = LookupType.DROPDOWN, actions = {<span class="string"><span class="delimiter">"</span><span class="content">open</span><span class="delimiter">"</span></span>})
+<span class="annotation">@ManyToOne</span>(fetch = FetchType.LAZY)
+<span class="annotation">@JoinColumn</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">CUSTOMER_ID</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> Customer customer;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/ManyToMany.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/ManyToMany.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/ManyToMany.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="manyToMany_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @ManyToMany 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>定义具有多对多关系类型的集合属性。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>多对多关系可以有一个拥有方和一个反向的非拥有方。拥有方应使用 <code>@JoinTable</code> 注解，非拥有方则使用 <code>mappedBy</code> 参数。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>mappedBy</code> – 关系拥有方引用实体的字段。只能在关系的非拥有方进行设置。</p> </li> 
+        <li> <p><code>targetEntity</code> – 引用实体的类型。如果使用 Java 泛型声明集合，则此参数是可选的。</p> </li> 
+        <li> <p><code>fetch</code> – （可选参数，默认为 <code>LAZY</code> ） - 定义 JPA 是否会以<a href="glossary.html#eager_fetching" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html#eager_fetching">贪婪</a>的方式加载引用实体的集合。此参数应始终保持为 <code>LAZY</code>，因为 CUBA 应用程序中是通过<a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">视图</a>机制确定如何加载引用实体。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="admonitionblock warning"> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td> 
+          <td class="content"> 
+           <div class="paragraph"> 
+            <p>不推荐使用 <code>cascade</code> 注解属性。使用此注解会隐式的对实体进行持久化和合并，这将绕过某些系统机制。特别是，<a href="entityStates.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityStates.html">EntityStates</a> bean 将不能正确地检测托管状态，并且根本不会调用<a href="entity_listeners.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_listeners.html">实体监听器</a>。</p> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/ManyToOne.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/ManyToOne.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/ManyToOne.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="manyToOne_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @ManyToOne 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>定义具有多对一关系类型的引用属性。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>fetch</code> – （默认情况下为 <code>EAGER</code> ）参数，用于确定 JPA 是否以 <a href="glossary.html#eager_fetching" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html#eager_fetching">贪婪</a>的方式加载引用的实体。此参数应始终设置为 <code>LAZY</code>，因为 CUBA 应用程序中是通过<a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">视图</a>机制确定如何加载引用实体。</p> </li> 
+        <li> <p><code>optional</code> – （可选参数，默认情况下为 <code>true</code>）– 表明属性是否可以包含 <code>null</code> 值。如果 <code>optional = false</code>，JPA 会确保在保存实体时引用存在。此外，使用此属性的可视化组件会要求用户输入值。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>例如，几个 <code>Order</code> 实例引用相同的 <code>Customer</code> 实例。在这种情况下，<code>Order.customer</code> 属性应该具有以下注解：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ManyToOne</span>(fetch = FetchType.LAZY)
+<span class="annotation">@JoinColumn</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">CUSTOMER_ID</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> Customer customer;</code></pre> 
+       </div> 
+      </div> 
+      <div class="admonitionblock warning"> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td> 
+          <td class="content"> 
+           <div class="paragraph"> 
+            <p>不推荐使用 <code>cascade</code> 注解属性。使用此注解会隐式的对实体进行持久化和合并，这将绕过某些系统机制。特别是，<a href="entityStates.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityStates.html">EntityStates</a> bean 将不能正确地检测托管状态，并且根本不会调用 <a href="entity_listeners.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_listeners.html">实体监听器</a>。</p> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/MetaProperty.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/MetaProperty.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/MetaProperty.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="metaProperty_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @MetaProperty 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>表明<a href="metadata_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/metadata_framework.html">元数据</a>应包含带有此注解的属性。可以为字段设置此注解，但是如果没有字段，也可以为 getter 方法设置此注解。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>已经带有 <code>javax.persistence</code> 包中的以下注解的字段不需要这个注解：<code>@Column</code>、<code>@OneToOne</code>、<code>@OneToMany</code>、<code>@ManyToOne</code>、<code>@ManyToMany</code>、<code>@Embedded</code>。这些字段自动包含在元数据中。因此，<code>@MetaProperty</code> 主要用于定义实体的非持久化属性。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数（可选）:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>mandatory</code> - 确定属性是否可以包含 <code>null</code> 值。如果 <code>mandatory = true</code>，使用此属性的可视化组件会要求用户输入值。</p> </li> 
+        <li> <p><code>datatype</code> - 显式定义<a href="datatype.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/datatype.html">数据类型</a>，将会覆盖根据属性的 Java 类型推断的数据类型。</p> </li> 
+        <li> <p><code>related</code> - 当此属性包含在<a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">视图</a>中时，定义从数据库中提取的相关持久化属性的数组。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>字段示例:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Transient</span>
+<span class="annotation">@MetaProperty</span>
+<span class="directive">protected</span> <span class="predefined-type">String</span> token;</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>方法示例:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@MetaProperty</span>
+<span class="directive">public</span> <span class="predefined-type">String</span> getLocValue() {
+    <span class="keyword">if</span> (!StringUtils.isEmpty(messagesPack)) {
+        <span class="keyword">return</span> AppBeans.get(Messsages.class).getMessage(messagesPack, value);
+    } <span class="keyword">else</span> {
+        <span class="keyword">return</span> value;
+    }
+}</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/NumberFormat.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/NumberFormat.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/chile/core/annotations/NumberFormat.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="numberFormat_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @NumberFormat 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>指定 <code>Number</code> 类型（<code>BigDecimal</code> 、 <code>Integer</code> 、 <code>Long</code> 或 <code>Double</code>）属性的格式。在所有的 UI 展示中，将按照注解参数提供的格式对属性值进行格式化和解析：</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>pattern</code> - <a href="javascript:if(confirm('https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html'" tppabs="https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html" target="_blank">DecimalFormat</a> 所描述的格式模板.</p> </li> 
+        <li> <p><code>decimalSeparator</code> - 用作小数位分隔符的字符（可选）。</p> </li> 
+        <li> <p><code>groupingSeparator</code> - 用作千位分隔符的字符（可选）。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>如果未指定 <code>decimalSeparator</code> 或 <code>groupingSeparator</code>，框架会使用当前用户的本地化格式字符串或服务器操作系统的本地化格式字符串。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>例如:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">PRECISE_NUMBER</span><span class="delimiter">"</span></span>, precision = <span class="integer">19</span>, scale = <span class="integer">4</span>)
+<span class="annotation">@NumberFormat</span>(pattern = <span class="string"><span class="delimiter">"</span><span class="content">0.0000</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> <span class="predefined-type">BigDecimal</span> preciseNumber;
+
+<span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">WEIRD_NUMBER</span><span class="delimiter">"</span></span>, precision = <span class="integer">19</span>, scale = <span class="integer">4</span>)
+<span class="annotation">@NumberFormat</span>(pattern = <span class="string"><span class="delimiter">"</span><span class="content">#,##0.0000</span><span class="delimiter">"</span></span>, decimalSeparator = <span class="string"><span class="delimiter">"</span><span class="content">_</span><span class="delimiter">"</span></span>, groupingSeparator = <span class="string"><span class="delimiter">"</span><span class="content">`</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> <span class="predefined-type">BigDecimal</span> weirdNumber;
+
+<span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">SIMPLE_NUMBER</span><span class="delimiter">"</span></span>)
+<span class="annotation">@NumberFormat</span>(pattern = <span class="string"><span class="delimiter">"</span><span class="content">#</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> <span class="predefined-type">Integer</span> simpleNumber;
+
+<span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">PERCENT_NUMBER</span><span class="delimiter">"</span></span>, precision = <span class="integer">19</span>, scale = <span class="integer">4</span>)
+<span class="annotation">@NumberFormat</span>(pattern = <span class="string"><span class="delimiter">"</span><span class="content">#%</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> <span class="predefined-type">BigDecimal</span> percentNumber;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/OnDelete.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/OnDelete.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/OnDelete.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="onDelete_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @OnDelete 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>在实体软删除的情况下，确定关联实体的处理策略。参阅<a href="soft_deletion.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/soft_deletion.html">软删除</a>。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>例如:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@OneToMany</span>(mappedBy = <span class="string"><span class="delimiter">"</span><span class="content">group</span><span class="delimiter">"</span></span>)
+<span class="annotation">@OnDelete</span>(DeletePolicy.CASCADE)
+<span class="directive">private</span> <span class="predefined-type">Set</span>&lt;Constraint&gt; constraints;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/OnDeleteInverse.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/OnDeleteInverse.html'" tppabs="http://files.cuba-platform.com/javadoc/cuba/7.1/com/haulmont/cuba/core/entity/annotation/OnDeleteInverse.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="onDeleteInverse_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @OnDeleteInverse 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>从关系的反向软删除实体的情况下，确定属性关联实体的处理策略。参阅 <a href="soft_deletion.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/soft_deletion.html">软删除</a>。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>例如:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ManyToOne</span>
+<span class="annotation">@JoinColumn</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">DRIVER_ID</span><span class="delimiter">"</span></span>)
+<span class="annotation">@OnDeleteInverse</span>(DeletePolicy.DENY)
+<span class="directive">private</span> <span class="predefined-type">Driver</span> driver;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/OneToMany.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/OneToMany.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/OneToMany.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="oneToMany_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @OneToMany 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>定义一对多关系类型的集合属性。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>mappedBy</code> – 引用实体的字段，通过此字段建立关联。</p> </li> 
+        <li> <p><code>targetEntity</code> – 引用实体的类型。如果使用 Java 泛型声明的集合，则此参数是可选的。</p> </li> 
+        <li> <p><code>fetch</code> – （可选参数，默认为 <code>LAZY</code>） - 确定 JPA 是否以<a href="glossary.html#eager_fetching" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html#eager_fetching">贪婪</a>的方式加载引用实体的集合。此参数应始终保持为 <code>LAZY</code>，因为 CUBA 应用程序中是通过<a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">视图</a>机制确定如何加载引用实体。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>例如，几个 <code>Item</code> 实例使用 <code>@ManyToOne</code> 注解的字段 <code>Item.order</code> 引用相同的 <code>Order</code> 实例。在这种情况下，<code>Order</code> 类可以包含 <code>Item</code> 实例的集合：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@OneToMany</span>(mappedBy = <span class="string"><span class="delimiter">"</span><span class="content">order</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> <span class="predefined-type">Set</span>&lt;Item&gt; items;</code></pre> 
+       </div> 
+      </div> 
+      <div class="admonitionblock warning"> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td> 
+          <td class="content"> 
+           <div class="paragraph"> 
+            <p>不推荐使用 JPA <code>cascade</code> 和 <code>orphanRemoval</code> 注解属性。使用此注解会隐式的对实体进行持久化和合并，这将绕过某些系统机制。特别是，<a href="entityStates.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityStates.html">EntityStates</a> bean 将不能正确地检测托管状态，并且根本不会调用 <a href="entity_listeners.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_listeners.html">实体监听器</a>。<code>orphanRemoval</code> 注解属性不遵循 <a href="soft_deletion.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/soft_deletion.html">软删除</a>机制。</p> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/OneToOne.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/OneToOne.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/OneToOne.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="oneToOne_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @OneToOne 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>使用一对一关系类型定义引用属性。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>fetch</code> –（默认情况下为 <code>EAGER</code>）确定 JPA 是否会 <a href="glossary.html#eager_fetching" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html#eager_fetching">贪婪</a>的方式加载引用的实体。此参数应设置为 <code>LAZY</code>，因为 CUBA 应用程序中是通过<a href="views.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/views.html">视图</a>机制确定如何加载引用实体。</p> </li> 
+        <li> <p><code>mappedBy</code> – 引用实体的字段，使用这个字段建立关联。只能设置在关系的非拥有方。</p> </li> 
+        <li> <p><code>optional</code> – （可选参数，默认为 <code>true</code> ）- 指示属性是否可以包含 <code>null</code> 值。如果 <code>optional = false</code>，JPA 确保在保存实体时存在引用。此外，使用此属性的可视化组件会要求用户输入值。</p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p><code>Driver</code> 类中关系的拥有方示例：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@OneToOne</span>(fetch = FetchType.LAZY)
+<span class="annotation">@JoinColumn</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">CALLSIGN_ID</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> DriverCallsign callsign;</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p><code>DriverCallsign</code> 类中关系的非拥有方示例：</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@OneToOne</span>(fetch = FetchType.LAZY, mappedBy = <span class="string"><span class="delimiter">"</span><span class="content">callsign</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> <span class="predefined-type">Driver</span> driver;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/OrderBy.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/OrderBy.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/OrderBy.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="orderBy_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @OrderBy 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>定义从数据库检索关联时集合属性中元素的顺序。需要对有序的 Java 集合（例如 <code>List</code> 或 <code>LinkedHashSet</code> ）指定此注解，这样获得可预测的元素序列。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>value</code> – 确定排序的字符串格式：</p> </li> 
+       </ul> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="plain">orderby_list::= orderby_item [,orderby_item]*
+orderby_item::= property_or_field_name [ASC | DESC]</code></pre> 
+       </div> 
+      </div> 
+      <div class="paragraph"> 
+       <p>例如:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@OneToMany</span>(mappedBy = <span class="string"><span class="delimiter">"</span><span class="content">user</span><span class="delimiter">"</span></span>)
+<span class="annotation">@OrderBy</span>(<span class="string"><span class="delimiter">"</span><span class="content">createTs</span><span class="delimiter">"</span></span>)
+<span class="directive">protected</span> <span class="predefined-type">List</span>&lt;UserRole&gt; userRoles;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/Temporal.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/Temporal.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/Temporal.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="temporal_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Temporal 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>指定 <code>java.util.Date</code> 类型属性的存储值类型：日期、时间或日期加时间。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>参数:</p> 
+      </div> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p><code>value</code> – 存储值的类型：<code>DATE</code> 、 <code>TIME</code> 、 <code>TIMESTAMP</code></p> </li> 
+       </ul> 
+      </div> 
+      <div class="paragraph"> 
+       <p>例如:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">START_DATE</span><span class="delimiter">"</span></span>)
+<span class="annotation">@Temporal</span>(TemporalType.DATE)
+<span class="directive">protected</span> <span class="predefined-type">Date</span> startDate;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/Transient.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/Transient.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/Transient.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="transient_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Transient 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>表示该字段不存储在数据库中，即属性是非持久化的。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>字段的类型如果是 JPA 支持的（请参阅 <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/Basic.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/Basic.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/Basic.html" target="_blank">Basic 注解类型</a>），那么在默认情况下是持久化的，这就是为什么对于这些类型的非持久化属性必须要加上 <code>@Transient</code> 注解。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>如果元数据中需要包含 <code>@Transient</code> 属性，应该给属性加上 <a href="#metaProperty_annotation">@MetaProperty</a> 注解。</p> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+ <div class="manual-live-demo-container"> 
+  <a href="javascript:if(confirm('http://docs.oracle.com/javaee/7/api/javax/persistence/Version.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.oracle.com/javaee/7/api/javax/persistence/Version.html'" tppabs="http://docs.oracle.com/javaee/7/api/javax/persistence/Version.html" class="api-docs-btn" target="_blank">API 文档</a> 
+ </div> 
+ <div id="version_annotation" class="dlist"> 
+  <dl> 
+   <dt class="hdlist1">
+     @Version 
+   </dt> 
+   <dd> 
+    <div class="openblock"> 
+     <div class="content"> 
+      <div class="paragraph"> 
+       <p>表明注解的字段是用于支持<a href="glossary.html#optimistic_locking" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html#optimistic_locking">乐观锁</a>的版本字段。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>当实体类实现 <code>Versioned</code> 接口时，需要这样的字段，<code>StandardEntity</code> 基类已经包含这样的字段。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>例如:</p> 
+      </div> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Version</span>
+<span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">VERSION</span><span class="delimiter">"</span></span>)
+<span class="directive">private</span> <span class="predefined-type">Integer</span> version;</code></pre> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </dd> 
+  </dl> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="enum_attributes.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/enum_attributes.html">3.2.1.3. 枚举属性</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>

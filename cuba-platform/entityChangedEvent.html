@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<head>
+    <meta charset="UTF-8">
+    <title>EntityChangedEvent - CUBA 框架开发者手册</title>
+    <link href="css-family=Roboto-300,400,500,700.css" tppabs="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="css-family=Overpass+Mono.css" tppabs="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="chopper.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/chopper.css">
+    <link rel="stylesheet" href="coderay-asciidoctor.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/coderay-asciidoctor.css">
+    <link rel="stylesheet" href="cuba.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cuba.css"> <link rel="stylesheet" href="cubacn.css" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/styles/cubacn.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+    <div id="top">
+        <div id="menubutton"></div>
+        <div id="title-version">
+            <div id="title">CUBA 框架开发者手册</div>
+            <div id="version">Version 7.1</div>
+        </div>
+        <div id="editSource">
+            <a href="javascript:if(confirm('https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/middleware/entityChangedEvent.adoc  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/middleware/entityChangedEvent.adoc'" tppabs="https://github.com/cubacn/documentation/blob/master/content/manual/adoc/chs/framework/middleware/entityChangedEvent.adoc" target="_blank"><img src="gh-icon.svg" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/img/gh-icon.svg" class="gh-icon"/> Edit on GitHub</a>
+        </div>
+    </div>
+    <div id="toc" class="toc2">
+        <div class="searchfield">
+            <form action="https://doc.cuba-platform.cn/manual-7.1-chs/search.jsp" class="search">
+                <div class="searchbar">
+                <input id="searchTerms" type="text" name="searchTerms">
+                <input type="submit" class="submit" value="">
+                </div>
+                <div class="radiobuttons">
+                    大小写：
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="yes">
+                        <span class="round"></span>
+                    </span> 区分
+                    <span class="radio-container">
+                        <input name="caseSensitive" type="radio" class="radiobutton" value="no" checked>
+                        <span class="round"></span>
+                    </span> 不区分
+                </div>
+                <!--<input type="submit" class="submit" value="搜索">-->
+            </form>
+        </div>
+        <div class="desktop-toc">
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="services.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/services.html">服务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="data_store.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/data_store.html">数据存储</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="persistence.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/persistence.html">持久化接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="orm.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/orm.html">ORM 层</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="transactions.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/transactions.html">事务管理</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_cache.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_cache.html">实体以及查询语句缓存</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="entityChangedEvent.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityChangedEvent.html" class='toc-highlighted'>EntityChangedEvent</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entityPersistingEvent.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityPersistingEvent.html">EntityPersistingEvent</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_authentication.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_authentication.html">系统身份验证</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+        <div class="mobile-toc">
+            <div id="closemenu">Close</div>
+            
+<ul class='toc-root'>
+<li><div class='toc-link'><a href="index.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/index.html">首页</a></div></li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="preface.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/preface.html">序言</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="setup.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/setup.html">安装</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="quick_start.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/quick_start.html">快速开始</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/framework.html">框架详细介绍</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="architecture.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/architecture.html">架构</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="common_components.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/common_components.html">通用组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="dbms.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dbms.html">数据库组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker open'></div><div class='toc-link open'><a href="middleware.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/middleware.html">中间件组件</a></div>
+<ul>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="services.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/services.html">服务</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="data_store.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/data_store.html">数据存储</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="persistence.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/persistence.html">持久化接口</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="orm.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/orm.html">ORM 层</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="transactions.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/transactions.html">事务管理</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entity_cache.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entity_cache.html">实体以及查询语句缓存</a></div>
+</li>
+<li class='toc-item toc-selected-item'><div class='toc-marker'></div><div class='toc-link open'><a href="entityChangedEvent.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityChangedEvent.html" class='toc-highlighted'>EntityChangedEvent</a></div>
+<ul>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="entityPersistingEvent.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityPersistingEvent.html">EntityPersistingEvent</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_authentication.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_authentication.html">系统身份验证</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_framework.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_framework.html">通用用户界面（GUI）</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="gui_legacy.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/gui_legacy.html">GUI 历史版本 API</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="front_ui.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/front_ui.html">前端用户界面</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="portal.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/portal.html">Portal 组件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="features.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/features.html">平台功能</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="extension.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/extension.html">功能扩展</a></div>
+</li>
+</ul>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="development.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/development.html">应用程序开发</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="deployment.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/deployment.html">应用程序部署</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="security_subsystem.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/security_subsystem.html">安全子系统</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="cookbook.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/cookbook.html">Cookbook</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="config_files.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/config_files.html">Appendix A: 项目配置文件</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="app_properties_reference.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/app_properties_reference.html">Appendix B: 应用程序属性</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="system_properties.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/system_properties.html">Appendix C: 系统参数</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker closed'></div><div class='toc-link'><a href="removed_sections.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/removed_sections.html">Appendix D: 移除的部分</a></div>
+</li>
+<li class='toc-item'><div class='toc-marker'></div><div class='toc-link'><a href="glossary.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/glossary.html">术语表</a></div>
+</li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="sect3"> 
+ <h4 id="entityChangedEvent">3.4.7. EntityChangedEvent</h4> 
+ <div class="paragraph"> 
+  <p><code>EntityChangedEvent</code> 是一个 Spring 的 <code>ApplicationEvent</code> 事件，会在实体保存到数据库时从中间层发送该事件。可以在事务中或者事务完成后处理该事件（使用 <a href="javascript:if(confirm('https://docs.spring.io/spring/docs/current/spring-framework-reference/data-access.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://docs.spring.io/spring/docs/current/spring-framework-reference/data-access.html#transaction-event'" tppabs="https://docs.spring.io/spring/docs/current/spring-framework-reference/data-access.html#transaction-event" target="_blank">@TransactionalEventListener</a> ）。</p> 
+ </div> 
+ <div class="admonitionblock tip"> 
+  <table> 
+   <tbody> 
+    <tr> 
+     <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+     <td class="content"> 
+      <div class="paragraph"> 
+       <p>只会为使用了 <code>@PublishEntityChangedEvents</code> 注解的实体发送该事件。如果实体需要监听 <code>EntityChangedEvent</code> 事件，别忘了为实体添加该注解。</p> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="paragraph"> 
+  <p><code>EntityChangedEvent</code> 不包含更改的实体本身，而只包含了其 id。还有，<code>getOldValue(attributeName)</code> 方法也只会返回引用的 id 而不是对象。所以如果需要的话，开发者可以使用合适的视图或者其它参数重新加载实体。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>下面的例子展示了在当前事务中和事务后处理 <code>Customer</code> 实体的 <code>EntityChangedEvent</code> 事件。</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.demo.core</span>;
+
+<span class="keyword">import</span> <span class="include">com.company.demo.entity.Customer</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.app.events.AttributeChanges</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.app.events.EntityChangedEvent</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.entity.contracts.Id</span>;
+<span class="keyword">import</span> <span class="include">org.springframework.context.event.EventListener</span>;
+<span class="keyword">import</span> <span class="include">org.springframework.stereotype.Component</span>;
+<span class="keyword">import</span> <span class="include">org.springframework.transaction.event.TransactionPhase</span>;
+<span class="keyword">import</span> <span class="include">org.springframework.transaction.event.TransactionalEventListener</span>;
+<span class="keyword">import</span> <span class="include">java.util.UUID</span>;
+
+<span class="annotation">@Component</span>(<span class="string"><span class="delimiter">"</span><span class="content">demo_CustomerChangedListener</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">CustomerChangedListener</span> {
+
+    <span class="annotation">@TransactionalEventListener</span>(
+            phase = TransactionPhase.BEFORE_COMMIT <i class="conum" data-value="1"></i><b>(1)</b>
+    )
+    <span class="directive">public</span> <span class="type">void</span> beforeCommit(EntityChangedEvent&lt;Customer, <span class="predefined-type">UUID</span>&gt; event) {
+        Id&lt;Customer, <span class="predefined-type">UUID</span>&gt; entityId = event.getEntityId(); <i class="conum" data-value="2"></i><b>(2)</b>
+        EntityChangedEvent.Type changeType = event.getType(); <i class="conum" data-value="3"></i><b>(3)</b>
+
+        AttributeChanges changes = event.getChanges();
+        <span class="keyword">if</span> (changes.isChanged(<span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>)) { <i class="conum" data-value="4"></i><b>(4)</b>
+            <span class="predefined-type">String</span> oldName = changes.getOldValue(<span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>); <i class="conum" data-value="5"></i><b>(5)</b>
+            <span class="comment">// ...</span>
+        }
+    }
+
+    <span class="annotation">@TransactionalEventListener</span>(
+            phase = TransactionPhase.AFTER_COMMIT <i class="conum" data-value="6"></i><b>(6)</b>
+    )
+    <span class="directive">public</span> <span class="type">void</span> afterCommit(EntityChangedEvent&lt;Customer, <span class="predefined-type">UUID</span>&gt; event) {
+        <i class="conum" data-value="7"></i><b>(7)</b>
+    }
+}</code></pre> 
+  </div> 
+ </div> 
+ <div class="colist arabic"> 
+  <table> 
+   <tbody> 
+    <tr> 
+     <td><i class="conum" data-value="1"></i><b>1</b></td> 
+     <td>- 该监听器会在当前事务中调用。</td> 
+    </tr> 
+    <tr> 
+     <td><i class="conum" data-value="2"></i><b>2</b></td> 
+     <td>- 更改实体的 id。</td> 
+    </tr> 
+    <tr> 
+     <td><i class="conum" data-value="3"></i><b>3</b></td> 
+     <td>- 更改类型： <code>CREATED</code>、<code>UPDATED</code> 或 <code>DELETED</code>。</td> 
+    </tr> 
+    <tr> 
+     <td><i class="conum" data-value="4"></i><b>4</b></td> 
+     <td>- 可以检查是否某个特定属性有变化。</td> 
+    </tr> 
+    <tr> 
+     <td><i class="conum" data-value="5"></i><b>5</b></td> 
+     <td>- 可以获取变化属性的旧值。</td> 
+    </tr> 
+    <tr> 
+     <td><i class="conum" data-value="6"></i><b>6</b></td> 
+     <td>- 该监听器在事务提交之后会被调用。</td> 
+    </tr> 
+    <tr> 
+     <td><i class="conum" data-value="7"></i><b>7</b></td> 
+     <td>- 在事务提交之后，事件包含跟提交之前相同的信息。</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="paragraph"> 
+  <p>如果监听器在事务内部调用，可以通过抛出异常的方法回滚事务，这样不会有数据保存至数据库。如果不想用户看到任何错误提示，可以用 <code>SilentException</code>。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>如果一个 "after commit" 监听器抛出了异常，该异常会被日志记录，而不会呈现给客户端（用户不会在 UI 看到该错误）。</p> 
+ </div> 
+ <div class="admonitionblock warning"> 
+  <table> 
+   <tbody> 
+    <tr> 
+     <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td> 
+     <td class="content"> 
+      <div class="paragraph"> 
+       <p>如果在当前事务（<code>TransactionPhase.BEFORE_COMMIT</code>）中处理 <code>EntityChangedEvent</code>，请确保使用了 <a href="transactionalDataManager.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/transactionalDataManager.html">TransactionalDataManager</a> 从数据库获取更改实体的当前状态。如果使用的是 <a href="dataManager.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/dataManager.html">DataManager</a>，它会创建新的数据库事务，如果尝试读取未提交的数据会容易导致数据库死锁。</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>在 "after commit" 监听器（<code>TransactionPhase.AFTER_COMMIT</code>）中，在使用 <code>TransactionalDataManager</code> 之前需要使用 <code>DataManager</code> 或者显式创建一个新事务。</p> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="paragraph"> 
+  <p>下面是使用 <code>EntityChangedEvent</code> 更新关联实体的示例。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>假设根据 <a href="javascript:if(confirm('https://www.cuba-platform.com/learn/quickstart/studio/part3/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.cuba-platform.com/learn/quickstart/studio/part3/#chapter0'" tppabs="https://www.cuba-platform.com/learn/quickstart/studio/part3/#chapter0" target="_blank">快速开始-Sales应用程序</a> ，我们有 <code>Order</code>、<code>OrderLine</code> 和 <code>Product</code> 实体。但是 <code>Product</code> 还有额外的 <code>special</code> 布尔类型属性，并且 <code>Order</code> 有 <code>numberOfSpecialProducts</code> 整型属性，该属性需要根据每次从 <code>Order</code> 中添加或者删除 <code>OrderLine</code> 时重新计算。</p> 
+ </div> 
+ <div class="paragraph"> 
+  <p>创建下面带有 <code>@EventListener</code> 方法的类，此方法会在事务提交之前， <code>OrderLine</code> 实体发生改变时调用。</p> 
+ </div> 
+ <div class="listingblock"> 
+  <div class="content"> 
+   <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.company.sales.listener</span>;
+
+<span class="keyword">import</span> <span class="include">com.company.sales.entity.Order</span>;
+<span class="keyword">import</span> <span class="include">com.company.sales.entity.OrderLine</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.TransactionalDataManager</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.app.events.EntityChangedEvent</span>;
+<span class="keyword">import</span> <span class="include">com.haulmont.cuba.core.entity.contracts.Id</span>;
+<span class="keyword">import</span> <span class="include">org.springframework.context.event.EventListener</span>;
+<span class="keyword">import</span> <span class="include">org.springframework.stereotype.Component</span>;
+
+<span class="keyword">import</span> <span class="include">javax.inject.Inject</span>;
+<span class="keyword">import</span> <span class="include">java.util.UUID</span>;
+
+<span class="annotation">@Component</span>(<span class="string"><span class="delimiter">"</span><span class="content">sales_OrderLineChangedListener</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">OrderLineChangedListener</span> {
+
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> TransactionalDataManager txDm;
+
+    <span class="annotation">@TransactionalEventListener</span>(
+            phase = TransactionPhase.BEFORE_COMMIT
+    )
+    <span class="directive">public</span> <span class="type">void</span> beforeCommit(EntityChangedEvent&lt;OrderLine, <span class="predefined-type">UUID</span>&gt; event) {
+        Order order;
+        <span class="keyword">if</span> (event.getType() != EntityChangedEvent.Type.DELETED) { <i class="conum" data-value="1"></i><b>(1)</b>
+            order = txDm.load(event.getEntityId()) <i class="conum" data-value="2"></i><b>(2)</b>
+                    .view(<span class="string"><span class="delimiter">"</span><span class="content">orderLine-with-order</span><span class="delimiter">"</span></span>) <i class="conum" data-value="3"></i><b>(3)</b>
+                    .one()
+                    .getOrder(); <i class="conum" data-value="4"></i><b>(4)</b>
+        } <span class="keyword">else</span> {
+            Id&lt;Order, <span class="predefined-type">UUID</span>&gt; orderId = event.getChanges().getOldReferenceId(<span class="string"><span class="delimiter">"</span><span class="content">order</span><span class="delimiter">"</span></span>); <i class="conum" data-value="5"></i><b>(5)</b>
+            order = txDm.load(orderId).one();
+        }
+
+        <span class="type">long</span> count = txDm.load(OrderLine.class) <i class="conum" data-value="6"></i><b>(6)</b>
+                .query(<span class="string"><span class="delimiter">"</span><span class="content">select o from sales_OrderLine o where o.order = :order</span><span class="delimiter">"</span></span>)
+                .parameter(<span class="string"><span class="delimiter">"</span><span class="content">order</span><span class="delimiter">"</span></span>, order)
+                .view(<span class="string"><span class="delimiter">"</span><span class="content">orderLine-with-product</span><span class="delimiter">"</span></span>)
+                .list().stream()
+                .filter(orderLine -&gt; <span class="predefined-type">Boolean</span>.TRUE.equals(orderLine.getProduct().getSpecial()))
+                .count();
+
+        order.setNumberOfSpecialProducts((<span class="type">int</span>) count);
+
+        txDm.save(order); <i class="conum" data-value="7"></i><b>(7)</b>
+    }
+}</code></pre> 
+  </div> 
+ </div> 
+ <div class="colist arabic"> 
+  <table> 
+   <tbody> 
+    <tr> 
+     <td><i class="conum" data-value="1"></i><b>1</b></td> 
+     <td>- 如果没有删除 <code>OrderLine</code>，我们可以使用 id 从数据库加载。</td> 
+    </tr> 
+    <tr> 
+     <td><i class="conum" data-value="2"></i><b>2</b></td> 
+     <td>- <code>event.getEntityId()</code> 方法返回更改的 <code>OrderLine</code> id。</td> 
+    </tr> 
+    <tr> 
+     <td><i class="conum" data-value="3"></i><b>3</b></td> 
+     <td>- 使用包含 <code>OrderLine</code> 并带有其关联 <code>Order</code> 的视图。试图必须包含 <code>Order.numberOfSpecialProducts</code> 属性，因为我们之后会更新这个值。</td> 
+    </tr> 
+    <tr> 
+     <td><i class="conum" data-value="4"></i><b>4</b></td> 
+     <td>- 从加载的 <code>OrderLine</code> 中获取 <code>Order</code>。</td> 
+    </tr> 
+    <tr> 
+     <td><i class="conum" data-value="5"></i><b>5</b></td> 
+     <td>- 如果 <code>OrderLine</code> 已经被删除了，则不能从数据库加载，但是 <code>event.getChanges()</code> 方法会返回实体的所有属性，也包含了关联实体的 id。所以我们可以用 id 从中获取关联的 <code>Order</code>。</td> 
+    </tr> 
+    <tr> 
+     <td><i class="conum" data-value="6"></i><b>6</b></td> 
+     <td>- 为给定的 <code>Order</code> 加载所有的 <code>OrderLine</code> 实例，使用 <code>Product.special</code> 进行过滤并对它们进行计数。视图必须包含 <code>OrderLine</code> 以及关联的 <code>Product</code>。</td> 
+    </tr> 
+    <tr> 
+     <td><i class="conum" data-value="7"></i><b>7</b></td> 
+     <td>- 改变了属性之后再保存 <code>Order</code>。</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+</div>
+</div>
+<div id="bottom">
+    <div id="next">下一节: <a href="entityPersistingEvent.html" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/entityPersistingEvent.html">3.4.8. EntityPersistingEvent</a></div>
+</div>
+<script type="text/javascript">
+function loaded() {
+    var selEl = document.getElementsByClassName('toc-selected-item')[0];
+    if (selEl) {
+        var tocRoots = document.getElementsByClassName('toc-root');
+        for (var i = 0; i < tocRoots.length; i++) {
+            tocRoots[i].scrollTop = selEl.offsetTop;
+        }
+    }
+}
+function focusSearch(e) {
+    if (e.key == 'Escape') {
+        document.getElementById('searchTerms').focus();
+    }
+}
+document.addEventListener('DOMContentLoaded', loaded);
+document.addEventListener('keydown', focusSearch);
+</script>
+<script type="text/javascript">(function(g,a,i){(a[i]=a[i]||[]).push(function(){try{a.yaCounter31327533=new Ya.Metrika({id:31327533,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,trackHash:true})}catch(c){}});var h=g.getElementsByTagName("script")[0],b=g.createElement("script"),e=function(){h.parentNode.insertBefore(b,h)};b.type="text/javascript";b.async=true;b.src="watch.js"/*tpa=https://mc.yandex.ru/metrika/watch.js*/;if(a.opera=="[object Opera]"){g.addEventListener("DOMContentLoaded",e,false)}else{e()}})(document,window,"yandex_metrika_callbacks");</script> <noscript><div><img alt="" style="position:absolute; left:-9999px;" src="1.gif" tppabs="https://mc.yandex.ru/watch/31327533"></div></noscript><script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","analytics.js"/*tpa=https://www.google-analytics.com/analytics.js*/,"ga"); ga("create","UA-48250949-2","auto",{allowLinker:true});ga('require', 'OWOXBIStreaming', {sessionIdDimension: 02}); (function(){var g=function(e,f){var h=e.get("sendHitTask"),g=function(){function d(c){var b=!1,a;try{window.XMLHttpRequest&&"withCredentials"in(a=new XMLHttpRequest)&&(a.open("POST",k(),!0),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},a.setRequestHeader("Content-Type","text/plain"),a.send(c),b=!0)}catch(d){}return b}function h(c){var b=!1,a;try{window.XDomainRequest&&(a=new XDomainRequest,a.open("POST",k(!1,location.protocol.slice(0,-1))),a.onprogress=function(){},a.ontimeout=function(){},a.onerror=function(){},a.onload=function(){},setTimeout(function(){a.send(c)},0),b=!0)}catch(d){}return b}function g(c){var b,a=!1;try{b=document.createElement("img"),b.onload=function(){},b.src=k(!0)+"?"+c,a=!0}catch(d){}return a}function k(c,b){var a;b||(b="https");a=b+"://"+l.domain+"/collect";c||(a+="?tid="+encodeURIComponent(e.get("trackingId")));return a}var l={domain:f&&f.domain?f.domain:"https://doc.cuba-platform.cn/manual-7.1-chs/google-analytics.bi.owox.com",debug:!1};return{send:function(c){var b; if(!(b=2036>=c.length&&g(c))){b=!1;try{b=navigator.sendBeacon&&navigator.sendBeacon(k(),c)}catch(a){}}return b||d(c)||h(c)||g(c)}}}();e.set("sendHitTask",function(d){var e;if(f&&0<f.sessionIdDimension)try{e=d.get("clientId")+"_"+Date.now(),d.set("dimension"+f.sessionIdDimension,e),d.get("buildHitTask")(d)}catch(m){}h(d);g.send(d.get("hitPayload"))})},h=window[window.GoogleAnalyticsObject||"ga"];h&&h("provide","OWOXBIStreaming",g)})();ga("require","linker");ga("linker:autoLink",["https://doc.cuba-platform.cn/manual-7.1-chs/www.cuba-platform.com"]);ga("require","displayfeatures");ga("send","pageview");</script><script src="jquery-1.11.1.min.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/jquery-1.11.1.min.js" type="text/javascript"></script><script type="text/javascript" src="mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/mobile-menu.js"></script><script type="text/javascript" src="desktop-mobile-menu.js" tppabs="https://doc.cuba-platform.cn/manual-7.1-chs/js/desktop-mobile-menu.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  $('.ulist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.dlist[id]').each(function(){
+   this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+  });
+
+  $('.paragraph[id]').each(function(){
+    var pTagElements = this.getElementsByTagName('p');
+    if(pTagElements.length == 1){
+      var pTag = pTagElements[0];
+      if(pTag.childNodes.length == 1){
+         if(pTag.childNodes[0].nodeName == 'STRONG'){
+            this.insertBefore(createLinkAnchor(this.id), this.firstChild);
+           }
+         }
+       }
+  });
+
+  function createLinkAnchor(localLink){
+    var aTag = document.createElement("a");
+    aTag.className = "anchor";
+    aTag.href = "#" + localLink;
+    return aTag;
+   }
+});</script><style>#content div.paragraph > a.anchor {
+   position: absolute;
+   z-index: 1001;
+   width: 2.5ex;
+   margin-left: -2.5ex;
+   margin-top: 0.3ex;
+   display: block;
+   text-decoration: none !important;
+   visibility: hidden;
+   text-align: center;
+   font-weight: normal;
+}
+#content div.ulist div.paragraph > a.anchor {
+  margin-top: -0.2ex;
+ }
+
+#content div.paragraph > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.paragraph > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+#content div.paragraph > a.link:hover{
+ color: #0a61af;
+}
+
+
+#content div.ulist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 1.5ex;
+  margin-left: -1.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden; text-align: center;
+  font-weight: normal;
+}
+
+#content div.ulist > a.anchor:before {
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.ulist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.ulist > a.link:hover {
+  color: #0a61af;
+}
+
+#content div.ulist div.ulist > a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+#content div.ulist div.dlist div.ulist a.anchor {
+  margin-left: -3.5ex;
+  margin-top: 0ex;
+  width: 5ex;
+  text-align: left;
+}
+
+
+#content div.dlist > a.anchor {
+  position: absolute;
+  z-index: 1001;
+  width: 2.5ex;
+  margin-left: -2.5ex;
+  margin-top: 0.5ex;
+  display: block;
+  text-decoration: none !important;
+  visibility: hidden;
+  text-align: center;
+  font-weight: normal;
+}
+
+#content div.dlist div.ulist > a.anchor {
+  margin-left: -1.5ex;
+  margin-top: -0.15ex;
+  text-align: left;
+}
+
+#content div.dlist > a.anchor:before{
+  content: "#";
+  display: block;
+  padding-top: 0.1em;
+}
+
+#content div.dlist > a.link {
+  color: #0b6ec7;
+  text-decoration: none;
+}
+
+#content div.dlist > a.link:hover{
+  color: #0a61af;
+}
+
+#content div:hover > a.anchor, div > a.anchor:hover {
+  visibility: visible;
+}</style>
+</body>
+</html>
