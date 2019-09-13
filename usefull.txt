@@ -1,0 +1,7 @@
+复合主键:
+BaseGenericIdEntity
+除了上面情况之外，如果需要将实体映射到具有复合主键的表，则直接继承 BaseGenericIdEntity 。在这种情况下，具体实体类必须有一个嵌入类型的字段代表复合主键，并使用 @EmbeddedId JPA 注解。
+
+
+
+
