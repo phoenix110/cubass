@@ -61,7 +61,9 @@ eclipselink.cache.size.sales$Customer = 500 - 将 sales$Customer 的缓存大小
 
 
 
+https://github.com/hemin1003/java-spider
 
+https://github.com/code4craft/webmagic
 
 
 
