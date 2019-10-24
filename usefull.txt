@@ -71,14 +71,14 @@ https://devdactic.com/ionic-4-image-upload-storage/+&cd=1&hl=ja&ct=clnk&gl=jp
 
 
 
+持久化实体可能包含未存储在数据库中的属性。对于非持久化属性，Java 字段不是必须的，可以只创建访问方法。
+
+框架是根据实体所在注册文件：persistence.xml 或 metadata.xml 来确定实体是否是持久化实体。
 
 
 
 
-
-
-
-
+https://github.com/chenyuanchn/devin-cordova-plugin-bugly
 
 
 
