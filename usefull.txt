@@ -81,20 +81,20 @@ https://devdactic.com/ionic-4-image-upload-storage/+&cd=1&hl=ja&ct=clnk&gl=jp
 https://github.com/chenyuanchn/devin-cordova-plugin-bugly
 
 
+AndroidおよびiOSでの端末識別子について
+https://qiita.com/yutao727/items/0d503c45bcbe18b27ec3
+
+
+ldap
+https://blog.csdn.net/jbgtwang/article/details/39180955
 
 
 
 
 
 
-
-
-
-
-
-
-
-
+How-to-Lombok.md
+https://gist.github.com/Getaji/cee34b8b91393ad1cdaf
 
 
 
